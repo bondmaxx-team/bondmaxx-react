@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
 
 function CartItem({ item, index, onRemove }) {
   return (
@@ -230,13 +231,13 @@ export default function Header() {
 
             {/* Center - Logo */}
             <div className="flex-1 flex justify-center">
-              <a href="/" className="inline-block">
+              <Link href="/" className="inline-block">
                 <img
                   alt="BONDMAXX Painting"
                   src={logo}
                   className="h-10 sm:h-14 cursor-pointer hover:opacity-90 transition-opacity"
                 />
-              </a>
+              </Link>
             </div>
 
             {/* Right - Menu */}
@@ -289,16 +290,16 @@ export default function Header() {
         </div>
         <div className="flex flex-col py-8">
           {menuItems.map((item, index) => (
-            <a
+            <Link
               key={index}
-              href={item.href}
+              to={item.href}
               className={`px-7 py-4 cursor-pointer hover:bg-blue-50 hover:text-blue-600 transition ${
                 item.icon ? "flex items-center gap-2" : ""
               }`}
             >
               {item.icon && <i className={item.icon}></i>}
               {item.label}
-            </a>
+            </Link>
           ))}
         </div>
       </div>

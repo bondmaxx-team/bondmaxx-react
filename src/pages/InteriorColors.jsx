@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import testImage from "../assets/color-1.png";
+import roof from "../assets/2.jpeg";
+import wall from "../assets/1.jpeg";
 
 const InteriorColorsPage = ({
   title = "منتجات داخلية",
@@ -8,15 +11,13 @@ const InteriorColorsPage = ({
     {
       id: 1,
       name: "الأسقف",
-      image:
-        "https://images.unsplash.com/photo-1615873968403-89e068629265?w=300&h=300&fit=crop",
+      image: roof,
       link: "#",
     },
     {
       id: 2,
       name: "الحوائط",
-      image:
-        "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=300&h=300&fit=crop",
+      image: wall,
       link: "#",
     },
   ],
@@ -25,8 +26,7 @@ const InteriorColorsPage = ({
       id: 1,
       name: "دهان Bondmax مطفي",
       category: "دهانات",
-      image:
-        "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=400&fit=crop",
+      image: testImage,
       description: "جدران جميلة كل يوم.",
       features: ["لمسات حريرية فاخرة", "تحمل عالٍ للغسل", "ألوان دقيقة دافئة"],
       link: "product-details.html",
@@ -35,8 +35,7 @@ const InteriorColorsPage = ({
       id: 2,
       name: "دهان Bondmax مطفي",
       category: "دهانات",
-      image:
-        "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=400&fit=crop",
+      image: testImage,
       description: "جدران جميلة كل يوم.",
       features: ["لمسات حريرية فاخرة", "تحمل عالٍ للغسل", "ألوان دقيقة دافئة"],
       link: "#product-2",
@@ -45,8 +44,7 @@ const InteriorColorsPage = ({
       id: 3,
       name: "دهان Bondmax مطفي",
       category: "دهانات",
-      image:
-        "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=400&fit=crop",
+      image: testImage,
       description: "جدران جميلة كل يوم.",
       features: ["لمسات حريرية فاخرة", "تحمل عالٍ للغسل", "ألوان دقيقة دافئة"],
       link: "#product-3",
@@ -55,9 +53,7 @@ const InteriorColorsPage = ({
       id: 4,
       name: "دهان Bondmax مطفي",
       category: "دهانات",
-      image:
-        "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=400&fit=crop",
-      description: "جدران جميلة كل يوم.",
+      image: testImage,
       features: ["لمسات حريرية فاخرة", "تحمل عالٍ للغسل", "ألوان دقيقة دافئة"],
       link: "#product-4",
     },
@@ -65,8 +61,7 @@ const InteriorColorsPage = ({
       id: 5,
       name: "دهان Bondmax مطفي",
       category: "دهانات",
-      image:
-        "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=400&fit=crop",
+      image: testImage,
       description: "جدران جميلة كل يوم.",
       features: ["لمسات حريرية فاخرة", "تحمل عالٍ للغسل", "ألوان دقيقة دافئة"],
       link: "#product-5",
@@ -75,8 +70,7 @@ const InteriorColorsPage = ({
       id: 6,
       name: "دهان Bondmax مطفي",
       category: "دهانات",
-      image:
-        "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=400&fit=crop",
+      image: testImage,
       description: "جدران جميلة كل يوم.",
       features: ["لمسات حريرية فاخرة", "تحمل عالٍ للغسل", "ألوان دقيقة دافئة"],
       link: "#product-6",
@@ -134,7 +128,7 @@ const InteriorColorsPage = ({
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 min-h-screen" dir="rtl">
       {/* Hero Section */}
       <section className="min-h-[60vh] flex items-start lg:items-center justify-center py-24 bg-gradient-to-b from-blue-50 to-white">
         <div className="w-full max-w-6xl px-4 text-center">

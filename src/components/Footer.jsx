@@ -120,8 +120,8 @@ export default function Footer() {
 
       {/* Footer Bottom */}
       <div className="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400 text-sm">
-        &copy; 2025 BONDMAXX. جميع الحقوق محفوظة. | تصميم وتطوير بواسطة فريق
-        Goldennetالتقني
+        &copy; 2025 Goldennet التقني. جميع الحقوق محفوظة. | تصميم وتطوير بواسطة
+        فريق Goldennet التقني
       </div>
     </footer>
   );
