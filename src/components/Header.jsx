@@ -231,7 +231,7 @@ export default function Header() {
 
             {/* Center - Logo */}
             <div className="flex-1 flex justify-center">
-              <Link href="/" className="inline-block">
+              <Link to="/" className="inline-block">
                 <img
                   alt="BONDMAXX Painting"
                   src={logo}

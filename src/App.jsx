@@ -41,7 +41,7 @@ function LayoutWithoutHeader() {
 
 function App() {
   return (
-    <Router basename="/bondmaxx-react">
+    <Router>
       {/* ✅ Added basename here */}
       <Routes>
         {/* Routes WITH Header */}
