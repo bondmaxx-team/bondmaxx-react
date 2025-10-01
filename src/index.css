@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/* Custom utilities for specific needs */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animation keyframes for smooth transitions */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease;
+}
+
+/* Background clip text support for Safari */
+.text-transparent {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Ensure proper RTL support for most transforms, but not sidebar */
+[dir="rtl"] .transform:not(#sidebar) {
+  --tw-translate-x: calc(-1 * var(--tw-translate-x));
+}
+
+/* Ensure sidebar always hides to the right regardless of RTL */
+#sidebar.translate-x-full {
+  transform: translateX(100%) !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  z-index: 20;
+}
+
+.slide-up-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    transparent 100%
+  );
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group:hover .slide-up-overlay {
+  transform: translateY(0);
+}
+
+.slide-up-content {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+}
+
+.group:hover .slide-up-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fade-overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.group:hover .fade-overlay {
+  opacity: 1;
+}
