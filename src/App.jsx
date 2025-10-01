@@ -1,10 +1,5 @@
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Outlet,
-} from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Outlet } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -18,6 +13,8 @@ import InteriorColorsPage from "./pages/InteriorColors";
 import SearchDealerPage from "./pages/SearchDealer";
 import ColorCollection from "./pages/ColorCollection";
 import PaintingServices from "./pages/PaintingServices";
+import ExteriorColorsPage from "./pages/ExteriorColors";
+import InsulationPage from "./pages/Insulation";
 
 // Create a Layout component
 function LayoutWithHeader() {
@@ -50,18 +47,19 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/interior-colors" element={<InteriorColorsPage />} />
+          <Route path="/exterior-colors" element={<ExteriorColorsPage />} />
+          <Route path="/insulation" element={<InsulationPage />} />
           <Route path="/search-dealer" element={<SearchDealerPage />} />
           <Route path="/color-collection" element={<ColorCollection />} />
           <Route
             path="/interior-colors/product-details"
             element={<ProductDetails />}
           />
+          <Route path="/painting-services" element={<PaintingServices />} />
         </Route>
 
         {/* Routes WITHOUT Header */}
-        <Route element={<LayoutWithoutHeader />}>
-          <Route path="/painting-services" element={<PaintingServices />} />
-        </Route>
+        <Route element={<LayoutWithoutHeader />}></Route>
 
         {/* Fallback route */}
         <Route path="*" element={<NotFound />} />

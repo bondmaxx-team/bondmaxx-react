@@ -293,6 +293,7 @@ export default function Header() {
             <Link
               key={index}
               to={item.href}
+              onClick={closeSidebar}
               className={`px-7 py-4 cursor-pointer hover:bg-blue-50 hover:text-blue-600 transition ${
                 item.icon ? "flex items-center gap-2" : ""
               }`}
