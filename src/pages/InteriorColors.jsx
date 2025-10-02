@@ -128,14 +128,16 @@ const InteriorColorsPage = ({
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen" dir="rtl">
+    <div
+      className="bg-gradient-to-b from-blue-50 to-blue-100 min-h-screen"
+      dir="rtl"
+    >
       {/* Hero Section */}
-      <section className="min-h-[60vh] flex items-start lg:items-center justify-center py-24 bg-gradient-to-b from-blue-50 to-white">
+      <section className="min-h-[60vh] flex items-start lg:items-center justify-center py-24 bg-gradient-to-br from-blue-50 to-blue-100">
         <div className="w-full max-w-6xl px-4 text-center">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 tracking-tight text-gray-900">
             {title}
           </h1>
-
           <p className="text-gray-600 max-w-3xl mx-auto mb-6 md:mb-10 leading-relaxed text-sm md:text-base">
             {subtitle}
           </p>
@@ -169,7 +171,7 @@ const InteriorColorsPage = ({
               <button
                 type="button"
                 onClick={handleSearch}
-                className="shrink-0 rounded-b-xl sm:rounded-e-xl sm:rounded-s-none bg-blue-600 px-5 md:px-8 py-3 md:py-4 text-white font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors"
+                className="shrink-0 rounded-b-xl sm:rounded-e-xl sm:rounded-s-none bg-gradient-to-br from-blue-500 to-blue-700 px-5 md:px-8 py-3 md:py-4 text-white font-semibold hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors"
               >
                 ابحث عن المنتج
               </button>
@@ -183,18 +185,17 @@ const InteriorColorsPage = ({
                 key={category.id}
                 href={category.link}
                 onClick={(e) => {
-                  if (onCategoryClick) {
-                    e.preventDefault();
+                  onCategoryClick &&
+                    e.preventDefault() &&
                     onCategoryClick(category);
-                  }
                 }}
                 className="group text-center"
               >
-                <div className="h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 lg:h-32 lg:w-32 mx-auto">
+                <div className="h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 lg:h-32 lg:w-32 mx-auto rounded-full overflow-hidden ring-1 ring-blue-300 shadow-md group-hover:shadow-lg transition">
                   <img
                     src={category.image}
                     alt={category.name}
-                    className="h-full w-full rounded-full object-cover transition-transform duration-300 group-hover:scale-105 shadow-md"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
                   />
                 </div>
@@ -208,8 +209,7 @@ const InteriorColorsPage = ({
       </section>
 
       {/* Products Section */}
-      <section className="px-4 lg:px-10 py-8 md:py-10 bg-white">
-        {/* Top Bar */}
+      <section className="px-4 lg:px-10 py-8 md:py-10">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
           <div className="text-sm text-gray-600">
             <span className="font-semibold">{filteredProducts.length}</span> من{" "}
@@ -217,11 +217,11 @@ const InteriorColorsPage = ({
           </div>
           <button
             onClick={() => setShowFilter(!showFilter)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-4 py-2 shadow-sm ring-1 ring-gray-200 hover:shadow-md transition-shadow"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-4 py-2 shadow-sm ring-1 ring-blue-300 hover:shadow-md transition-shadow"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-5 w-5 text-blue-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -237,10 +237,9 @@ const InteriorColorsPage = ({
           </button>
         </div>
 
-        {/* Filter Panel */}
         {showFilter && (
-          <div className="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-200">
-            <p className="text-sm text-gray-600">خيارات الفلترة ستظهر هنا</p>
+          <div className="mb-6 p-4 bg-blue-50 rounded-xl border border-blue-200 text-sm text-gray-600">
+            خيارات الفلترة ستظهر هنا
           </div>
         )}
 
@@ -255,11 +254,10 @@ const InteriorColorsPage = ({
           ))}
         </div>
 
-        {/* No Results */}
         {filteredProducts.length === 0 && (
-          <div className="text-center py-12">
+          <div className="text-center py-12 text-gray-700">
             <svg
-              className="mx-auto h-12 w-12 text-gray-400"
+              className="mx-auto h-12 w-12 text-blue-300"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -271,12 +269,8 @@ const InteriorColorsPage = ({
                 d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <h3 className="mt-4 text-lg font-medium text-gray-900">
-              لا توجد نتائج
-            </h3>
-            <p className="mt-2 text-sm text-gray-500">
-              حاول البحث بكلمات مختلفة
-            </p>
+            <h3 className="mt-4 text-lg font-medium">لا توجد نتائج</h3>
+            <p className="mt-2 text-sm">حاول البحث بكلمات مختلفة</p>
           </div>
         )}
       </section>
@@ -291,12 +285,12 @@ const ProductCard = ({ product, onClick }) => {
 
   return (
     <article
-      className="group relative bg-white rounded-2xl overflow-hidden ring-1 ring-gray-200 shadow-md hover:shadow-2xl hover:ring-2 hover:ring-blue-400 transition-all duration-500 cursor-pointer max-w-sm mx-auto w-full transform hover:-translate-y-2"
+      className={`group relative bg-white rounded-2xl overflow-hidden ring-1 ring-blue-300 shadow-md hover:shadow-2xl hover:ring-2 hover:ring-blue-500 transition-all duration-500 cursor-pointer max-w-sm mx-auto w-full transform hover:-translate-y-2`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
     >
-      {/* Product Image Area */}
-      <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-gray-50">
+      <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100">
         <img
           src={product.image}
           alt={product.name}
@@ -312,8 +306,8 @@ const ProductCard = ({ product, onClick }) => {
           }}
           className={`absolute top-3 left-3 grid h-9 w-9 place-items-center rounded-full bg-white shadow-lg ring-2 transition-all duration-300 z-30 transform hover:scale-110 active:scale-95 ${
             isFavorite
-              ? "ring-red-400 text-red-500"
-              : "ring-gray-200 text-gray-600 hover:ring-red-300 hover:text-red-400"
+              ? "ring-blue-400 text-blue-500"
+              : "ring-gray-200 text-gray-600 hover:ring-blue-300 hover:text-blue-400"
           }`}
         >
           <svg
@@ -330,22 +324,21 @@ const ProductCard = ({ product, onClick }) => {
           </svg>
         </button>
 
-        {/* Animated Badge */}
+        {/* Badge */}
         <div
-          className={`absolute top-3 right-3 px-3 py-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-semibold rounded-full shadow-lg transform transition-all duration-500 ${
+          className={`absolute top-3 right-3 px-3 py-1 bg-gradient-to-br from-blue-500 to-blue-700 text-white text-xs font-semibold rounded-full shadow-lg transform transition-all duration-500 ${
             isHovered ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0"
           }`}
         >
-          جديد
+          مقاوم للعوامل الجوية
         </div>
 
-        {/* Hover Overlay with Gradient */}
+        {/* Hover Overlay */}
         <div
           className={`absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent transition-opacity duration-500 z-20 ${
             isHovered ? "opacity-100" : "opacity-0"
           }`}
         >
-          {/* Quick View Icon */}
           <div
             className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ${
               isHovered ? "scale-100 opacity-100" : "scale-0 opacity-0"
@@ -376,55 +369,32 @@ const ProductCard = ({ product, onClick }) => {
         </div>
       </div>
 
-      {/* Product Content */}
-      <div className="px-4 md:px-6 py-4 md:py-5 relative z-10">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
-            {product.category}
-          </span>
-          <div
-            className={`flex gap-0.5 transition-all duration-500 ${
-              isHovered
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-4"
-            }`}
-          >
-            {[...Array(5)].map((_, i) => (
-              <svg
-                key={i}
-                className="w-3 h-3 text-yellow-400 fill-current"
-                viewBox="0 0 20 20"
-              >
-                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-              </svg>
-            ))}
-          </div>
-        </div>
-
-        <h3 className="font-bold text-base md:text-lg mb-2 line-clamp-2 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+      {/* Content */}
+      <div className="px-4 md:px-6 py-4 md:py-5 relative z-10 flex flex-col">
+        <span className="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-full mb-2">
+          {product.category}
+        </span>
+        <h3 className="font-bold text-base md:text-lg mb-2 line-clamp-2 text-gray-900 group-hover:text-blue-700 transition-colors">
           {product.name}
         </h3>
-
         <p className="text-sm text-gray-600 mb-3 line-clamp-2">
           {product.description}
         </p>
 
-        {/* Features List with animation */}
+        {/* Features */}
         {features.length > 0 && (
-          <ul className="text-sm leading-6 text-gray-700 space-y-1">
+          <ul className="text-sm leading-6 text-gray-700 space-y-1 mb-3">
             {features.slice(0, 3).map((feature, index) => (
               <li
                 key={index}
-                className={`flex items-start gap-2 transition-all duration-500 delay-${
-                  index * 100
-                } ${
+                className={`flex items-start gap-2 transition-all duration-500 ${
                   isHovered
                     ? "translate-x-0 opacity-100"
                     : "translate-x-4 opacity-70"
                 }`}
               >
                 <svg
-                  className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0"
+                  className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -439,32 +409,17 @@ const ProductCard = ({ product, onClick }) => {
             ))}
           </ul>
         )}
-      </div>
 
-      {/* CTA Button */}
-      <div
-        className={`absolute bottom-0 left-0 right-0 p-4 md:p-6 z-30 transition-all duration-500 ${
-          isHovered ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
-        }`}
-      >
         <button
-          onClick={onClick}
-          className="block w-full rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-bold py-3 text-center hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+          onClick={(e) => {
+            e.stopPropagation();
+            onClick();
+          }}
+          className="mt-auto w-full bg-gradient-to-br from-blue-500 to-blue-700 text-white font-bold py-3 rounded-xl shadow-lg hover:from-blue-600 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 active:scale-95"
         >
           اقرأ المزيد
         </button>
       </div>
-
-      {/* Shine Effect */}
-      <div
-        className={`absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none ${
-          isHovered ? "animate-shine" : ""
-        }`}
-        style={{
-          transform: "skewX(-20deg)",
-          animation: isHovered ? "shine 2s infinite" : "none",
-        }}
-      />
     </article>
   );
 };
