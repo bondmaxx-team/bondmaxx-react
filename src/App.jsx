@@ -57,7 +57,7 @@ function LayoutWithoutHeader() {
 function App() {
   return (
     <Router>
-      <ScrollToTop /> {/* ✅ أضفت هذا السطر */}
+      <ScrollToTop />
       <Routes>
         {/* Routes WITH Header */}
         <Route element={<LayoutWithHeader />}>
