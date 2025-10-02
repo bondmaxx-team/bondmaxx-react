@@ -1,5 +1,12 @@
 import "./App.css";
-import { HashRouter as Router, Routes, Route, Outlet } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+  useLocation,
+} from "react-router-dom";
+import { useEffect } from "react";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -15,6 +22,17 @@ import ColorCollection from "./pages/ColorCollection";
 import PaintingServices from "./pages/PaintingServices";
 import ExteriorColorsPage from "./pages/ExteriorColors";
 import InsulationPage from "./pages/Insulation";
+
+// Component to scroll to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 // Create a Layout component
 function LayoutWithHeader() {
@@ -39,7 +57,7 @@ function LayoutWithoutHeader() {
 function App() {
   return (
     <Router>
-      {/* ✅ Added basename here */}
+      <ScrollToTop /> {/* ✅ أضفت هذا السطر */}
       <Routes>
         {/* Routes WITH Header */}
         <Route element={<LayoutWithHeader />}>
