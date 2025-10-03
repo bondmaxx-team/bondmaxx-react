@@ -9,8 +9,8 @@ const InteriorColorsPage = ({
   title = "منتجات داخلية",
   subtitle = "تسوّق منتجات BondMax اكتشف تشكيلتنا المتنوعة من الدهانات عالية الجودة واختر الألوان التي تضيف لجدرانك الحماية والجمال في آن واحد.",
   categories = [
-    { id: 1, name: "الأسقف", image: roof, link: "#" },
-    { id: 2, name: "الحوائط", image: wall, link: "#" },
+    { id: 1, name: "الأسقف", image: roof },
+    { id: 2, name: "الحوائط", image: wall },
   ],
   products = [
     {
@@ -20,7 +20,6 @@ const InteriorColorsPage = ({
       image: testImage,
       description: "جدران جميلة كل يوم.",
       features: ["لمسات حريرية فاخرة", "تحمل عالٍ للغسل", "ألوان دقيقة دافئة"],
-      link: "product-details.html",
     },
     {
       id: 2,
@@ -29,7 +28,6 @@ const InteriorColorsPage = ({
       image: testImage,
       description: "جدران جميلة كل يوم.",
       features: ["لمسات حريرية فاخرة", "تحمل عالٍ للغسل", "ألوان دقيقة دافئة"],
-      link: "#product-2",
     },
     {
       id: 3,
@@ -38,15 +36,13 @@ const InteriorColorsPage = ({
       image: testImage,
       description: "جدران جميلة كل يوم.",
       features: ["لمسات حريرية فاخرة", "تحمل عالٍ للغسل", "ألوان دقيقة دافئة"],
-      link: "#product-3",
     },
   ],
-  onCategoryClick,
-  onSearch,
 }) => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState(products);
+  const [activeCategory, setActiveCategory] = useState(null);
 
   const { toggleFavorite, addToCart, isFavorite, inCart } = useShop();
 
@@ -76,6 +72,13 @@ const InteriorColorsPage = ({
   const handleKeyPress = (e) => {
     if (e.key === "Enter")
       handleSearchInput({ target: { value: searchQuery } });
+  };
+
+  const handleCategoryClick = (cat) => {
+    setActiveCategory(cat.name);
+    // في حال بدك تصفي المنتجات حسب الفئة:
+    // const filtered = products.filter(p => p.category === cat.name);
+    // setFilteredProducts(filtered);
   };
 
   return (
@@ -113,6 +116,30 @@ const InteriorColorsPage = ({
               </button>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Categories */}
+      <section className="px-4 lg:px-10 py-8">
+        <div className="flex flex-wrap justify-center gap-6">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => handleCategoryClick(cat)}
+              className={`group text-center p-2 rounded-xl transition-all ${
+                activeCategory === cat.name ? "ring-2 ring-blue-500" : ""
+              }`}
+            >
+              <div className="h-28 w-28 mx-auto rounded-full overflow-hidden">
+                <img
+                  src={cat.image}
+                  alt={cat.name}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="mt-2 font-semibold text-gray-800">{cat.name}</div>
+            </button>
+          ))}
         </div>
       </section>
 
@@ -164,7 +191,6 @@ const ProductCard = ({
 
         {/* Favorite + Cart Buttons */}
         <div className="absolute top-3 left-3 flex gap-2">
-          {/* Favorite Button SVG */}
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -192,7 +218,6 @@ const ProductCard = ({
             </svg>
           </button>
 
-          {/* Cart Button SVG */}
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -222,7 +247,6 @@ const ProductCard = ({
         </div>
       </div>
 
-      {/* Content */}
       <div className="px-4 md:px-6 py-4 md:py-5 relative z-10 flex flex-col">
         <span className="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-full mb-2">
           {product.category}
@@ -235,7 +259,6 @@ const ProductCard = ({
             {product.description}
           </p>
         )}
-
         {features.length > 0 && (
           <ul className="text-sm leading-6 text-gray-700 space-y-1 mb-3">
             {features.slice(0, 3).map((feature, index) => (
@@ -254,8 +277,8 @@ const ProductCard = ({
                 >
                   <path
                     fillRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                     clipRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                   />
                 </svg>
                 <span className="line-clamp-1">{feature}</span>
@@ -263,7 +286,6 @@ const ProductCard = ({
             ))}
           </ul>
         )}
-
         <button
           onClick={(e) => {
             e.stopPropagation();

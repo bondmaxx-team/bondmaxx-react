@@ -5,18 +5,20 @@ import facade from "../assets/2.jpeg";
 import exterior from "../assets/1.jpeg";
 import { useShop } from "../context/ShopContext";
 
-const ExteriorColorsPage = ({
-  title = "منتجات خارجية",
-  subtitle = "احمِ واجهة منزلك بأفضل دهانات خارجية من BondMax. تشكيلة متنوعة من الدهانات المقاومة للعوامل الجوية، مع ألوان تدوم طويلاً وتمنح واجهتك مظهراً عصرياً مميزاً.",
-  categories = [
-    { id: 1, name: "دهانات الواجهات", image: facade, link: "#" },
-    { id: 2, name: "دهانات الجدران الخارجية", image: exterior, link: "#" },
-  ],
-  products = [
+const ExteriorColorsPage = () => {
+  const navigate = useNavigate();
+  const { toggleFavorite, addToCart, isFavorite, inCart } = useShop();
+
+  const categories = [
+    { id: 1, name: "دهانات الواجهات", image: facade },
+    { id: 2, name: "دهانات الجدران الخارجية", image: exterior },
+  ];
+
+  const products = [
     {
       id: 1,
       name: "دهان Bondmax خارجي فائق التحمل",
-      category: "دهانات خارجية",
+      category: "دهانات الواجهات",
       image: testImage,
       description: "حماية قصوى ضد العوامل الجوية القاسية.",
       features: [
@@ -24,12 +26,11 @@ const ExteriorColorsPage = ({
         "حماية من الرطوبة والأمطار",
         "عمر افتراضي يصل إلى 10 سنوات",
       ],
-      link: "product-details",
     },
     {
       id: 2,
       name: "دهان Bondmax للواجهات الحديثة",
-      category: "دهانات خارجية",
+      category: "دهانات الجدران الخارجية",
       image: testImage,
       description: "لمسة عصرية لواجهة منزلك.",
       features: [
@@ -37,12 +38,11 @@ const ExteriorColorsPage = ({
         "سهل التنظيف والصيانة",
         "مقاوم للتشقق والتقشر",
       ],
-      link: "#product-2",
     },
     {
       id: 3,
       name: "دهان Bondmax مضاد للعفن",
-      category: "دهانات خارجية",
+      category: "دهانات الجدران الخارجية",
       image: testImage,
       description: "حماية من العفن والفطريات.",
       features: [
@@ -50,42 +50,48 @@ const ExteriorColorsPage = ({
         "مثالي للمناطق الرطبة",
         "يحافظ على نظافة الجدران",
       ],
-      link: "#product-3",
     },
-  ],
-  onCategoryClick,
-  onSearch,
-}) => {
-  const navigate = useNavigate();
+  ];
+
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState(products);
+  const [activeCategory, setActiveCategory] = useState(null);
 
-  const { toggleFavorite, addToCart, isFavorite, inCart } = useShop();
-
+  // ----- Handlers -----
   const handleProductClick = (product) => {
-    navigate("product-details");
+    navigate("/product-details"); // رابط صفحة التفاصيل
   };
 
-  const handleSearch = () => {
-    const query = searchQuery.toLowerCase();
-    const filtered = products.filter(
-      (product) =>
-        product.name.toLowerCase().includes(query) ||
-        product.category.toLowerCase().includes(query) ||
-        product.description.toLowerCase().includes(query)
-    );
-    setFilteredProducts(filtered);
-    onSearch && onSearch(searchQuery, filtered);
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category.name);
+    setFilteredProducts(products.filter((p) => p.category === category.name));
   };
 
   const handleSearchInput = (e) => {
     const value = e.target.value;
     setSearchQuery(value);
-    if (!value.trim()) setFilteredProducts(products);
-    else handleSearch();
+
+    const query = value.toLowerCase().trim();
+    if (!query) {
+      // إعادة عرض المنتجات حسب الفئة أو جميعها
+      setFilteredProducts(
+        activeCategory
+          ? products.filter((p) => p.category === activeCategory)
+          : products
+      );
+      return;
+    }
+
+    const filtered = products.filter(
+      (p) =>
+        p.name.toLowerCase().includes(query) ||
+        p.category.toLowerCase().includes(query) ||
+        p.description.toLowerCase().includes(query)
+    );
+    setFilteredProducts(filtered);
   };
 
-  const handleKeyPress = (e) => e.key === "Enter" && handleSearch();
+  const handleKeyPress = (e) => e.key === "Enter" && handleSearchInput(e);
 
   return (
     <div
@@ -93,40 +99,70 @@ const ExteriorColorsPage = ({
       dir="rtl"
     >
       {/* Hero Section */}
-      <section className="min-h-[60vh] flex items-start lg:items-center justify-center py-24 bg-gradient-to-br from-blue-50 to-blue-100">
-        <div className="w-full max-w-6xl px-4 text-center">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 tracking-tight text-gray-900">
-            {title}
-          </h1>
-          <p className="text-gray-600 max-w-3xl mx-auto mb-6 md:mb-10 leading-relaxed text-sm md:text-base">
-            {subtitle}
-          </p>
+      <section className="min-h-[50vh] flex flex-col items-center justify-center py-16 px-4 text-center">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 text-gray-900">
+          منتجات خارجية
+        </h1>
+        <p className="text-gray-600 max-w-3xl mb-6 text-base">
+          احمِ واجهة منزلك بأفضل دهانات خارجية من BondMax. تشكيلة متنوعة من
+          الدهانات المقاومة للعوامل الجوية، مع ألوان تدوم طويلاً وتمنح واجهتك
+          مظهراً عصرياً مميزاً.
+        </p>
 
-          {/* Search */}
-          <div className="mx-auto max-w-3xl">
-            <div className="relative flex flex-col sm:flex-row">
-              <input
-                type="search"
-                placeholder="ابحث عن المنتج"
-                value={searchQuery}
-                onChange={handleSearchInput}
-                onKeyPress={handleKeyPress}
-                className="peer w-full rounded-t-xl sm:rounded-s-xl sm:rounded-e-none border border-gray-300 bg-white/60 ps-12 pe-4 py-3 md:py-4 text-base focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
-              />
-              <button
-                type="button"
-                onClick={handleSearch}
-                className="shrink-0 rounded-b-xl sm:rounded-e-xl sm:rounded-s-none bg-gradient-to-br from-blue-500 to-blue-700 px-5 md:px-8 py-3 md:py-4 text-white font-semibold hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors"
-              >
-                ابحث عن المنتج
-              </button>
-            </div>
+        {/* Search */}
+        <div className="max-w-3xl w-full">
+          <div className="relative flex flex-col sm:flex-row">
+            <input
+              type="search"
+              placeholder="ابحث عن المنتج"
+              value={searchQuery}
+              onChange={handleSearchInput}
+              onKeyPress={handleKeyPress}
+              className="w-full rounded-t-xl sm:rounded-s-xl sm:rounded-e-none border border-gray-300 bg-white/60 ps-12 pe-4 py-3 md:py-4 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+            <button
+              onClick={handleSearchInput}
+              className="sm:rounded-e-xl sm:rounded-s-none rounded-b-xl bg-gradient-to-br from-blue-500 to-blue-700 px-5 md:px-8 py-3 md:py-4 text-white font-semibold hover:from-blue-600 hover:to-blue-800"
+            >
+              ابحث
+            </button>
           </div>
         </div>
       </section>
 
+      {/* Categories */}
+      <section className="px-4 lg:px-10 py-8">
+        <div className="flex flex-wrap justify-center gap-6">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => handleCategoryClick(cat)}
+              className={`group text-center p-2 rounded-xl transition-all ${
+                activeCategory === cat.name ? "ring-2 ring-blue-500" : ""
+              }`}
+            >
+              <div className="h-28 w-28 mx-auto rounded-full overflow-hidden">
+                <img
+                  src={cat.image}
+                  alt={cat.name}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="mt-2 font-semibold text-gray-800">{cat.name}</div>
+            </button>
+          ))}
+        </div>
+      </section>
+
       {/* Products Grid */}
-      <section className="px-4 lg:px-10 py-8 md:py-10">
+      <section className="px-4 lg:px-10 py-8">
+        {filteredProducts.length === 0 && (
+          <div className="text-center py-12 text-gray-700">
+            <h3 className="text-lg font-medium">لا توجد نتائج</h3>
+            <p className="mt-2 text-sm">حاول البحث بكلمات مختلفة</p>
+          </div>
+        )}
+
         <div className="grid gap-5 sm:gap-6 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {filteredProducts.map((product) => (
             <ProductCard
@@ -145,6 +181,7 @@ const ExteriorColorsPage = ({
   );
 };
 
+// ----- ProductCard -----
 const ProductCard = ({
   product,
   onClick,
@@ -167,19 +204,17 @@ const ProductCard = ({
         <img
           src={product.image || testImage}
           alt={product.name}
-          className="absolute inset-0 h-full w-full object-contain group-hover:scale-110 group-hover:rotate-2 transition-all duration-700 ease-out"
+          className="absolute inset-0 h-full w-full object-contain group-hover:scale-110 transition-all duration-700 ease-out"
           loading="lazy"
         />
 
-        {/* Favorite + Cart Buttons */}
         <div className="absolute top-3 left-3 flex gap-2">
-          {/* Favorite Button SVG */}
           <button
             onClick={(e) => {
               e.stopPropagation();
               toggleFavorite();
             }}
-            className={`grid h-9 w-9 place-items-center rounded-full bg-white shadow-lg ring-2 transition-transform duration-300 transform hover:scale-125 active:scale-95 ${
+            className={`grid h-9 w-9 place-items-center rounded-full bg-white shadow-lg ring-2 ${
               isFav
                 ? "ring-blue-400 text-blue-500"
                 : "ring-gray-200 text-gray-600 hover:ring-blue-300 hover:text-blue-400"
@@ -201,13 +236,12 @@ const ProductCard = ({
             </svg>
           </button>
 
-          {/* Cart Button SVG */}
           <button
             onClick={(e) => {
               e.stopPropagation();
               addToCart();
             }}
-            className={`grid h-9 w-9 place-items-center rounded-full bg-white shadow-lg ring-2 transition-transform duration-300 transform hover:scale-125 active:scale-95 ${
+            className={`grid h-9 w-9 place-items-center rounded-full bg-white shadow-lg ring-2 ${
               isInCart
                 ? "ring-green-400 text-green-600"
                 : "ring-gray-200 text-gray-600 hover:ring-blue-300 hover:text-blue-500"
@@ -231,12 +265,11 @@ const ProductCard = ({
         </div>
       </div>
 
-      {/* Content */}
-      <div className="px-4 md:px-6 py-4 md:py-5 relative z-10 flex flex-col">
+      <div className="px-4 md:px-6 py-4 md:py-5 flex flex-col">
         <span className="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-full mb-2">
           {product.category}
         </span>
-        <h3 className="font-bold text-base md:text-lg mb-2 line-clamp-2 text-gray-900 group-hover:text-blue-700 transition-colors">
+        <h3 className="font-bold text-base md:text-lg mb-2 line-clamp-2 text-gray-900 group-hover:text-blue-700">
           {product.name}
         </h3>
         {product.description && (
@@ -278,9 +311,9 @@ const ProductCard = ({
             e.stopPropagation();
             addToCart();
           }}
-          className={`mt-auto w-full font-bold py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 ${
+          className={`mt-auto w-full font-bold py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 ${
             isInCart
-              ? "bg-blue-600 text-white hover:bg-blue-600"
+              ? "bg-blue-600 text-white"
               : "bg-gradient-to-br from-blue-500 to-blue-700 text-white hover:from-blue-600 hover:to-blue-800"
           }`}
         >
