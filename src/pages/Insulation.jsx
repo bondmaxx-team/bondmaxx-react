@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 import testImage from "../assets/color-1.png";
 import roof from "../assets/2.jpeg";
 import wall from "../assets/1.jpeg";
+import { useShop } from "../context/ShopContext";
 
 const categories = [
-  { id: 1, name: "العزل الحراري", image: roof, link: "#" },
-  { id: 2, name: "العزل الصوتي", image: wall, link: "#" },
+  { id: 1, name: "العزل الحراري", image: roof },
+  { id: 2, name: "العزل الصوتي", image: wall },
 ];
 
-const products = [
+const productsData = [
   {
     id: 1,
     name: "عازل حراري BondMax فائق الجودة",
@@ -17,7 +18,6 @@ const products = [
     image: testImage,
     description: "يحافظ على درجة الحرارة المثالية داخل المبنى.",
     features: ["يقلل استهلاك الطاقة", "مقاوم للرطوبة", "سهل التركيب"],
-    link: "#product-1",
   },
   {
     id: 2,
@@ -26,7 +26,6 @@ const products = [
     image: testImage,
     description: "يحميك من الضوضاء الخارجية.",
     features: ["امتصاص ممتاز للصوت", "خفيف الوزن", "متين وطويل الأمد"],
-    link: "#product-2",
   },
   {
     id: 3,
@@ -35,7 +34,6 @@ const products = [
     image: testImage,
     description: "يحافظ على البرودة في الصيف والدفء في الشتاء.",
     features: ["عزل متقدم", "تحسين كفاءة الطاقة", "مقاوم للحريق"],
-    link: "#product-3",
   },
   {
     id: 4,
@@ -44,19 +42,18 @@ const products = [
     image: testImage,
     description: "يعزل الغرف الداخلية بشكل فعال.",
     features: ["امتصاص الضوضاء", "خفيف وسهل التركيب", "لا يعيق التهوية"],
-    link: "#product-4",
   },
 ];
 
 const InsulationPage = ({
   title = "منتجات العوازل",
   subtitle = "احمِ منزلك أو مكتبك بأفضل حلول العزل من BondMax. تشكيلة متنوعة من العوازل الحرارية والصوتية لضمان راحة وكفاءة عالية.",
-  onCategoryClick,
-  onSearch,
 }) => {
   const navigate = useNavigate();
+  const { toggleFavorite, addToCart, isFavorite, inCart } = useShop();
+
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [filteredProducts, setFilteredProducts] = useState(productsData);
   const [showFilter, setShowFilter] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
 
@@ -66,14 +63,13 @@ const InsulationPage = ({
 
   const handleSearch = () => {
     const query = searchQuery.toLowerCase();
-    const filtered = products.filter(
+    const filtered = productsData.filter(
       (product) =>
         product.name.toLowerCase().includes(query) ||
         product.category.toLowerCase().includes(query) ||
         product.description.toLowerCase().includes(query)
     );
     setFilteredProducts(filtered);
-    onSearch && onSearch(searchQuery, filtered);
   };
 
   const handleSearchInput = (e) => {
@@ -82,10 +78,10 @@ const InsulationPage = ({
     if (!value.trim()) {
       if (activeCategory) {
         setFilteredProducts(
-          products.filter((p) => p.category === activeCategory)
+          productsData.filter((p) => p.category === activeCategory)
         );
       } else {
-        setFilteredProducts(products);
+        setFilteredProducts(productsData);
       }
     } else handleSearch();
   };
@@ -94,8 +90,9 @@ const InsulationPage = ({
 
   const handleCategoryClick = (category) => {
     setActiveCategory(category.name);
-    setFilteredProducts(products.filter((p) => p.category === category.name));
-    onCategoryClick && onCategoryClick(category);
+    setFilteredProducts(
+      productsData.filter((p) => p.category === category.name)
+    );
   };
 
   return (
@@ -106,10 +103,10 @@ const InsulationPage = ({
       {/* Hero Section */}
       <section className="min-h-[60vh] flex items-start lg:items-center justify-center py-24">
         <div className="w-full max-w-6xl px-4 text-center">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 tracking-tight text-gray-900">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900">
             {title}
           </h1>
-          <p className="text-gray-600 max-w-3xl mx-auto mb-6 md:mb-10 leading-relaxed text-sm md:text-base">
+          <p className="text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed text-base">
             {subtitle}
           </p>
 
@@ -135,14 +132,14 @@ const InsulationPage = ({
           </div>
 
           {/* Categories */}
-          <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16 grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 place-items-center max-w-md mx-auto">
+          <div className="mt-12 grid grid-cols-2 gap-4 place-items-center max-w-md mx-auto">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => handleCategoryClick(category)}
                 className="group text-center p-1 rounded-xl transition-all"
               >
-                <div className="h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 lg:h-32 lg:w-32 mx-auto rounded-full overflow-hidden transition">
+                <div className="h-28 w-28 mx-auto rounded-full overflow-hidden transition">
                   <img
                     src={category.image}
                     alt={category.name}
@@ -150,7 +147,7 @@ const InsulationPage = ({
                     loading="lazy"
                   />
                 </div>
-                <div className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base font-semibold text-gray-800">
+                <div className="mt-2 text-base font-semibold text-gray-800">
                   {category.name}
                 </div>
               </button>
@@ -164,7 +161,7 @@ const InsulationPage = ({
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
           <div className="text-sm text-gray-600">
             <span className="font-semibold">{filteredProducts.length}</span> من{" "}
-            <span className="font-semibold">{products.length}</span> منتج
+            <span className="font-semibold">{productsData.length}</span> منتج
           </div>
           <button
             onClick={() => setShowFilter(!showFilter)}
@@ -186,6 +183,10 @@ const InsulationPage = ({
               key={product.id}
               product={product}
               onClick={() => handleProductClick(product)}
+              toggleFavorite={() => toggleFavorite(product)}
+              addToCart={() => addToCart(product)}
+              isFav={isFavorite(product.id)}
+              isInCart={inCart(product.id)}
             />
           ))}
         </div>
@@ -201,8 +202,15 @@ const InsulationPage = ({
   );
 };
 
-const ProductCard = ({ product, onClick }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+// ----- ProductCard -----
+const ProductCard = ({
+  product,
+  onClick,
+  toggleFavorite,
+  addToCart,
+  isFav,
+  isInCart,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
   const features = product.features || [];
 
@@ -215,13 +223,73 @@ const ProductCard = ({ product, onClick }) => {
     >
       <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100">
         <img
-          src={product.image}
+          src={product.image || testImage}
           alt={product.name}
           className="absolute inset-0 h-full w-full object-contain group-hover:scale-110 group-hover:rotate-2 transition-all duration-700 ease-out"
           loading="lazy"
         />
+
+        {/* Favorite + Cart Buttons */}
+        <div className="absolute top-3 left-3 flex gap-2">
+          {/* Favorite */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleFavorite();
+            }}
+            className={`grid h-9 w-9 place-items-center rounded-full bg-white shadow-lg ring-2 transition-transform duration-300 transform hover:scale-125 active:scale-95 ${
+              isFav
+                ? "ring-blue-400 text-blue-500"
+                : "ring-gray-200 text-gray-600 hover:ring-blue-300 hover:text-blue-400"
+            }`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill={isFav ? "currentColor" : "none"}
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 010-6.364z"
+              />
+            </svg>
+          </button>
+
+          {/* Cart */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              addToCart();
+            }}
+            className={`grid h-9 w-9 place-items-center rounded-full bg-white shadow-lg ring-2 transition-transform duration-300 transform hover:scale-125 active:scale-95 ${
+              isInCart
+                ? "ring-green-400 text-green-600"
+                : "ring-gray-200 text-gray-600 hover:ring-blue-300 hover:text-blue-500"
+            }`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 7.5a1 1 0 001 1h12a1 1 0 001-1L17 13M7 13H5.4M17 13l1.5 7.5M6 21a1 1 0 100-2 1 1 0 000 2zm12 0a1 1 0 100-2 1 1 0 000 2z"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
+      {/* Content */}
       <div className="px-4 md:px-6 py-4 md:py-5 relative z-10 flex flex-col">
         <span className="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-full mb-2">
           {product.category}
@@ -229,9 +297,12 @@ const ProductCard = ({ product, onClick }) => {
         <h3 className="font-bold text-base md:text-lg mb-2 line-clamp-2 text-gray-900 group-hover:text-blue-700 transition-colors">
           {product.name}
         </h3>
-        <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-          {product.description}
-        </p>
+        {product.description && (
+          <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+            {product.description}
+          </p>
+        )}
+
         {features.length > 0 && (
           <ul className="text-sm leading-6 text-gray-700 space-y-1 mb-3">
             {features.slice(0, 3).map((feature, index) => (
@@ -263,11 +334,15 @@ const ProductCard = ({ product, onClick }) => {
         <button
           onClick={(e) => {
             e.stopPropagation();
-            onClick();
+            addToCart();
           }}
-          className="mt-auto w-full bg-gradient-to-br from-blue-500 to-blue-700 text-white font-bold py-3 rounded-xl shadow-lg hover:from-blue-600 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 active:scale-95"
+          className={`mt-auto w-full font-bold py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 ${
+            isInCart
+              ? "bg-blue-600 text-white hover:bg-blue-600"
+              : "bg-gradient-to-br from-blue-500 to-blue-700 text-white hover:from-blue-600 hover:to-blue-800"
+          }`}
         >
-          اقرأ المزيد
+          {isInCart ? "✔ في السلة" : "أضف للسلة"}
         </button>
       </div>
     </article>

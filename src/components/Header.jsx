@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
+import { useShop } from "../context/ShopContext";
 
 function CartItem({ item, index, onRemove }) {
   return (
@@ -22,7 +23,34 @@ function CartItem({ item, index, onRemove }) {
         title="remove"
         type="button"
         className="text-red-600 hover:text-red-700"
-        onClick={() => onRemove(index)}
+        onClick={() => onRemove(item.id)}
+      >
+        <i className="fas fa-trash-alt"></i>
+      </button>
+    </div>
+  );
+}
+function FavItem({ item, index, onRemove }) {
+  return (
+    <div className="flex items-center justify-between gap-3 p-2 border rounded bg-white">
+      <div className="flex items-center gap-3">
+        <img
+          alt={item.name || "منتج"}
+          src={item.image || ""}
+          className="w-12 h-12 object-cover rounded-md border"
+        />
+        <div>
+          <div className="font-medium">{item.name || "منتج"}</div>
+          {item.price && (
+            <div className="text-sm text-gray-500">{item.price} ₺</div>
+          )}
+        </div>
+      </div>
+      <button
+        title="remove"
+        type="button"
+        className="text-red-600 hover:text-red-700"
+        onClick={() => onRemove(item)}
       >
         <i className="fas fa-trash-alt"></i>
       </button>
@@ -40,35 +68,19 @@ export default function Header() {
     name: "العربية",
     flag: "https://flagcdn.com/w20/sa.png",
   });
-  const [cartCount, setCartCount] = useState(0);
-  const [favorites, setFavorites] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
-  const [cartTotal, setCartTotal] = useState(0);
-
-  useEffect(() => {
-    const storedFavorites = localStorage.getItem("bondmaxx-favorites");
-    const storedCart = localStorage.getItem("bondmaxx-cart");
-
-    if (storedFavorites) {
-      try {
-        setFavorites(JSON.parse(storedFavorites));
-      } catch (err) {
-        console.error("Failed to parse favorites:", err);
-      }
-    }
-
-    if (storedCart) {
-      try {
-        const cart = JSON.parse(storedCart);
-        console.log(cart);
-        setCartItems(cart);
-        setCartCount(cart.length);
-        setCartTotal(cart.reduce((sum, item) => sum + (item.price || 0), 0));
-      } catch (err) {
-        console.error("Failed to parse cart:", err);
-      }
-    }
-  }, []); // 👈 run only once on mount
+  const {
+    cart,
+    setQty,
+    removeFromCart,
+    clearCart,
+    cartCount,
+    cartTotal,
+    favorites,
+    toggleFavorite,
+    addToCart,
+    inCart,
+    isFavorite,
+  } = useShop();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -107,19 +119,6 @@ export default function Header() {
     console.log("Submit cart to WhatsApp");
   };
 
-  const removeFromCart = (index) => {
-    const updatedCart = cartItems.filter((_, i) => i !== index);
-
-    setCartItems(updatedCart);
-
-    localStorage.setItem("bondmaxx-cart", JSON.stringify(updatedCart));
-
-    const newTotal = updatedCart.reduce(
-      (sum, item) => sum + Number(item.price || 0),
-      0
-    );
-    setCartTotal(newTotal);
-  };
   const removeFromFav = (index) => {
     // console.log(index);
     const updatedCart = favorites.filter((_, i) => i !== index);
@@ -161,7 +160,7 @@ export default function Header() {
               <button
                 title="button"
                 type="button"
-                className="relative flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-lg bg-white hover:bg-emerald-50 hover:text-emerald-600 active:scale-95 active:bg-emerald-100 transition-all duration-150 text-sm"
+                className="relative flex items-center gap-1.5  sm:px-2.5 py-1.5 rounded-lg bg-white hover:bg-emerald-50 hover:text-emerald-600 active:scale-95 active:bg-emerald-100 transition-all duration-150 text-sm"
                 onClick={toggleCart}
               >
                 <i className="fas fa-shopping-cart text-base"></i>
@@ -191,7 +190,7 @@ export default function Header() {
                 <button
                   title="button"
                   type="button"
-                  className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-lg bg-white hover:bg-gray-50 active:scale-95 active:bg-gray-100 transition-all duration-150 text-sm"
+                  className="flex items-center gap-1.5 sm:px-2.5 py-1.5 rounded-lg bg-white hover:bg-gray-50 active:scale-95 active:bg-gray-100 transition-all duration-150 text-sm"
                   onClick={toggleLanguageMenu}
                 >
                   <img
@@ -230,12 +229,12 @@ export default function Header() {
             </div>
 
             {/* Center - Logo */}
-            <div className="flex-1 flex justify-center">
+            <div className="flex-1 flex justify-center ml-10 sm:ml-0">
               <Link to="/" className="inline-block">
                 <img
                   alt="BONDMAXX Painting"
                   src={logo}
-                  className="h-10 sm:h-14 cursor-pointer hover:opacity-90 transition-opacity"
+                  className="h-12 sm:h-18 cursor-pointer hover:opacity-90 transition-opacity"
                 />
               </Link>
             </div>
@@ -307,13 +306,13 @@ export default function Header() {
 
       {/* Favorites Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-96 bg-gradient-to-br from-white to-red-50 z-50 shadow-xl overflow-y-auto transform transition-transform duration-300 ${
+        className={`fixed top-0 left-0 h-full w-64 sm:w-96 bg-gradient-to-br from-white to-red-50 z-50 shadow-xl overflow-y-auto transform transition-transform duration-300 ${
           isFavoritesOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="bg-gradient-to-r from-red-500 to-red-600 text-white p-6 border-b-2 border-red-200">
-          <div className="flex items-center gap-3 text-xl font-semibold">
-            <i className="fas fa-heart"></i>
+          <div className="flex items-center justify-center gap-3 text-xl font-semibold">
+            {/* <i className="fas fa-heart"></i> */}
             <span>الألوان المفضلة</span>
           </div>
           <button
@@ -351,11 +350,11 @@ export default function Header() {
             ) : (
               <div className="space-y-2">
                 {favorites.map((item, idx) => (
-                  <CartItem
+                  <FavItem
                     key={idx}
                     item={item}
                     index={idx}
-                    onRemove={removeFromFav}
+                    onRemove={toggleFavorite}
                   />
                 ))}
               </div>
@@ -374,13 +373,13 @@ export default function Header() {
 
       {/* Cart Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-96 bg-gradient-to-br from-white to-emerald-50 z-50 shadow-xl overflow-y-auto transform transition-transform duration-300 ${
+        className={`fixed top-0 left-0 h-full w-70 sm:w-96 bg-gradient-to-br from-white to-emerald-50 z-50 shadow-xl overflow-y-auto transform transition-transform duration-300 ${
           isCartOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white p-6 border-b-2 border-emerald-200">
-          <div className="flex items-center gap-3 text-xl font-semibold">
-            <i className="fas fa-shopping-cart"></i>
+          <div className="flex items-center justify-center gap-3 text-xl font-semibold">
+            {/* <i className="fas fa-shopping-cart"></i> */}
             <span>سلة المشتريات</span>
           </div>
           <button
@@ -395,7 +394,7 @@ export default function Header() {
 
         <div className="py-6">
           <div className="space-y-3 px-4">
-            {cartItems.length === 0 ? (
+            {cart.length === 0 ? (
               <div
                 style={{
                   textAlign: "center",
@@ -418,7 +417,7 @@ export default function Header() {
               </div>
             ) : (
               <div className="space-y-2">
-                {cartItems.map((item, idx) => (
+                {cart.map((item, idx) => (
                   <CartItem
                     key={idx}
                     item={item}

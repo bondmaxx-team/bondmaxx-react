@@ -7,9 +7,12 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useEffect } from "react";
+import { ShopProvider } from "./context/ShopContext";
+import { ErrorBoundary } from "react-error-boundary";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Fallback from "./components/Fallback";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -23,7 +26,7 @@ import PaintingServices from "./pages/PaintingServices";
 import ExteriorColorsPage from "./pages/ExteriorColors";
 import InsulationPage from "./pages/Insulation";
 
-// Component to scroll to top on route change
+// Scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -34,12 +37,12 @@ function ScrollToTop() {
   return null;
 }
 
-// Create a Layout component
+// Layouts
 function LayoutWithHeader() {
   return (
     <>
       <Header />
-      <Outlet /> {/* This renders the child routes */}
+      <Outlet />
       <Footer />
     </>
   );
@@ -56,33 +59,40 @@ function LayoutWithoutHeader() {
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <Routes>
-        {/* Routes WITH Header */}
-        <Route element={<LayoutWithHeader />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/interior-colors" element={<InteriorColorsPage />} />
-          <Route path="/exterior-colors" element={<ExteriorColorsPage />} />
-          <Route path="/insulation" element={<InsulationPage />} />
-          <Route path="/search-dealer" element={<SearchDealerPage />} />
-          <Route path="/color-collection" element={<ColorCollection />} />
-          <Route
-            path="/interior-colors/product-details"
-            element={<ProductDetails />}
-          />
-          <Route path="/painting-services" element={<PaintingServices />} />
-        </Route>
+    <ErrorBoundary
+      FallbackComponent={Fallback}
+      onReset={() => window.location.reload()}
+    >
+      <ShopProvider>
+        <Router>
+          <ScrollToTop />
+          <Routes>
+            {/* Routes WITH Header */}
+            <Route element={<LayoutWithHeader />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/interior-colors" element={<InteriorColorsPage />} />
+              <Route path="/exterior-colors" element={<ExteriorColorsPage />} />
+              <Route path="/insulation" element={<InsulationPage />} />
+              <Route path="/search-dealer" element={<SearchDealerPage />} />
+              <Route path="/color-collection" element={<ColorCollection />} />
+              <Route
+                path="/interior-colors/product-details"
+                element={<ProductDetails />}
+              />
+              <Route path="/painting-services" element={<PaintingServices />} />
+            </Route>
 
-        {/* Routes WITHOUT Header */}
-        <Route element={<LayoutWithoutHeader />}></Route>
+            {/* Routes WITHOUT Header */}
+            <Route element={<LayoutWithoutHeader />}></Route>
 
-        {/* Fallback route */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
+            {/* Fallback */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+      </ShopProvider>
+    </ErrorBoundary>
   );
 }
 

@@ -54,7 +54,7 @@ export default function Footer() {
             شركة رائدة في مجال الدهانات والألوان عالية الجودة، نقدم حلولاً
             مبتكرة ومتطورة لجميع احتياجاتكم في الطلاء والديكور.
           </p>
-          <div className="flex gap-4 mt-4 justify-end">
+          <div className="flex gap-4 mt-4">
             {socialLinks.map((social, index) => (
               <div
                 key={index}

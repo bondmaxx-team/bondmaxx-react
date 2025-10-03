@@ -133,11 +133,11 @@ const ColorCollection = () => {
           <ColorCard key={color.id} color={color} familyId={family.id} />
         ))}
       </div>
-      <div className="text-center">
+      {/* <div className="text-center">
         <button className="text-blue-600 bg-transparent border-0 font-semibold cursor-pointer transition-all duration-300 p-2 rounded-lg hover:text-blue-800 hover:bg-blue-50">
           <i className="fas fa-arrow-left mr-2"></i>استكشف المزيد
         </button>
-      </div>
+      </div> */}
     </div>
   );
 
@@ -221,9 +221,12 @@ const ColorCollection = () => {
     <section className="py-24 bg-gradient-to-br from-gray-50 to-white mt-[70px]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6 bg-blue-600 bg-clip-text text-transparent">
-            الجديدة BONDMAXX - 2025 تناغم مجموعة ألوان
+          <h2 className="text-2xl md:text-4xl font-extrabold mb-6 leading-[1.15]">
+            <span className="inline-block pb-[0.15em] bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent">
+              الجديدة BONDMAXX - 2025 تناغم مجموعة ألوان
+            </span>
           </h2>
+
           <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
             تحتفي مجموعة ألوان BONDMAXX لموسم 2025، المسماة "تناغم"، بتأثير
             الظلال الخفية والانسجام المثالي. تضم المجموعة أكثر من 360 لونًا

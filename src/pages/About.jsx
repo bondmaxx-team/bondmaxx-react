@@ -1,6 +1,10 @@
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import backgroundImage from "../assets/1.jpeg";
 
 export default function About() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const industries = [
     {
       icon: "fa-home",
@@ -28,48 +32,78 @@ export default function About() {
     },
   ];
 
+  const handleClick = () => {
+    const targetId = "products-section";
+
+    if (location.pathname === "/") {
+      // Already on home → smooth scroll
+      document.getElementById(targetId)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    } else {
+      // Not on home → go to home and scroll after mount
+      navigate("/", { state: { scrollTo: targetId } });
+    }
+  };
+
   return (
     <div
       className="min-h-screen bg-gray-50"
       dir="rtl"
       style={{ fontFamily: "Cairo, Tajawal, Arial, sans-serif" }}
     >
-      {/* Hero About Section */}
-      <section className="relative text-white py-24 overflow-hidden">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${backgroundImage})` }}
-        ></div>
+      <section className="relative text-white overflow-hidden">
+        {/* Hero Section */}
+        <div className="relative py-28 md:py-36">
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 transform transition-transform duration-700 hover:scale-110"
+            style={{ backgroundImage: `url(${backgroundImage})` }}
+          ></div>
 
-        {/* Dark Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60"></div>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-center drop-shadow-lg">
-            حول بوندماكس
-          </h1>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 text-center text-blue-100 drop-shadow-lg">
-            نُضفي الحياة على الألوان
-          </h2>
+          {/* Content */}
+          <div className="max-w-6xl mx-auto px-6 relative z-10 text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 drop-shadow-lg tracking-wide leading-tight">
+              حول <span className="text-blue-400">بوندماكس</span>
+            </h1>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-10 text-blue-100 drop-shadow-md">
+              نُضفي الحياة على الألوان ✨
+            </h2>
 
-          <div className="max-w-4xl mx-auto space-y-6 text-center">
-            <p className="text-base md:text-lg lg:text-xl leading-relaxed drop-shadow-md">
-              في بوندماكس، لا نبيع الدهانات فحسب، بل نوفر الألوان التي تُغير
-              عالمك. متخصصون في طلاءات الديكور الداخلي والخارجي والسيارات
-              والبحرية، نُحوّل كل مساحة وسطح إلى انعكاس لذوقك وطموحك.
-            </p>
-            <p className="text-base md:text-lg lg:text-xl leading-relaxed drop-shadow-md">
-              باستخدام أحدث التقنيات ومواد عالية الجودة لا تُضاهى، نُقدم تشطيبات
-              لا تتميز فقط بالحيوية والمتانة الاستثنائية، بل تُحافظ أيضًا على
-              البيئة. بوندماكس شريكك في الحماية والجمال، مما يضمن لمشاريعك أن
-              تصمد أمام اختبار الزمن والذوق الرفيع.
-            </p>
-            <div className="pt-6">
-              <p className="text-lg md:text-xl lg:text-2xl font-bold bg-white text-blue-600 inline-block px-6 md:px-8 py-3 md:py-4 rounded-full shadow-lg">
-                اختر بوندماكس. لا تُغيّر اللون فحسب، بل ارتقِ بتجربة مميزة
+            <div className="max-w-3xl mx-auto space-y-6">
+              <p className="text-base md:text-lg lg:text-xl leading-relaxed drop-shadow-md text-gray-200">
+                في <span className="font-semibold text-white">بوندماكس</span>،
+                لا نبيع الدهانات فحسب، بل نوفر الألوان التي تُغير عالمك. متخصصون
+                في طلاءات الديكور الداخلي والخارجي والسيارات والبحرية، نُحوّل كل
+                مساحة وسطح إلى انعكاس لذوقك وطموحك.
+              </p>
+              <p className="text-base md:text-lg lg:text-xl leading-relaxed drop-shadow-md text-gray-200">
+                باستخدام أحدث التقنيات ومواد عالية الجودة، نقدم تشطيبات لا تتميز
+                فقط بالحيوية والمتانة الاستثنائية، بل تُحافظ أيضًا على البيئة.
+                بوندماكس شريكك في الحماية والجمال، مما يضمن لمشاريعك أن تصمد
+                أمام اختبار الزمن والذوق الرفيع.
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="relative bg-gradient-to-r from-blue-600 to-blue-400 py-14 md:py-20 shadow-lg">
+          <div className="max-w-5xl mx-auto px-6 text-center">
+            <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white leading-snug drop-shadow-md">
+              اختر <span className="text-yellow-300">بوندماكس</span> 🌟 <br />
+              لا تُغيّر اللون فحسب، بل ارتقِ بتجربة مميزة
+            </p>
+            <button
+              onClick={handleClick}
+              className="inline-block mt-8 px-8 py-4 bg-white text-blue-600 font-bold rounded-full shadow-lg hover:bg-gray-100 transition"
+            >
+              اكتشف منتجاتنا
+            </button>
           </div>
         </div>
       </section>
@@ -78,10 +112,10 @@ export default function About() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-800">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-800">
               الصناعات التي نخدمها
             </h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+            <div className="w-24 h-1 bg-blue-600 mx-auto my-8"></div>
             <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
               نقدم حلول الطلاء المتخصصة والمبتكرة لمختلف الصناعات والقطاعات، مع
               ضمان أعلى معايير الجودة والأداء
@@ -133,7 +167,10 @@ export default function About() {
             تواصل معنا اليوم واكتشف كيف يمكن لحلول الطلاء الاحترافية أن تُحدث
             فرقاً
           </p>
-          <button className="bg-white text-blue-600 px-8 md:px-10 py-3 md:py-4 rounded-full text-base md:text-lg font-bold hover:bg-blue-50 hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+          <button
+            onClick={() => window.open("https://wa.me/963999999999", "_blank")}
+            className="bg-white text-blue-600 px-8 md:px-10 py-3 md:py-4 rounded-full text-base md:text-lg font-bold hover:bg-blue-50 hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+          >
             تواصل معنا الآن
           </button>
         </div>
