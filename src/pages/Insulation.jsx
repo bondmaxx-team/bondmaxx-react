@@ -132,27 +132,34 @@ const InsulationPage = ({
           </div>
 
           {/* Categories */}
-          <div className="mt-12 grid grid-cols-2 gap-4 place-items-center max-w-md mx-auto">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => handleCategoryClick(category)}
-                className="group text-center p-1 rounded-xl transition-all"
-              >
-                <div className="h-28 w-28 mx-auto rounded-full overflow-hidden transition">
-                  <img
-                    src={category.image}
-                    alt={category.name}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="mt-2 text-base font-semibold text-gray-800">
-                  {category.name}
-                </div>
-              </button>
-            ))}
-          </div>
+
+          <section className="px-4 lg:px-10 py-8">
+            <div className="flex flex-wrap justify-center gap-6">
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => handleCategoryClick(cat)}
+                  className={`group text-center p-2 rounded-xl transition-all
+          ${
+            activeCategory === cat.name
+              ? "bg-blue-100 shadow-md scale-105" // تأثير عند الضغط / focus
+              : "hover:bg-blue-50 hover:scale-105"
+          }`}
+                >
+                  <div className="h-28 w-28 mx-auto rounded-full overflow-hidden">
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="mt-2 font-semibold text-gray-800">
+                    {cat.name}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </section>
         </div>
       </section>
 
@@ -163,19 +170,7 @@ const InsulationPage = ({
             <span className="font-semibold">{filteredProducts.length}</span> من{" "}
             <span className="font-semibold">{productsData.length}</span> منتج
           </div>
-          <button
-            onClick={() => setShowFilter(!showFilter)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-4 py-2 shadow-sm ring-1 ring-blue-300 hover:shadow-md transition-shadow"
-          >
-            فلتر
-          </button>
         </div>
-
-        {showFilter && (
-          <div className="mb-6 p-4 bg-blue-50 rounded-xl border border-blue-200 text-sm text-gray-600">
-            خيارات الفلترة ستظهر هنا
-          </div>
-        )}
 
         <div className="grid gap-5 sm:gap-6 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {filteredProducts.map((product) => (

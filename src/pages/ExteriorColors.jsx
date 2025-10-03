@@ -131,15 +131,19 @@ const ExteriorColorsPage = () => {
       </section>
 
       {/* Categories */}
+
       <section className="px-4 lg:px-10 py-8">
         <div className="flex flex-wrap justify-center gap-6">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => handleCategoryClick(cat)}
-              className={`group text-center p-2 rounded-xl transition-all ${
-                activeCategory === cat.name ? "ring-2 ring-blue-500" : ""
-              }`}
+              className={`group text-center p-2 rounded-xl transition-all
+          ${
+            activeCategory === cat.name
+              ? "bg-blue-100 shadow-md scale-105" // تأثير عند الضغط / focus
+              : "hover:bg-blue-50 hover:scale-105"
+          }`}
             >
               <div className="h-28 w-28 mx-auto rounded-full overflow-hidden">
                 <img
