@@ -59,7 +59,18 @@ const ExteriorColorsPage = () => {
 
   // ----- Handlers -----
   const handleProductClick = (product) => {
-    navigate("/product-details"); // رابط صفحة التفاصيل
+    // Create query string from product object
+    const productQuery = new URLSearchParams({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image || "",
+      color: product.color || "",
+      description: product.description || "",
+      category: product.category || "",
+    }).toString();
+
+    navigate(`/product-details?${productQuery}`); // رابط صفحة التفاصيل
   };
 
   const handleCategoryClick = (category) => {
@@ -202,7 +213,6 @@ const ProductCard = ({
       className="group relative bg-white rounded-2xl overflow-hidden ring-1 ring-blue-300 shadow-md hover:shadow-2xl hover:ring-2 hover:ring-blue-500 transition-all duration-500 cursor-pointer max-w-sm mx-auto w-full transform hover:-translate-y-2"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={onClick}
     >
       <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100">
         <img
@@ -213,58 +223,34 @@ const ProductCard = ({
         />
 
         <div className="absolute top-3 left-3 flex gap-2">
+          {/* ❤️ Favorite Button */}
           <button
             onClick={(e) => {
               e.stopPropagation();
               toggleFavorite();
             }}
-            className={`grid h-9 w-9 place-items-center rounded-full bg-white shadow-lg ring-2 ${
+            className={`grid h-7 w-7 place-items-center rounded-full bg-white shadow-lg ring-2 transition ${
               isFav
                 ? "ring-blue-400 text-blue-500"
                 : "ring-gray-200 text-gray-600 hover:ring-blue-300 hover:text-blue-400"
             }`}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill={isFav ? "currentColor" : "none"}
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 010-6.364z"
-              />
-            </svg>
+            <i className={`fa${isFav ? "s" : "r"} fa-heart text-[16px]`}></i>
           </button>
 
+          {/* 🛒 Add to Cart Button */}
           <button
             onClick={(e) => {
               e.stopPropagation();
               addToCart();
             }}
-            className={`grid h-9 w-9 place-items-center rounded-full bg-white shadow-lg ring-2 ${
+            className={`grid h-7 w-7 place-items-center rounded-full bg-white shadow-lg ring-2 transition ${
               isInCart
                 ? "ring-green-400 text-green-600"
                 : "ring-gray-200 text-gray-600 hover:ring-blue-300 hover:text-blue-500"
             }`}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 7.5a1 1 0 001 1h12a1 1 0 001-1L17 13M7 13H5.4M17 13l1.5 7.5M6 21a1 1 0 100-2 1 1 0 000 2zm12 0a1 1 0 100-2 1 1 0 000 2z"
-              />
-            </svg>
+            <i className={`fa-solid fa-cart-shopping text-[15px]`}></i>
           </button>
         </div>
       </div>
@@ -311,17 +297,14 @@ const ProductCard = ({
         )}
 
         <button
-          onClick={(e) => {
-            e.stopPropagation();
-            addToCart();
-          }}
-          className={`mt-auto w-full font-bold py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 ${
+          onClick={onClick}
+          className={`mt-auto w-full font-bold py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 ${
             isInCart
-              ? "bg-blue-600 text-white"
+              ? "bg-blue-600 text-white hover:bg-blue-600"
               : "bg-gradient-to-br from-blue-500 to-blue-700 text-white hover:from-blue-600 hover:to-blue-800"
           }`}
         >
-          {isInCart ? "✔ في السلة" : "أضف للسلة"}
+          عرض المنتج
         </button>
       </div>
     </article>

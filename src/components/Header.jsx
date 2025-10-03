@@ -88,10 +88,12 @@ export default function Header() {
 
   const closeSidebar = () => {
     setIsSidebarOpen(false);
+    setIsLanguageMenuOpen(false);
   };
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
+    setIsLanguageMenuOpen(false);
   };
 
   const closeCart = () => {
@@ -100,10 +102,12 @@ export default function Header() {
 
   const toggleFavorites = () => {
     setIsFavoritesOpen(!isFavoritesOpen);
+    setIsLanguageMenuOpen(false);
   };
 
   const closeFavorites = () => {
     setIsFavoritesOpen(false);
+    setIsLanguageMenuOpen(false);
   };
 
   const toggleLanguageMenu = () => {
@@ -160,7 +164,7 @@ export default function Header() {
               <button
                 title="button"
                 type="button"
-                className="relative flex items-center gap-1.5  sm:px-2.5 py-1.5 rounded-lg bg-white hover:bg-emerald-50 hover:text-emerald-600 active:scale-95 active:bg-emerald-100 transition-all duration-150 text-sm"
+                className="relative flex items-center gap-1.5 sm:px-2.5 py-1.5 rounded-lg bg-white hover:bg-blue-50 hover:text-blue-600 active:scale-95 active:bg-blue-100 transition-all duration-150 text-sm"
                 onClick={toggleCart}
               >
                 <i className="fas fa-shopping-cart text-base"></i>
@@ -168,7 +172,7 @@ export default function Header() {
 
                 {/* badge */}
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 text-xs min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-red-500 text-white font-medium">
+                  <span className="absolute -top-1 -right-1 text-xs min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-blue-500 text-white font-medium">
                     {cartCount}
                   </span>
                 )}
@@ -373,11 +377,11 @@ export default function Header() {
 
       {/* Cart Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-70 sm:w-96 bg-gradient-to-br from-white to-emerald-50 z-50 shadow-xl overflow-y-auto transform transition-transform duration-300 ${
+        className={`fixed top-0 left-0 h-full w-70 sm:w-96 bg-gradient-to-br from-white to-blue-50 z-50 shadow-xl overflow-y-auto transform transition-transform duration-300 ${
           isCartOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white p-6 border-b-2 border-emerald-200">
+        <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 border-b-2 border-blue-200">
           <div className="flex items-center justify-center gap-3 text-xl font-semibold">
             {/* <i className="fas fa-shopping-cart"></i> */}
             <span>سلة المشتريات</span>
@@ -406,7 +410,7 @@ export default function Header() {
                   className="fas fa-shopping-basket"
                   style={{
                     fontSize: "2.25rem",
-                    color: "#86efac",
+                    color: "#60a5fa",
                     marginBottom: "10px",
                   }}
                 ></i>
@@ -435,7 +439,7 @@ export default function Header() {
               <span className="font-semibold">{cartTotal}</span>
             </div>
             <button
-              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg transition font-medium"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition font-medium"
               type="button"
               onClick={submitCartToWhatsApp}
             >

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useShop } from "../context/ShopContext";
 
 const ProductDetails = () => {
+  const { toggleFavorite, isFavorite, addToCart } = useShop();
+
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const [isFavorite, setIsFavorite] = useState(false);
 
   const getParam = (key, fallback) => {
     const value = searchParams.get(key);
@@ -49,6 +51,7 @@ const ProductDetails = () => {
     "سطح ناعم وسهل اللمس",
     "تركيبة قليلة الرائحة وصديقة للبيئة",
   ];
+  const favorite = isFavorite(productId || "123456");
 
   try {
     const featuresParam = searchParams.get("features");
@@ -62,10 +65,6 @@ const ProductDetails = () => {
 
   const whatsappNumber = "1234567890";
   const whatsappMessage = "مرحباً، أنا مهتم بمنتج ";
-
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-  };
 
   const openWhatsApp = (e) => {
     e.preventDefault();
@@ -130,13 +129,19 @@ const ProductDetails = () => {
             <div className="space-y-4 md:space-y-6 w-full lg:w-1/2 relative order-2 lg:order-2">
               {/* Favorite Icon */}
               <button
-                onClick={toggleFavorite}
+                onClick={() =>
+                  toggleFavorite({
+                    id: productId,
+                    image: imageUrl,
+                    price: price,
+                  })
+                }
                 className="absolute top-0 left-0 md:left-0 p-2 rounded-full bg-white shadow-md hover:shadow-lg transition-all z-10"
                 aria-label="أضف إلى المفضلة"
               >
                 <svg
                   className={`w-6 h-6 transition-colors ${
-                    isFavorite
+                    favorite
                       ? "fill-red-500 text-red-500"
                       : "fill-none text-gray-400 hover:text-red-500"
                   }`}

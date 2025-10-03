@@ -33,7 +33,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <Link
-      to={`?${productQuery}`}
+      to={`/product-details?${productQuery}`}
       className="block bg-gray-100 rounded-lg shadow-md p-6 text-center relative group hover:shadow-lg transition-shadow"
     >
       <div className="absolute top-3 left-2 z-10 flex gap-2">

@@ -136,6 +136,19 @@ export default function Footer() {
           </p>
         </div>
       </div>
+      <a
+        href="https://wa.me/4917666990043"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="تواصل معنا عبر واتساب"
+        className="fixed bottom-5 right-5 w-12 h-12 md:w-16 md:h-16 z-50 cursor-pointer animate-bounce"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+          alt="WhatsApp"
+          className="w-full h-full rounded-full shadow-lg transform transition-transform duration-300 hover:scale-110"
+        />
+      </a>
     </footer>
   );
 }

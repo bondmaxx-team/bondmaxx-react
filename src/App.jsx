@@ -77,10 +77,7 @@ function App() {
               <Route path="/insulation" element={<InsulationPage />} />
               <Route path="/search-dealer" element={<SearchDealerPage />} />
               <Route path="/color-collection" element={<ColorCollection />} />
-              <Route
-                path="/interior-colors/product-details"
-                element={<ProductDetails />}
-              />
+              <Route path="/product-details" element={<ProductDetails />} />
               <Route path="/painting-services" element={<PaintingServices />} />
             </Route>
 

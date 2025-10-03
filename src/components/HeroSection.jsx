@@ -31,7 +31,7 @@ const HeroSection = ({ onDiscoverColors }) => {
             <span className="text-white drop-shadow-2xl">
               مرحباً بكم في عالم
             </span>
-            <span className="block mt-3 bg-gradient-to-r from-cyan-300 via-blue-500 to-blue-500 bg-clip-text text-transparent filter drop-shadow-lg">
+            <span className="block mt-3 bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-500 bg-clip-text text-transparent filter drop-shadow-lg">
               BONDMAXX
             </span>
           </h1>
@@ -47,7 +47,7 @@ const HeroSection = ({ onDiscoverColors }) => {
           <div className="flex justify-center pt-4">
             <button
               onClick={onDiscoverColors}
-              className="group relative px-10 py-5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-full font-bold text-lg shadow-2xl shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 hover:shadow-cyan-500/60"
+              className="group relative px-10 py-5 bg-gradient-to-r from-blue-500 to-blue-500 hover:from-blue-700 hover:to-cyan-600 text-white rounded-full font-bold text-lg shadow-2xl shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 hover:shadow-cyan-500/60"
             >
               <span className="flex items-center gap-3">
                 <i className="fas fa-palette text-xl" />
@@ -69,17 +69,17 @@ const HeroSection = ({ onDiscoverColors }) => {
               {
                 icon: "fa-swatchbook",
                 text: "+360 لون",
-                color: "text-cyan-400",
+                color: "text-blue-400",
               },
               {
-                icon: "fa-shield-check",
+                icon: "fa-leaf",
                 text: "صديق للبيئة",
-                color: "text-blue-300",
+                color: "text-blue-400",
               },
             ].map((feature, index) => (
               <div
                 key={index}
-                className="group flex items-center justify-center gap-3 text-blue-200 hover:text-cyan-300 transition-all duration-300 px-4 py-3 rounded-xl hover:bg-blue-500/10 backdrop-blur-sm"
+                className="group flex items-center justify-center gap-3 text-blue-500 hover:text-cyan-500 transition-all duration-300 px-4 py-3 rounded-xl"
               >
                 <i
                   className={`fas ${feature.icon} ${feature.color} text-xl transition-colors drop-shadow-lg`}
@@ -88,13 +88,6 @@ const HeroSection = ({ onDiscoverColors }) => {
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="bg-blue-500/20 backdrop-blur-sm p-3 rounded-full border border-blue-400/30 hover:bg-blue-500/30 transition-colors cursor-pointer">
-          <i className="fas fa-chevron-down text-cyan-300 text-xl" />
         </div>
       </div>
 
