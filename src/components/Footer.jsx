@@ -1,40 +1,70 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   const socialLinks = [
     { icon: "fab fa-facebook-f", hoverColor: "hover:bg-blue-600" },
-    { icon: "fab fa-twitter", hoverColor: "hover:bg-blue-400" },
-    { icon: "fab fa-instagram", hoverColor: "hover:bg-pink-500" },
-    { icon: "fab fa-linkedin-in", hoverColor: "hover:bg-blue-700" },
+    { icon: "fab fa-twitter", hoverColor: "hover:bg-blue-600" },
+    { icon: "fab fa-instagram", hoverColor: "hover:bg-blue-600" },
+    { icon: "fab fa-linkedin-in", hoverColor: "hover:bg-blue-600" },
   ];
 
   const products = [
-    { icon: "fas fa-home", label: "الدهانات الداخلية", href: "#" },
-    { icon: "fas fa-building", label: "الدهانات الخارجية", href: "#" },
-    { icon: "fas fa-industry", label: "الدهانات الصناعية", href: "#" },
-    { icon: "fas fa-ship", label: "الدهانات البحرية", href: "#" },
-    { icon: "fas fa-palette", label: "مجموعة الألوان", href: "#" },
+    {
+      icon: "fas fa-home",
+      label: "الدهانات الداخلية",
+      href: "/interior-colors",
+    },
+    {
+      icon: "fas fa-building",
+      label: "الدهانات الخارجية",
+      href: "/exterior-colors",
+    },
+    // { icon: "fas fa-industry", label: "الدهانات الصناعية", href: "#" },
+    // { icon: "fas fa-ship", label: "الدهانات البحرية", href: "#" },
+    {
+      icon: "fas fa-palette",
+      label: "مجموعة الألوان",
+      href: "/color-collection",
+    },
   ];
 
   const services = [
-    { icon: "fas fa-comments", label: "استشارة الألوان", href: "#" },
-    { icon: "fas fa-chalkboard-teacher", label: "التدريب التقني", href: "#" },
-    { icon: "fas fa-tools", label: "الدعم الفني", href: "#" },
+    {
+      icon: "fas fa-comments",
+      label: "استشارة الألوان",
+      href: "https://wa.me/905550004000",
+    },
+    {
+      icon: "fas fa-chalkboard-teacher",
+      label: "التدريب التقني",
+      href: "https://wa.me/905550004000",
+    },
+    {
+      icon: "fas fa-tools",
+      label: "الدعم الفني",
+      href: "https://wa.me/905550004000",
+    },
     { icon: "fas fa-certificate", label: "ضمان الجودة", href: "#" },
-    { icon: "fas fa-search", label: "البحث عن تاجر", href: "#" },
+    { icon: "fas fa-search", label: "البحث عن تاجر", href: "/search-dealer" },
   ];
 
   const contactInfo = [
     {
-      icon: "fas fa-phone",
+      type: "whatsapp",
+      icon: "fab fa-whatsapp",
       label: "+90 555 000 40 00",
-      href: "tel:+905550004000",
+      href: "https://wa.me/905550004000",
     },
+
     {
+      type: "email",
       icon: "fas fa-envelope",
       label: "info@bondmaxx.com",
       href: "mailto:info@bondmaxx.com",
     },
     { icon: "fas fa-map-marker-alt", label: "سوريا - إدلب", href: "#" },
     {
+      type: "other",
       icon: "fas fa-clock",
       label: "الأحد - الخميس: 8:00 ص - 6:00 م",
       href: "#",
@@ -72,13 +102,13 @@ export default function Footer() {
           <ul className="space-y-3">
             {products.map((product, index) => (
               <li key={index}>
-                <a
-                  href={product.href}
+                <Link
+                  to={product.href}
                   className="flex items-center gap-2 text-gray-300 hover:text-white transition"
                 >
                   <i className={product.icon}></i>
                   <span>{product.label}</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -90,13 +120,13 @@ export default function Footer() {
           <ul className="space-y-3">
             {services.map((service, index) => (
               <li key={index}>
-                <a
-                  href={service.href}
+                <Link
+                  to={service.href}
                   className="flex items-center gap-2 text-gray-300 hover:text-white transition"
                 >
                   <i className={service.icon}></i>
                   <span>{service.label}</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -108,13 +138,15 @@ export default function Footer() {
           <ul className="space-y-3">
             {contactInfo.map((contact, index) => (
               <li key={index}>
-                <a
-                  href={contact.href}
-                  className="flex items-center gap-2 text-gray-300 hover:text-white transition"
+                <Link
+                  dir={contact.type === "phone" ? "ltr" : "rtl"}
+                  to={contact.href}
+                  className={`flex items-center gap-2 text-gray-300 hover:text-white transition 
+                  ${contact.type === "phone" ? "flex-row-reverse" : ""}`}
                 >
                   <i className={contact.icon}></i>
                   <span>{contact.label}</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -137,7 +169,7 @@ export default function Footer() {
         </div>
       </div>
       <a
-        href="https://wa.me/4917666990043"
+        href="https://wa.me/905550004000"
         target="_blank"
         rel="noopener noreferrer"
         title="تواصل معنا عبر واتساب"
@@ -146,7 +178,7 @@ export default function Footer() {
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
           alt="WhatsApp"
-          className="w-full h-full rounded-full shadow-lg transform transition-transform duration-300 hover:scale-110"
+          className="w-full h-full transform transition-transform duration-300 hover:scale-110"
         />
       </a>
     </footer>

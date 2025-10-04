@@ -85,10 +85,16 @@ const InteriorColorsPage = ({
   };
 
   const handleCategoryClick = (cat) => {
-    setActiveCategory(cat.name);
-    // في حال بدك تصفي المنتجات حسب الفئة:
-    // const filtered = products.filter(p => p.category === cat.name);
-    // setFilteredProducts(filtered);
+    if (activeCategory === cat.name) {
+      // 👈 Category already active → deselect
+      setActiveCategory(null);
+      setFilteredProducts(products); // show all products again
+    } else {
+      // 👈 New category selected
+      setActiveCategory(cat.name);
+      const filtered = products.filter((p) => p.category === cat.name);
+      setFilteredProducts(filtered);
+    }
   };
 
   return (
@@ -159,19 +165,25 @@ const InteriorColorsPage = ({
 
       {/* Products Grid */}
       <section className="px-4 lg:px-10 py-8 md:py-10">
-        <div className="grid gap-5 sm:gap-6 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {filteredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onClick={() => handleProductClick(product)}
-              toggleFavorite={() => toggleFavorite(product)}
-              addToCart={() => addToCart(product, 1)}
-              isFav={isFavorite(product.id)}
-              isInCart={inCart(product.id)}
-            />
-          ))}
-        </div>
+        {filteredProducts.length === 0 ? (
+          <div className="text-center text-gray-500 py-10 text-lg">
+            🚫 لا توجد منتجات متاحة حالياً
+          </div>
+        ) : (
+          <div className="grid gap-5 sm:gap-6 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+            {filteredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onClick={() => handleProductClick(product)}
+                toggleFavorite={() => toggleFavorite(product)}
+                addToCart={() => addToCart(product, 1)}
+                isFav={isFavorite(product.id)}
+                isInCart={inCart(product.id)}
+              />
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );

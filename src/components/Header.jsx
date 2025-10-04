@@ -3,24 +3,76 @@ import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { useShop } from "../context/ShopContext";
 
-function CartItem({ item, index, onRemove }) {
+function CartItem({ item, index, onRemove, setQty }) {
+  const fallbackImage = "https://via.placeholder.com/48x48.png?text=No+Image";
+
+  const handleIncrease = () => {
+    setQty(item.id, item.qty + 1);
+  };
+
+  const handleDecrease = () => {
+    if (item.qty > 1) {
+      setQty(item.id, item.qty - 1);
+    }
+  };
+
   return (
-    <div className="flex items-center justify-between gap-3 p-2 border rounded bg-white">
+    <div
+      className="flex items-center justify-between gap-3 p-2 border rounded bg-white"
+      dir="rtl"
+    >
       <div className="flex items-center gap-3">
         <img
           alt={item.name || "منتج"}
-          src={item.image || ""}
+          src={item.image ? item.image : fallbackImage}
+          onError={(e) => {
+            e.target.src = fallbackImage;
+          }}
           className="w-12 h-12 object-cover rounded-md border"
         />
+
         <div>
           <div className="font-medium">{item.name || "منتج"}</div>
+
           {item.price && (
             <div className="text-sm text-gray-500">{item.price} ₺</div>
           )}
+
+          <div className="flex items-center gap-2 mt-1">
+            {/* Decrease button */}
+            <button
+              onClick={handleDecrease}
+              disabled={item.qty === 1}
+              className={`w-6 h-6 flex items-center justify-center rounded-full text-xs transition 
+                ${
+                  item.qty === 1
+                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                    : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+                }`}
+              title="إنقاص الكمية"
+            >
+              <i className="fas fa-minus"></i>
+            </button>
+
+            {/* Quantity display */}
+            <span className="text-sm text-gray-800 font-medium">
+              {item.qty}
+            </span>
+
+            {/* Increase button */}
+            <button
+              onClick={handleIncrease}
+              className="w-6 h-6 flex items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs"
+              title="زيادة الكمية"
+            >
+              <i className="fas fa-plus"></i>
+            </button>
+          </div>
         </div>
       </div>
+
       <button
-        title="remove"
+        title="حذف"
         type="button"
         className="text-red-600 hover:text-red-700"
         onClick={() => onRemove(item.id)}
@@ -30,13 +82,22 @@ function CartItem({ item, index, onRemove }) {
     </div>
   );
 }
+
 function FavItem({ item, index, onRemove }) {
+  const fallbackImage = "https://via.placeholder.com/48x48.png?text=No+Image";
+
   return (
-    <div className="flex items-center justify-between gap-3 p-2 border rounded bg-white">
+    <div
+      className="flex items-center justify-between gap-3 p-2 border rounded bg-white"
+      dir="rtl"
+    >
       <div className="flex items-center gap-3">
         <img
           alt={item.name || "منتج"}
-          src={item.image || ""}
+          src={item.image ? item.image : fallbackImage}
+          onError={(e) => {
+            e.target.src = fallbackImage;
+          }}
           className="w-12 h-12 object-cover rounded-md border"
         />
         <div>
@@ -238,7 +299,7 @@ export default function Header() {
                 <img
                   alt="BONDMAXX Painting"
                   src={logo}
-                  className="h-12 sm:h-18 cursor-pointer hover:opacity-90 transition-opacity"
+                  className="h-14 sm:h-22 cursor-pointer hover:opacity-90 transition-opacity"
                 />
               </Link>
             </div>
@@ -281,7 +342,7 @@ export default function Header() {
         }`}
       >
         <div className="flex justify-between items-center p-6 bg-white border-b border-gray-200">
-          <img alt="BONDMAXX" src={logo} className="h-14" />
+          <img alt="BONDMAXX" src={logo} className="h-14 sm:h-20" />
           <button
             title="button"
             type="button"
@@ -310,7 +371,7 @@ export default function Header() {
 
       {/* Favorites Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 sm:w-96 bg-gradient-to-br from-white to-red-50 z-50 shadow-xl overflow-y-auto transform transition-transform duration-300 ${
+        className={`fixed top-0 left-0 h-full w-70 sm:w-96 bg-gradient-to-br from-white to-blue-50 z-50 shadow-xl overflow-y-auto transform transition-transform duration-300 ${
           isFavoritesOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -352,7 +413,7 @@ export default function Header() {
                 <p>ابدأ بإضافة الألوان التي تعجبك إلى قائمة المفضلة</p>
               </div>
             ) : (
-              <div className="space-y-2">
+              <div className="space-y-3 px-4">
                 {favorites.map((item, idx) => (
                   <FavItem
                     key={idx}
@@ -427,6 +488,7 @@ export default function Header() {
                     item={item}
                     index={idx}
                     onRemove={removeFromCart}
+                    setQty={setQty}
                   />
                 ))}
               </div>

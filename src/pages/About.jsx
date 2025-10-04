@@ -168,7 +168,7 @@ export default function About() {
             فرقاً
           </p>
           <button
-            onClick={() => window.open("https://wa.me/963999999999", "_blank")}
+            onClick={() => window.open("https://wa.me/905550004000", "_blank")}
             className="bg-white text-blue-600 px-8 md:px-10 py-3 md:py-4 rounded-full text-base md:text-lg font-bold hover:bg-blue-50 hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           >
             تواصل معنا الآن

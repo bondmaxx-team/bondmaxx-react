@@ -59,7 +59,7 @@ export default function PaintingServices() {
     >
       <div className="max-w-5xl mx-auto">
         {/* Header Card */}
-        <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 mb-8 border-t-4 border-blue-600">
+        <div className="p-8 md:p-12 mb-8">
           <div className="text-center">
             <div className="inline-block p-3 bg-blue-100 rounded-full mb-4">
               <svg
@@ -128,10 +128,10 @@ export default function PaintingServices() {
               <p className="text-center text-base font-medium">
                 املأ الخانات أدناه أو{" "}
                 <a
-                  href="tel:+963123456789"
+                  href="https://wa.me/905550004000"
                   className="font-bold underline hover:text-blue-200 transition-colors"
                 >
-                  اتصل بنا عبر الهاتف
+                  او تواصل معنا
                 </a>
               </p>
             </div>

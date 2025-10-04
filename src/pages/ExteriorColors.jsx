@@ -74,8 +74,15 @@ const ExteriorColorsPage = () => {
   };
 
   const handleCategoryClick = (category) => {
-    setActiveCategory(category.name);
-    setFilteredProducts(products.filter((p) => p.category === category.name));
+    if (activeCategory === category.name) {
+      // Category already active → deselect
+      setActiveCategory(null);
+      setFilteredProducts(products); // show all products
+    } else {
+      // New category selected → filter
+      setActiveCategory(category.name);
+      setFilteredProducts(products.filter((p) => p.category === category.name));
+    }
   };
 
   const handleSearchInput = (e) => {

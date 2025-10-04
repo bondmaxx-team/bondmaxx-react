@@ -59,7 +59,7 @@ const HeroSection = ({ onDiscoverColors }) => {
           </div>
 
           {/* Features */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 sm:pt-12 max-w-3xl mx-auto">
             {[
               {
                 icon: "fa-certificate",
@@ -82,7 +82,7 @@ const HeroSection = ({ onDiscoverColors }) => {
                 className="group flex items-center justify-center gap-3 text-blue-500 hover:text-cyan-500 transition-all duration-300 px-4 py-3 rounded-xl"
               >
                 <i
-                  className={`fas ${feature.icon} ${feature.color} text-xl transition-colors drop-shadow-lg`}
+                  className={`fas ${feature.icon} ${feature.color} text-sm sm:text-xl transition-colors drop-shadow-lg`}
                 />
                 <span className="font-semibold">{feature.text}</span>
               </div>

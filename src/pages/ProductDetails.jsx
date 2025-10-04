@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useShop } from "../context/ShopContext";
 
 const ProductDetails = () => {
@@ -63,7 +63,7 @@ const ProductDetails = () => {
     // Keep default features
   }
 
-  const whatsappNumber = "1234567890";
+  const whatsappNumber = "905550004000";
   const whatsappMessage = "مرحباً، أنا مهتم بمنتج ";
 
   const openWhatsApp = (e) => {
@@ -199,20 +199,22 @@ const ProductDetails = () => {
                 {/* Top Row - 3 buttons on desktop, stacked on mobile */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {/* Find Dealer */}
-                  <a
+                  <Link
                     href="#"
+                    to={"/search-dealer"}
                     className="px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all duration-300 text-center text-sm font-medium transform hover:scale-105"
                   >
                     ابحث عن الوكيل
-                  </a>
+                  </Link>
 
                   {/* Search Color */}
-                  <a
+                  <Link
                     href="#"
+                    to={"/color-collection"}
                     className="px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all duration-300 text-center text-sm font-medium transform hover:scale-105"
                   >
                     البحث عن اللون
-                  </a>
+                  </Link>
 
                   {/* Paint Calculator */}
                   <a
