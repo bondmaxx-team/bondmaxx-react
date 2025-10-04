@@ -2,6 +2,14 @@ import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { useShop } from "../context/ShopContext";
+import { useTranslation } from "react-i18next";
+
+const languages = [
+  { code: "ar", name: "العربية", flag: "https://flagcdn.com/w20/sa.png" },
+  { code: "tr", name: "Türkçe", flag: "https://flagcdn.com/w20/tr.png" },
+  { code: "en", name: "English", flag: "https://flagcdn.com/w20/us.png" },
+  { code: "de", name: "Deutsch", flag: "https://flagcdn.com/w20/de.png" },
+];
 
 function CartItem({ item, index, onRemove, setQty }) {
   const fallbackImage = "https://via.placeholder.com/48x48.png?text=No+Image";
@@ -120,6 +128,12 @@ function FavItem({ item, index, onRemove }) {
 }
 
 export default function Header() {
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
@@ -177,30 +191,13 @@ export default function Header() {
 
   const selectLanguage = (code, name, flag) => {
     setCurrentLanguage({ code, name, flag });
+    changeLanguage(code);
     setIsLanguageMenuOpen(false);
   };
 
   const submitCartToWhatsApp = () => {
     console.log("Submit cart to WhatsApp");
   };
-
-  const removeFromFav = (index) => {
-    // console.log(index);
-    const updatedCart = favorites.filter((_, i) => i !== index);
-
-    console.log(updatedCart);
-
-    setFavorites(updatedCart);
-
-    localStorage.setItem("bondmaxx-favorites", JSON.stringify(updatedCart));
-  };
-
-  const languages = [
-    { code: "ar", name: "العربية", flag: "https://flagcdn.com/w20/sa.png" },
-    { code: "tr", name: "Türkçe", flag: "https://flagcdn.com/w20/tr.png" },
-    { code: "en", name: "English", flag: "https://flagcdn.com/w20/us.png" },
-    { code: "de", name: "Deutsch", flag: "https://flagcdn.com/w20/de.png" },
-  ];
 
   const menuItems = [
     { href: "/", label: "الرئيسية", icon: "fas fa-home" },
@@ -247,7 +244,7 @@ export default function Header() {
                 onClick={toggleFavorites}
               >
                 <i className="fas fa-heart text-base"></i>
-                <span className="hidden sm:inline">المفضلة</span>
+                <span className="hidden sm:inline">{t("favorite_title")}</span>
               </button>
 
               {/* Language */}

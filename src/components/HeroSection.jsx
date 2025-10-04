@@ -1,4 +1,8 @@
+import { useTranslation } from "react-i18next";
+
 const HeroSection = ({ onDiscoverColors }) => {
+  const { t } = useTranslation();
+
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background with overlay */}
@@ -29,7 +33,7 @@ const HeroSection = ({ onDiscoverColors }) => {
           {/* Main heading */}
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
             <span className="text-white drop-shadow-2xl">
-              مرحباً بكم في عالم
+              {t("hero_section_hello_world")}
             </span>
             <span className="block mt-3 bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-500 bg-clip-text text-transparent filter drop-shadow-lg">
               BONDMAXX
