@@ -196,13 +196,11 @@
   "or_contact_us": "Contact us",
   "city": "City",
   "choose_city": "Choose City",
+
+  "store_idlib": "BondMax Store - Maarat al-Nasan",
   "idlib": "Idlib",
-  "aleppo": "Aleppo",
-  "damascus": "Damascus",
-  "homs": "Homs",
-  "hama": "Hama",
-  "latakia": "Latakia",
-  "tartus": "Tartus",
+  "maarat_al_nasan": "Maarat al-Nasan",
+
   "full_name": "Full Name",
   "enter_full_name": "Enter your full name",
   "email": "Email",

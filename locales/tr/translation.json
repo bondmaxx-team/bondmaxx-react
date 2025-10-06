@@ -194,13 +194,11 @@
   "or_contact_us": "Bizimle iletişime geçin",
   "city": "Şehir",
   "choose_city": "Şehir Seçin",
+
+  "store_idlib": "BondMax Mağazası - Maarat al-Nasan",
   "idlib": "İdlib",
-  "aleppo": "Halep",
-  "damascus": "Şam",
-  "homs": "Humus",
-  "hama": "Hama",
-  "latakia": "Lazkiye",
-  "tartus": "Tartus",
+  "maarat_al_nasan": "Maarat al-Nasan",
+
   "full_name": "Ad Soyad",
   "enter_full_name": "Adınızı ve soyadınızı girin",
   "email": "E-posta",
