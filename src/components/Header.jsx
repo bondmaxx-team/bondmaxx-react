@@ -195,13 +195,33 @@ export default function Header() {
 
   const menuItems = [
     { href: "/", label: t("home"), icon: "fas fa-home" },
-    { href: "/interior-colors", label: t("interior_paints") },
-    { href: "/exterior-colors", label: t("exterior_paints") },
-    { href: "insulation", label: t("insulation") },
-    { href: "/color-collection", label: t("color_collection") },
-    { href: "/painting-services", label: t("painting_services") },
-    { href: "/search-dealer", label: t("search_dealer") },
-    { href: "/about", label: t("about") },
+    {
+      href: "/interior-colors",
+      label: t("interior_paints"),
+      icon: "fas fa-home",
+    },
+    {
+      href: "/exterior-colors",
+      label: t("exterior_paints"),
+      icon: "fas fa-building",
+    },
+    { href: "/insulation", label: t("insulation"), icon: "fas fa-shield-alt" },
+    {
+      href: "/color-collection",
+      label: t("color_collection"),
+      icon: "fas fa-palette",
+    },
+    {
+      href: "/painting-services",
+      label: t("painting_services"),
+      icon: "fas fa-paint-roller",
+    },
+    {
+      href: "/search-dealer",
+      label: t("search_dealer"),
+      icon: "fas fa-search",
+    },
+    { href: "/about", label: t("about"), icon: "fas fa-info-circle" },
   ];
 
   return (

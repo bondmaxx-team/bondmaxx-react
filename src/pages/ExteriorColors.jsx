@@ -193,29 +193,41 @@ const ExteriorColorsPage = () => {
         {/* Search */}
         <div className="max-w-3xl w-full">
           <div className="relative flex flex-col sm:flex-row">
-            <input
-              type="search"
-              placeholder={t("search_product")}
-              value={searchQuery}
-              onChange={handleSearchInput}
-              className={`w-full ${
-                isRTL
-                  ? "rounded-t-xl sm:rounded-s-xl sm:rounded-e-none"
-                  : "rounded-t-xl sm:rounded-e-xl sm:rounded-s-none"
-              } border border-gray-300 bg-white/60 ${
-                isRTL ? "ps-12 pe-4" : "pl-12 pr-4"
-              } py-3 md:py-4 text-base focus:outline-none focus:ring-2 focus:ring-blue-400`}
-            />
-            <button
-              onClick={handleSearchInput}
-              className={`${
-                isRTL
-                  ? "sm:rounded-e-xl sm:rounded-s-none"
-                  : "sm:rounded-s-xl sm:rounded-e-none"
-              } rounded-b-xl bg-gradient-to-br from-blue-500 to-blue-700 px-5 md:px-8 py-3 md:py-4 text-white font-semibold hover:from-blue-600 hover:to-blue-800`}
-            >
-              {t("search_button")}
-            </button>
+            {isRTL ? (
+              // RTL: الزر أولاً ثم حقل الإدخال
+              <>
+                <button
+                  onClick={handleSearchInput}
+                  className="shrink-0 rounded-t-xl sm:rounded-s-xl sm:rounded-e-none sm:rounded-b-xl bg-gradient-to-br from-blue-500 to-blue-700 px-5 md:px-8 py-3 md:py-4 text-white font-semibold hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors"
+                >
+                  {t("search_button")}
+                </button>
+                <input
+                  type="search"
+                  placeholder={t("search_product")}
+                  value={searchQuery}
+                  onChange={handleSearchInput}
+                  className="w-full rounded-b-xl sm:rounded-e-xl sm:rounded-s-none sm:rounded-b-xl border border-gray-300 bg-white/60 ps-4 pe-4 py-3 md:py-4 text-base focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
+                />
+              </>
+            ) : (
+              // LTR: حقل الإدخال أولاً ثم الزر
+              <>
+                <input
+                  type="search"
+                  placeholder={t("search_product")}
+                  value={searchQuery}
+                  onChange={handleSearchInput}
+                  className="w-full rounded-t-xl sm:rounded-s-xl sm:rounded-e-none sm:rounded-b-xl border border-gray-300 bg-white/60 pl-4 pr-4 py-3 md:py-4 text-base focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
+                />
+                <button
+                  onClick={handleSearchInput}
+                  className="shrink-0 rounded-b-xl sm:rounded-e-xl sm:rounded-s-none sm:rounded-b-xl bg-gradient-to-br from-blue-500 to-blue-700 px-5 md:px-8 py-3 md:py-4 text-white font-semibold hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors"
+                >
+                  {t("search_button")}
+                </button>
+              </>
+            )}
           </div>
         </div>
       </section>
