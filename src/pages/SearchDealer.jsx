@@ -12,46 +12,18 @@ const SearchDealerPage = ({
   const initialDealers = [
     {
       id: 1,
-      name: t("store_damascus"),
-      city: t("damascus"),
-      address: t("damascus") + ", " + t("syria"),
-      phone: "+963 11 123 4567",
+      name: t("store_idlib"),
+      city: t("idlib"),
+      address: t("maarat_al_nasan") + ", " + t("idlib") + ", " + t("syria"),
+      phone: "+90 555 000 40 00",
+      mapLink: "https://maps.app.goo.gl/n3chLYJreJ8qNGh29",
       distance: "",
       rating: 4.8,
       reviews: 156,
       workingHours: t("saturday_thursday") + ": 9:00 ص - 8:00 م",
-      services: [
-        t("free_delivery"),
-        t("free_consultation"),
-        t("customer_service_24_7"),
-      ],
-      image: "رابط_الصورة",
-    },
-    {
-      id: 2,
-      name: t("store_aleppo"),
-      city: t("aleppo"),
-      address: t("aleppo") + ", " + t("syria"),
-      phone: "+963 21 234 5678",
-      distance: "",
-      rating: 4.6,
-      reviews: 98,
-      workingHours: t("saturday_thursday") + ": 8:30 ص - 7:30 م",
-      services: [t("free_delivery"), t("discount_10")],
-      image: "رابط_الصورة",
-    },
-    {
-      id: 3,
-      name: t("store_homs"),
-      city: t("homs"),
-      address: t("homs") + ", " + t("syria"),
-      phone: "+963 31 345 6789",
-      distance: "",
-      rating: 4.7,
-      reviews: 124,
-      workingHours: t("saturday_thursday") + ": 9:00 ص - 9:00 م",
-      services: [t("fast_delivery"), t("technical_consultation")],
-      image: "رابط_الصورة",
+      services: [t("free_consultation"), t("customer_service_24_7")],
+      image:
+        "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop",
     },
   ];
 
@@ -224,6 +196,7 @@ const SearchDealerPage = ({
                           </span>
                         ))}
                       </div>
+
                       <div className="flex gap-2">
                         <a
                           href={`tel:${dealer.phone}`}
@@ -231,9 +204,14 @@ const SearchDealerPage = ({
                         >
                           {t("call_now")}
                         </a>
-                        <button className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold transition-colors">
+                        <a
+                          href={dealer.mapLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold text-center transition-colors"
+                        >
                           {t("get_directions")}
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>
