@@ -33,7 +33,7 @@ const ImprintPage = () => {
             href="tel:+9635550004000"
             className="text-blue-600 hover:underline"
           >
-            +963 555 000 40 00
+            +90 555 000 40 00
           </a>
         </p>
         <p className="mb-4">

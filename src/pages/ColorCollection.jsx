@@ -1,246 +1,331 @@
-import React, { useState } from "react";
-import { useShop } from "../context/ShopContext";
-import { useTranslation } from "react-i18next";
+import React, { useState, useMemo } from "react";
 
-const ColorCollection = () => {
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.dir() === "rtl";
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [showAllColors, setShowAllColors] = useState(false);
+// ColorCard component
+const ColorCard = ({ color }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [copied, setCopied] = useState(false);
 
-  // Color families with translations
-  const colorFamilies = [
-    {
-      id: "royal-blue",
-      category: "blues",
-      name: t("royal_blue"),
-      colors: [
-        { id: "blue-1", hex: "#E8F2FF", name: t("very_light") },
-        { id: "blue-2", hex: "#B8D9FF", name: t("light") },
-        { id: "blue-3", hex: "#7FB8FF", name: t("medium") },
-        { id: "blue-4", hex: "#2450A5", name: t("dark") },
-        { id: "blue-5", hex: "#1A3D7A", name: t("very_dark") },
-      ],
-    },
-    {
-      id: "golden-orange",
-      category: "oranges",
-      name: t("golden_orange"),
-      colors: [
-        { id: "orange-1", hex: "#FFF4E6", name: t("very_light") },
-        { id: "orange-2", hex: "#FFE4B3", name: t("light") },
-        { id: "orange-3", hex: "#FFD080", name: t("medium") },
-        { id: "orange-4", hex: "#F39200", name: t("dark") },
-        { id: "orange-5", hex: "#E6732A", name: t("very_dark") },
-      ],
-    },
-    {
-      id: "royal-red",
-      category: "reds",
-      name: t("royal_red"),
-      colors: [
-        { id: "red-1", hex: "#FFE6E6", name: t("very_light") },
-        { id: "red-2", hex: "#FFB3B3", name: t("light") },
-        { id: "red-3", hex: "#FF8080", name: t("medium") },
-        { id: "red-4", hex: "#E00025", name: t("dark") },
-        { id: "red-5", hex: "#B8001D", name: t("very_dark") },
-      ],
-    },
-    {
-      id: "sunny-yellow",
-      category: "yellows",
-      name: t("sunny_yellow"),
-      colors: [
-        { id: "yellow-1", hex: "#FFFACD", name: t("very_light") },
-        { id: "yellow-2", hex: "#FFF68F", name: t("light") },
-        { id: "yellow-3", hex: "#FFE135", name: t("medium") },
-        { id: "yellow-4", hex: "#FEE880", name: t("dark") },
-        { id: "yellow-5", hex: "#DAA520", name: t("very_dark") },
-      ],
-    },
-    {
-      id: "crystal-cyan",
-      category: "blues",
-      name: t("crystal_cyan"),
-      colors: [
-        { id: "cyan-1", hex: "#E6F9FF", name: t("very_light") },
-        { id: "cyan-2", hex: "#B3F0FF", name: t("light") },
-        { id: "cyan-3", hex: "#80E7FF", name: t("medium") },
-        { id: "cyan-4", hex: "#00AEEF", name: t("dark") },
-        { id: "cyan-5", hex: "#0088CC", name: t("very_dark") },
-      ],
-    },
-    {
-      id: "natural-green",
-      category: "greens",
-      name: t("natural_green"),
-      colors: [
-        { id: "green-1", hex: "#F0F8E8", name: t("very_light") },
-        { id: "green-2", hex: "#C8E6C9", name: t("light") },
-        { id: "green-3", hex: "#A5D6A7", name: t("medium") },
-        { id: "green-4", hex: "#66BB6A", name: t("dark") },
-        { id: "green-5", hex: "#388E3C", name: t("very_dark") },
-      ],
-    },
-  ];
-
-  const filteredFamilies = colorFamilies.filter((family) => {
-    const matchesCategory =
-      selectedCategory === "all" || family.category === selectedCategory;
-    const matchesSearch =
-      searchTerm === "" ||
-      family.name.includes(searchTerm) ||
-      family.colors.some(
-        (color) =>
-          color.name.includes(searchTerm) ||
-          color.hex.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    return matchesCategory && matchesSearch;
-  });
-
-  const ColorCard = ({ color, item }) => {
-    const { toggleFavorite, addToCart, isFavorite } = useShop();
-    const favorite = isFavorite(item.id);
-
-    return (
-      <div
-        className="aspect-square rounded-xl border-2 border-gray-200 cursor-pointer hover:scale-110 hover:shadow-lg hover:border-blue-400 transition-all duration-300 relative overflow-hidden group"
-        style={{ backgroundColor: color.hex }}
-        title={`${color.name} - ${color.hex}`}
-      >
-        <button
-          type="button"
-          className={`absolute top-1 ${
-            isRTL ? "right-1" : "left-1"
-          } bg-white/90 border-0 rounded-full w-7 h-7 flex items-center justify-center cursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm`}
-          onClick={() => toggleFavorite(item)}
-        >
-          <i
-            className={favorite ? "fas fa-heart text-red-500" : "far fa-heart"}
-          ></i>
-        </button>
-      </div>
-    );
+  const handleCopy = () => {
+    navigator.clipboard.writeText(color.hex);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
-  const ColorFamilyCard = ({ family }) => (
-    <div className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-8 border border-gray-100">
-      <h3
-        className={`text-xl font-semibold text-gray-900 mb-6 text-center ${
-          isRTL ? "font-arabic" : ""
-        }`}
+  return (
+    <div
+      className="aspect-square rounded-xl border-2 border-gray-200 cursor-pointer hover:scale-110 hover:shadow-lg hover:border-blue-400 transition-all duration-300 relative overflow-hidden group"
+      style={{ backgroundColor: color.hex }}
+      onClick={handleCopy}
+      title={`${color.name} - ${color.hex} (انقر للنسخ)`}
+    >
+      <button
+        type="button"
+        className="absolute top-1 right-1 bg-white/90 border-0 rounded-full w-7 h-7 flex items-center justify-center cursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm z-10"
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsFavorite(!isFavorite);
+        }}
       >
+        <i
+          className={isFavorite ? "fas fa-heart text-red-500" : "far fa-heart"}
+        ></i>
+      </button>
+      {copied && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/50 text-white text-xs font-semibold">
+          تم النسخ!
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ColorFamilyCard component
+const ColorFamilyCard = ({ family }) => {
+  if (!family || !family.colors) return null;
+
+  return (
+    <div className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-8 border border-gray-100">
+      <h3 className="text-xl font-semibold text-gray-900 mb-6 text-center">
         {family.name}
       </h3>
       <div className="grid grid-cols-5 gap-3 mb-6">
         {family.colors.map((color) => (
-          <ColorCard item={color} key={color.id} color={color} />
+          <ColorCard key={color.id} color={color} />
         ))}
       </div>
     </div>
   );
+};
+
+// Pagination component
+const Pagination = ({ currentPage, totalPages, onPageChange }) => (
+  <div className="flex items-center justify-center gap-2 mt-8">
+    <button
+      onClick={() => onPageChange(Math.max(1, currentPage - 1))}
+      disabled={currentPage === 1}
+      className="px-4 py-2 rounded-lg bg-white border-2 border-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-400 transition-all"
+    >
+      السابق
+    </button>
+    <div className="flex gap-2">
+      {[...Array(Math.min(5, totalPages))].map((_, i) => {
+        let pageNum;
+        if (totalPages <= 5) {
+          pageNum = i + 1;
+        } else if (currentPage <= 3) {
+          pageNum = i + 1;
+        } else if (currentPage >= totalPages - 2) {
+          pageNum = totalPages - 4 + i;
+        } else {
+          pageNum = currentPage - 2 + i;
+        }
+
+        return (
+          <button
+            key={pageNum}
+            onClick={() => onPageChange(pageNum)}
+            className={`px-4 py-2 rounded-lg border-2 transition-all ${
+              currentPage === pageNum
+                ? "bg-blue-600 text-white border-blue-600"
+                : "bg-white border-gray-200 hover:border-blue-400"
+            }`}
+          >
+            {pageNum}
+          </button>
+        );
+      })}
+    </div>
+    <button
+      onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
+      disabled={currentPage === totalPages}
+      className="px-4 py-2 rounded-lg bg-white border-2 border-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-400 transition-all"
+    >
+      التالي
+    </button>
+  </div>
+);
+
+const ColorCollection = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [showAllColors, setShowAllColors] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+
+  const hslToHex = (h, s, l) => {
+    l /= 100;
+    const a = (s * Math.min(l, 1 - l)) / 100;
+    const f = (n) => {
+      const k = (n + h / 30) % 12;
+      const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+      return Math.round(255 * color)
+        .toString(16)
+        .padStart(2, "0");
+    };
+    return `#${f(0)}${f(8)}${f(4)}`.toUpperCase();
+  };
+
+  const colorFamilies = useMemo(() => {
+    const families = [];
+    const categories = [
+      { name: "الأزرق الملكي", category: "blues", baseHue: 210 },
+      { name: "الأخضر الطبيعي", category: "greens", baseHue: 120 },
+      { name: "الأحمر الملكي", category: "reds", baseHue: 0 },
+      { name: "البرتقالي الذهبي", category: "oranges", baseHue: 30 },
+      { name: "الأصفر الشمسي", category: "yellows", baseHue: 60 },
+      { name: "البنفسجي الملكي", category: "purples", baseHue: 280 },
+      { name: "الوردي الناعم", category: "pinks", baseHue: 330 },
+      { name: "السماوي الكريستالي", category: "cyans", baseHue: 180 },
+      { name: "الأرجواني الداكن", category: "magentas", baseHue: 300 },
+      { name: "الأزرق المخضر", category: "teals", baseHue: 170 },
+      { name: "البني الترابي", category: "browns", baseHue: 25 },
+      { name: "الرمادي الحديث", category: "grays", baseHue: 0 },
+    ];
+
+    categories.forEach((cat) => {
+      for (let familyIndex = 0; familyIndex < 6; familyIndex++) {
+        const hueVariation = (familyIndex - 2.5) * 5;
+        const adjustedHue = (cat.baseHue + hueVariation + 360) % 360;
+
+        const colors = [];
+        for (let shade = 0; shade < 5; shade++) {
+          const lightness = 95 - shade * 18;
+          const saturation = cat.category === "grays" ? 0 : 60 + shade * 8;
+          const hex = hslToHex(adjustedHue, saturation, lightness);
+
+          colors.push({
+            id: `${cat.category}-${familyIndex}-${shade}`,
+            hex: hex,
+            name: ["فاتح جداً", "فاتح", "متوسط", "داكن", "داكن جداً"][shade],
+          });
+        }
+
+        families.push({
+          id: `${cat.category}-family-${familyIndex}`,
+          category: cat.category,
+          name: `${cat.name} ${familyIndex + 1}`,
+          colors: colors,
+        });
+      }
+    });
+
+    return families;
+  }, []);
+
+  const filteredFamilies = useMemo(() => {
+    return colorFamilies.filter((family) => {
+      const matchesCategory =
+        selectedCategory === "all" || family.category === selectedCategory;
+      const matchesSearch =
+        searchTerm === "" ||
+        family.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        family.colors.some(
+          (color) =>
+            color.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            color.hex.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      return matchesCategory && matchesSearch;
+    });
+  }, [colorFamilies, selectedCategory, searchTerm]);
+
+  const totalPages = Math.ceil(filteredFamilies.length / itemsPerPage);
+  const paginatedFamilies = filteredFamilies.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const categoryGroups = useMemo(() => {
+    const categories = {
+      blues: { name: "الأزرق الملكي", families: [] },
+      greens: { name: "الأخضر الطبيعي", families: [] },
+      reds: { name: "الأحمر الملكي", families: [] },
+      oranges: { name: "البرتقالي الذهبي", families: [] },
+      yellows: { name: "الأصفر الشمسي", families: [] },
+      purples: { name: "البنفسجي الملكي", families: [] },
+      pinks: { name: "الوردي الناعم", families: [] },
+      cyans: { name: "السماوي الكريستالي", families: [] },
+      magentas: { name: "الأرجواني الداكن", families: [] },
+      teals: { name: "الأزرق المخضر", families: [] },
+      browns: { name: "البني الترابي", families: [] },
+      grays: { name: "الرمادي الحديث", families: [] },
+    };
+
+    colorFamilies.forEach((family) => {
+      if (categories[family.category]) {
+        categories[family.category].families.push(family);
+      }
+    });
+
+    return Object.entries(categories)
+      .map(([key, value]) => ({
+        category: key,
+        name: value.name,
+        family: value.families[0],
+      }))
+      .filter((item) => item.family);
+  }, [colorFamilies]);
 
   if (showAllColors) {
     return (
       <div
         className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50"
-        dir={isRTL ? "rtl" : "ltr"}
+        dir="rtl"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 mt-12 sm:mt-16">
           <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8 mb-8 border border-gray-100">
             <div className="flex flex-col lg:flex-row gap-4">
               <div className="flex gap-5">
-                <div>
-                  <button
-                    onClick={() => setShowAllColors(false)}
-                    className={`flex items-center gap-2 text-gray-700 transition-all duration-300 px-4 py-2.5 rounded-xl hover:text-blue-500 border-0 cursor-pointer text-sm sm:text-base font-medium ${
-                      isRTL ? "hover:-translate-x-1" : "hover:translate-x-1"
-                    }`}
-                  >
-                    <i
-                      className={`fas ${
-                        isRTL ? "fa-arrow-left" : "fa-arrow-right"
-                      } text-sm`}
-                    ></i>
-                    <span>{t("back_to_home")}</span>
-                  </button>
-                </div>
+                <button
+                  onClick={() => {
+                    setShowAllColors(false);
+                    setCurrentPage(1);
+                  }}
+                  className="flex items-center gap-2 text-gray-700 transition-all duration-300 px-4 py-2.5 rounded-xl hover:text-blue-500 border-0 cursor-pointer text-sm sm:text-base font-medium bg-transparent"
+                >
+                  <span>العودة إلى الرئيسية</span>
+                  <i className="fas fa-arrow-right text-sm"></i>
+                </button>
+
                 <div className="flex-1 relative">
                   <input
                     type="text"
-                    className={`w-full py-3 sm:py-4 px-4 sm:px-5 ${
-                      isRTL ? "pr-10 sm:pr-12" : "pl-10 sm:pl-12"
-                    } border-2 border-gray-200 rounded-xl text-sm sm:text-base ${
-                      isRTL ? "text-right" : "text-left"
-                    } transition-all duration-300 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100`}
-                    placeholder={t("search_placeholder")}
+                    className="w-full py-3 sm:py-4 px-4 sm:px-5 pr-10 sm:pr-12 border-2 border-gray-200 rounded-xl text-sm sm:text-base transition-all duration-300 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+                    placeholder="ابحث عن الألوان أو الرموز السداسية..."
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={(e) => {
+                      setSearchTerm(e.target.value);
+                      setCurrentPage(1);
+                    }}
                   />
-                  <i
-                    className={`fas fa-search absolute ${
-                      isRTL ? "right-3 sm:right-4" : "left-3 sm:left-4"
-                    } top-1/2 transform -translate-y-1/2 text-gray-400 text-sm sm:text-base`}
-                  ></i>
+                  <i className="fas fa-search absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm sm:text-base"></i>
                 </div>
               </div>
 
               <select
-                className={`w-full lg:w-64 py-3 sm:py-4 px-4 sm:px-5 border-2 border-gray-200 rounded-xl text-sm sm:text-base ${
-                  isRTL ? "text-right" : "text-left"
-                } bg-white transition-all duration-300 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 cursor-pointer`}
+                className="w-full lg:w-64 py-3 sm:py-4 px-4 sm:px-5 border-2 border-gray-200 rounded-xl text-sm sm:text-base bg-white transition-all duration-300 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 cursor-pointer"
                 value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
+                onChange={(e) => {
+                  setSelectedCategory(e.target.value);
+                  setCurrentPage(1);
+                }}
               >
-                <option value="all">{t("all_color_categories")}</option>
-                <option value="blues">{t("blues_category")}</option>
-                <option value="reds">{t("reds_category")}</option>
-                <option value="greens">{t("greens_category")}</option>
-                <option value="yellows">{t("yellows_category")}</option>
-                <option value="purples">{t("purples_category")}</option>
-                <option value="oranges">{t("oranges_category")}</option>
+                <option value="all">جميع الفئات</option>
+                <option value="blues">الأزرق الملكي</option>
+                <option value="greens">الأخضر الطبيعي</option>
+                <option value="reds">الأحمر الملكي</option>
+                <option value="oranges">البرتقالي الذهبي</option>
+                <option value="yellows">الأصفر الشمسي</option>
+                <option value="purples">البنفسجي الملكي</option>
+                <option value="pinks">الوردي الناعم</option>
+                <option value="cyans">السماوي الكريستالي</option>
+                <option value="magentas">الأرجواني الداكن</option>
+                <option value="teals">الأزرق المخضر</option>
+                <option value="browns">البني الترابي</option>
+                <option value="grays">الرمادي الحديث</option>
               </select>
             </div>
 
-            <div
-              className={`mt-4 sm:mt-5 flex items-center ${
-                isRTL
-                  ? "justify-between sm:justify-end"
-                  : "justify-between sm:justify-start"
-              } gap-4 text-xs sm:text-sm text-gray-600 font-medium`}
-            >
+            <div className="mt-4 sm:mt-5 flex items-center justify-between gap-4 text-xs sm:text-sm text-gray-600 font-medium">
               <div className="flex items-center gap-2 bg-blue-50 px-3 sm:px-4 py-2 rounded-lg">
                 <i className="fas fa-layer-group text-blue-600"></i>
-                <span>
-                  {filteredFamilies.length} {t("family_count")}
-                </span>
+                <span>{filteredFamilies.length} عائلة</span>
               </div>
               <div className="flex items-center gap-2 bg-purple-50 px-3 sm:px-4 py-2 rounded-lg">
                 <i className="fas fa-droplet text-purple-600"></i>
+                <span>{filteredFamilies.length * 5} لون</span>
+              </div>
+              <div className="flex items-center gap-2 bg-green-50 px-3 sm:px-4 py-2 rounded-lg">
+                <i className="fas fa-palette text-green-600"></i>
                 <span>
-                  {filteredFamilies.length * 5} {t("color_count")}
+                  صفحة {currentPage} من {totalPages}
                 </span>
               </div>
             </div>
           </div>
 
           {filteredFamilies.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pb-10 sm:pb-20">
-              {filteredFamilies.map((family) => (
-                <ColorFamilyCard key={family.id} family={family} />
-              ))}
-            </div>
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                {paginatedFamilies.map((family) => (
+                  <ColorFamilyCard key={family.id} family={family} />
+                ))}
+              </div>
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+            </>
           ) : (
             <div className="text-center py-12 sm:py-20 bg-white rounded-2xl shadow-lg border border-gray-100">
               <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
                 <i className="fas fa-palette text-3xl sm:text-5xl text-gray-400"></i>
               </div>
               <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-3 px-4">
-                {t("no_results_title")}
+                لم يتم العثور على ألوان
               </h3>
               <p className="text-sm sm:text-base text-gray-600 px-4">
-                {t("no_results_message")}
+                حاول تعديل البحث أو الفلتر
               </p>
             </div>
           )}
@@ -252,24 +337,26 @@ const ColorCollection = () => {
   return (
     <section
       className="py-24 bg-gradient-to-br from-gray-50 to-white mt-[70px]"
-      dir={isRTL ? "rtl" : "ltr"}
+      dir="rtl"
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-2xl md:text-4xl font-extrabold mb-6 leading-[1.15]">
-            <span className="inline-block pb-[0.15em] bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent">
-              {t("collection_title")}
+            <span className="inline-block pb-[0.15em] bg-gradient-to-r text-blue-600">
+              الجديدة BONDMAXX - 2025 تناغم مجموعة ألوان
             </span>
           </h2>
-
           <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            {t("collection_description")}
+            تحتفي مجموعة ألوان BONDMAXX لموسم 2025، المسماة "تناغم"، بتأثير
+            الظلال الخفية والانسجام المثالي. تضم المجموعة أكثر من 360 لوناً
+            موزعة على ست فئات لونية رئيسية، كل منها مصممة بعناية لتلبي أرقى
+            المعايير الجمالية والوظيفية.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {colorFamilies.map((family) => (
-            <ColorFamilyCard key={family.id} family={family} />
+          {categoryGroups.map((group) => (
+            <ColorFamilyCard key={group.category} family={group.family} />
           ))}
         </div>
 
@@ -278,8 +365,8 @@ const ColorCollection = () => {
             onClick={() => setShowAllColors(true)}
             className="inline-flex items-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 font-semibold border-0 cursor-pointer"
           >
-            <i className={`fas fa-palette ${isRTL ? "ml-2" : "mr-2"}`}></i>
-            {t("explore_all_colors")}
+            <span>استكشف جميع الألوان 360</span>
+            <i className="fas fa-palette"></i>
           </button>
         </div>
       </div>
