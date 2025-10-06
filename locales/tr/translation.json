@@ -194,11 +194,9 @@
   "or_contact_us": "Bizimle iletişime geçin",
   "city": "Şehir",
   "choose_city": "Şehir Seçin",
-
   "store_idlib": "BondMax Mağazası - Maarat al-Nasan",
   "idlib": "İdlib",
   "maarat_al_nasan": "Maarat al-Nasan",
-
   "full_name": "Ad Soyad",
   "enter_full_name": "Adınızı ve soyadınızı girin",
   "email": "E-posta",
@@ -275,5 +273,14 @@
   "store_damascus": "Bondmaxx Mağazası - Şam",
   "store_aleppo": "Bondmaxx Mağazası - Halep",
   "store_homs": "Bondmaxx Mağazası - Humus",
-  "saturday_thursday": "Cumartesi - Perşembe"
+  "saturday_thursday": "Cumartesi - Perşembe",
+  "imprint_title": "Yasal Bilgiler / Imprint",
+  "address": "Adres",
+  "phone": "Telefon",
+  "website": "Web Sitesi",
+  "privacy_policy_title": "Gizlilik Politikası",
+  "privacy_policy_text": "Gizliliğinize değer veriyoruz. BondMaxx kişisel bilgileri yalnızca hizmetlerimizi sunmak için toplar. Verileriniz sizin izniniz olmadan üçüncü şahıslarla paylaşılmaz. Tarama deneyiminizi geliştirmek için çerezleri kullanıyoruz.",
+  "data_protection_title": "Veri Koruma",
+  "data_protection_text": "BondMaxx, GDPR dahil tüm geçerli veri koruma yasalarına uyar. Kişisel verilerinize istediğiniz zaman erişme, düzeltme veya silme hakkınız vardır.",
+  "contact_us": "İletişim"
 }

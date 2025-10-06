@@ -194,11 +194,9 @@
   "or_contact_us": "Kontaktieren Sie uns",
   "city": "Stadt",
   "choose_city": "Stadt Wählen",
-
   "store_idlib": "BondMax Geschäft - Maarat al-Nasan",
   "idlib": "Idlib",
   "maarat_al_nasan": "Maarat al-Nasan",
-
   "full_name": "Vollständiger Name",
   "enter_full_name": "Geben Sie Ihren vollständigen Namen ein",
   "email": "E-Mail",
@@ -275,5 +273,14 @@
   "store_damascus": "Bondmaxx Geschäft - Damaskus",
   "store_aleppo": "Bondmaxx Geschäft - Aleppo",
   "store_homs": "Bondmaxx Geschäft - Homs",
-  "saturday_thursday": "Samstag - Donnerstag"
+  "saturday_thursday": "Samstag - Donnerstag",
+  "imprint_title": "Impressum / Rechtliche Informationen",
+  "address": "Adresse",
+  "phone": "Telefon",
+  "website": "Webseite",
+  "privacy_policy_title": "Datenschutzrichtlinie",
+  "privacy_policy_text": "Wir respektieren Ihre Privatsphäre. BondMaxx sammelt persönliche Daten nur, um unsere Dienstleistungen zu erbringen. Ihre Daten werden ohne Ihre Zustimmung nicht an Dritte weitergegeben. Wir verwenden Cookies, um Ihr Surferlebnis zu verbessern.",
+  "data_protection_title": "Datenschutz",
+  "data_protection_text": "BondMaxx erfüllt alle geltenden Datenschutzgesetze, einschließlich der DSGVO. Sie haben jederzeit das Recht, auf Ihre persönlichen Daten zuzugreifen, sie zu korrigieren oder zu löschen.",
+  "contact_us": "Kontaktieren Sie uns"
 }
