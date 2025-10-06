@@ -4,7 +4,7 @@ import { useShop } from "../context/ShopContext";
 import { useTranslation } from "react-i18next";
 
 const ProductDetails = () => {
-  const { toggleFavorite, isFavorite } = useShop();
+  const { toggleFavorite, isFavorite, addToCart } = useShop();
   const { t, i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
 
@@ -90,19 +90,9 @@ const ProductDetails = () => {
           onClick={() => navigate(-1)}
           className="mb-4 flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors"
         >
-          <svg
-            className={`w-5 h-5 ${isRTL ? "rotate-180" : ""}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
+          <i
+            className={`fas fa-arrow-${isRTL ? "right" : "left"} text-base`}
+          ></i>
           <span>{t("back_button")}</span>
         </button>
 
@@ -123,37 +113,59 @@ const ProductDetails = () => {
             {/* Product Info */}
             <div className="space-y-4 md:space-y-6 w-full lg:w-1/2 relative order-2 lg:order-2">
               {/* Favorite Button */}
-              <button
-                onClick={() =>
-                  toggleFavorite({
-                    id: productId,
-                    image: imageUrl,
-                    price: price,
-                  })
-                }
+              <div
                 className={`absolute top-0 ${
                   isRTL ? "left-0" : "right-0"
-                } p-2 rounded-full bg-white shadow-md hover:shadow-lg transition-all z-10`}
-                aria-label={t("add_to_favorites_aria")}
+                } z-10 p-2`}
               >
-                <svg
-                  className={`w-6 h-6 transition-colors ${
-                    favorite
-                      ? "fill-red-500 text-red-500"
-                      : "fill-none text-gray-400 hover:text-red-500"
-                  }`}
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                <div
+                  className={`flex ${
+                    isRTL ? "flex-row-reverse" : "flex-row"
+                  } items-center gap-2`}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                  />
-                </svg>
-              </button>
+                  {/* Favorite */}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFavorite({
+                        id: productId,
+                        image: imageUrl,
+                        name: name,
+                        price,
+                      });
+                    }}
+                    className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white shadow-md hover:shadow-lg transition-all"
+                    aria-label={t("add_to_favorites_aria")}
+                    title={t("add_to_favorites_aria")}
+                  >
+                    <i
+                      className={`${
+                        favorite
+                          ? "fas fa-heart text-red-500"
+                          : "far fa-heart text-gray-500 hover:text-red-500"
+                      } text-lg`}
+                    />
+                  </button>
+
+                  {/* Cart */}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      addToCart(
+                        { id: productId, image: imageUrl, price, name },
+                        1
+                      );
+                    }}
+                    className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white shadow-md hover:shadow-lg transition-all"
+                    aria-label={t("add_to_cart_aria")}
+                    title={t("add_to_cart_aria")}
+                  >
+                    <i className="fas fa-shopping-cart text-gray-600 hover:text-emerald-600 text-lg transition-colors" />
+                  </button>
+                </div>
+              </div>
 
               <div className="pt-12 md:pt-0">
                 <div className="space-y-2">

@@ -11,9 +11,23 @@ const languages = [
   { code: "de", name: "Deutsch", flag: "https://flagcdn.com/w20/de.png" },
 ];
 
+// utils/whatsapp.ts
+const toAbsoluteUrl = (url) => {
+  if (!url) return "";
+  if (/^https?:\/\//i.test(url)) return url;
+  const base = window.location.origin.replace(/\/+$/, "");
+  const path = url.startsWith("/") ? url : `/${url}`;
+  return `${base}${path}`;
+};
+
+const isMobile = () =>
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
+
 function CartItem({ item, index, onRemove, setQty }) {
   const { t } = useTranslation();
-  const fallbackImage = "https://via.placeholder.com/48x48.png?text=No+Image";
+  const fallbackImage = null;
 
   const handleIncrease = () => {
     setQty(item.id, item.qty + 1);
@@ -88,26 +102,40 @@ function CartItem({ item, index, onRemove, setQty }) {
 
 function FavItem({ item, index, onRemove }) {
   const { t } = useTranslation();
-  const fallbackImage = "https://via.placeholder.com/48x48.png?text=No+Image";
+  const fallbackImage = null;
 
   return (
     <div className="flex items-center justify-between gap-3 p-2 border rounded bg-white">
       <div className="flex items-center gap-3">
-        <img
-          alt={item.name || t("product")}
-          src={item.image ? item.image : fallbackImage}
-          onError={(e) => {
-            e.target.src = fallbackImage;
-          }}
-          className="w-12 h-12 object-cover rounded-md border"
-        />
+        {/* ✅ If item is color type, show color box; otherwise image */}
+        {item.type === "color" ? (
+          <div
+            className="w-12 h-12 rounded-md border shadow-inner"
+            style={{
+              backgroundColor: item.hex || "#ffffff",
+            }}
+            title={item.name}
+          />
+        ) : (
+          <img
+            alt={item.name || t("product")}
+            src={item.image ? item.image : fallbackImage}
+            onError={(e) => {
+              e.target.src = fallbackImage;
+            }}
+            className="w-12 h-12 object-cover rounded-md border"
+          />
+        )}
+
         <div>
           <div className="font-medium">{item.name || t("product")}</div>
+
           {item.price && (
             <div className="text-sm text-gray-500">{item.price} ₺</div>
           )}
         </div>
       </div>
+
       <button
         title={t("remove_item")}
         type="button"
@@ -190,7 +218,47 @@ export default function Header() {
   };
 
   const submitCartToWhatsApp = () => {
-    console.log("Submit cart to WhatsApp");
+    if (!cart?.length) return;
+
+    const lines = [];
+    lines.push("*مرحباً، أود الاستفسار عن المنتجات التالية:*");
+    lines.push(""); // Empty line for spacing
+
+    for (const item of cart) {
+      const img = item.image ? toAbsoluteUrl(item.image) : "";
+      lines.push(
+        `• *${item.name}* (ID: ${item.id})` +
+          `\n  الكمية: ${item.qty ?? 1}` +
+          (item.color ? `\n  اللون: ${item.color}` : "") +
+          (img ? `\n  الصورة: ${img}` : "")
+      );
+      lines.push(""); // Empty line between items
+    }
+
+    lines.push("━━━━━━━━━━━━━━━━━━");
+    lines.push(`أُرسلت من موقعكم: ${window.location.origin}`);
+
+    const message = lines.join("\n");
+    const encoded = encodeURIComponent(message);
+
+    const phone = "+905550004000";
+
+    const webUrl = phone
+      ? `https://wa.me/${phone}?text=${encoded}`
+      : `https://wa.me/?text=${encoded}`;
+
+    const mobileUrl = phone
+      ? `whatsapp://send?phone=${phone}&text=${encoded}`
+      : `whatsapp://send?text=${encoded}`;
+
+    if (isMobile()) {
+      window.location.href = mobileUrl;
+    } else {
+      window.open(webUrl, "_blank", "noopener,noreferrer");
+    }
+
+    closeCart();
+    clearCart();
   };
 
   const menuItems = [
@@ -280,7 +348,9 @@ export default function Header() {
                   <i className="fas fa-chevron-down text-xs"></i>
                 </button>
                 <div
-                  className={`absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-lg z-50 ${
+                  className={`absolute ${
+                    isRTL ? "right-0" : "left-0"
+                  } mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-lg z-50 ${
                     isLanguageMenuOpen ? "" : "hidden"
                   }`}
                 >
@@ -388,7 +458,6 @@ export default function Header() {
       </div>
 
       {/* Favorites Sidebar */}
-      {/* Favorites Sidebar (dir-aware) */}
       <div
         className={`fixed top-0 ${
           isRTL ? "right-0" : "left-0"

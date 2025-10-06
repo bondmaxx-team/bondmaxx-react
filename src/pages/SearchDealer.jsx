@@ -24,6 +24,22 @@ const SearchDealerPage = ({
       services: [t("free_consultation"), t("customer_service_24_7")],
       image:
         "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop",
+      keywords: [
+        "idlib",
+        "idlip",
+        "ادلب",
+        "إدلب",
+        "maarat al nasan",
+        "معرة النعسان",
+        "syria",
+        "سوريا",
+        "store",
+        "dealer",
+        "paint",
+        "دهان",
+        "متجر",
+        "وكيل",
+      ],
     },
   ];
 
@@ -47,13 +63,22 @@ const SearchDealerPage = ({
 
     setTimeout(() => {
       const query = searchQuery.trim().toLowerCase();
+
       const results = initialDealers.filter((dealer) => {
+        const city = dealer.city?.toLowerCase() || "";
+        const name = dealer.name?.toLowerCase() || "";
+        const address = dealer.address?.toLowerCase() || "";
+        const keywords = (dealer.keywords || []).map((k) => k.toLowerCase());
+
+        // ✅ Check across city, name, address, and keywords
         return (
-          dealer.city.toLowerCase().includes(query) ||
-          dealer.address.toLowerCase().includes(query) ||
-          dealer.name.toLowerCase().includes(query)
+          city.includes(query) ||
+          name.includes(query) ||
+          address.includes(query) ||
+          keywords.some((k) => k.includes(query))
         );
       });
+
       setFilteredDealers(results);
       setIsLoading(false);
       setShowResults(true);

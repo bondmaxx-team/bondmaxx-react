@@ -1,8 +1,11 @@
 import React, { useState, useMemo } from "react";
+import { useShop } from "../context/ShopContext";
 
 // ColorCard component
 const ColorCard = ({ color }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { toggleFavorite, isFavorite } = useShop();
+
+  const favorite = isFavorite(color.id);
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -23,11 +26,14 @@ const ColorCard = ({ color }) => {
         className="absolute top-1 right-1 bg-white/90 border-0 rounded-full w-7 h-7 flex items-center justify-center cursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm z-10"
         onClick={(e) => {
           e.stopPropagation();
-          setIsFavorite(!isFavorite);
+          toggleFavorite({
+            ...color,
+            type: "color",
+          });
         }}
       >
         <i
-          className={isFavorite ? "fas fa-heart text-red-500" : "far fa-heart"}
+          className={favorite ? "fas fa-heart text-red-500" : "far fa-heart"}
         ></i>
       </button>
       {copied && (

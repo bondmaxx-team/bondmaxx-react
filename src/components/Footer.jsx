@@ -84,7 +84,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20 px-6">
+    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white pt-12 px-6">
       <div className="max-w-7xl mx-auto grid gap-12 md:grid-cols-4">
         <div>
           <h3 className="text-xl font-bold mb-5">{t("company_name")}</h3>
@@ -143,13 +143,19 @@ export default function Footer() {
             {contactInfo.map((contact, index) => (
               <li key={index}>
                 <Link
-                  // dir={contact.type === "phone" ? "ltr" : "rtl"}
                   to={contact.href}
-                  className={`flex items-center gap-2 text-gray-300 hover:text-white transition 
-                  ${contact.type === "phone" ? "flex-row-reverse" : ""}`}
+                  className={`flex items-center gap-2 text-gray-300 hover:text-white transition`}
                 >
                   <i className={contact.icon}></i>
-                  <span>{contact.label}</span>
+
+                  {contact.type === "whatsapp" ? (
+                    // Force phone number to stay LTR
+                    <span dir="ltr" className="font-mono tracking-wide">
+                      {contact.label}
+                    </span>
+                  ) : (
+                    <span>{contact.label}</span>
+                  )}
                 </Link>
               </li>
             ))}
