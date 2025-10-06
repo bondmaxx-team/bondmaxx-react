@@ -33,11 +33,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Ensure proper RTL support for most transforms, but not sidebar */
-[dir="rtl"] .transform:not(#sidebar) {
-  --tw-translate-x: calc(-1 * var(--tw-translate-x));
-}
-
 /* Ensure sidebar always hides to the right regardless of RTL */
 #sidebar.translate-x-full {
   transform: translateX(100%) !important;

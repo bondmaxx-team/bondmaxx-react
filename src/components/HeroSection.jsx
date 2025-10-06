@@ -4,7 +4,7 @@ const HeroSection = ({ onDiscoverColors }) => {
   const { t } = useTranslation();
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with overlay */}
       <div className="absolute inset-0">
         <div
@@ -28,23 +28,21 @@ const HeroSection = ({ onDiscoverColors }) => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center mt-20">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center mt-12">
         <div className="space-y-10 animate-fade-in">
           {/* Main heading */}
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
             <span className="text-white drop-shadow-2xl">
-              {t("hero_section_hello_world")}
+              {t("main_title")}
             </span>
             <span className="block mt-3 bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-500 bg-clip-text text-transparent filter drop-shadow-lg">
-              BONDMAXX
+              {t("brand_name")}
             </span>
           </h1>
 
           {/* Description */}
           <p className="text-xl md:text-2xl text-blue-50 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg">
-            اكتشفوا تشكيلة فريدة من الألوان والدهانات الفاخرة، حيث الجودة تلتقي
-            بالإبداع. نقدم حلول طلاء مبتكرة ومتكاملة تلبي جميع احتياجاتكم في
-            التصميم الداخلي والخارجي، مع ضمان الأناقة والدقة في كل لمسة.
+            {t("description")}
           </p>
 
           {/* CTA Button */}
@@ -55,7 +53,7 @@ const HeroSection = ({ onDiscoverColors }) => {
             >
               <span className="flex items-center gap-3">
                 <i className="fas fa-palette text-xl" />
-                <span>اكتشف جميع الألوان</span>
+                <span>{t("cta_button")}</span>
                 <i className="fas fa-arrow-left group-hover:-translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
@@ -67,17 +65,17 @@ const HeroSection = ({ onDiscoverColors }) => {
             {[
               {
                 icon: "fa-certificate",
-                text: "ضمان الجودة",
+                text: t("quality_guarantee"),
                 color: "text-blue-400",
               },
               {
                 icon: "fa-swatchbook",
-                text: "+360 لون",
+                text: t("colors_count"),
                 color: "text-blue-400",
               },
               {
                 icon: "fa-leaf",
-                text: "صديق للبيئة",
+                text: t("eco_friendly"),
                 color: "text-blue-400",
               },
             ].map((feature, index) => (

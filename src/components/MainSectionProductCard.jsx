@@ -1,21 +1,23 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useShop } from "../context/ShopContext";
+import { useTranslation } from "react-i18next";
 
 const ProductCard = ({ product }) => {
+  const { t } = useTranslation();
   const { toggleFavorite, isFavorite, addToCart } = useShop();
 
   const favorite = isFavorite(product.id);
 
   const handleFavoriteClick = (e) => {
     console.log(product);
-    e.preventDefault(); // Prevent navigation when clicking favorite
+    e.preventDefault();
     e.stopPropagation();
     toggleFavorite(product);
   };
 
   const handleCartClick = (e) => {
-    e.preventDefault(); // Prevent navigation when clicking cart
+    e.preventDefault();
     e.stopPropagation();
     addToCart(product);
   };
@@ -40,7 +42,7 @@ const ProductCard = ({ product }) => {
         <button
           onClick={handleFavoriteClick}
           className="p-1 rounded-full shadow-sm hover:shadow-md transition-all duration-200"
-          aria-label="إضافة إلى المفضلة"
+          aria-label={t("add_to_favorites_aria")}
         >
           <i
             className={`fa-heart transition-colors ${
@@ -53,8 +55,8 @@ const ProductCard = ({ product }) => {
         <button
           onClick={handleCartClick}
           className="p-1 rounded-full shadow-sm hover:shadow-md transition-all duration-200"
-          aria-label="أضف إلى السلة"
-          title="أضف إلى السلة"
+          aria-label={t("add_to_cart")}
+          title={t("add_to_cart")}
         >
           <i className="fas fa-shopping-cart text-gray-500 hover:text-emerald-600 transition-colors"></i>
         </button>

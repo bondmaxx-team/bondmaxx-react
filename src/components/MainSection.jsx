@@ -7,12 +7,16 @@ import About from "../pages/About";
 import HeroSection from "./HeroSection";
 import ProductCard from "./MainSectionProductCard";
 import { useShop } from "../context/ShopContext";
+import { useTranslation } from "react-i18next";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const ProductSlider = ({ title, products, color, linkTo }) => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === "ar";
+
   return (
     <div className="mb-16">
       <div className="flex justify-between items-center mb-6">
@@ -28,6 +32,7 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
           nextEl: `.${color}-next`,
           prevEl: `.${color}-prev`,
         }}
+        dir={isRTL ? "rtl" : "ltr"} // ✅ tell Swiper it's RTL
         breakpoints={{
           640: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
@@ -45,8 +50,14 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
             to={linkTo}
             className={`block bg-${color}-600 text-white rounded-lg shadow-md p-6 text-center hover:bg-${color}-700 transition h-full flex flex-col items-center justify-center`}
           >
-            <i className="fas fa-arrow-left mb-2 text-2xl"></i>
-            <p>عرض جميع {title}</p>
+            <i
+              className={`fas ${
+                isRTL ? "fa-arrow-left" : "fa-arrow-right"
+              } mb-2 text-2xl`}
+            ></i>
+            <p>
+              {t("view_all")} {title}
+            </p>
           </Link>
         </SwiperSlide>
       </Swiper>
@@ -54,15 +65,24 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
       <div className="flex justify-between items-center">
         <div></div>
         <div className="flex gap-3">
+          {/* ✅ Arrows flip automatically depending on dir */}
           <div
             className={`${color}-prev cursor-pointer text-gray-600 hover:text-${color}-600`}
           >
-            <i className="fas fa-chevron-right"></i>
+            <i
+              className={`fas ${
+                isRTL ? "fa-chevron-right" : "fa-chevron-left"
+              }`}
+            ></i>
           </div>
           <div
             className={`${color}-next cursor-pointer text-gray-600 hover:text-${color}-600`}
           >
-            <i className="fas fa-chevron-left"></i>
+            <i
+              className={`fas ${
+                isRTL ? "fa-chevron-left" : "fa-chevron-right"
+              }`}
+            ></i>
           </div>
         </div>
       </div>
@@ -71,6 +91,7 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
 };
 
 const MainSection = () => {
+  const { t } = useTranslation();
   const { toggleFavorite, addToCart } = useShop();
   const [favorites, setFavorites] = useState([]);
   const [cart, setCart] = useState([]);
@@ -97,36 +118,96 @@ const MainSection = () => {
     interior: [
       {
         id: "interior-1",
-        name: "أزرق داخلي فاتح",
+        name: t("light_blue_interior"),
         color: "#BFDBFE",
         image: testImage,
       },
-      { id: "interior-2", name: "أزرق داخلي متوسط", color: "#93C5FD" },
-      { id: "interior-3", name: "أزرق داخلي غامق", color: "#60A5FA" },
-      { id: "interior-4", name: "أزرق داخلي عميق", color: "#3B82F6" },
+      {
+        id: "interior-2",
+        name: t("medium_blue_interior"),
+        color: "#93C5FD",
+      },
+      {
+        id: "interior-3",
+        name: t("dark_blue_interior"),
+        color: "#60A5FA",
+      },
+      {
+        id: "interior-4",
+        name: t("deep_blue_interior"),
+        color: "#3B82F6",
+      },
     ],
     exterior: [
-      { id: "exterior-1", name: "أخضر خارجي فاتح", color: "#BBF7D0" },
-      { id: "exterior-2", name: "أخضر خارجي متوسط", color: "#86EFAC" },
-      { id: "exterior-3", name: "أخضر خارجي غامق", color: "#4ADE80" },
-      { id: "exterior-4", name: "أخضر خارجي عميق", color: "#22C55E" },
+      {
+        id: "exterior-1",
+        name: t("light_green_exterior"),
+        color: "#BBF7D0",
+      },
+      {
+        id: "exterior-2",
+        name: t("medium_green_exterior"),
+        color: "#86EFAC",
+      },
+      {
+        id: "exterior-3",
+        name: t("dark_green_exterior"),
+        color: "#4ADE80",
+      },
+      {
+        id: "exterior-4",
+        name: t("deep_green_exterior"),
+        color: "#22C55E",
+      },
     ],
     insulation: [
-      { id: "insulation-1", name: "عازل حراري ذهبي", color: "#FDE68A" },
-      { id: "insulation-2", name: "عازل مائي أصفر", color: "#FCD34D" },
-      { id: "insulation-3", name: "عازل صوتي برتقالي", color: "#FBBF24" },
-      { id: "insulation-4", name: "عازل متعدد الأغراض", color: "#F59E0B" },
+      {
+        id: "insulation-1",
+        name: t("thermal_insulation_gold"),
+        color: "#FDE68A",
+      },
+      {
+        id: "insulation-2",
+        name: t("water_insulation_yellow"),
+        color: "#FCD34D",
+      },
+      {
+        id: "insulation-3",
+        name: t("sound_insulation_orange"),
+        color: "#FBBF24",
+      },
+      {
+        id: "insulation-4",
+        name: t("multi_purpose_insulation"),
+        color: "#F59E0B",
+      },
     ],
     collection: [
-      { id: "collection-1", name: "مجموعة البنفسجي الفاتح", color: "#DDD6FE" },
-      { id: "collection-2", name: "مجموعة البنفسجي المتوسط", color: "#C4B5FD" },
-      { id: "collection-3", name: "مجموعة البنفسجي الغامق", color: "#A78BFA" },
-      { id: "collection-4", name: "مجموعة البنفسجي العميق", color: "#8B5CF6" },
+      {
+        id: "collection-1",
+        name: t("light_purple_collection"),
+        color: "#DDD6FE",
+      },
+      {
+        id: "collection-2",
+        name: t("medium_purple_collection"),
+        color: "#C4B5FD",
+      },
+      {
+        id: "collection-3",
+        name: t("dark_purple_collection"),
+        color: "#A78BFA",
+      },
+      {
+        id: "collection-4",
+        name: t("deep_purple_collection"),
+        color: "#8B5CF6",
+      },
     ],
   };
 
   return (
-    <div className="min-h-screen bg-white" dir="rtl">
+    <div className="min-h-screen bg-white">
       <main className="mt-[70px]">
         <HeroSection onDiscoverColors={() => navigate("color-collection")} />
 
@@ -134,27 +215,27 @@ const MainSection = () => {
           <section className="py-16 bg-white" id="products-section">
             <div className="max-w-7xl mx-auto px-6 space-y-16">
               <ProductSlider
-                title="الدهانات الداخلية"
+                title={t("interior_paints")}
                 products={productsData.interior}
                 color="blue"
                 linkTo="interior-colors"
               />
               <ProductSlider
-                title="الدهانات الخارجية"
+                title={t("exterior_paints")}
                 products={productsData.exterior}
                 color="green"
                 linkTo="exterior-colors.html"
               />
 
               <ProductSlider
-                title="العوازل"
+                title={t("insulation")}
                 products={productsData.insulation}
                 color="yellow"
                 linkTo="insulation.html"
               />
 
               <ProductSlider
-                title="مجموعة الألوان"
+                title={t("color_collection")}
                 products={productsData.collection}
                 color="purple"
                 linkTo="color-collection"

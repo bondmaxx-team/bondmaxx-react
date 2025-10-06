@@ -4,59 +4,76 @@ import testImage from "../assets/color-1.png";
 import roof from "../assets/2.jpeg";
 import wall from "../assets/1.jpeg";
 import { useShop } from "../context/ShopContext";
+import { useTranslation } from "react-i18next";
 
-const categories = [
-  { id: 1, name: "الأسقف", image: roof },
-  { id: 2, name: "الحوائط", image: wall },
-];
-
-const productsData = [
-  {
-    id: 1,
-    name: "دهان Bondmax مطفي",
-    category: "دهانات",
-    image: testImage,
-    description: "جدران جميلة كل يوم.",
-    features: ["لمسات حريرية فاخرة", "تحمل عالٍ للغسل", "ألوان دقيقة دافئة"],
-  },
-  {
-    id: 2,
-    name: "دهان Bondmax مطفي",
-    category: "دهانات",
-    image: testImage,
-    description: "جدران جميلة كل يوم.",
-    features: ["لمسات حريرية فاخرة", "تحمل عالٍ للغسل", "ألوان دقيقة دافئة"],
-  },
-  {
-    id: 3,
-    name: "دهان Bondmax مطفي",
-    category: "دهانات",
-    image: testImage,
-    description: "جدران جميلة كل يوم.",
-    features: ["لمسات حريرية فاخرة", "تحمل عالٍ للغسل", "ألوان دقيقة دافئة"],
-  },
-];
-
-const InteriorColorsPage = ({
-  title = "منتجات داخلية",
-  subtitle = "تسوّق منتجات BondMax اكتشف تشكيلتنا المتنوعة من الدهانات عالية الجودة واختر الألوان التي تضيف لجدرانك الحماية والجمال في آن واحد.",
-}) => {
+const InteriorColorsPage = ({ title, subtitle }) => {
   const navigate = useNavigate();
+  const { toggleFavorite, addToCart, isFavorite, inCart } = useShop();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === "rtl";
+
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState(productsData);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [activeCategory, setActiveCategory] = useState(null);
-  const [selectedCategories, setSelectedCategories] = useState(new Set()); // من لوحة الفلاتر
+  const [selectedCategories, setSelectedCategories] = useState(new Set());
   const [selectedFeatures, setSelectedFeatures] = useState(new Set());
   const [showFilter, setShowFilter] = useState(false);
 
-  const { toggleFavorite, addToCart, isFavorite, inCart } = useShop();
+  // Categories with translations
+  const categories = [
+    { id: 1, name: t("ceilings"), image: roof },
+    { id: 2, name: t("walls"), image: wall },
+  ];
 
-  // جمع كل المزايا المتاحة (features) بشكل فريد
+  // Products with translations
+  const productsData = useMemo(
+    () => [
+      {
+        id: 1,
+        name: t("bondmax_matte_paint"),
+        category: t("paints"),
+        image: testImage,
+        description: t("beautiful_walls_everyday"),
+        features: [
+          t("luxurious_silk_touch"),
+          t("high_washability"),
+          t("precise_warm_colors"),
+        ],
+      },
+      {
+        id: 2,
+        name: t("bondmax_matte_paint"),
+        category: t("paints"),
+        image: testImage,
+        description: t("beautiful_walls_everyday"),
+        features: [
+          t("luxurious_silk_touch"),
+          t("high_washability"),
+          t("precise_warm_colors"),
+        ],
+      },
+      {
+        id: 3,
+        name: t("bondmax_matte_paint"),
+        category: t("paints"),
+        image: testImage,
+        description: t("beautiful_walls_everyday"),
+        features: [
+          t("luxurious_silk_touch"),
+          t("high_washability"),
+          t("precise_warm_colors"),
+        ],
+      },
+    ],
+    [t]
+  );
+
+  // جمع كل المزايا المتاحة
   const allFeatures = useMemo(() => {
     const s = new Set();
     productsData.forEach((p) => (p.features || []).forEach((f) => s.add(f)));
     return Array.from(s);
-  }, []);
+  }, [productsData]);
 
   // عدّاد الفلاتر المفعّلة
   const activeFiltersCount = useMemo(() => {
@@ -69,19 +86,19 @@ const InteriorColorsPage = ({
   }, [searchQuery, activeCategory, selectedCategories, selectedFeatures]);
 
   const handleProductClick = (product) => {
-    // Create query string from product object
     const productQuery = new URLSearchParams({
       id: product.id,
       name: product.name,
-      price: product.price,
+      price: product.price || "",
       image: product.image || "",
       color: product.color || "",
       description: product.description || "",
       category: product.category || "",
     }).toString();
 
-    navigate(`/product-details?${productQuery}`); // رابط صفحة التفاصيل
+    navigate(`/product-details?${productQuery}`);
   };
+
   const handleSearchInput = (e) => {
     const value = e.target.value;
     setSearchQuery(value);
@@ -108,11 +125,9 @@ const InteriorColorsPage = ({
 
   const handleCategoryClick = (cat) => {
     if (activeCategory === cat.name) {
-      // 👈 Category already active → deselect
       setActiveCategory(null);
-      setFilteredProducts(productsData); // show all productsData again
+      setFilteredProducts(productsData);
     } else {
-      // 👈 New category selected
       setActiveCategory(cat.name);
       const filtered = productsData.filter((p) => p.category === cat.name);
       setFilteredProducts(filtered);
@@ -123,7 +138,6 @@ const InteriorColorsPage = ({
     const q = searchQuery.toLowerCase().trim();
 
     const next = productsData.filter((p) => {
-      // 1) نص البحث
       const matchSearch = !q
         ? true
         : p.name?.toLowerCase().includes(q) ||
@@ -132,20 +146,17 @@ const InteriorColorsPage = ({
 
       if (!matchSearch) return false;
 
-      // 2) الفئة المختارة من الشريط العلوي (واحدة)
       const matchActiveCategory = !activeCategory
         ? true
         : p.category === activeCategory;
       if (!matchActiveCategory) return false;
 
-      // 3) فئات مختارة من لوحة التصفية (ممكن أكثر من فئة)
       const matchSelectedCategories =
         selectedCategories.size === 0
           ? true
           : selectedCategories.has(p.category);
       if (!matchSelectedCategories) return false;
 
-      // 4) مزايا مختارة من لوحة التصفية (AND: كل المزايا يجب تتوفر)
       const matchSelectedFeatures =
         selectedFeatures.size === 0
           ? true
@@ -157,21 +168,27 @@ const InteriorColorsPage = ({
     });
 
     setFilteredProducts(next);
-  }, [searchQuery, activeCategory, selectedCategories, selectedFeatures]);
+  }, [
+    searchQuery,
+    activeCategory,
+    selectedCategories,
+    selectedFeatures,
+    productsData,
+  ]);
 
   return (
     <div
       className="bg-gradient-to-b from-blue-50 to-blue-100 min-h-screen"
-      dir="rtl"
+      dir={isRTL ? "rtl" : "ltr"}
     >
       {/* Hero Section */}
       <section className="min-h-[60vh] flex items-start lg:items-center justify-center py-24 bg-gradient-to-br from-blue-50 to-blue-100">
         <div className="w-full max-w-6xl px-4 text-center">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 tracking-tight text-gray-900">
-            {title}
+            {title || t("interior_products")}
           </h1>
           <p className="text-gray-600 max-w-3xl mx-auto mb-6 md:mb-10 leading-relaxed text-sm md:text-base">
-            {subtitle}
+            {subtitle || t("interior_description")}
           </p>
 
           {/* Search */}
@@ -179,18 +196,28 @@ const InteriorColorsPage = ({
             <div className="relative flex flex-col sm:flex-row">
               <input
                 type="search"
-                placeholder="ابحث عن المنتج"
+                placeholder={t("search_product")}
                 value={searchQuery}
                 onChange={handleSearchInput}
                 onKeyPress={handleKeyPress}
-                className="peer w-full rounded-t-xl sm:rounded-s-xl sm:rounded-e-none border border-gray-300 bg-white/60 ps-12 pe-4 py-3 md:py-4 text-base focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
+                className={`peer w-full ${
+                  isRTL
+                    ? "rounded-t-xl sm:rounded-s-xl sm:rounded-e-none"
+                    : "rounded-t-xl sm:rounded-e-xl sm:rounded-s-none"
+                } border border-gray-300 bg-white/60 ${
+                  isRTL ? "ps-12 pe-4" : "pl-12 pr-4"
+                } py-3 md:py-4 text-base focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition`}
               />
               <button
                 type="button"
                 onClick={() => handleKeyPress({ key: "Enter" })}
-                className="shrink-0 rounded-b-xl sm:rounded-e-xl sm:rounded-s-none bg-gradient-to-br from-blue-500 to-blue-700 px-5 md:px-8 py-3 md:py-4 text-white font-semibold hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors"
+                className={`shrink-0 ${
+                  isRTL
+                    ? "sm:rounded-e-xl sm:rounded-s-none"
+                    : "sm:rounded-s-xl sm:rounded-e-none"
+                } rounded-b-xl bg-gradient-to-br from-blue-500 to-blue-700 px-5 md:px-8 py-3 md:py-4 text-white font-semibold hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors`}
               >
-                ابحث عن المنتج
+                {t("search_button")}
               </button>
             </div>
           </div>
@@ -198,7 +225,6 @@ const InteriorColorsPage = ({
       </section>
 
       {/* Categories */}
-
       <section className="px-4 lg:px-10 py-8">
         <div className="flex flex-wrap justify-center gap-6">
           {categories.map((cat) => (
@@ -208,7 +234,7 @@ const InteriorColorsPage = ({
               className={`group text-center p-2 rounded-xl transition-all
           ${
             activeCategory === cat.name
-              ? "bg-blue-100 shadow-md scale-105" // تأثير عند الضغط / focus
+              ? "bg-blue-100 shadow-md scale-105"
               : "hover:bg-blue-50 hover:scale-105"
           }`}
             >
@@ -229,8 +255,10 @@ const InteriorColorsPage = ({
       <section className="px-4 lg:px-10 py-8 md:py-10">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
           <div className="text-sm text-gray-600">
-            <span className="font-semibold">{filteredProducts.length}</span> من{" "}
-            <span className="font-semibold">{productsData.length}</span> منتج
+            <span className="font-semibold">{filteredProducts.length}</span>{" "}
+            {t("products_count_of")}{" "}
+            <span className="font-semibold">{productsData.length}</span>{" "}
+            {t("products_count_product")}
           </div>
 
           {/* Filter Button */}
@@ -239,26 +267,30 @@ const InteriorColorsPage = ({
             className="flex items-center gap-2 px-4 py-2.5 bg-white border-2 border-gray-200 rounded-xl text-gray-700 font-medium hover:border-blue-500 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 shadow-sm hover:shadow-md"
           >
             <i className="fas fa-sliders-h text-lg"></i>
-            <span>تصفية</span>
+            <span>{t("filter_button")}</span>
             <span className="bg-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">
               {activeFiltersCount}
             </span>
           </button>
 
-          {/* Filter Drawer / Modal */}
+          {/* Filter Drawer */}
           {showFilter && (
             <div className="fixed inset-0 z-50">
-              {/* الخلفية */}
               <div
                 className="absolute inset-0 bg-black/40"
                 onClick={() => setShowFilter(false)}
               />
 
-              {/* محتوى اللوحة */}
-              <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl rounded-s-2xl p-6 overflow-y-auto">
+              <div
+                className={`absolute ${
+                  isRTL ? "right-0" : "left-0"
+                } top-0 h-full w-full max-w-md bg-white shadow-2xl ${
+                  isRTL ? "rounded-s-2xl" : "rounded-e-2xl"
+                } p-6 overflow-y-auto`}
+              >
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    تصفية المنتجات
+                    {t("filter_products")}
                   </h3>
                   <button
                     onClick={() => setShowFilter(false)}
@@ -269,9 +301,9 @@ const InteriorColorsPage = ({
                   </button>
                 </div>
 
-                {/* فئات المنتجات (متعدد الاختيار) */}
+                {/* Categories */}
                 <div className="mb-6">
-                  <h4 className="font-semibold mb-3">الفئة</h4>
+                  <h4 className="font-semibold mb-3">{t("category_filter")}</h4>
                   <div className="flex flex-wrap gap-2">
                     {categories.map((cat) => {
                       const checked = selectedCategories.has(cat.name);
@@ -291,20 +323,18 @@ const InteriorColorsPage = ({
                     checked
                       ? "bg-blue-600 text-white border-blue-600"
                       : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"
-                  }
-                `}
+                  }`}
                         >
                           {cat.name}
                         </button>
                       );
                     })}
                   </div>
-                  {/* ملاحظة: إذا أردت أن تتجاهل الفئة العلوية (activeCategory) عند فتح اللوحة، يمكنك مسحها هنا */}
                 </div>
 
-                {/* المزايا (features) */}
+                {/* Features */}
                 <div className="mb-6">
-                  <h4 className="font-semibold mb-3">المزايا</h4>
+                  <h4 className="font-semibold mb-3">{t("features_filter")}</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {allFeatures.map((f) => {
                       const checked = selectedFeatures.has(f);
@@ -316,8 +346,7 @@ const InteriorColorsPage = ({
                     checked
                       ? "bg-blue-50 border-blue-300"
                       : "bg-white border-gray-200 hover:border-blue-300"
-                  }
-                `}
+                  }`}
                         >
                           <input
                             type="checkbox"
@@ -335,18 +364,17 @@ const InteriorColorsPage = ({
                   </div>
                 </div>
 
-                {/* أزرار الإجراء */}
+                {/* Action Buttons */}
                 <div className="flex items-center justify-between gap-3 pt-2">
                   <button
                     type="button"
                     onClick={() => {
                       setSelectedCategories(new Set());
                       setSelectedFeatures(new Set());
-                      // ملاحظة: لا نمسح البحث أو الفئة العلوية هنا حتى لا نربك المستخدم
                     }}
                     className="px-4 py-2 rounded-xl border-2 border-gray-300 text-gray-700 hover:bg-gray-50"
                   >
-                    مسح الفلاتر
+                    {t("clear_filters")}
                   </button>
 
                   <div className="flex items-center gap-2">
@@ -355,14 +383,14 @@ const InteriorColorsPage = ({
                       onClick={() => setShowFilter(false)}
                       className="px-4 py-2 rounded-xl border-2 border-gray-300 text-gray-700 hover:bg-gray-50"
                     >
-                      إلغاء
+                      {t("cancel_button")}
                     </button>
                     <button
                       type="button"
                       onClick={() => setShowFilter(false)}
                       className="px-5 py-2 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700"
                     >
-                      تطبيق
+                      {t("apply_button")}
                     </button>
                   </div>
                 </div>
@@ -390,8 +418,8 @@ const InteriorColorsPage = ({
             <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <i className="fas fa-search text-3xl text-gray-400"></i>
             </div>
-            <h3 className="mt-4 text-lg font-medium">لا توجد نتائج</h3>
-            <p className="mt-2 text-sm">حاول البحث بكلمات مختلفة</p>
+            <h3 className="mt-4 text-lg font-medium">{t("no_results")}</h3>
+            <p className="mt-2 text-sm">{t("no_results_search_message")}</p>
           </div>
         )}
       </section>
@@ -408,6 +436,8 @@ const ProductCard = ({
   isInCart,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === "rtl";
   const features = product.features || [];
 
   return (
@@ -424,9 +454,11 @@ const ProductCard = ({
           loading="lazy"
         />
 
-        {/* Favorite + Cart Buttons */}
-        <div className="absolute top-3 left-3 flex gap-2">
-          {/* ❤️ Favorite Button */}
+        <div
+          className={`absolute top-3 ${
+            isRTL ? "left-3" : "right-3"
+          } flex gap-2`}
+        >
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -441,7 +473,6 @@ const ProductCard = ({
             <i className={`fa${isFav ? "s" : "r"} fa-heart text-[16px]`}></i>
           </button>
 
-          {/* 🛒 Add to Cart Button */}
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -478,7 +509,7 @@ const ProductCard = ({
                 className={`flex items-start gap-2 transition-all duration-500 ${
                   isHovered
                     ? "translate-x-0 opacity-100"
-                    : "translate-x-4 opacity-70"
+                    : `${isRTL ? "translate-x-4" : "-translate-x-4"} opacity-70`
                 }`}
               >
                 <svg
@@ -505,7 +536,7 @@ const ProductCard = ({
               : "bg-gradient-to-br from-blue-500 to-blue-700 text-white hover:from-blue-600 hover:to-blue-800"
           }`}
         >
-          عرض المنتج
+          {t("view_product")}
         </button>
       </div>
     </article>

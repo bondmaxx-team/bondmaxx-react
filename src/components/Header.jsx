@@ -12,6 +12,7 @@ const languages = [
 ];
 
 function CartItem({ item, index, onRemove, setQty }) {
+  const { t } = useTranslation();
   const fallbackImage = "https://via.placeholder.com/48x48.png?text=No+Image";
 
   const handleIncrease = () => {
@@ -25,13 +26,10 @@ function CartItem({ item, index, onRemove, setQty }) {
   };
 
   return (
-    <div
-      className="flex items-center justify-between gap-3 p-2 border rounded bg-white"
-      dir="rtl"
-    >
+    <div className="flex items-center justify-between gap-3 p-2 border rounded bg-white">
       <div className="flex items-center gap-3">
         <img
-          alt={item.name || "منتج"}
+          alt={item.name || t("product")}
           src={item.image ? item.image : fallbackImage}
           onError={(e) => {
             e.target.src = fallbackImage;
@@ -40,14 +38,13 @@ function CartItem({ item, index, onRemove, setQty }) {
         />
 
         <div>
-          <div className="font-medium">{item.name || "منتج"}</div>
+          <div className="font-medium">{item.name || t("product")}</div>
 
           {item.price && (
             <div className="text-sm text-gray-500">{item.price} ₺</div>
           )}
 
           <div className="flex items-center gap-2 mt-1">
-            {/* Decrease button */}
             <button
               onClick={handleDecrease}
               disabled={item.qty === 1}
@@ -57,21 +54,19 @@ function CartItem({ item, index, onRemove, setQty }) {
                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                     : "bg-gray-200 hover:bg-gray-300 text-gray-700"
                 }`}
-              title="إنقاص الكمية"
+              title={t("decrease_qty")}
             >
               <i className="fas fa-minus"></i>
             </button>
 
-            {/* Quantity display */}
             <span className="text-sm text-gray-800 font-medium">
               {item.qty}
             </span>
 
-            {/* Increase button */}
             <button
               onClick={handleIncrease}
               className="w-6 h-6 flex items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs"
-              title="زيادة الكمية"
+              title={t("increase_qty")}
             >
               <i className="fas fa-plus"></i>
             </button>
@@ -80,7 +75,7 @@ function CartItem({ item, index, onRemove, setQty }) {
       </div>
 
       <button
-        title="حذف"
+        title={t("remove_item")}
         type="button"
         className="text-red-600 hover:text-red-700"
         onClick={() => onRemove(item.id)}
@@ -92,16 +87,14 @@ function CartItem({ item, index, onRemove, setQty }) {
 }
 
 function FavItem({ item, index, onRemove }) {
+  const { t } = useTranslation();
   const fallbackImage = "https://via.placeholder.com/48x48.png?text=No+Image";
 
   return (
-    <div
-      className="flex items-center justify-between gap-3 p-2 border rounded bg-white"
-      dir="rtl"
-    >
+    <div className="flex items-center justify-between gap-3 p-2 border rounded bg-white">
       <div className="flex items-center gap-3">
         <img
-          alt={item.name || "منتج"}
+          alt={item.name || t("product")}
           src={item.image ? item.image : fallbackImage}
           onError={(e) => {
             e.target.src = fallbackImage;
@@ -109,14 +102,14 @@ function FavItem({ item, index, onRemove }) {
           className="w-12 h-12 object-cover rounded-md border"
         />
         <div>
-          <div className="font-medium">{item.name || "منتج"}</div>
+          <div className="font-medium">{item.name || t("product")}</div>
           {item.price && (
             <div className="text-sm text-gray-500">{item.price} ₺</div>
           )}
         </div>
       </div>
       <button
-        title="remove"
+        title={t("remove_item")}
         type="button"
         className="text-red-600 hover:text-red-700"
         onClick={() => onRemove(item)}
@@ -129,6 +122,7 @@ function FavItem({ item, index, onRemove }) {
 
 export default function Header() {
   const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === "ar";
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -200,14 +194,14 @@ export default function Header() {
   };
 
   const menuItems = [
-    { href: "/", label: "الرئيسية", icon: "fas fa-home" },
-    { href: "/interior-colors", label: "الداخلية" },
-    { href: "/exterior-colors", label: "الخارجية" },
-    { href: "insulation", label: "العزل" },
-    { href: "/color-collection", label: "مجموعة الألوان" },
-    { href: "/painting-services", label: "أحجز خدمات الدهان" },
-    { href: "/search-dealer", label: "البحث عن تاجر" },
-    { href: "/about", label: "معلومات عنا" },
+    { href: "/", label: t("home"), icon: "fas fa-home" },
+    { href: "/interior-colors", label: t("interior_paints") },
+    { href: "/exterior-colors", label: t("exterior_paints") },
+    { href: "insulation", label: t("insulation") },
+    { href: "/color-collection", label: t("color_collection") },
+    { href: "/painting-services", label: t("painting_services") },
+    { href: "/search-dealer", label: t("search_dealer") },
+    { href: "/about", label: t("about") },
   ];
 
   return (
@@ -226,7 +220,7 @@ export default function Header() {
                 onClick={toggleCart}
               >
                 <i className="fas fa-shopping-cart text-base"></i>
-                <span className="hidden sm:inline">السلة</span>
+                <span className="hidden sm:inline">{t("cart_title")}</span>
 
                 {/* badge */}
                 {cartCount > 0 && (
@@ -316,7 +310,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Language Overlay - Moved outside header */}
+      {/* Language Overlay */}
       <div
         className={`fixed inset-0 z-30 bg-black/50 ${
           isLanguageMenuOpen ? "" : "hidden"
@@ -334,8 +328,14 @@ export default function Header() {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-gradient-to-br from-white to-gray-100 z-50 shadow-xl transform transition-transform ${
-          isSidebarOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 ${
+          isRTL ? "right-0" : "left-0"
+        } h-full w-80 bg-gradient-to-br from-white to-gray-100 z-50 shadow-xl transform transition-transform ${
+          isSidebarOpen
+            ? "translate-x-0"
+            : isRTL
+            ? "translate-x-full"
+            : "-translate-x-full"
         }`}
       >
         <div className="flex justify-between items-center p-6 bg-white border-b border-gray-200">
@@ -349,6 +349,7 @@ export default function Header() {
             <i className="fas fa-times"></i>
           </button>
         </div>
+
         <div className="flex flex-col py-8">
           {menuItems.map((item, index) => (
             <Link
@@ -367,25 +368,36 @@ export default function Header() {
       </div>
 
       {/* Favorites Sidebar */}
+      {/* Favorites Sidebar (dir-aware) */}
       <div
-        className={`fixed top-0 left-0 h-full w-70 sm:w-96 bg-gradient-to-br from-white to-blue-50 z-50 shadow-xl overflow-y-auto transform transition-transform duration-300 ${
-          isFavoritesOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed top-0 ${
+          isRTL ? "right-0" : "left-0"
+        } h-full w-70 sm:w-96 bg-gradient-to-br from-white to-blue-50 z-50 shadow-xl overflow-y-auto transform transition-transform duration-300 ${
+          isFavoritesOpen
+            ? "translate-x-0"
+            : isRTL
+            ? "translate-x-full" // hide off-screen to the right (RTL)
+            : "-translate-x-full" // hide off-screen to the left (LTR)
         }`}
       >
-        <div className="bg-gradient-to-r from-red-500 to-red-600 text-white p-6 border-b-2 border-red-200">
+        <div className="relative bg-gradient-to-r from-red-500 to-red-600 text-white p-6 border-b-2 border-red-200">
           <div className="flex items-center justify-center gap-3 text-xl font-semibold">
-            {/* <i className="fas fa-heart"></i> */}
-            <span>الألوان المفضلة</span>
+            <span>{t("favorites_title")}</span>
           </div>
+
+          {/* Close button aligns to the edge based on dir */}
           <button
             title="button"
             type="button"
-            className="absolute top-6 left-6 p-2 rounded-md bg-white/20 hover:bg-white/30 transition text-white"
+            className={`absolute top-6 ${
+              isRTL ? "right-6" : "left-6"
+            } p-2 rounded-md bg-white/20 hover:bg-white/30 transition text-white`}
             onClick={closeFavorites}
           >
             <i className="fas fa-times"></i>
           </button>
         </div>
+
         <div className="py-8">
           <div>
             {favorites.length === 0 ? (
@@ -405,9 +417,9 @@ export default function Header() {
                   }}
                 ></i>
                 <h3 style={{ color: "#374151", marginBottom: "8px" }}>
-                  لا توجد ألوان مفضلة
+                  {t("favorites_empty_title")}
                 </h3>
-                <p>ابدأ بإضافة الألوان التي تعجبك إلى قائمة المفضلة</p>
+                <p>{t("favorites_empty_message")}</p>
               </div>
             ) : (
               <div className="space-y-3 px-4">
@@ -435,19 +447,28 @@ export default function Header() {
 
       {/* Cart Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-70 sm:w-96 bg-gradient-to-br from-white to-blue-50 z-50 shadow-xl overflow-y-auto transform transition-transform duration-300 ${
-          isCartOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed top-0 ${
+          isRTL ? "right-0" : "left-0"
+        } h-full w-70 sm:w-96 bg-gradient-to-br from-white to-blue-50 z-50 shadow-xl overflow-y-auto transform transition-transform duration-300 ${
+          isCartOpen
+            ? "translate-x-0"
+            : isRTL
+            ? "translate-x-full" // hidden off-screen to the right (RTL)
+            : "-translate-x-full" // hidden off-screen to the left (LTR)
         }`}
       >
-        <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 border-b-2 border-blue-200">
+        <div className="relative bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 border-b-2 border-blue-200">
           <div className="flex items-center justify-center gap-3 text-xl font-semibold">
-            {/* <i className="fas fa-shopping-cart"></i> */}
-            <span>سلة المشتريات</span>
+            <span>{t("cart_page_title")}</span>
           </div>
+
+          {/* Close button aligns to edge based on dir */}
           <button
             title="button"
             type="button"
-            className="absolute top-6 left-6 p-2 rounded-md bg-white/20 hover:bg-white/30 transition text-white"
+            className={`absolute top-6 ${
+              isRTL ? "right-6" : "left-6"
+            } p-2 rounded-md bg-white/20 hover:bg-white/30 transition text-white`}
             onClick={closeCart}
           >
             <i className="fas fa-times"></i>
@@ -473,9 +494,9 @@ export default function Header() {
                   }}
                 ></i>
                 <h3 style={{ color: "#374151", marginBottom: "6px" }}>
-                  السلة فارغة
+                  {t("cart_empty_title")}
                 </h3>
-                <p>أضف المنتجات إلى السلة للمتابعة</p>
+                <p>{t("cart_empty_message")}</p>
               </div>
             ) : (
               <div className="space-y-2">
@@ -494,7 +515,7 @@ export default function Header() {
 
           <div className="border-t mt-4 p-4 bg-white">
             <div className="flex items-center justify-between text-gray-800 mb-3">
-              <span>الإجمالي:</span>
+              <span>{t("total")}</span>
               <span className="font-semibold">{cartTotal}</span>
             </div>
             <button
@@ -502,7 +523,7 @@ export default function Header() {
               type="button"
               onClick={submitCartToWhatsApp}
             >
-              إتمام الشراء
+              {t("checkout_button")}
             </button>
           </div>
         </div>

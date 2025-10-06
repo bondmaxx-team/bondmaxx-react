@@ -25,6 +25,7 @@ import ColorCollection from "./pages/ColorCollection";
 import PaintingServices from "./pages/PaintingServices";
 import ExteriorColorsPage from "./pages/ExteriorColors";
 import InsulationPage from "./pages/Insulation";
+import { useTranslation } from "react-i18next";
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -58,6 +59,18 @@ function LayoutWithoutHeader() {
 }
 
 function App() {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    // Apply direction based on language
+    if (i18n.language === "ar") {
+      document.documentElement.dir = "rtl";
+      document.documentElement.lang = "ar";
+    } else {
+      document.documentElement.dir = "ltr";
+      document.documentElement.lang = i18n.language;
+    }
+  }, [i18n.language]);
   return (
     <ErrorBoundary
       FallbackComponent={Fallback}
