@@ -187,6 +187,26 @@ export default function Footer() {
           className="w-full h-full transform transition-transform duration-300 hover:scale-110"
         />
       </a>
+
+      <div className="text-center py-6">
+        <Link to="/Imprint" className="mx-2 text-gray-600 hover:text-gray-900">
+          Imprint
+        </Link>
+        |
+        <Link
+          to="/PrivacyPolicy"
+          className="mx-2 text-gray-600 hover:text-gray-900"
+        >
+          Privacy Policy
+        </Link>
+        |
+        <Link
+          to="/DataProtection"
+          className="mx-2 text-gray-600 hover:text-gray-900"
+        >
+          Data Protection
+        </Link>
+      </div>
     </footer>
   );
 }

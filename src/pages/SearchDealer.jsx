@@ -46,9 +46,14 @@ const SearchDealerPage = ({
     setShowResults(false);
 
     setTimeout(() => {
-      const results = initialDealers.filter((dealer) =>
-        dealer.city.toLowerCase().includes(searchQuery.trim().toLowerCase())
-      );
+      const query = searchQuery.trim().toLowerCase();
+      const results = initialDealers.filter((dealer) => {
+        return (
+          dealer.city.toLowerCase().includes(query) ||
+          dealer.address.toLowerCase().includes(query) ||
+          dealer.name.toLowerCase().includes(query)
+        );
+      });
       setFilteredDealers(results);
       setIsLoading(false);
       setShowResults(true);
@@ -204,6 +209,7 @@ const SearchDealerPage = ({
                         >
                           {t("call_now")}
                         </a>
+
                         <a
                           href={dealer.mapLink}
                           target="_blank"

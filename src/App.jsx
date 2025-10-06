@@ -26,6 +26,9 @@ import PaintingServices from "./pages/PaintingServices";
 import ExteriorColorsPage from "./pages/ExteriorColors";
 import InsulationPage from "./pages/Insulation";
 import { useTranslation } from "react-i18next";
+import ImprintPage from "./pages/Imprint";
+import PrivacyPolicyPage from "./pages/PrivacyPolicy";
+import DataProtectionPage from "./pages/DataProtection";
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -92,6 +95,9 @@ function App() {
               <Route path="/color-collection" element={<ColorCollection />} />
               <Route path="/product-details" element={<ProductDetails />} />
               <Route path="/painting-services" element={<PaintingServices />} />
+              <Route path="/imprint" element={<ImprintPage />} />
+              <Route path="/PrivacyPolicy" element={<PrivacyPolicyPage />} />
+              <Route path="/DataProtection" element={<DataProtectionPage />} />
             </Route>
 
             {/* Routes WITHOUT Header */}
