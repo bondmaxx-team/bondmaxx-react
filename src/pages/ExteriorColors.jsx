@@ -8,8 +8,8 @@ const ExteriorColorsPage = () => {
     <ColorsPage
       productsData={exteriorProducts}
       categoriesData={exteriorCategories}
-      titleKey="exterior_products"
-      descriptionKey="exterior_description"
+      title={t("exterior_products")}
+      subtitle={t("exterior_description")}
     />
   );
 };

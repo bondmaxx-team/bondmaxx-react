@@ -15,8 +15,6 @@ import ProductCard from "./ProductCard";
 const ColorsPage = ({
   productsData = [],
   categoriesData = [],
-  titleKey,
-  descriptionKey,
   title,
   subtitle,
 }) => {
@@ -82,25 +80,37 @@ const ColorsPage = ({
       if (!matchSearch) return false;
 
       // active category from categories strip
-      const matchActiveCategory = !activeCategory ? true : p.category === activeCategory;
+      const matchActiveCategory = !activeCategory
+        ? true
+        : p.category === activeCategory;
       if (!matchActiveCategory) return false;
 
       // selected categories from drawer
       const matchSelectedCategories =
-        selectedCategories.size === 0 ? true : selectedCategories.has(p.category);
+        selectedCategories.size === 0
+          ? true
+          : selectedCategories.has(p.category);
       if (!matchSelectedCategories) return false;
 
       // features from drawer
       const matchSelectedFeatures =
         selectedFeatures.size === 0
           ? true
-          : Array.from(selectedFeatures).every((f) => (p.features || []).includes(f));
+          : Array.from(selectedFeatures).every((f) =>
+              (p.features || []).includes(f)
+            );
 
       return matchSelectedFeatures;
     });
 
     setFilteredProducts(next);
-  }, [productsData, searchQuery, activeCategory, selectedCategories, selectedFeatures]);
+  }, [
+    productsData,
+    searchQuery,
+    activeCategory,
+    selectedCategories,
+    selectedFeatures,
+  ]);
 
   // Re-apply filter whenever dependencies change
   useEffect(() => {
@@ -133,15 +143,16 @@ const ColorsPage = ({
   };
 
   return (
-    <div className="bg-gradient-to-b from-blue-50 to-blue-100 min-h-screen" dir={isRTL ? "rtl" : "ltr"}>
+    <div
+      className="bg-gradient-to-b from-blue-50 to-blue-100 min-h-screen"
+      dir={isRTL ? "rtl" : "ltr"}
+    >
       {/* Hero Section */}
       <section className="min-h-[50vh] flex flex-col items-center justify-center py-16 px-4 text-center">
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 text-gray-900">
-          {title || (titleKey ? t(titleKey) : "")}
+          {title}
         </h1>
-        <p className="text-gray-600 max-w-3xl mb-6 text-base">
-          {subtitle || (descriptionKey ? t(descriptionKey) : "")}
-        </p>
+        <p className="text-gray-600 max-w-3xl mb-6 text-base">{subtitle}</p>
 
         {/* Search */}
         <div className="max-w-3xl w-full">
@@ -201,7 +212,11 @@ const ColorsPage = ({
               }`}
             >
               <div className="h-28 w-28 mx-auto rounded-full overflow-hidden">
-                <img src={cat.image} alt={cat.name} className="h-full w-full object-cover" />
+                <img
+                  src={cat.image}
+                  alt={cat.name}
+                  className="h-full w-full object-cover"
+                />
               </div>
               <div className="mt-2 font-semibold text-gray-800">{cat.name}</div>
             </button>
@@ -213,8 +228,10 @@ const ColorsPage = ({
       <section className="px-4 lg:px-10 py-8 md:py-10">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
           <div className="text-sm text-gray-600">
-            <span className="font-semibold">{filteredProducts.length}</span> {t("products_count_of")} {" "}
-            <span className="font-semibold">{productsData.length}</span> {t("products_count_product")}
+            <span className="font-semibold">{filteredProducts.length}</span>{" "}
+            {t("products_count_of")}{" "}
+            <span className="font-semibold">{productsData.length}</span>{" "}
+            {t("products_count_product")}
           </div>
 
           {/* Filter Button */}
@@ -224,22 +241,35 @@ const ColorsPage = ({
           >
             <i className="fas fa-sliders-h text-lg"></i>
             <span>{t("filter_button")}</span>
-            <span className="bg-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">{activeFiltersCount}</span>
+            <span className="bg-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+              {activeFiltersCount}
+            </span>
           </button>
 
           {/* Filter Drawer */}
           {showFilter && (
             <div className="fixed inset-0 z-50">
-              <div className="absolute inset-0 bg-black/40" onClick={() => setShowFilter(false)} />
+              <div
+                className="absolute inset-0 bg-black/40"
+                onClick={() => setShowFilter(false)}
+              />
 
               <div
-                className={`absolute ${isRTL ? "right-0" : "left-0"} top-0 h-full w-full max-w-md bg-white shadow-2xl ${
+                className={`absolute ${
+                  isRTL ? "right-0" : "left-0"
+                } top-0 h-full w-full max-w-md bg-white shadow-2xl ${
                   isRTL ? "rounded-s-2xl" : "rounded-e-2xl"
                 } p-6 overflow-y-auto`}
               >
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-gray-900">{t("filter_products")}</h3>
-                  <button onClick={() => setShowFilter(false)} className="text-gray-500 hover:text-gray-700" aria-label="Close">
+                  <h3 className="text-xl font-bold text-gray-900">
+                    {t("filter_products")}
+                  </h3>
+                  <button
+                    onClick={() => setShowFilter(false)}
+                    className="text-gray-500 hover:text-gray-700"
+                    aria-label="Close"
+                  >
                     ✕
                   </button>
                 </div>
@@ -256,7 +286,9 @@ const ColorsPage = ({
                           type="button"
                           onClick={() => {
                             const next = new Set(selectedCategories);
-                            checked ? next.delete(cat.name) : next.add(cat.name);
+                            checked
+                              ? next.delete(cat.name)
+                              : next.add(cat.name);
                             setSelectedCategories(next);
                           }}
                           className={`px-3 py-1.5 rounded-full border text-sm transition ${
@@ -282,7 +314,9 @@ const ColorsPage = ({
                         <label
                           key={f}
                           className={`flex items-center gap-2 p-2 rounded-lg border cursor-pointer transition ${
-                            checked ? "bg-blue-50 border-blue-300" : "bg-white border-gray-200 hover:border-blue-300"
+                            checked
+                              ? "bg-blue-50 border-blue-300"
+                              : "bg-white border-gray-200 hover:border-blue-300"
                           }`}
                         >
                           <input
@@ -340,7 +374,11 @@ const ColorsPage = ({
 
         <div className="grid gap-5 sm:gap-6 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} onClick={() => handleProductClick(product)} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              onClick={() => handleProductClick(product)}
+            />
           ))}
         </div>
 

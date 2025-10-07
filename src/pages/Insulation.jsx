@@ -8,8 +8,8 @@ const InsulationPage = () => {
     <ColorsPage
       productsData={insulationProducts}
       categoriesData={insulationCategories}
-      titleKey="insulation_products"
-      descriptionKey="insulation_description"
+      title={t("insulation_products")}
+      subtitle={t("insulation_description")}
     />
   );
 };
