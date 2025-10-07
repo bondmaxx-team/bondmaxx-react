@@ -52,15 +52,6 @@ function LayoutWithHeader() {
   );
 }
 
-function LayoutWithoutHeader() {
-  return (
-    <>
-      <Outlet />
-      <Footer />
-    </>
-  );
-}
-
 function App() {
   const { i18n } = useTranslation();
 
@@ -99,9 +90,6 @@ function App() {
               <Route path="/PrivacyPolicy" element={<PrivacyPolicyPage />} />
               <Route path="/DataProtection" element={<DataProtectionPage />} />
             </Route>
-
-            {/* Routes WITHOUT Header */}
-            <Route element={<LayoutWithoutHeader />}></Route>
 
             {/* Fallback */}
             <Route path="*" element={<NotFound />} />
