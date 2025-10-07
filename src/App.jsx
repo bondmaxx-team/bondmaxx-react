@@ -29,6 +29,7 @@ import { useTranslation } from "react-i18next";
 import ImprintPage from "./pages/Imprint";
 import PrivacyPolicyPage from "./pages/PrivacyPolicy";
 import DataProtectionPage from "./pages/DataProtection";
+import { Toaster } from "sonner";
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -71,6 +72,7 @@ function App() {
       onReset={() => window.location.reload()}
     >
       <ShopProvider>
+        <Toaster richColors position="top-right" />
         <Router>
           <ScrollToTop />
           <Routes>

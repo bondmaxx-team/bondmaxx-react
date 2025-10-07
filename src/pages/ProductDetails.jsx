@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useShop } from "../context/ShopContext";
 import { useTranslation } from "react-i18next";
+import { toast } from "sonner";
+import useWhatsApp from "@/hooks/useWhatsApp";
 
 const ProductDetails = () => {
   const { toggleFavorite, isFavorite, addToCart } = useShop();
   const { t, i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
+  const { sendMessage } = useWhatsApp();
 
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -77,16 +80,17 @@ const ProductDetails = () => {
     console.error("Error parsing features:", error);
   }
 
-  const whatsappNumber = "905550004000";
+  // WhatsApp number comes from configuration via the hook; no local constant needed.
 
   const openWhatsApp = (e) => {
     e.preventDefault();
     try {
-      const message = encodeURIComponent(`${t("whatsapp_message")} ${name}`);
-      window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+      const message = `${t("whatsapp_message")} ${name}`;
+      const ok = sendMessage(message);
+      if (!ok) toast.error(t("whatsapp_error"));
     } catch (error) {
       console.error("Error opening WhatsApp:", error);
-      alert(t("whatsapp_error"));
+      toast.error(t("whatsapp_error"));
     }
   };
 

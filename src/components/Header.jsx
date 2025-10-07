@@ -3,180 +3,27 @@ import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { useShop } from "../context/ShopContext";
 import { useTranslation } from "react-i18next";
-
-const languages = [
-  { code: "ar", name: "العربية", flag: "https://flagcdn.com/w20/sa.png" },
-  { code: "tr", name: "Türkçe", flag: "https://flagcdn.com/w20/tr.png" },
-  { code: "en", name: "English", flag: "https://flagcdn.com/w20/us.png" },
-  { code: "de", name: "Deutsch", flag: "https://flagcdn.com/w20/de.png" },
-];
-
-// utils/whatsapp.ts
-const toAbsoluteUrl = (url) => {
-  if (!url) return "";
-  if (/^https?:\/\//i.test(url)) return url;
-  const base = window.location.origin.replace(/\/+$/, "");
-  const path = url.startsWith("/") ? url : `/${url}`;
-  return `${base}${path}`;
-};
-
-const isMobile = () =>
-  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  );
-
-function CartItem({ item, index, onRemove, setQty }) {
-  const { t } = useTranslation();
-  const fallbackImage = null;
-
-  const handleIncrease = () => {
-    setQty(item.id, item.qty + 1);
-  };
-
-  const handleDecrease = () => {
-    if (item.qty > 1) {
-      setQty(item.id, item.qty - 1);
-    }
-  };
-
-  return (
-    <div className="flex items-center justify-between gap-3 p-2 border rounded bg-white">
-      <div className="flex items-center gap-3">
-        <img
-          alt={item.name || t("product")}
-          src={item.image ? item.image : fallbackImage}
-          onError={(e) => {
-            e.target.src = fallbackImage;
-          }}
-          className="w-12 h-12 object-cover rounded-md border"
-        />
-
-        <div>
-          <div className="font-medium">{item.name || t("product")}</div>
-
-          {item.price && (
-            <div className="text-sm text-gray-500">{item.price} ₺</div>
-          )}
-
-          <div className="flex items-center gap-2 mt-1">
-            <button
-              onClick={handleDecrease}
-              disabled={item.qty === 1}
-              className={`w-6 h-6 flex items-center justify-center rounded-full text-xs transition 
-                ${
-                  item.qty === 1
-                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                    : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-                }`}
-              title={t("decrease_qty")}
-            >
-              <i className="fas fa-minus"></i>
-            </button>
-
-            <span className="text-sm text-gray-800 font-medium">
-              {item.qty}
-            </span>
-
-            <button
-              onClick={handleIncrease}
-              className="w-6 h-6 flex items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs"
-              title={t("increase_qty")}
-            >
-              <i className="fas fa-plus"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <button
-        title={t("remove_item")}
-        type="button"
-        className="text-red-600 hover:text-red-700"
-        onClick={() => onRemove(item.id)}
-      >
-        <i className="fas fa-trash-alt"></i>
-      </button>
-    </div>
-  );
-}
-
-function FavItem({ item, index, onRemove }) {
-  const { t } = useTranslation();
-  const fallbackImage = null;
-
-  return (
-    <div className="flex items-center justify-between gap-3 p-2 border rounded bg-white">
-      <div className="flex items-center gap-3">
-        {/* ✅ If item is color type, show color box; otherwise image */}
-        {item.type === "color" ? (
-          <div
-            className="w-12 h-12 rounded-md border shadow-inner"
-            style={{
-              backgroundColor: item.hex || "#ffffff",
-            }}
-            title={item.name}
-          />
-        ) : (
-          <img
-            alt={item.name || t("product")}
-            src={item.image ? item.image : fallbackImage}
-            onError={(e) => {
-              e.target.src = fallbackImage;
-            }}
-            className="w-12 h-12 object-cover rounded-md border"
-          />
-        )}
-
-        <div>
-          <div className="font-medium">{item.name || t("product")}</div>
-
-          {item.price && (
-            <div className="text-sm text-gray-500">{item.price} ₺</div>
-          )}
-        </div>
-      </div>
-
-      <button
-        title={t("remove_item")}
-        type="button"
-        className="text-red-600 hover:text-red-700"
-        onClick={() => onRemove(item)}
-      >
-        <i className="fas fa-trash-alt"></i>
-      </button>
-    </div>
-  );
-}
+import useWhatsApp from "@/hooks/useWhatsApp";
+import useLanguageSelect from "@/hooks/useLanguageSelect";
+import CartItem from "./CartItem";
+import FavItem from "./FavItem";
+import { toast } from "sonner";
 
 export default function Header() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === "ar";
 
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const { languages, currentLanguage, isOpen: isLanguageMenuOpen, toggle: toggleLanguageMenu, close: closeLanguageMenu, selectLanguage } = useLanguageSelect();
+  const { sendMessage } = useWhatsApp();
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState({
-    code: "ar",
-    name: "العربية",
-    flag: "https://flagcdn.com/w20/sa.png",
-  });
   const {
     cart,
-    setQty,
-    removeFromCart,
     clearCart,
-    cartCount,
     cartTotal,
     favorites,
-    toggleFavorite,
-    addToCart,
-    inCart,
-    isFavorite,
   } = useShop();
 
   const toggleSidebar = () => {
@@ -185,12 +32,17 @@ export default function Header() {
 
   const closeSidebar = () => {
     setIsSidebarOpen(false);
-    setIsLanguageMenuOpen(false);
+    closeLanguageMenu();
   };
 
   const toggleCart = () => {
+    // If opening the cart and it's empty, notify the user instead
+    if (!isCartOpen && (!cart || cart.length === 0)) {
+      toast.info(t("cart_empty_message"));
+      return;
+    }
     setIsCartOpen(!isCartOpen);
-    setIsLanguageMenuOpen(false);
+    closeLanguageMenu();
   };
 
   const closeCart = () => {
@@ -199,66 +51,44 @@ export default function Header() {
 
   const toggleFavorites = () => {
     setIsFavoritesOpen(!isFavoritesOpen);
-    setIsLanguageMenuOpen(false);
+    closeLanguageMenu();
   };
 
   const closeFavorites = () => {
     setIsFavoritesOpen(false);
-    setIsLanguageMenuOpen(false);
+    closeLanguageMenu();
   };
 
-  const toggleLanguageMenu = () => {
-    setIsLanguageMenuOpen(!isLanguageMenuOpen);
-  };
 
-  const selectLanguage = (code, name, flag) => {
-    setCurrentLanguage({ code, name, flag });
-    changeLanguage(code);
-    setIsLanguageMenuOpen(false);
-  };
 
   const submitCartToWhatsApp = () => {
-    if (!cart?.length) return;
+    if (!cart?.length) {
+      toast.warning(t("cart_empty_message"));
+      return;
+    }
 
     const lines = [];
     lines.push("*مرحباً، أود الاستفسار عن المنتجات التالية:*");
-    lines.push(""); // Empty line for spacing
+    lines.push("");
 
     for (const item of cart) {
-      const img = item.image ? toAbsoluteUrl(item.image) : "";
       lines.push(
         `• *${item.name}* (ID: ${item.id})` +
           `\n  الكمية: ${item.qty ?? 1}` +
-          (item.color ? `\n  اللون: ${item.color}` : "") +
-          (img ? `\n  الصورة: ${img}` : "")
+          (item.color ? `\n  اللون: ${item.color}` : "")
       );
-      lines.push(""); // Empty line between items
+      lines.push("");
     }
 
     lines.push("━━━━━━━━━━━━━━━━━━");
     lines.push(`أُرسلت من موقعكم: ${window.location.origin}`);
 
     const message = lines.join("\n");
-    const encoded = encodeURIComponent(message);
-
-    const phone = "+905550004000";
-
-    const webUrl = phone
-      ? `https://wa.me/${phone}?text=${encoded}`
-      : `https://wa.me/?text=${encoded}`;
-
-    const mobileUrl = phone
-      ? `whatsapp://send?phone=${phone}&text=${encoded}`
-      : `whatsapp://send?text=${encoded}`;
-
-    if (isMobile()) {
-      window.location.href = mobileUrl;
-    } else {
-      window.open(webUrl, "_blank", "noopener,noreferrer");
+    const ok = sendMessage(message);
+    if (ok) {
+      closeCart();
+      clearCart();
     }
-
-    closeCart();
-    clearCart();
   };
 
   const menuItems = [
@@ -311,9 +141,9 @@ export default function Header() {
                 <span className="hidden sm:inline">{t("cart_title")}</span>
 
                 {/* badge */}
-                {cartCount > 0 && (
+                {cart.length > 0 && (
                   <span className="absolute -top-1 -right-1 text-xs min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-blue-500 text-white font-medium">
-                    {cartCount}
+                    {cart.length}
                   </span>
                 )}
               </button>
@@ -516,8 +346,6 @@ export default function Header() {
                   <FavItem
                     key={idx}
                     item={item}
-                    index={idx}
-                    onRemove={toggleFavorite}
                   />
                 ))}
               </div>
@@ -593,9 +421,6 @@ export default function Header() {
                   <CartItem
                     key={idx}
                     item={item}
-                    index={idx}
-                    onRemove={removeFromCart}
-                    setQty={setQty}
                   />
                 ))}
               </div>

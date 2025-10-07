@@ -1,20 +1,27 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import HttpBackend from "i18next-http-backend";
+
+// Import embedded translation resources for static builds
+import ar from "./locales/ar/translation.json";
+import en from "./locales/en/translation.json";
+import tr from "./locales/tr/translation.json";
+import de from "./locales/de/translation.json";
 
 await i18n
-  .use(HttpBackend)
   .use(initReactI18next)
   .init({
-    lng: "ar", // اللغة الافتراضية دائماً
+    lng: "ar", // default language
     fallbackLng: "ar",
     supportedLngs: ["en", "ar", "tr", "de"],
-    debug: true,
+    debug: false,
+    resources: {
+      ar: { translation: ar },
+      en: { translation: en },
+      tr: { translation: tr },
+      de: { translation: de },
+    },
     interpolation: {
       escapeValue: false,
-    },
-    backend: {
-      loadPath: "/locales/{{lng}}/{{ns}}.json",
     },
     react: {
       useSuspense: false,

@@ -369,5 +369,25 @@
   "privacy_policy_text": "Wir schätzen Ihre Privatsphäre. BondMaxx sammelt personenbezogene Daten nur zur Erbringung unserer Dienstleistungen. Ihre Daten werden ohne Ihre Zustimmung nicht an Dritte weitergegeben. Wir verwenden Cookies, um Ihr Surferlebnis zu verbessern.",
   "data_protection_title": "Datenschutz",
   "data_protection_text": "BondMaxx hält alle geltenden Datenschutzgesetze ein, einschließlich der DSGVO. Sie haben das Recht, jederzeit auf Ihre personenbezogenen Daten zuzugreifen, sie zu korrigieren oder zu löschen.",
-  "contact_us": "Kontaktieren Sie uns"
+  "contact_us": "Kontaktieren Sie uns",
+
+  "light_blue_interior": "Hellblau (Innenbereich)",
+  "medium_blue_interior": "Mittelblau (Innenbereich)",
+  "dark_blue_interior": "Dunkelblau (Innenbereich)",
+  "deep_blue_interior": "Tiefblau (Innenbereich)",
+
+  "light_green_exterior": "Hellgrün (Außenbereich)",
+  "medium_green_exterior": "Mittelgrün (Außenbereich)",
+  "dark_green_exterior": "Dunkelgrün (Außenbereich)",
+  "deep_green_exterior": "Tiefgrün (Außenbereich)",
+
+  "thermal_insulation_gold": "Wärmedämmung (Gold)",
+  "water_insulation_yellow": "Wasserabdichtung (Gelb)",
+  "sound_insulation_orange": "Schalldämmung (Orange)",
+  "multi_purpose_insulation": "Mehrzweckdämmung",
+
+  "light_purple_collection": "Hellviolett (Kollektion)",
+  "medium_purple_collection": "Mittelviolett (Kollektion)",
+  "dark_purple_collection": "Dunkelviolett (Kollektion)",
+  "deep_purple_collection": "Tiefviolett (Kollektion)"
 }

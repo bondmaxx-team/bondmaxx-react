@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { toast } from "sonner";
+import useWhatsApp from "@/hooks/useWhatsApp";
 
 export default function PaintingServices() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
+  const { sendForm } = useWhatsApp();
 
   const [formData, setFormData] = useState({
     location: t("syria"),
@@ -28,32 +31,48 @@ export default function PaintingServices() {
     e.preventDefault();
 
     if (!formData.city || formData.city === t("choose")) {
-      alert(t("alert_choose_city"));
+      toast.error(t("alert_choose_city"));
       return;
     }
     if (!formData.fullName) {
-      alert(t("alert_enter_name"));
+      toast.error(t("alert_enter_name"));
       return;
     }
     if (!formData.email) {
-      alert(t("alert_enter_email"));
+      toast.error(t("alert_enter_email"));
       return;
     }
     if (!formData.phone) {
-      alert(t("alert_enter_phone"));
+      toast.error(t("alert_enter_phone"));
       return;
     }
     if (!formData.paintType || formData.paintType === t("choose")) {
-      alert(t("alert_choose_paint_type"));
+      toast.error(t("alert_choose_paint_type"));
       return;
     }
     if (!formData.serviceType || formData.serviceType === t("choose")) {
-      alert(t("alert_choose_service_type"));
+      toast.error(t("alert_choose_service_type"));
       return;
     }
 
     console.log("Form submitted:", formData);
-    alert(t("success_message"));
+    const sent = sendForm(formData, {
+      title: "Painting Services Request",
+      labels: {
+        location: t("location") || "Location",
+        city: t("city") || "City",
+        fullName: t("full_name") || "Full Name",
+        email: "Email",
+        phoneCode: t("phone_code") || "Code",
+        phone: t("phone") || "Phone",
+        paintType: t("paint_type") || "Paint Type",
+        serviceType: t("service_type") || "Service Type",
+      },
+      order: ["location", "city", "fullName", "email", "phoneCode", "phone", "paintType", "serviceType"],
+    });
+    if (sent) {
+      toast.success(t("success_message"));
+    }
   };
 
   return (

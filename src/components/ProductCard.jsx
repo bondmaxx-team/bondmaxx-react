@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useShop } from "../context/ShopContext";
 
 const ProductCard = ({ product, onClick }) => {
-  const { toggleFavorite, addToCart, isFavorite, isInCart } = useShop();
+  const { toggleFavorite, addToCart, isFavorite, inCart } = useShop();
   const [isHovered, setIsHovered] = useState(false);
   const { t, i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
@@ -13,7 +13,7 @@ const ProductCard = ({ product, onClick }) => {
   const isFav = isFavorite(product.id);
 
   // تحديد إذا المنتج في السلة
-  const isProductInCart = isInCart(product.id);
+  const isProductInCart = inCart(product.id);
 
   return (
     <article

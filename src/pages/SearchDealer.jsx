@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { toast } from "sonner";
 
 const SearchDealerPage = ({
   title,
@@ -91,7 +92,7 @@ const SearchDealerPage = ({
 
   const handleLocationClick = () => {
     if (!navigator.geolocation) {
-      alert(t("location_not_supported"));
+      toast.error(t("location_not_supported"));
       return;
     }
 
@@ -111,7 +112,7 @@ const SearchDealerPage = ({
         }, 1500);
       },
       () => {
-        alert(t("location_error"));
+        toast.error(t("location_error"));
         setIsLoading(false);
       }
     );

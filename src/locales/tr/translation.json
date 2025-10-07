@@ -364,5 +364,25 @@
   "privacy_policy_text": "Gizliliğinize değer veriyoruz. BondMaxx, yalnızca hizmetlerimizi sağlamak için kişisel bilgi toplar. Verileriniz onayınız olmadan üçüncü taraflarla paylaşılmayacaktır. Tarama deneyiminizi geliştirmek için çerezler kullanıyoruz.",
   "data_protection_title": "Veri Koruma",
   "data_protection_text": "BondMaxx, GDPR dahil tüm geçerli veri koruma yasalarına uymaktadır. Kişisel verilerinize her zaman erişme, düzeltme veya silme hakkına sahipsiniz.",
-  "contact_us": "Bize Ulaşın"
+  "contact_us": "Bize Ulaşın",
+
+  "light_blue_interior": "Açık Mavi (İç Mekan)",
+  "medium_blue_interior": "Orta Mavi (İç Mekan)",
+  "dark_blue_interior": "Koyu Mavi (İç Mekan)",
+  "deep_blue_interior": "Derin Mavi (İç Mekan)",
+
+  "light_green_exterior": "Açık Yeşil (Dış Mekan)",
+  "medium_green_exterior": "Orta Yeşil (Dış Mekan)",
+  "dark_green_exterior": "Koyu Yeşil (Dış Mekan)",
+  "deep_green_exterior": "Derin Yeşil (Dış Mekan)",
+
+  "thermal_insulation_gold": "Isı Yalıtımı (Altın)",
+  "water_insulation_yellow": "Su Yalıtımı (Sarı)",
+  "sound_insulation_orange": "Ses Yalıtımı (Turuncu)",
+  "multi_purpose_insulation": "Çok Amaçlı Yalıtım",
+
+  "light_purple_collection": "Açık Mor (Koleksiyon)",
+  "medium_purple_collection": "Orta Mor (Koleksiyon)",
+  "dark_purple_collection": "Koyu Mor (Koleksiyon)",
+  "deep_purple_collection": "Derin Mor (Koleksiyon)"
 }
