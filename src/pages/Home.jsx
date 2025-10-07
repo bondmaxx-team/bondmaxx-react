@@ -5,7 +5,7 @@ import HeroSection from "../components/HeroSection";
 import ProductSlider from "../components/ProductSlider";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import productsData from "../data/productsData";
+import productsCollections from "../data/productsCollections";
 
 export default function Home() {
   const location = useLocation();
@@ -39,7 +39,7 @@ export default function Home() {
         <div className="max-w-[1400px] mx-auto px-6">
           <section className="py-16 bg-white" id="products-section">
             <div className="max-w-7xl mx-auto px-6 space-y-16">
-              {productsData.map((product) => (
+              {productsCollections.map((product) => (
                 <ProductSlider
                   key={product.title}
                   title={product.title}

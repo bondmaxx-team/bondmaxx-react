@@ -1,6 +1,6 @@
 import i18n from "../i18n";
 
-const productsData = [
+const productsCollections = [
   {
     title: i18n.t("interior_paints"),
     color: "blue",
@@ -111,4 +111,4 @@ const productsData = [
   },
 ];
 
-export default productsData;
+export default productsCollections;

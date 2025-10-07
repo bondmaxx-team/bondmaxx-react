@@ -1,14 +1,13 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import testImage from "../assets/color-1.png";
 import roof from "../assets/2.jpeg";
 import wall from "../assets/1.jpeg";
-import { useShop } from "../context/ShopContext";
 import { useTranslation } from "react-i18next";
+import interiorProducts from "../data/interiorProducts";
+import ProductCard from "../components/MainSectionProductCard";
 
 const InteriorColorsPage = ({ title, subtitle }) => {
   const navigate = useNavigate();
-  const { toggleFavorite, addToCart, isFavorite, inCart } = useShop();
   const { t, i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
 
@@ -25,55 +24,14 @@ const InteriorColorsPage = ({ title, subtitle }) => {
     { id: 2, name: t("walls"), image: wall },
   ];
 
-  // Products with translations
-  const productsData = useMemo(
-    () => [
-      {
-        id: 1,
-        name: t("bondmax_matte_paint"),
-        category: t("paints"),
-        image: testImage,
-        description: t("beautiful_walls_everyday"),
-        features: [
-          t("luxurious_silk_touch"),
-          t("high_washability"),
-          t("precise_warm_colors"),
-        ],
-      },
-      {
-        id: 2,
-        name: t("bondmax_matte_paint"),
-        category: t("paints"),
-        image: testImage,
-        description: t("beautiful_walls_everyday"),
-        features: [
-          t("luxurious_silk_touch"),
-          t("high_washability"),
-          t("precise_warm_colors"),
-        ],
-      },
-      {
-        id: 3,
-        name: t("bondmax_matte_paint"),
-        category: t("paints"),
-        image: testImage,
-        description: t("beautiful_walls_everyday"),
-        features: [
-          t("luxurious_silk_touch"),
-          t("high_washability"),
-          t("precise_warm_colors"),
-        ],
-      },
-    ],
-    [t]
-  );
-
   // جمع كل المزايا المتاحة
   const allFeatures = useMemo(() => {
     const s = new Set();
-    productsData.forEach((p) => (p.features || []).forEach((f) => s.add(f)));
+    interiorProducts.forEach((p) =>
+      (p.features || []).forEach((f) => s.add(f))
+    );
     return Array.from(s);
-  }, [productsData]);
+  }, [interiorProducts]);
 
   // عدّاد الفلاتر المفعّلة
   const activeFiltersCount = useMemo(() => {
@@ -104,10 +62,10 @@ const InteriorColorsPage = ({ title, subtitle }) => {
     setSearchQuery(value);
 
     if (!value.trim()) {
-      setFilteredProducts(productsData);
+      setFilteredProducts(interiorProducts);
     } else {
       const query = value.toLowerCase();
-      const filtered = productsData.filter(
+      const filtered = interiorProducts.filter(
         (p) =>
           p.name.toLowerCase().includes(query) ||
           p.category.toLowerCase().includes(query) ||
@@ -126,10 +84,10 @@ const InteriorColorsPage = ({ title, subtitle }) => {
   const handleCategoryClick = (cat) => {
     if (activeCategory === cat.name) {
       setActiveCategory(null);
-      setFilteredProducts(productsData);
+      setFilteredProducts(interiorProducts);
     } else {
       setActiveCategory(cat.name);
-      const filtered = productsData.filter((p) => p.category === cat.name);
+      const filtered = interiorProducts.filter((p) => p.category === cat.name);
       setFilteredProducts(filtered);
     }
   };
@@ -137,7 +95,7 @@ const InteriorColorsPage = ({ title, subtitle }) => {
   useEffect(() => {
     const q = searchQuery.toLowerCase().trim();
 
-    const next = productsData.filter((p) => {
+    const next = interiorProducts.filter((p) => {
       const matchSearch = !q
         ? true
         : p.name?.toLowerCase().includes(q) ||
@@ -173,7 +131,7 @@ const InteriorColorsPage = ({ title, subtitle }) => {
     activeCategory,
     selectedCategories,
     selectedFeatures,
-    productsData,
+    interiorProducts,
   ]);
 
   return (
@@ -271,7 +229,7 @@ const InteriorColorsPage = ({ title, subtitle }) => {
           <div className="text-sm text-gray-600">
             <span className="font-semibold">{filteredProducts.length}</span>{" "}
             {t("products_count_of")}{" "}
-            <span className="font-semibold">{productsData.length}</span>{" "}
+            <span className="font-semibold">{interiorProducts.length}</span>{" "}
             {t("products_count_product")}
           </div>
 
@@ -415,15 +373,7 @@ const InteriorColorsPage = ({ title, subtitle }) => {
 
         <div className="grid gap-5 sm:gap-6 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {filteredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onClick={() => handleProductClick(product)}
-              toggleFavorite={() => toggleFavorite(product)}
-              addToCart={() => addToCart(product)}
-              isFav={isFavorite(product.id)}
-              isInCart={inCart(product.id)}
-            />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
 
@@ -438,122 +388,6 @@ const InteriorColorsPage = ({ title, subtitle }) => {
         )}
       </section>
     </div>
-  );
-};
-
-const ProductCard = ({
-  product,
-  onClick,
-  toggleFavorite,
-  addToCart,
-  isFav,
-  isInCart,
-}) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.dir() === "rtl";
-  const features = product.features || [];
-
-  return (
-    <article
-      className="group relative bg-white rounded-2xl overflow-hidden ring-1 ring-blue-300 shadow-md hover:shadow-2xl hover:ring-2 hover:ring-blue-500 transition-all duration-500 cursor-pointer max-w-sm mx-auto w-full transform hover:-translate-y-2"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100">
-        <img
-          src={product.image || testImage}
-          alt={product.name}
-          className="absolute inset-0 h-full w-full object-contain group-hover:scale-110 group-hover:rotate-2 transition-all duration-700 ease-out"
-          loading="lazy"
-        />
-
-        <div
-          className={`absolute top-3 ${
-            isRTL ? "left-3" : "right-3"
-          } flex gap-2`}
-        >
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              toggleFavorite();
-            }}
-            className={`grid h-7 w-7 place-items-center rounded-full bg-white shadow-lg ring-2 transition ${
-              isFav
-                ? "ring-blue-400 text-blue-500"
-                : "ring-gray-200 text-gray-600 hover:ring-blue-300 hover:text-blue-400"
-            }`}
-          >
-            <i className={`fa${isFav ? "s" : "r"} fa-heart text-[16px]`}></i>
-          </button>
-
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              addToCart();
-            }}
-            className={`grid h-7 w-7 place-items-center rounded-full bg-white shadow-lg ring-2 transition ${
-              isInCart
-                ? "ring-green-400 text-green-600"
-                : "ring-gray-200 text-gray-600 hover:ring-blue-300 hover:text-blue-500"
-            }`}
-          >
-            <i className={`fa-solid fa-cart-shopping text-[15px]`}></i>
-          </button>
-        </div>
-      </div>
-
-      <div className="px-4 md:px-6 py-4 md:py-5 relative z-10 flex flex-col">
-        <span className="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-full mb-2">
-          {product.category}
-        </span>
-        <h3 className="font-bold text-base md:text-lg mb-2 line-clamp-2 text-gray-900 group-hover:text-blue-700 transition-colors">
-          {product.name}
-        </h3>
-        {product.description && (
-          <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-            {product.description}
-          </p>
-        )}
-        {features.length > 0 && (
-          <ul className="text-sm leading-6 text-gray-700 space-y-1 mb-3">
-            {features.slice(0, 3).map((feature, index) => (
-              <li
-                key={index}
-                className={`flex items-start gap-2 transition-all duration-500 ${
-                  isHovered
-                    ? "translate-x-0 opacity-100"
-                    : `${isRTL ? "translate-x-4" : "-translate-x-4"} opacity-70`
-                }`}
-              >
-                <svg
-                  className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  />
-                </svg>
-                <span className="line-clamp-1">{feature}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-        <button
-          onClick={onClick}
-          className={`mt-auto w-full font-bold py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 ${
-            isInCart
-              ? "bg-blue-600 text-white hover:bg-blue-600"
-              : "bg-gradient-to-br from-blue-500 to-blue-700 text-white hover:from-blue-600 hover:to-blue-800"
-          }`}
-        >
-          {t("view_product")}
-        </button>
-      </div>
-    </article>
   );
 };
 
