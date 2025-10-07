@@ -1,4 +1,3 @@
-import React from "react";
 import ColorsPage from "../components/ColorsPage";
 import exteriorProducts from "../data/exteriorProducts";
 import exteriorCategories from "../data/exteriorCategories";

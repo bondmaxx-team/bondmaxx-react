@@ -1,4 +1,3 @@
-import React from "react";
 import ColorsPage from "../components/ColorsPage";
 import insulationProducts from "../data/insulationProducts";
 import insulationCategories from "../data/insulationCategories";
