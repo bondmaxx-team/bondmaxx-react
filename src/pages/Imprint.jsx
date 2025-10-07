@@ -30,7 +30,7 @@ const ImprintPage = () => {
         <p className="mb-4">
           <strong>{t("phone")}:</strong>{" "}
           <a
-            href="tel:+9635550004000"
+            href="tel:+90 555 000 40 00"
             className="text-blue-600 hover:underline"
           >
             +90 555 000 40 00

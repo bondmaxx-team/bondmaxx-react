@@ -1,12 +1,19 @@
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useShop } from "../context/ShopContext";
 
-const ProductCard = ({ product }) => {
-  const { toggleFavorite, addToCart } = useShop();
+const ProductCard = ({ product, onClick }) => {
+  const { toggleFavorite, addToCart, isFavorite, isInCart } = useShop();
   const [isHovered, setIsHovered] = useState(false);
   const { t, i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
   const features = product.features || [];
+
+  // تحديد إذا المنتج في المفضلة
+  const isFav = isFavorite(product.id);
+
+  // تحديد إذا المنتج في السلة
+  const isProductInCart = isInCart(product.id);
 
   return (
     <article
@@ -16,7 +23,7 @@ const ProductCard = ({ product }) => {
     >
       <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100">
         <img
-          src={product.image || testImage}
+          src={product.image}
           alt={product.name}
           className="absolute inset-0 h-full w-full object-contain group-hover:scale-110 group-hover:rotate-2 transition-all duration-700 ease-out"
           loading="lazy"
@@ -30,13 +37,19 @@ const ProductCard = ({ product }) => {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              toggleFavorite();
+              toggleFavorite({
+                id: product.id,
+                image: product.image,
+                name: product.name,
+                price: product.price,
+              });
             }}
             className={`grid h-7 w-7 place-items-center rounded-full bg-white shadow-lg ring-2 transition ${
               isFav
                 ? "ring-blue-400 text-blue-500"
                 : "ring-gray-200 text-gray-600 hover:ring-blue-300 hover:text-blue-400"
             }`}
+            aria-label={t("add_to_favorites")}
           >
             <i className={`fa${isFav ? "s" : "r"} fa-heart text-[16px]`}></i>
           </button>
@@ -44,13 +57,22 @@ const ProductCard = ({ product }) => {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              addToCart();
+              addToCart(
+                {
+                  id: product.id,
+                  image: product.image,
+                  name: product.name,
+                  price: product.price,
+                },
+                1
+              );
             }}
             className={`grid h-7 w-7 place-items-center rounded-full bg-white shadow-lg ring-2 transition ${
-              isInCart
+              isProductInCart
                 ? "ring-green-400 text-green-600"
                 : "ring-gray-200 text-gray-600 hover:ring-blue-300 hover:text-blue-500"
             }`}
+            aria-label={t("add_to_cart")}
           >
             <i className={`fa-solid fa-cart-shopping text-[15px]`}></i>
           </button>
@@ -96,10 +118,15 @@ const ProductCard = ({ product }) => {
             ))}
           </ul>
         )}
+        {product.price && (
+          <p className="text-lg font-bold text-emerald-600 mb-3">
+            {product.price} {t("currency_sar")}
+          </p>
+        )}
         <button
           onClick={onClick}
           className={`mt-auto w-full font-bold py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 ${
-            isInCart
+            isProductInCart
               ? "bg-blue-600 text-white hover:bg-blue-600"
               : "bg-gradient-to-br from-blue-500 to-blue-700 text-white hover:from-blue-600 hover:to-blue-800"
           }`}
