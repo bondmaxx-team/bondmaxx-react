@@ -15,7 +15,8 @@
   "favorites_title": "الألوان المفضلة",
   "favorites_empty_title": "لا توجد ألوان مفضلة",
   "favorites_empty_message": "ابدأ بإضافة الألوان التي تعجبك إلى قائمة المفضلة",
-
+  "ceilings": "الأسقف",
+  "walls": "الجدران",
   "home": "الرئيسية",
   "interior": "الداخلية",
   "exterior": "الخارجية",
@@ -389,5 +390,66 @@
   "light_purple_collection": "بنفسجي فاتح (مجموعة)",
   "medium_purple_collection": "بنفسجي متوسط (مجموعة)",
   "dark_purple_collection": "بنفسجي داكن (مجموعة)",
-  "deep_purple_collection": "بنفسجي عميق (مجموعة)"
+  "deep_purple_collection": "بنفسجي عميق (مجموعة)",
+
+  "bondmax_ceiling_white": "دهان بوندماكس للأسقف الأبيض",
+  "perfect_white_ceiling": "سقف أبيض مثالي وناصع",
+  "anti_yellowing": "مقاوم للاصفرار",
+
+  "quick_drying": "سريع الجفاف",
+
+  "bondmax_luxury_silk": "دهان بوندماكس الحريري الفاخر",
+  "luxury_silk_finish": "لمسة نهائية حريرية فاخرة",
+  "elegant_sheen": "لمعان أنيق",
+  "stain_resistant": "مقاوم للبقع",
+  "long_lasting_beauty": "جمال يدوم طويلاً",
+
+  "bondmax_kids_safe": "دهان بوندماكس الآمن للأطفال",
+  "safe_for_children": "آمن تماماً لغرف الأطفال",
+  "non_toxic_formula": "تركيبة غير سامة",
+  "vibrant_colors": "ألوان زاهية",
+
+  "bondmax_kitchen_bath": "دهان بوندماكس للمطابخ والحمامات",
+  "moisture_resistant_paint": "دهان مقاوم للرطوبة",
+  "anti_mold": "مضاد للعفن",
+  "water_resistant": "مقاوم للماء",
+  "easy_maintenance": "سهل الصيانة",
+
+  "bondmax_premium_ceiling": "دهان بوندماكس الممتاز للأسقف",
+  "premium_ceiling_finish": "تشطيب فاخر للأسقف",
+  "smooth_application": "تطبيق سلس",
+  "no_drip_formula": "تركيبة لا تقطر",
+
+  "bondmax_exterior_weatherproof": "دهان خارجي مقاوم للعوامل الجوية",
+  "bondmax_exterior_façade": "دهان واجهات مثالي",
+  "bondmax_exterior_metalwood": "دهان لحماية المعدن والخشب",
+  "bondmax_exterior_elastic": "دهان مرن وخالٍ من التشققات",
+  "bondmax_exterior_premium": "دهان خارجي فاخر",
+  "bondmax_exterior_matt": "دهان خارجي بلمسة مات",
+
+  "weather_resistant_finish": "تشطيب مقاوم للطقس",
+  "perfect_for_facades": "مثالي للواجهات الخارجية",
+  "protects_metal_and_wood": "يحمي المعدن والخشب من التلف",
+  "elastic_and_crack_free": "مرن وخالٍ من التشققات",
+  "premium_outdoor_finish": "تشطيب خارجي فاخر",
+  "matte_finish_exterior": "تشطيب خارجي مات عصري",
+
+  "uv_protection": "حماية من الأشعة فوق البنفسجية",
+  "water_repellent": "طارد للماء",
+  "long_last_color": "ألوان ثابتة وطويلة الأمد",
+  "anti_crack": "مقاوم للتشققات",
+  "easy_application": "سهل التطبيق",
+  "durable_finish": "تشطيب متين",
+  "rust_resistant": "مقاوم للصدأ",
+  "smooth_finish": "تشطيب ناعم",
+  "long_lasting": "يدوم طويلاً",
+  "flexible_coating": "طلاء مرن",
+  "waterproof": "مضاد للماء",
+  "weatherproof": "مقاوم للطقس",
+  "rich_colors": "ألوان غنية",
+  "fade_resistant": "مقاوم للبهتان",
+  "easy_cleaning": "سهل التنظيف",
+  "modern_look": "مظهر عصري",
+  "anti_dust": "مقاوم للأتربة",
+  "washable_surface": "سطح قابل للغسل"
 }

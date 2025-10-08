@@ -1,6 +1,5 @@
 import testImage from "../assets/color-1.png";
 
-// ✅ احفظ المفاتيح فقط بدون ترجمة
 const insulationProducts = [
   {
     id: 1,

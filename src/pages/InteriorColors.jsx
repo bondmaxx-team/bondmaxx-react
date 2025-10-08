@@ -1,10 +1,11 @@
+import { useTranslation } from "react-i18next";
 import ColorsPage from "../components/ColorsPage";
 import interiorProducts from "../data/interiorProducts";
 import interiorCategories from "../data/interiorCategories";
-import { useTranslation } from "react-i18next";
 
-const InteriorColorsPage = () => {
+function InteriorColorsPage() {
   const { t } = useTranslation();
+
   return (
     <ColorsPage
       productsData={interiorProducts}
@@ -13,6 +14,6 @@ const InteriorColorsPage = () => {
       subtitle={t("interior_description")}
     />
   );
-};
+}
 
 export default InteriorColorsPage;
