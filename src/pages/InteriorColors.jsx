@@ -1,3 +1,4 @@
+// InteriorColorsPage.jsx
 import { useTranslation } from "react-i18next";
 import ColorsPage from "../components/ColorsPage";
 import interiorProducts from "../data/interiorProducts";
@@ -12,6 +13,7 @@ function InteriorColorsPage() {
       categoriesData={interiorCategories}
       title={t("interior_products")}
       subtitle={t("interior_description")}
+      productType="interior"
     />
   );
 }

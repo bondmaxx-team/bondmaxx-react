@@ -29,7 +29,7 @@ export default function CartItem({ item }) {
         />
 
         <div>
-          <div className="font-medium">{item.name || t("product")}</div>
+          <div className="font-medium">{t(item.name) || t("product")}</div>
 
           {item.price && (
             <div className="text-sm text-gray-500">{item.price} ₺</div>

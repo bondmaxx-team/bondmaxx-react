@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useShop } from "../context/ShopContext";
 import { useTranslation } from "react-i18next";
 
-const ProductCard = ({ product }) => {
-  const { t } = useTranslation();
+const ProductCard = ({ product, onClick, productType = "interior" }) => {
+  const { t, i18n } = useTranslation();
   const { toggleFavorite, isFavorite, addToCart } = useShop();
-
+  const navigate = useNavigate();
+  const lang = i18n.language;
   const favorite = isFavorite(product.id);
 
   const handleFavoriteClick = (e) => {
@@ -21,32 +21,35 @@ const ProductCard = ({ product }) => {
     addToCart(product);
   };
 
-  // ✅ ترجم باستخدام nameKey أو name (أيهما موجود)
-  const nameToTranslate =
-    product.nameKey || product.name || "default_product_name";
-  const translatedName = t(nameToTranslate);
+  const handleCardClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-  // Create query string from product object
-  const productQuery = new URLSearchParams({
-    id: product.id,
-    name: translatedName,
-    price: product.price || 0,
-    image: product.image || "",
-    color: product.color || "",
-    description: product.description || "",
-    category: product.category || "",
-  }).toString();
+    if (onClick) {
+      // إذا كان هناك onClick مخصص، استخدمه
+      onClick(product);
+    } else {
+      // وإلا، انتقل لصفحة التفاصيل مع type parameter
+      navigate(`/product-details?id=${product.id}&type=${productType}`);
+    }
+  };
+
+  // Get translated name
+  const productName = product.name || "";
+
+  // Get translated description
+  const productDescription = product.description || "";
 
   return (
-    <Link
-      to={`/product-details?${productQuery}`}
-      className="block bg-gray-100 rounded-lg shadow-md overflow-hidden relative group hover:shadow-lg transition-shadow"
+    <div
+      onClick={handleCardClick}
+      className="block bg-gray-100 rounded-lg shadow-md overflow-hidden relative group hover:shadow-lg transition-shadow cursor-pointer"
     >
       <div className="absolute top-3 left-3 z-10 flex gap-2">
         <button
           onClick={handleFavoriteClick}
           className="p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-all duration-200"
-          aria-label={t("add_to_favorites_aria")}
+          aria-label={t("add_to_favorites_aria") || "Add to favorites"}
         >
           <i
             className={`fa-heart transition-colors ${
@@ -59,34 +62,34 @@ const ProductCard = ({ product }) => {
         <button
           onClick={handleCartClick}
           className="p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-all duration-200"
-          aria-label={t("add_to_cart")}
-          title={t("add_to_cart")}
+          aria-label={t("add_to_cart") || "Add to cart"}
+          title={t("add_to_cart") || "Add to cart"}
         >
           <i className="fas fa-shopping-cart text-gray-500 hover:text-emerald-600 transition-colors"></i>
         </button>
       </div>
 
-      {product.image ? (
+      {product.image && (
         <div className="w-full h-48 bg-white p-4">
           <img
             src={product.image}
-            alt={translatedName}
+            alt={productName}
             className="w-full h-full object-contain"
           />
         </div>
-      ) : (
-        <div
-          className="w-full h-48"
-          style={{ backgroundColor: product.color }}
-        ></div>
       )}
 
-      <div className="p-4 bg-white text-center">
-        <h3 className="font-semibold text-gray-900 text-base">
-          {translatedName}
+      <div className="p-4 bg-white">
+        <h3 className="font-semibold text-gray-900 text-base mb-2">
+          {productName}
         </h3>
+        {productDescription && (
+          <p className="text-sm text-gray-600 line-clamp-2">
+            {productDescription}
+          </p>
+        )}
       </div>
-    </Link>
+    </div>
   );
 };
 

@@ -1,3 +1,5 @@
+import testImage from "../assets/color-1.png";
+
 // ✅ احفظ المفاتيح فقط، بدون ترجمة
 const productsCollections = [
   {
@@ -9,6 +11,7 @@ const productsCollections = [
         id: "interior-1",
         nameKey: "light_blue_interior", // مفتاح الترجمة
         color: "#BFDBFE",
+        image: testImage,
       },
       {
         id: "interior-2",

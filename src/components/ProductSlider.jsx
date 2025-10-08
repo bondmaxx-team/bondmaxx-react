@@ -88,7 +88,7 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
   return (
     <div className="mb-16" dir={isRTL ? "rtl" : "ltr"}>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">{translatedTitle}</h2>
+        <h2 className="text-2xl font-bold text-gray-800">{title}</h2>
       </div>
 
       <Swiper

@@ -23,12 +23,12 @@ const ProductCard = ({ product }) => {
   };
 
   // ✅ ترجم اسم المنتج - جرب الاسم كمفتاح أولاً، وإذا ما لقى ترجمة استخدم الاسم الأصلي
-  const translatedName = t(product.name, { defaultValue: product.name });
+  const translatedName = t(product.nameKey, { defaultValue: product.nameKey });
 
   // Create query string from product object
   const productQuery = new URLSearchParams({
     id: product.id,
-    name: product.name,
+    name: product.nameKey,
     price: product.price,
     image: product.image || "",
     color: product.color || "",
