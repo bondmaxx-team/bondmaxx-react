@@ -9,13 +9,12 @@ import productsCollections from "../data/productsCollections";
 
 export default function Home() {
   const location = useLocation();
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const navigate = useNavigate();
 
   useEffect(() => {
     const id = location.state?.scrollTo;
     if (id) {
-      // ensure DOM is painted
       setTimeout(() => {
         document.getElementById(id)?.scrollIntoView({
           behavior: "smooth",
@@ -25,7 +24,6 @@ export default function Home() {
     }
   }, [location.state]);
 
-  // Set document direction based on language
   useEffect(() => {
     document.documentElement.dir = i18n.dir();
     document.documentElement.lang = i18n.language;
@@ -35,14 +33,13 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       <main className="mt-[70px]">
         <HeroSection onDiscoverColors={() => navigate("color-collection")} />
-
         <div className="max-w-[1400px] mx-auto px-6">
           <section className="py-16 bg-white" id="products-section">
             <div className="max-w-7xl mx-auto px-6 space-y-16">
               {productsCollections.map((product) => (
                 <ProductSlider
-                  key={product.title}
-                  title={product.title}
+                  key={product.titleKey}
+                  title={t(product.titleKey)}
                   products={product.collection}
                   color={product.color}
                   linkTo={product.linkTo}

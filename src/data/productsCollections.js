@@ -1,110 +1,109 @@
-import i18n from "../i18n";
-
+// ✅ احفظ المفاتيح فقط، بدون ترجمة
 const productsCollections = [
   {
-    title: i18n.t("interior_paints"),
+    titleKey: "interior_paints", // مفتاح الترجمة
     color: "blue",
     linkTo: "interior-colors",
     collection: [
       {
         id: "interior-1",
-        name: i18n.t("light_blue_interior"),
+        nameKey: "light_blue_interior", // مفتاح الترجمة
         color: "#BFDBFE",
       },
       {
         id: "interior-2",
-        name: i18n.t("medium_blue_interior"),
+        nameKey: "medium_blue_interior",
         color: "#93C5FD",
       },
       {
         id: "interior-3",
-        name: i18n.t("dark_blue_interior"),
+        nameKey: "dark_blue_interior",
         color: "#60A5FA",
       },
       {
         id: "interior-4",
-        name: i18n.t("deep_blue_interior"),
+        nameKey: "deep_blue_interior",
         color: "#3B82F6",
       },
     ],
   },
   {
-    title: i18n.t("exterior_paints"),
+    titleKey: "exterior_paints",
     color: "green",
-    linkTo: "exterior-colors.html",
+    linkTo: "exterior-colors",
     collection: [
       {
         id: "exterior-1",
-        name: i18n.t("light_green_exterior"),
+        nameKey: "light_green_exterior",
         color: "#BBF7D0",
       },
       {
         id: "exterior-2",
-        name: i18n.t("medium_green_exterior"),
+        nameKey: "medium_green_exterior",
         color: "#86EFAC",
       },
       {
         id: "exterior-3",
-        name: i18n.t("dark_green_exterior"),
+        nameKey: "dark_green_exterior",
         color: "#4ADE80",
       },
       {
         id: "exterior-4",
-        name: i18n.t("deep_green_exterior"),
+        nameKey: "deep_green_exterior",
         color: "#22C55E",
       },
     ],
   },
   {
-    title: i18n.t("insulation"),
-    color: "yellow",
-    linkTo: "insulation.html",
+    titleKey: "insulation_products",
+    color: "orange",
+    linkTo: "insulation",
     collection: [
       {
         id: "insulation-1",
-        name: i18n.t("thermal_insulation_gold"),
+        nameKey: "thermal_insulation_gold",
         color: "#FDE68A",
       },
       {
         id: "insulation-2",
-        name: i18n.t("water_insulation_yellow"),
+        nameKey: "water_insulation_yellow",
         color: "#FCD34D",
       },
       {
         id: "insulation-3",
-        name: i18n.t("sound_insulation_orange"),
+        nameKey: "sound_insulation_orange",
         color: "#FBBF24",
       },
       {
         id: "insulation-4",
-        name: i18n.t("multi_purpose_insulation"),
+        nameKey: "multi_purpose_insulation",
         color: "#F59E0B",
       },
     ],
   },
   {
-    title: i18n.t("color_collection"),
+    titleKey: "color_collection",
     color: "purple",
     linkTo: "color-collection",
     collection: [
       {
         id: "collection-1",
-        name: i18n.t("light_purple_collection"),
+        nameKey: "light_purple_collection",
         color: "#DDD6FE",
       },
       {
         id: "collection-2",
-        name: i18n.t("medium_purple_collection"),
+        nameKey: "medium_purple_collection",
         color: "#C4B5FD",
       },
       {
         id: "collection-3",
-        name: i18n.t("dark_purple_collection"),
+        nameKey: "dark_purple_collection",
         color: "#A78BFA",
       },
       {
         id: "collection-4",
-        name: i18n.t("deep_purple_collection"),
+        nameKey: "deep_purple_collection",
         color: "#8B5CF6",
       },
     ],

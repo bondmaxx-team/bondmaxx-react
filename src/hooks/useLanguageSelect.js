@@ -24,10 +24,13 @@ export default function useLanguageSelect() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState(() => {
-    const stored = typeof window !== "undefined" && localStorage.getItem("lang");
+    const stored =
+      typeof window !== "undefined" && localStorage.getItem("lang");
     const code = stored || i18n.language || "ar";
     return findLanguage(code);
   });
+
+  console.log(currentLanguage, i18n.language);
 
   useEffect(() => {
     // keep i18n in sync if currentLanguage changes externally
@@ -35,15 +38,6 @@ export default function useLanguageSelect() {
       i18n.changeLanguage(currentLanguage.code);
     }
   }, [currentLanguage, i18n]);
-
-  useEffect(() => {
-    // initialize from i18n if present and not matching state
-    const code = i18n.language;
-    if (code && code !== currentLanguage.code) {
-      setCurrentLanguage(findLanguage(code));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const toggle = useCallback(() => setIsOpen((v) => !v), []);
   const open = useCallback(() => setIsOpen(true), []);

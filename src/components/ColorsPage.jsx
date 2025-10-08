@@ -3,15 +3,6 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "./ProductCard";
 
-/*
-  Reusable page for Interior/Exterior colors with unified filter/search UI
-  Props:
-    - productsData: array of products { id, name, category, description, features[], image?, color? }
-    - categoriesData: array of categories { id, key, image }
-    - titleKey: i18n key for title
-    - descriptionKey: i18n key for description
-    - title / subtitle: optional override strings
-*/
 const ColorsPage = ({
   productsData = [],
   categoriesData = [],
@@ -21,6 +12,19 @@ const ColorsPage = ({
   const { t, i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
   const navigate = useNavigate();
+
+  // ✅ ترجم المنتجات مرة واحدة
+  const translatedProducts = useMemo(() => {
+    return productsData.map((p) => ({
+      ...p,
+      name: p.nameKey ? t(p.nameKey) : p.name,
+      category: p.categoryKey ? t(p.categoryKey) : p.category,
+      description: p.descriptionKey ? t(p.descriptionKey) : p.description,
+      features: p.featuresKeys
+        ? p.featuresKeys.map((fk) => t(fk))
+        : p.features || [],
+    }));
+  }, [productsData, t]);
 
   const handleProductClick = (product) => {
     const productQuery = new URLSearchParams({
@@ -37,26 +41,25 @@ const ColorsPage = ({
   };
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState(productsData);
+  const [filteredProducts, setFilteredProducts] = useState(translatedProducts);
   const [activeCategory, setActiveCategory] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState(new Set());
   const [selectedFeatures, setSelectedFeatures] = useState(new Set());
   const [showFilter, setShowFilter] = useState(false);
 
-  // Build translated categories locally from data
   const categories = useMemo(
     () => categoriesData.map((c) => ({ ...c, name: t(c.key) })),
     [categoriesData, t]
   );
 
-  // Collect all available features across products
   const allFeatures = useMemo(() => {
     const s = new Set();
-    productsData.forEach((p) => (p.features || []).forEach((f) => s.add(f)));
+    translatedProducts.forEach((p) =>
+      (p.features || []).forEach((f) => s.add(f))
+    );
     return Array.from(s);
-  }, [productsData]);
+  }, [translatedProducts]);
 
-  // Active filters count badge
   const activeFiltersCount = useMemo(() => {
     let c = 0;
     if (searchQuery.trim()) c++;
@@ -69,8 +72,7 @@ const ColorsPage = ({
   const applyFilter = useCallback(() => {
     const q = searchQuery.toLowerCase().trim();
 
-    const next = productsData.filter((p) => {
-      // search across fields including features
+    const next = translatedProducts.filter((p) => {
       const matchSearch = !q
         ? true
         : p.name?.toLowerCase().includes(q) ||
@@ -79,20 +81,17 @@ const ColorsPage = ({
           (p.features || []).some((f) => f.toLowerCase().includes(q));
       if (!matchSearch) return false;
 
-      // active category from categories strip
       const matchActiveCategory = !activeCategory
         ? true
         : p.category === activeCategory;
       if (!matchActiveCategory) return false;
 
-      // selected categories from drawer
       const matchSelectedCategories =
         selectedCategories.size === 0
           ? true
           : selectedCategories.has(p.category);
       if (!matchSelectedCategories) return false;
 
-      // features from drawer
       const matchSelectedFeatures =
         selectedFeatures.size === 0
           ? true
@@ -105,17 +104,16 @@ const ColorsPage = ({
 
     setFilteredProducts(next);
   }, [
-    productsData,
+    translatedProducts,
     searchQuery,
     activeCategory,
     selectedCategories,
     selectedFeatures,
   ]);
 
-  // Re-apply filter whenever dependencies change
   useEffect(() => {
-    setFilteredProducts(productsData);
-  }, [productsData]);
+    setFilteredProducts(translatedProducts);
+  }, [translatedProducts]);
 
   useEffect(() => {
     applyFilter();
@@ -126,7 +124,6 @@ const ColorsPage = ({
   };
 
   const onSearchSubmit = () => {
-    // applyFilter uses current state, so just re-run
     applyFilter();
   };
 
@@ -230,7 +227,7 @@ const ColorsPage = ({
           <div className="text-sm text-gray-600">
             <span className="font-semibold">{filteredProducts.length}</span>{" "}
             {t("products_count_of")}{" "}
-            <span className="font-semibold">{productsData.length}</span>{" "}
+            <span className="font-semibold">{translatedProducts.length}</span>{" "}
             {t("products_count_product")}
           </div>
 

@@ -1,11 +1,14 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import ColorFamilyCard from "../components/ColorFamilyCard";
-import CollectionPagination from "../components/CollectionPagination";
-import ColorCollectionFilter from "../components/ColorCollectionFilter";
-import colorCollectionCategories from "../data/colorCollectionCategories";
-import colorCollectionShades from "../data/colorCollectionShades";
-import { generateColorFamilies, groupFamiliesByCategory } from "../utils/colorCollection";
+import ColorFamilyCard from "@/components/ColorFamilyCard";
+import CollectionPagination from "@/components/CollectionPagination";
+import ColorCollectionFilter from "@/components/ColorCollectionFilter";
+import colorCollectionCategories from "@/data/colorCollectionCategories";
+import colorCollectionShades from "@/data/colorCollectionShades";
+import {
+  generateColorFamilies,
+  groupFamiliesByCategory,
+} from "@/lib/colorCollection";
 
 const ColorCollection = () => {
   const { t, i18n } = useTranslation();
@@ -17,9 +20,13 @@ const ColorCollection = () => {
 
   const isRTL = i18n.dir() === "rtl";
 
-
   const colorFamilies = useMemo(
-    () => generateColorFamilies(colorCollectionCategories, colorCollectionShades, t),
+    () =>
+      generateColorFamilies(
+        colorCollectionCategories,
+        colorCollectionShades,
+        t
+      ),
     [t]
   );
 
@@ -46,7 +53,11 @@ const ColorCollection = () => {
   );
 
   const categoryOptions = useMemo(
-    () => colorCollectionCategories.map((c) => ({ value: c.category, label: t(c.key) })),
+    () =>
+      colorCollectionCategories.map((c) => ({
+        value: c.category,
+        label: t(c.key),
+      })),
     [t]
   );
 

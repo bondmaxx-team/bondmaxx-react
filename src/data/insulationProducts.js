@@ -1,42 +1,55 @@
-import i18n from "../i18n";
 import testImage from "../assets/color-1.png";
 
-const t = i18n.t;
-
-// Shared insulation-like products data to be used by Interior and Exterior pages as well
+// ✅ احفظ المفاتيح فقط بدون ترجمة
 const insulationProducts = [
-    {
-        id: 1,
-        name: t("thermal_bondmax_premium"),
-        category: t("thermal_insulation"),
-        image: testImage,
-        description: t("thermal_bondmax_premium_desc"),
-        features: [t("reduces_energy_consumption"), t("moisture_resistant"), t("easy_installation")],
-    },
-    {
-        id: 2,
-        name: t("sound_bondmax_excellent"),
-        category: t("sound_insulation"),
-        image: testImage,
-        description: t("sound_bondmax_excellent_desc"),
-        features: [t("excellent_sound_absorption"), t("lightweight"), t("durable_long_lasting")],
-    },
-    {
-        id: 3,
-        name: t("thermal_bondmax_villas"),
-        category: t("thermal_insulation"),
-        image: testImage,
-        description: t("thermal_bondmax_villas_desc"),
-        features: [t("advanced_insulation"), t("improves_energy_efficiency"), t("fire_resistant")],
-    },
-    {
-        id: 4,
-        name: t("sound_interior_rooms"),
-        category: t("sound_insulation"),
-        image: testImage,
-        description: t("sound_interior_rooms_desc"),
-        features: [t("noise_absorption"), t("light_easy_install"), t("no_ventilation_block")],
-    },
+  {
+    id: 1,
+    nameKey: "thermal_bondmax_premium",
+    categoryKey: "thermal_insulation",
+    image: testImage,
+    descriptionKey: "thermal_bondmax_premium_desc",
+    featuresKeys: [
+      "reduces_energy_consumption",
+      "moisture_resistant",
+      "easy_installation",
+    ],
+  },
+  {
+    id: 2,
+    nameKey: "sound_bondmax_excellent",
+    categoryKey: "sound_insulation",
+    image: testImage,
+    descriptionKey: "sound_bondmax_excellent_desc",
+    featuresKeys: [
+      "excellent_sound_absorption",
+      "lightweight",
+      "durable_long_lasting",
+    ],
+  },
+  {
+    id: 3,
+    nameKey: "thermal_bondmax_villas",
+    categoryKey: "thermal_insulation",
+    image: testImage,
+    descriptionKey: "thermal_bondmax_villas_desc",
+    featuresKeys: [
+      "advanced_insulation",
+      "improves_energy_efficiency",
+      "fire_resistant",
+    ],
+  },
+  {
+    id: 4,
+    nameKey: "sound_interior_rooms",
+    categoryKey: "sound_insulation",
+    image: testImage,
+    descriptionKey: "sound_interior_rooms_desc",
+    featuresKeys: [
+      "noise_absorption",
+      "light_easy_install",
+      "no_ventilation_block",
+    ],
+  },
 ];
 
 export default insulationProducts;

@@ -17,9 +17,49 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
+  // Color mapping for Tailwind classes
+  const colorClasses = {
+    blue: {
+      bg: "bg-blue-600",
+      hover: "hover:bg-blue-700",
+      hoverText: "hover:text-blue-600",
+    },
+    green: {
+      bg: "bg-green-600",
+      hover: "hover:bg-green-700",
+      hoverText: "hover:text-green-600",
+    },
+    red: {
+      bg: "bg-red-600",
+      hover: "hover:bg-red-700",
+      hoverText: "hover:text-red-600",
+    },
+    yellow: {
+      bg: "bg-yellow-600",
+      hover: "hover:bg-yellow-700",
+      hoverText: "hover:text-yellow-600",
+    },
+    purple: {
+      bg: "bg-purple-600",
+      hover: "hover:bg-purple-700",
+      hoverText: "hover:text-purple-600",
+    },
+    orange: {
+      bg: "bg-orange-600",
+      hover: "hover:bg-orange-700",
+      hoverText: "hover:text-orange-600",
+    },
+    pink: {
+      bg: "bg-pink-600",
+      hover: "hover:bg-pink-700",
+      hoverText: "hover:text-pink-600",
+    },
+  };
+
+  const currentColor = colorClasses[color] || colorClasses.blue;
+
   // Optional: reflect dir on the wrapper for consistency
   useEffect(() => {
-    // If you also set <html dir=...> elsewhere, keep it in sync:
     document.documentElement.setAttribute("dir", isRTL ? "rtl" : "ltr");
   }, [isRTL]);
 
@@ -42,19 +82,21 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
     swiper.update();
   }, [isRTL]);
 
+  // ✅ ترجم العنوان هنا
+  const translatedTitle = t(title);
+
   return (
     <div className="mb-16" dir={isRTL ? "rtl" : "ltr"}>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">{title}</h2>
+        <h2 className="text-2xl font-bold text-gray-800">{translatedTitle}</h2>
       </div>
 
       <Swiper
-        key={`${i18n?.language}-${color}`} // ✅ force remount on lang change
+        key={`${i18n?.language}-${color}`}
         modules={[Navigation, Pagination]}
         slidesPerView={1}
         spaceBetween={16}
         pagination={{ clickable: true }}
-        // We'll wire navigation via refs in onBeforeInit
         onBeforeInit={(swiper) => {
           swiper.params.navigation = {
             ...(swiper.params.navigation || {}),
@@ -65,7 +107,6 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
-        // Initial direction on mount (changeDirection will handle subsequent flips)
         direction="horizontal"
         dir={isRTL ? "rtl" : "ltr"}
         breakpoints={{
@@ -83,7 +124,7 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
         <SwiperSlide>
           <Link
             to={linkTo}
-            className={`block bg-${color}-600 text-white rounded-lg shadow-md p-6 text-center hover:bg-${color}-700 transition h-full flex flex-col items-center justify-center`}
+            className={`block ${currentColor.bg} ${currentColor.hover} text-white rounded-lg shadow-md p-6 text-center transition h-full flex flex-col items-center justify-center`}
           >
             <i
               className={`fas ${
@@ -91,7 +132,7 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
               } mb-2 text-2xl`}
             />
             <p>
-              {t("view_all")} {title}
+              {t("view_all")} {translatedTitle}
             </p>
           </Link>
         </SwiperSlide>
@@ -100,29 +141,28 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
       <div className="flex justify-between items-center">
         <div />
         <div className="flex gap-3">
-          {/* ✅ Use refs so Swiper can rebind after dir change */}
           <button
             ref={prevRef}
             type="button"
-            className={`cursor-pointer text-gray-600 hover:text-${color}-600`}
+            className={`cursor-pointer text-gray-600 ${currentColor.hoverText} transition-colors`}
             aria-label="Previous"
           >
             <i
               className={`fas ${
                 isRTL ? "fa-chevron-right" : "fa-chevron-left"
-              }`}
+              } text-xl`}
             />
           </button>
           <button
             ref={nextRef}
             type="button"
-            className={`cursor-pointer text-gray-600 hover:text-${color}-600`}
+            className={`cursor-pointer text-gray-600 ${currentColor.hoverText} transition-colors`}
             aria-label="Next"
           >
             <i
               className={`fas ${
                 isRTL ? "fa-chevron-left" : "fa-chevron-right"
-              }`}
+              } text-xl`}
             />
           </button>
         </div>

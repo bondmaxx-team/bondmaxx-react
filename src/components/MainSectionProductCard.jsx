@@ -22,6 +22,9 @@ const ProductCard = ({ product }) => {
     addToCart(product);
   };
 
+  // ✅ ترجم اسم المنتج - جرب الاسم كمفتاح أولاً، وإذا ما لقى ترجمة استخدم الاسم الأصلي
+  const translatedName = t(product.name, { defaultValue: product.name });
+
   // Create query string from product object
   const productQuery = new URLSearchParams({
     id: product.id,
@@ -62,12 +65,12 @@ const ProductCard = ({ product }) => {
         </button>
       </div>
 
-      <h3 className="font-semibold mb-2">{product.name}</h3>
+      <h3 className="font-semibold mb-2">{translatedName}</h3>
 
       {product.image ? (
         <img
           src={product.image}
-          alt={product.name}
+          alt={translatedName}
           className="w-full h-28 object-contain rounded"
         />
       ) : (
