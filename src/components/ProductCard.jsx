@@ -7,12 +7,15 @@ const ProductCard = ({ product, onClick, productType = "interior" }) => {
   const { toggleFavorite, isFavorite, addToCart } = useShop();
   const navigate = useNavigate();
   const lang = i18n.language;
-  const favorite = isFavorite(product.id);
+  const favorite = isFavorite(product.id, productType);
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    toggleFavorite(product);
+    toggleFavorite({
+      ...product,
+      productType,
+    });
   };
 
   const handleCartClick = (e) => {
@@ -35,10 +38,10 @@ const ProductCard = ({ product, onClick, productType = "interior" }) => {
   };
 
   // Get translated name
-  const productName = product.name || "";
+  const productName = product.name[lang] || "";
 
   // Get translated description
-  const productDescription = product.description || "";
+  const productDescription = product.description[lang] || "";
 
   return (
     <div

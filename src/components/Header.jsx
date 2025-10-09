@@ -13,18 +13,19 @@ export default function Header() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === "ar";
 
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const { languages, currentLanguage, isOpen: isLanguageMenuOpen, toggle: toggleLanguageMenu, close: closeLanguageMenu, selectLanguage } = useLanguageSelect();
+  const {
+    languages,
+    currentLanguage,
+    isOpen: isLanguageMenuOpen,
+    toggle: toggleLanguageMenu,
+    close: closeLanguageMenu,
+    selectLanguage,
+  } = useLanguageSelect();
   const { sendMessage } = useWhatsApp();
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const {
-    cart,
-    clearCart,
-    cartTotal,
-    favorites,
-  } = useShop();
+  const { cart, clearCart, cartTotal, favorites } = useShop();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -59,8 +60,6 @@ export default function Header() {
     closeLanguageMenu();
   };
 
-
-
   const submitCartToWhatsApp = () => {
     if (!cart?.length) {
       toast.warning(t("cart_empty_message"));
@@ -73,7 +72,7 @@ export default function Header() {
 
     for (const item of cart) {
       lines.push(
-        `• *${item.name}* (ID: ${item.id})` +
+        `• *${item.name[i18n.language]}* (ID: ${item.id})` +
           `\n  الكمية: ${item.qty ?? 1}` +
           (item.color ? `\n  اللون: ${item.color}` : "")
       );
@@ -343,10 +342,7 @@ export default function Header() {
             ) : (
               <div className="space-y-3 px-4">
                 {favorites.map((item, idx) => (
-                  <FavItem
-                    key={idx}
-                    item={item}
-                  />
+                  <FavItem key={idx} item={item} />
                 ))}
               </div>
             )}
@@ -418,10 +414,7 @@ export default function Header() {
             ) : (
               <div className="space-y-2">
                 {cart.map((item, idx) => (
-                  <CartItem
-                    key={idx}
-                    item={item}
-                  />
+                  <CartItem key={idx} item={item} />
                 ))}
               </div>
             )}

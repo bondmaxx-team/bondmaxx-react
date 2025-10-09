@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useShop } from "../context/ShopContext";
 
 export default function CartItem({ item }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { setQty, removeFromCart } = useShop();
   const fallbackImage = null;
 
@@ -29,7 +29,13 @@ export default function CartItem({ item }) {
         />
 
         <div>
-          <div className="font-medium">{t(item.name) || t("product")}</div>
+          {/* <div className="font-medium">{item.name[i18n.language] || item.name["en"] || item.nameKey}</div> */}
+          <h3
+            className="font-semibold mb-2 w-full text-gray-800 text-base truncate"
+            title={item.name[i18n.language] || item.name["en"] || item.nameKey}
+          >
+            {item.name[i18n.language] || item.name["en"] || item.nameKey}
+          </h3>
 
           {item.price && (
             <div className="text-sm text-gray-500">{item.price} ₺</div>

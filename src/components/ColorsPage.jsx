@@ -15,39 +15,18 @@ const ColorsPage = ({
   const lang = i18n.language;
   const navigate = useNavigate();
 
-  // ترجمة المنتجات وإضافة النوع
-  const translatedProducts = useMemo(() => {
-    return productsData.map((p) => {
-      const categoryObj = categoriesData.find((c) => c.key === p.category);
-      const translatedCategory =
-        categoryObj?.name?.[lang] || categoryObj?.name?.en || p.category || "";
-
-      return {
-        ...p,
-        name: p.name?.[lang] || p.name?.en || "",
-        description: p.description?.[lang] || p.description?.en || "",
-        category: translatedCategory,
-        categoryKey: p.category, // للاحتفاظ بالـ key الأصلي
-        features: (p.features?.[lang] || p.features?.en || []).map(
-          (f) => f || ""
-        ),
-        type: productType, // نوع المنتج
-      };
-    });
-  }, [productsData, categoriesData, lang, productType]);
-
   // التنقل عند الضغط على المنتج
   const handleProductClick = (product) => {
-    navigate(`/product-details?id=${product.id}&type=${product.type}`);
+    navigate(`/product-details?id=${product.id}&type=${productType}`);
   };
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState(translatedProducts);
+  const [filteredProducts, setFilteredProducts] = useState(productsData);
   const [activeCategory, setActiveCategory] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState(new Set());
   const [selectedFeatures, setSelectedFeatures] = useState(new Set());
 
-  // ترجمة التصنيفات
+  // ترجمة التصنيفات فقط
   const categories = useMemo(() => {
     return categoriesData.map((c) => ({
       ...c,
@@ -55,42 +34,40 @@ const ColorsPage = ({
     }));
   }, [categoriesData, lang]);
 
-  // كل الميزات المتاحة
-  const allFeatures = useMemo(() => {
-    const s = new Set();
-    translatedProducts.forEach((p) =>
-      (p.features || []).forEach((f) => s.add(f))
-    );
-    return Array.from(s);
-  }, [translatedProducts]);
-
-  // عداد الفلاتر النشطة
-  const activeFiltersCount = useMemo(() => {
-    let c = 0;
-    if (searchQuery.trim()) c++;
-    if (activeCategory) c++;
-    c += selectedCategories.size;
-    c += selectedFeatures.size;
-    return c;
-  }, [searchQuery, activeCategory, selectedCategories, selectedFeatures]);
-
   // تطبيق الفلترة
   const applyFilter = useCallback(() => {
     const q = searchQuery.toLowerCase().trim();
 
-    const next = translatedProducts.filter((p) => {
+    const next = productsData.filter((p) => {
+      const name =
+        typeof p.name === "object"
+          ? p.name?.[lang] || p.name?.en || ""
+          : p.name || "";
+      const description =
+        typeof p.description === "object"
+          ? p.description?.[lang] || p.description?.en || ""
+          : p.description || "";
+      const categoryName =
+        typeof p.category === "object"
+          ? p.category?.[lang] || p.category?.en || ""
+          : p.category || "";
+      const features =
+        typeof p.features === "object"
+          ? p.features?.[lang] || p.features?.en || []
+          : p.features || [];
+
       const matchSearch = !q
         ? true
-        : p.name?.toLowerCase().includes(q) ||
-          p.category?.toLowerCase().includes(q) ||
-          (p.description || "").toLowerCase().includes(q) ||
-          (p.features || []).some((f) => f.toLowerCase().includes(q));
+        : name.toLowerCase().includes(q) ||
+          categoryName.toLowerCase().includes(q) ||
+          description.toLowerCase().includes(q) ||
+          features.some((f) => f.toLowerCase().includes(q));
+
       if (!matchSearch) return false;
 
-      // التحقق من التصنيف النشط باستخدام categoryKey
       const matchActiveCategory = !activeCategory
         ? true
-        : p.categoryKey === activeCategory;
+        : p.category === activeCategory || p.categoryKey === activeCategory;
       if (!matchActiveCategory) return false;
 
       const matchSelectedCategories =
@@ -99,30 +76,25 @@ const ColorsPage = ({
           : selectedCategories.has(p.category);
       if (!matchSelectedCategories) return false;
 
-      // **any feature match**
       const matchSelectedFeatures =
         selectedFeatures.size === 0
           ? true
-          : Array.from(selectedFeatures).some((f) =>
-              (p.features || []).includes(f)
-            );
+          : Array.from(selectedFeatures).some((f) => features.includes(f));
 
       return matchSelectedFeatures;
     });
 
     setFilteredProducts(next);
   }, [
-    translatedProducts,
+    productsData,
+    lang,
     searchQuery,
     activeCategory,
     selectedCategories,
     selectedFeatures,
   ]);
 
-  useEffect(
-    () => setFilteredProducts(translatedProducts),
-    [translatedProducts]
-  );
+  useEffect(() => setFilteredProducts(productsData), [productsData]);
   useEffect(() => applyFilter(), [applyFilter]);
 
   const onSearchChange = (e) => setSearchQuery(e.target.value);
@@ -231,7 +203,7 @@ const ColorsPage = ({
           <div className="text-sm text-gray-600">
             <span className="font-semibold">{filteredProducts.length}</span>{" "}
             {t("products_count_of") || "من"}{" "}
-            <span className="font-semibold">{translatedProducts.length}</span>{" "}
+            <span className="font-semibold">{productsData.length}</span>{" "}
             {t("products_count_product") || "منتج"}
           </div>
         </div>
@@ -241,6 +213,7 @@ const ColorsPage = ({
             <ProductCard
               key={product.id}
               product={product}
+              productType={productType}
               onClick={() => handleProductClick(product)}
             />
           ))}

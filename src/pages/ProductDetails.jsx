@@ -226,7 +226,7 @@ const ProductDetails = () => {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
-                      addToCart(translatedProduct, 1);
+                      addToCart(product, 1);
                     }}
                     className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white shadow-md hover:shadow-lg transition-all"
                   >
@@ -237,7 +237,8 @@ const ProductDetails = () => {
 
               <div className="pt-12 md:pt-0">
                 <p className="text-sm text-gray-500">
-                  {translatedProduct.category}
+                  {/* {translatedProduct.category} */}
+                  {t(translatedProduct.category) || translatedProduct.category}
                 </p>
                 <h1 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
                   {translatedProduct.name}
@@ -256,12 +257,7 @@ const ProductDetails = () => {
               {translatedProduct.features.length > 0 && (
                 <div className="space-y-3">
                   {translatedProduct.features.map((feature, idx) => (
-                    <div
-                      key={idx}
-                      className={`flex items-start gap-3 ${
-                        isRTL ? "flex-row-reverse" : ""
-                      }`}
-                    >
+                    <div key={idx} className={`flex items-start gap-3`}>
                       <i className="fas fa-check text-green-600 text-base mt-0.5"></i>
                       <span className="text-gray-700 text-sm md:text-base">
                         {feature}
@@ -320,12 +316,7 @@ const ProductDetails = () => {
               t("product_features"),
               <ul className="space-y-3">
                 {translatedProduct.features.map((f, i) => (
-                  <li
-                    key={i}
-                    className={`flex items-start gap-3 ${
-                      isRTL ? "flex-row-reverse" : ""
-                    }`}
-                  >
+                  <li key={i} className={`flex items-start gap-3`}>
                     <i className="fas fa-check text-green-600 mt-1"></i>
                     <span>{f}</span>
                   </li>

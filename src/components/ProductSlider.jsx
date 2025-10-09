@@ -96,13 +96,17 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
         modules={[Navigation, Pagination]}
         slidesPerView={1}
         spaceBetween={16}
-        pagination={{ clickable: true }}
+        pagination={{
+          clickable: true,
+          el: ".custom-pagination", // link to our custom container
+        }}
         onBeforeInit={(swiper) => {
           swiper.params.navigation = {
             ...(swiper.params.navigation || {}),
             prevEl: prevRef.current,
             nextEl: nextRef.current,
           };
+          swiper.params.pagination.el = ".custom-pagination";
         }}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
@@ -113,7 +117,7 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
           640: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
         }}
-        className="mb-4"
+        className="mb-4 relative"
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>
@@ -136,6 +140,13 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
             </p>
           </Link>
         </SwiperSlide>
+
+        {/* Custom pagination container aligned to the end */}
+        <div
+          className={`custom-pagination flex ${
+            isRTL ? "justify-start" : "justify-end"
+          } mt-4`}
+        />
       </Swiper>
 
       <div className="flex justify-between items-center">

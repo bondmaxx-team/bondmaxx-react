@@ -137,7 +137,9 @@ export function ShopProvider({ children }) {
   const clearCart = () => dispatch({ type: "CLEAR_CART" });
 
   // Selectors / helpers
-  const isFavorite = (id) => state.favorites.some((f) => f.id === id);
+  // const isFavorite = (id) => state.favorites.some((f) => f.id === id);
+  const isFavorite = (id, productType) =>
+    state.favorites.some((f) => f.id === id && f.productType === productType);
   const inCart = (id) => state.cart.some((c) => c.id === id);
 
   const cartCount = useMemo(

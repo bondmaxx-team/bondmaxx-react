@@ -14,7 +14,10 @@ export function sanitizeNumber(number) {
   return String(number).replace(/[^0-9]/g, "");
 }
 
-export function buildWhatsAppUrl({ number = DEFAULT_WHATSAPP_NUMBER, text = "" } = {}) {
+export function buildWhatsAppUrl({
+  number = DEFAULT_WHATSAPP_NUMBER,
+  text = "",
+} = {}) {
   const num = sanitizeNumber(number);
   const encoded = encodeURIComponent(text || "");
   // Use wa.me for general case; some environments prefer api.whatsapp.com
@@ -25,7 +28,10 @@ export function buildWhatsAppUrl({ number = DEFAULT_WHATSAPP_NUMBER, text = "" }
   return `${base}?phone=${num}&text=${encoded}`;
 }
 
-export function openWhatsApp({ number = DEFAULT_WHATSAPP_NUMBER, text = "" } = {}) {
+export function openWhatsApp({
+  number = DEFAULT_WHATSAPP_NUMBER,
+  text = "",
+} = {}) {
   try {
     const url = buildWhatsAppUrl({ number, text });
     const win = window.open(url, "_blank", "noopener,noreferrer");

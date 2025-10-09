@@ -32,7 +32,11 @@ const ColorCollectionFilter = ({
               value={searchTerm}
               onChange={(e) => onSearchChange(e.target.value)}
             />
-            <i className={`fas fa-search absolute ${isRTL ? "left-3 sm:left-4" : "right-3 sm:right-4"} top-1/2 transform -translate-y-1/2 text-gray-400 text-sm sm:text-base`}></i>
+            <i
+              className={`fas fa-search absolute ${
+                isRTL ? "left-3 sm:left-4" : "right-3 sm:right-4"
+              } top-1/2 transform -translate-y-1/2 text-gray-400 text-sm sm:text-base`}
+            ></i>
           </div>
         </div>
 

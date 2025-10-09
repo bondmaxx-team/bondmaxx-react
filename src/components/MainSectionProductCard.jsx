@@ -4,7 +4,9 @@ import { useShop } from "../context/ShopContext";
 import { useTranslation } from "react-i18next";
 
 const ProductCard = ({ product }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === "rtl";
+
   const { toggleFavorite, isFavorite, addToCart } = useShop();
 
   const favorite = isFavorite(product.id);
@@ -23,7 +25,8 @@ const ProductCard = ({ product }) => {
   };
 
   // ✅ ترجم اسم المنتج - جرب الاسم كمفتاح أولاً، وإذا ما لقى ترجمة استخدم الاسم الأصلي
-  const translatedName = t(product.nameKey, { defaultValue: product.nameKey });
+  const translatedName =
+    product.name[i18n.language] || product.name["en"] || product.nameKey;
 
   // Create query string from product object
   const productQuery = new URLSearchParams({
@@ -39,9 +42,14 @@ const ProductCard = ({ product }) => {
   return (
     <Link
       to={`/product-details?${productQuery}`}
-      className="block bg-gray-100 rounded-lg shadow-md p-6 text-center relative group hover:shadow-lg transition-shadow"
+      className="block w-full bg-gray-100 rounded-lg shadow-md p-6 text-center relative group hover:shadow-lg transition-shadow"
     >
-      <div className="absolute top-3 left-2 z-10 flex gap-2">
+      {/* <div className="absolute top-3 left-2 z-10 flex gap-2"> */}
+      <div
+        className={`absolute top-3 ${
+          isRTL ? "left-2" : "right-2"
+        } z-10 flex gap-2`}
+      >
         <button
           onClick={handleFavoriteClick}
           className="p-1 rounded-full shadow-sm hover:shadow-md transition-all duration-200"
@@ -65,7 +73,12 @@ const ProductCard = ({ product }) => {
         </button>
       </div>
 
-      <h3 className="font-semibold mb-2">{translatedName}</h3>
+      <h3
+        className="font-semibold mb-2 w-full text-gray-800 text-base truncate"
+        title={translatedName}
+      >
+        {translatedName}
+      </h3>
 
       {product.image ? (
         <img

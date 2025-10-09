@@ -30,8 +30,6 @@ export default function useLanguageSelect() {
     return findLanguage(code);
   });
 
-  console.log(currentLanguage, i18n.language);
-
   useEffect(() => {
     // keep i18n in sync if currentLanguage changes externally
     if (currentLanguage?.code && i18n.language !== currentLanguage.code) {

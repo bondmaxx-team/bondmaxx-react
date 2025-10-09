@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useShop } from "../context/ShopContext";
 
 export default function FavItem({ item }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { toggleFavorite } = useShop();
   const fallbackImage = null;
 
@@ -13,11 +13,11 @@ export default function FavItem({ item }) {
           <div
             className="w-12 h-12 rounded-md border shadow-inner"
             style={{ backgroundColor: item.hex || "#ffffff" }}
-            title={item.name}
+            title={item.name[i18n.language] || item.name["en"] || item.nameKey}
           />
         ) : (
           <img
-            alt={item.name || t("product")}
+            alt={item.name[i18n.language] || t("product")}
             src={item.image ? item.image : fallbackImage}
             onError={(e) => {
               e.target.src = fallbackImage;
@@ -27,7 +27,9 @@ export default function FavItem({ item }) {
         )}
 
         <div>
-          <div className="font-medium">{item.name || t("product")}</div>
+          <div className="font-medium">
+            {item.name[i18n.language] || item.name["en"] || item.nameKey}
+          </div>
           {item.price && (
             <div className="text-sm text-gray-500">{item.price} ₺</div>
           )}

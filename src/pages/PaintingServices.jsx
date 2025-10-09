@@ -68,7 +68,16 @@ export default function PaintingServices() {
         paintType: t("paint_type") || "Paint Type",
         serviceType: t("service_type") || "Service Type",
       },
-      order: ["location", "city", "fullName", "email", "phoneCode", "phone", "paintType", "serviceType"],
+      order: [
+        "location",
+        "city",
+        "fullName",
+        "email",
+        "phoneCode",
+        "phone",
+        "paintType",
+        "serviceType",
+      ],
     });
     if (sent) {
       toast.success(t("success_message"));

@@ -7,25 +7,23 @@ import en from "./locales/en/translation.json";
 import tr from "./locales/tr/translation.json";
 import de from "./locales/de/translation.json";
 
-await i18n
-  .use(initReactI18next)
-  .init({
-    lng: "ar", // default language
-    fallbackLng: "ar",
-    supportedLngs: ["en", "ar", "tr", "de"],
-    debug: false,
-    resources: {
-      ar: { translation: ar },
-      en: { translation: en },
-      tr: { translation: tr },
-      de: { translation: de },
-    },
-    interpolation: {
-      escapeValue: false,
-    },
-    react: {
-      useSuspense: false,
-    },
-  });
+await i18n.use(initReactI18next).init({
+  lng: "ar", // default language
+  fallbackLng: "ar",
+  supportedLngs: ["en", "ar", "tr", "de"],
+  debug: false,
+  resources: {
+    ar: { translation: ar },
+    en: { translation: en },
+    tr: { translation: tr },
+    de: { translation: de },
+  },
+  interpolation: {
+    escapeValue: false,
+  },
+  react: {
+    useSuspense: false,
+  },
+});
 
 export default i18n;
