@@ -475,5 +475,14 @@
   "surface_preparation": "Oberflächenvorbereitung",
   "application_instructions": "Anwendungshinweise",
   "shelf_life": "Haltbarkeit",
-  "storage_conditions": "Lagerbedingungen"
+  "storage_conditions": "Lagerbedingungen",
+  "base": "Basis",
+  "coverage": "Abdeckung",
+  "packaging": "Verpackung",
+  "material": "Material",
+  "thickness": "Dicke",
+  "soundReductionIndex": "Schalldämmindex",
+  "fireResistance": "Feuerbeständigkeit",
+  "dimensions": "Abmessungen",
+  "weight": "Gewicht"
 }

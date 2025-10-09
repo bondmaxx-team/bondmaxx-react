@@ -473,5 +473,14 @@
   "surface_preparation": "تحضير السطح",
   "application_instructions": "طريقة التطبيق",
   "shelf_life": "العمر الافتراضي",
-  "storage_conditions": "ظروف التخزين"
+  "storage_conditions": "ظروف التخزين",
+  "base": "الأساس",
+  "coverage": "التغطية",
+  "packaging": "التعبئة",
+  "material": "المادة",
+  "thickness": "السماكة",
+  "soundReductionIndex": "مؤشر تقليل الصوت",
+  "fireResistance": "مقاومة الحريق",
+  "dimensions": "الأبعاد",
+  "weight": "الوزن"
 }

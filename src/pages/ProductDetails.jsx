@@ -156,6 +156,15 @@ const ProductDetails = () => {
       recoatTime: t("spec_recoat_time"),
       sheen: t("spec_sheen"),
       toolCleaning: t("spec_tool_cleaning"),
+      base: t("base"),
+      coverage: t("Coverage"),
+      packaging: t("Packaging"),
+      material: t("Material"),
+      thickness: t("Thickness"),
+      soundReductionIndex: t("Sound Reduction Index"),
+      fireResistance: t("Fire Resistance"),
+      dimensions: t("Dimensions"),
+      weight: t("Weight"),
     };
 
     return (

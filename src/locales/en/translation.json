@@ -472,5 +472,14 @@
   "surface_preparation": "Surface Preparation",
   "application_instructions": "Application Instructions",
   "shelf_life": "Shelf Life",
-  "storage_conditions": "Storage Conditions"
+  "storage_conditions": "Storage Conditions",
+  "base": "Base",
+  "coverage": "Coverage",
+  "packaging": "Packaging",
+  "material": "Material",
+  "thickness": "Thickness",
+  "soundReductionIndex": "Sound Reduction Index",
+  "fireResistance": "Fire Resistance",
+  "dimensions": "Dimensions",
+  "weight": "Weight"
 }

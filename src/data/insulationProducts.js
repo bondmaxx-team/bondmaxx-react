@@ -1,7 +1,6 @@
 import testImage from "../assets/color-1.png";
 
-const insulationProducts = [
-  // 1️⃣ العازل الحراري
+const insulationProductsDetailed = [
   {
     id: 1,
     category: "thermal_insulation",
@@ -156,7 +155,6 @@ const insulationProducts = [
     },
   },
 
-  // 2️⃣ العازل الصوتي
   {
     id: 2,
     category: "sound_insulation",
@@ -310,4 +308,4 @@ const insulationProducts = [
   },
 ];
 
-export default insulationProducts;
+export default insulationProductsDetailed;
