@@ -435,7 +435,7 @@
   "water_repellent": "Su itici",
   "long_last_color": "Uzun ömürlü renk",
   "anti_crack": "Çatlamaya karşı",
-  "easy_application": "Kolay uygulama",
+
   "durable_finish": "Dayanıklı kaplama",
   "rust_resistant": "Paslanmaya karşı dayanıklı",
   "smooth_finish": "Düzgün kaplama",
@@ -448,5 +448,27 @@
   "easy_cleaning": "Kolay temizlenir",
   "modern_look": "Modern görünüm",
   "anti_dust": "Toza karşı dayanıklı",
-  "washable_surface": "Yıkanabilir yüzey"
+  "washable_surface": "Yıkanabilir yüzey",
+
+  "full_description": "Ürün Açıklaması",
+  "detailed_features": "Detaylı Özellikler",
+  "technical_specifications": "Teknik Özellikler",
+  "usage_instructions": "Kullanım Talimatları",
+  "storage_instructions": "Depolama Talimatları",
+  "key_features": "Ana Özellikler",
+  "spec_color": "Renk",
+  "spec_type": "Tür",
+  "spec_solids_content": "Katı Madde Oranı",
+  "spec_viscosity": "Viskozite",
+  "spec_density": "Yoğunluk",
+  "spec_ph": "pH Seviyesi",
+  "spec_whiteness": "Beyazlık Derecesi",
+  "spec_drying_time": "Kuruma Süresi",
+  "spec_recoat_time": "Tekrar Boyama Süresi",
+  "spec_sheen": "Parlaklık",
+  "spec_tool_cleaning": "Alet Temizliği",
+  "surface_preparation": "Yüzey Hazırlığı",
+  "application_instructions": "Uygulama Talimatları",
+  "shelf_life": "Raf Ömrü",
+  "storage_conditions": "Depolama Koşulları"
 }

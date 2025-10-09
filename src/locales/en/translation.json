@@ -450,5 +450,27 @@
   "easy_cleaning": "Easy cleaning",
   "modern_look": "Modern look",
   "anti_dust": "Anti-dust",
-  "washable_surface": "Washable surface"
+  "washable_surface": "Washable surface",
+
+  "full_description": "Product Description",
+  "detailed_features": "Detailed Features",
+  "technical_specifications": "Technical Specifications",
+  "usage_instructions": "Usage Instructions",
+  "storage_instructions": "Storage Instructions",
+  "key_features": "Key Features",
+  "spec_color": "Color",
+  "spec_type": "Type",
+  "spec_solids_content": "Solids Content",
+  "spec_viscosity": "Viscosity",
+  "spec_density": "Density",
+  "spec_ph": "pH Level",
+  "spec_whiteness": "Whiteness Degree",
+  "spec_drying_time": "Drying Time",
+  "spec_recoat_time": "Recoat Time",
+  "spec_sheen": "Sheen",
+  "spec_tool_cleaning": "Tool Cleaning",
+  "surface_preparation": "Surface Preparation",
+  "application_instructions": "Application Instructions",
+  "shelf_life": "Shelf Life",
+  "storage_conditions": "Storage Conditions"
 }

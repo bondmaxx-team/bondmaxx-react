@@ -451,5 +451,27 @@
   "easy_cleaning": "سهل التنظيف",
   "modern_look": "مظهر عصري",
   "anti_dust": "مقاوم للأتربة",
-  "washable_surface": "سطح قابل للغسل"
+  "washable_surface": "سطح قابل للغسل",
+
+  "full_description": "وصف المنتج",
+  "detailed_features": "المميزات التفصيلية",
+  "technical_specifications": "المواصفات الفنية",
+  "usage_instructions": "طريقة الاستخدام",
+  "storage_instructions": "تعليمات التخزين",
+  "key_features": "الميزات الرئيسية",
+  "spec_color": "اللون",
+  "spec_type": "النوع",
+  "spec_solids_content": "نسبة المواد الصلبة",
+  "spec_viscosity": "اللزوجة",
+  "spec_density": "الكثافة",
+  "spec_ph": "الأس الهيدروجيني",
+  "spec_whiteness": "درجة البياض",
+  "spec_drying_time": "وقت الجفاف",
+  "spec_recoat_time": "وقت إعادة الطلاء",
+  "spec_sheen": "اللمعان",
+  "spec_tool_cleaning": "تنظيف الأدوات",
+  "surface_preparation": "تحضير السطح",
+  "application_instructions": "طريقة التطبيق",
+  "shelf_life": "العمر الافتراضي",
+  "storage_conditions": "ظروف التخزين"
 }

@@ -453,5 +453,27 @@
   "easy_cleaning": "Leicht zu reinigen",
   "modern_look": "Modernes Aussehen",
   "anti_dust": "Staubabweisend",
-  "washable_surface": "Abwaschbare Oberfläche"
+  "washable_surface": "Abwaschbare Oberfläche",
+
+  "full_description": "Produktbeschreibung",
+  "detailed_features": "Detaillierte Merkmale",
+  "technical_specifications": "Technische Spezifikationen",
+  "usage_instructions": "Gebrauchsanweisung",
+  "storage_instructions": "Lagerungshinweise",
+  "key_features": "Hauptmerkmale",
+  "spec_color": "Farbe",
+  "spec_type": "Typ",
+  "spec_solids_content": "Feststoffgehalt",
+  "spec_viscosity": "Viskosität",
+  "spec_density": "Dichte",
+  "spec_ph": "pH-Wert",
+  "spec_whiteness": "Weißgrad",
+  "spec_drying_time": "Trocknungszeit",
+  "spec_recoat_time": "Überstreichzeit",
+  "spec_sheen": "Glanzgrad",
+  "spec_tool_cleaning": "Werkzeugreinigung",
+  "surface_preparation": "Oberflächenvorbereitung",
+  "application_instructions": "Anwendungshinweise",
+  "shelf_life": "Haltbarkeit",
+  "storage_conditions": "Lagerbedingungen"
 }
