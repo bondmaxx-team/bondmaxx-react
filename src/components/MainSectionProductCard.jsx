@@ -3,19 +3,22 @@ import { Link } from "react-router-dom";
 import { useShop } from "../context/ShopContext";
 import { useTranslation } from "react-i18next";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, productType }) => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
 
   const { toggleFavorite, isFavorite, addToCart } = useShop();
 
-  const favorite = isFavorite(product.id);
+  const favorite = isFavorite(product.id, productType);
 
   const handleFavoriteClick = (e) => {
     console.log(product);
     e.preventDefault();
     e.stopPropagation();
-    toggleFavorite(product);
+    toggleFavorite({
+      ...product,
+      productType,
+    });
   };
 
   const handleCartClick = (e) => {
@@ -28,20 +31,9 @@ const ProductCard = ({ product }) => {
   const translatedName =
     product.name[i18n.language] || product.name["en"] || product.nameKey;
 
-  // Create query string from product object
-  const productQuery = new URLSearchParams({
-    id: product.id,
-    name: product.nameKey,
-    price: product.price,
-    image: product.image || "",
-    color: product.color || "",
-    description: product.description || "",
-    category: product.category || "",
-  }).toString();
-
   return (
     <Link
-      to={`/product-details?${productQuery}`}
+      to={`/product-details?id=${product.id}&type=${productType}`}
       className="block w-full bg-gray-100 rounded-lg shadow-md p-6 text-center relative group hover:shadow-lg transition-shadow"
     >
       {/* <div className="absolute top-3 left-2 z-10 flex gap-2"> */}

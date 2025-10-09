@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const ProductSlider = ({ title, products, color, linkTo }) => {
+const ProductSlider = ({ title, products, color, linkTo, productType }) => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n?.language === "ar";
 
@@ -121,7 +121,7 @@ const ProductSlider = ({ title, products, color, linkTo }) => {
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>
-            <ProductCard product={product} />
+            <ProductCard product={product} productType={productType} />
           </SwiperSlide>
         ))}
 

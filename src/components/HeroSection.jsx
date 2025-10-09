@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import heroImage from "../assets/22.jpeg"; // استيراد الصورة
 
 const HeroSection = ({ onDiscoverColors }) => {
   const { t } = useTranslation();
@@ -8,13 +9,12 @@ const HeroSection = ({ onDiscoverColors }) => {
       {/* Background with overlay */}
       <div className="absolute inset-0">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105 animate-subtle-zoom"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transform scale-105"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1600')",
+            backgroundImage: `url(${heroImage})`, // استخدام الصورة المحلية
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/75" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/30 to-black/50" />
       </div>
 
       {/* Decorative elements */}

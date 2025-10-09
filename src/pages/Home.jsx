@@ -41,6 +41,7 @@ export default function Home() {
                   key={product.titleKey}
                   title={t(product.titleKey)}
                   products={product.collection}
+                  productType={product.type}
                   color={product.color}
                   linkTo={product.linkTo}
                 />
