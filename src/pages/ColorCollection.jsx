@@ -92,7 +92,7 @@ const ColorCollection = () => {
             categoryOptions={categoryOptions}
           />
 
-          <div className="mt-4 sm:mt-5 flex items-center justify-between gap-4 text-xs sm:text-sm text-gray-600 font-medium">
+          <div className=" p-10 mt-10 sm:mt-5 flex items-center justify-between gap-4 text-xs sm:text-sm text-gray-600 font-medium">
             <div
               className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg"
               style={{ backgroundColor: "#E8EEF7" }}

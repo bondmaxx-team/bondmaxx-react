@@ -270,3 +270,15 @@
     @apply bg-background text-foreground;
   }
 }
+/* Fix pagination button colors */
+.pagination-button-active {
+  background-color: #203f84 !important;
+  border-color: #203f84 !important;
+  color: #ffffff !important;
+}
+
+.pagination-button-inactive {
+  background-color: #ffffff !important;
+  border-color: #e5e7eb !important;
+  color: #374151 !important;
+}

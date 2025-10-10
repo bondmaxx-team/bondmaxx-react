@@ -17,67 +17,72 @@ export default function CartItem({ item }) {
   };
 
   return (
-    <div className="flex items-center justify-between gap-3 p-2 border rounded bg-white">
-      <div className="flex items-center gap-3">
+    <div className="flex items-center gap-4 p-4 border-2 border-gray-100 rounded-xl bg-white hover:border-gray-200 transition-all duration-300">
+      {/* Product Image */}
+      <div className="flex-shrink-0">
         <img
           alt={item.name || t("product")}
           src={item.image ? item.image : fallbackImage}
           onError={(e) => {
             e.target.src = fallbackImage;
           }}
-          className="w-12 h-12 object-cover rounded-md border"
+          className="w-16 h-16 object-cover rounded-lg border border-gray-200"
         />
+      </div>
 
-        <div>
-          {/* <div className="font-medium">{item.name[i18n.language] || item.name["en"] || item.nameKey}</div> */}
-          <h3
-            className="font-semibold mb-2 w-full text-gray-800 text-base truncate"
-            title={item.name[i18n.language] || item.name["en"] || item.nameKey}
+      {/* Product Info & Quantity Controls */}
+      <div className="flex-grow">
+        <h3
+          className="font-bold text-gray-900 text-base mb-2 line-clamp-1"
+          title={item.name[i18n.language] || item.name["en"] || item.nameKey}
+        >
+          {item.name[i18n.language] || item.name["en"] || item.nameKey}
+        </h3>
+
+        {/* Quantity Controls */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleDecrease}
+            disabled={item.qty === 1}
+            className={`w-8 h-8 flex items-center justify-center rounded-lg transition-all duration-200 ${
+              item.qty === 1
+                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+            }`}
+            title={t("decrease_qty")}
           >
-            {item.name[i18n.language] || item.name["en"] || item.nameKey}
-          </h3>
+            <i className="fas fa-minus text-xs"></i>
+          </button>
 
-          {item.price && (
-            <div className="text-sm text-gray-500">{item.price} ₺</div>
-          )}
+          <span className="text-base text-gray-900 font-bold min-w-[2rem] text-center">
+            {item.qty}
+          </span>
 
-          <div className="flex items-center gap-2 mt-1">
-            <button
-              onClick={handleDecrease}
-              disabled={item.qty === 1}
-              className={`w-6 h-6 flex items-center justify-center rounded-full text-xs transition 
-                ${
-                  item.qty === 1
-                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                    : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-                }`}
-              title={t("decrease_qty")}
-            >
-              <i className="fas fa-minus"></i>
-            </button>
-
-            <span className="text-sm text-gray-800 font-medium">
-              {item.qty}
-            </span>
-
-            <button
-              onClick={handleIncrease}
-              className="w-6 h-6 flex items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs"
-              title={t("increase_qty")}
-            >
-              <i className="fas fa-plus"></i>
-            </button>
-          </div>
+          <button
+            onClick={handleIncrease}
+            className="w-8 h-8 flex items-center justify-center rounded-lg transition-all duration-200"
+            style={{ backgroundColor: "#E8EEF7", color: "#203F84" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#d0dff5";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "#E8EEF7";
+            }}
+            title={t("increase_qty")}
+          >
+            <i className="fas fa-plus text-xs"></i>
+          </button>
         </div>
       </div>
 
+      {/* Remove Button */}
       <button
         title={t("remove_item")}
         type="button"
-        className="text-red-600 hover:text-red-700"
+        className="flex-shrink-0 text-red-500 hover:text-red-600 transition-colors duration-200 p-2"
         onClick={() => removeFromCart(item.id)}
       >
-        <i className="fas fa-trash-alt"></i>
+        <i className="fas fa-trash-alt text-lg"></i>
       </button>
     </div>
   );
