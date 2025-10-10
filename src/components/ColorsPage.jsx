@@ -23,16 +23,29 @@ const ColorsPage = ({
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState(productsData);
   const [activeCategory, setActiveCategory] = useState(null);
-  const [selectedCategories, setSelectedCategories] = useState(new Set());
-  const [selectedFeatures, setSelectedFeatures] = useState(new Set());
 
-  // ترجمة التصنيفات فقط
+  // ترجمة التصنيفات وإنشاء map للوصول السريع
   const categories = useMemo(() => {
     return categoriesData.map((c) => ({
       ...c,
-      name: c.name?.[lang] || c.name?.en || "",
+      name:
+        c.name?.[lang] ||
+        c.name?.ar ||
+        c.name?.en ||
+        c.name?.tr ||
+        c.name?.de ||
+        "",
     }));
   }, [categoriesData, lang]);
+
+  // إنشاء map للبحث عن الفئة بسرعة
+  const categoryMap = useMemo(() => {
+    const map = {};
+    categoriesData.forEach((c) => {
+      map[c.key] = c.name;
+    });
+    return map;
+  }, [categoriesData]);
 
   // تطبيق الفلترة
   const applyFilter = useCallback(() => {
@@ -65,34 +78,18 @@ const ColorsPage = ({
 
       if (!matchSearch) return false;
 
+      // تحسين منطق مطابقة الفئات
       const matchActiveCategory = !activeCategory
         ? true
-        : p.category === activeCategory || p.categoryKey === activeCategory;
-      if (!matchActiveCategory) return false;
+        : p.category === activeCategory ||
+          p.categoryKey === activeCategory ||
+          categoryName === activeCategory;
 
-      const matchSelectedCategories =
-        selectedCategories.size === 0
-          ? true
-          : selectedCategories.has(p.category);
-      if (!matchSelectedCategories) return false;
-
-      const matchSelectedFeatures =
-        selectedFeatures.size === 0
-          ? true
-          : Array.from(selectedFeatures).some((f) => features.includes(f));
-
-      return matchSelectedFeatures;
+      return matchActiveCategory;
     });
 
     setFilteredProducts(next);
-  }, [
-    productsData,
-    lang,
-    searchQuery,
-    activeCategory,
-    selectedCategories,
-    selectedFeatures,
-  ]);
+  }, [productsData, lang, searchQuery, activeCategory]);
 
   useEffect(() => setFilteredProducts(productsData), [productsData]);
   useEffect(() => applyFilter(), [applyFilter]);

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useShop } from "../context/ShopContext";
 import { useTranslation } from "react-i18next";
@@ -27,7 +26,6 @@ const ProductCard = ({ product, productType }) => {
     addToCart(product);
   };
 
-  // ✅ ترجم اسم المنتج - جرب الاسم كمفتاح أولاً، وإذا ما لقى ترجمة استخدم الاسم الأصلي
   const translatedName =
     product.name[i18n.language] || product.name["en"] || product.nameKey;
 
@@ -36,7 +34,7 @@ const ProductCard = ({ product, productType }) => {
       to={`/product-details?id=${product.id}&type=${productType}`}
       className="block w-full bg-gray-100 rounded-lg shadow-md p-6 text-center relative group hover:shadow-lg transition-shadow"
     >
-      {/* <div className="absolute top-3 left-2 z-10 flex gap-2"> */}
+      {/* الأيقونات */}
       <div
         className={`absolute top-3 ${
           isRTL ? "left-2" : "right-2"
@@ -65,25 +63,25 @@ const ProductCard = ({ product, productType }) => {
         </button>
       </div>
 
-      <h3
-        className="font-semibold mb-2 w-full text-gray-800 text-base truncate"
-        title={translatedName}
-      >
-        {translatedName}
-      </h3>
-
       {product.image ? (
         <img
           src={product.image}
           alt={translatedName}
-          className="w-full h-28 object-contain rounded"
+          className="w-full h-28 object-contain rounded mb-3"
         />
       ) : (
         <div
-          className="w-full h-32 rounded"
+          className="w-full h-32 rounded mb-3"
           style={{ backgroundColor: product.color }}
         ></div>
       )}
+
+      <h3
+        className="font-semibold w-full text-gray-800 text-base truncate"
+        title={translatedName}
+      >
+        {translatedName}
+      </h3>
     </Link>
   );
 };

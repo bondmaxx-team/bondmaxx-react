@@ -32,16 +32,6 @@ const HeroSection = ({ onDiscoverColors }) => {
           </span>
         </h1>
 
-        <style>
-          {`
-@keyframes shine {
-  0% { transform: translateX(-100%); opacity: 0; }
-  50% { opacity: 0.6; }
-  100% { transform: translateX(100%); opacity: 0; }
-}
-`}
-        </style>
-
         <p className="text-xl md:text-2xl text-blue-50 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg mt-6">
           {t("description")}
         </p>
@@ -49,19 +39,43 @@ const HeroSection = ({ onDiscoverColors }) => {
         <div className="flex justify-center pt-8">
           <button
             onClick={onDiscoverColors}
-            className="group relative flex items-center gap-3 px-12 py-5 font-bold text-lg text-white rounded-full bg-[#203F84] shadow-xl hover:bg-[#1a3369] hover:shadow-2xl transition-all duration-300"
+            className="group relative flex items-center gap-3 px-12 py-5 font-bold text-lg rounded-full border-2 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden backdrop-blur-md"
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
+              borderColor: "#203F84",
+              color: "#203F84",
+            }}
           >
-            <i className="fas fa-palette text-lg text-white" />
-            <span>{t("cta_button")}</span>
-            <span
-              className="ml-2 font-extrabold text-white"
-              style={{
-                textShadow: "0 2px 6px rgba(0,0,0,0.3)",
-              }}
-            ></span>
+            {/* تأثير الموجة المائية الأفقية */}
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out shimmer"></span>
 
-            {/* لمعة ناعمة عند hover */}
-            <div className="absolute inset-0 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            {/* تأثير الفقاعات الصاعدة */}
+            <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <span className="bubble bubble-1"></span>
+              <span className="bubble bubble-2"></span>
+              <span className="bubble bubble-3"></span>
+              <span className="bubble bubble-4"></span>
+            </span>
+
+            {/* تأثير Ripple الدائري */}
+            <span className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-150 transition-all duration-700 ease-out"></span>
+
+            {/* تأثير التوهج الأزرق المائي */}
+            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/30 via-cyan-300/30 to-blue-400/30 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 animate-pulse-slow"></span>
+
+            <i
+              className="fas fa-palette text-lg relative z-10 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300"
+              style={{ color: "#203F84" }}
+            />
+            <span
+              className="relative z-10 font-extrabold"
+              style={{
+                color: "#203F84",
+                textShadow: "0 2px 4px rgba(32, 63, 132, 0.2)",
+              }}
+            >
+              {t("cta_button")}
+            </span>
           </button>
         </div>
 
@@ -99,6 +113,92 @@ const HeroSection = ({ onDiscoverColors }) => {
 
         .animate-fade-in {
           animation: fade-in 1.2s ease-out;
+        }
+
+        @keyframes bubble-rise {
+          0% {
+            transform: translateY(0) scale(0);
+            opacity: 0;
+          }
+          20% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(-60px) scale(1);
+            opacity: 0;
+          }
+        }
+
+        .bubble {
+          position: absolute;
+          bottom: 0;
+          background: rgba(32, 63, 132, 0.4);
+          border-radius: 50%;
+          pointer-events: none;
+        }
+
+        .bubble-1 {
+          left: 20%;
+          width: 8px;
+          height: 8px;
+          animation: bubble-rise 2s ease-in-out infinite;
+          animation-delay: 0s;
+        }
+
+        .bubble-2 {
+          left: 40%;
+          width: 12px;
+          height: 12px;
+          animation: bubble-rise 2.3s ease-in-out infinite;
+          animation-delay: 0.3s;
+        }
+
+        .bubble-3 {
+          left: 60%;
+          width: 10px;
+          height: 10px;
+          animation: bubble-rise 2.5s ease-in-out infinite;
+          animation-delay: 0.6s;
+        }
+
+        .bubble-4 {
+          left: 80%;
+          width: 9px;
+          height: 9px;
+          animation: bubble-rise 2.2s ease-in-out infinite;
+          animation-delay: 0.9s;
+        }
+
+        @keyframes pulse-slow {
+          0%,
+          100% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 1;
+          }
+        }
+
+        .animate-pulse-slow {
+          animation: pulse-slow 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+          0% {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          50% {
+            opacity: 0.6;
+          }
+          100% {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+        }
+
+        .shimmer {
+          animation: shine 2s ease-in-out;
         }
       `}</style>
     </section>

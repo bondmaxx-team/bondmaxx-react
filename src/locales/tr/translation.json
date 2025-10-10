@@ -480,5 +480,7 @@
   "fireResistance": "Yangın Dayanımı",
   "dimensions": "Boyutlar",
   "weight": "Ağırlık",
-  "type": "Tip"
+  "type": "Tip",
+  "external": "Dış",
+  "internal": "İç"
 }

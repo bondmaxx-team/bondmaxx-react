@@ -150,7 +150,7 @@ const exteriorProducts = [
   // 🧱 Product 2
   {
     id: 2,
-    category: "roof",
+    category: "walls",
     image: testImage,
     name: {
       en: "Bondmax Roof Shield",
@@ -290,7 +290,7 @@ const exteriorProducts = [
   // 🧱 Product 3
   {
     id: 3,
-    category: "primer",
+    category: "walls",
     image: testImage,
     name: {
       en: "Bondmax Exterior Primer",
@@ -424,7 +424,7 @@ const exteriorProducts = [
   // 🧱 Product 4
   {
     id: 4,
-    category: "wood",
+    category: "walls",
     image: testImage,
     name: {
       en: "Bondmax WoodGuard Exterior Varnish",
@@ -562,7 +562,7 @@ const exteriorProducts = [
   // 🧱 Product 5
   {
     id: 5,
-    category: "stone",
+    category: "ceilings",
     image: testImage,
     name: {
       en: "Bondmax Stone & Concrete Sealer",

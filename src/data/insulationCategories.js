@@ -5,24 +5,24 @@ import wall from "../assets/1.jpeg";
 const insulationCategories = [
   {
     id: 1,
-    key: "thermal_insulation",
-    image: roof,
+    key: "internal",
+    image: wall,
     name: {
-      en: "Thermal Insulation",
-      ar: "العزل الحراري",
-      de: "Wärmedämmung",
-      tr: "Isı Yalıtımı",
+      en: "internal",
+      ar: "داخلي ",
+      de: "Intern",
+      tr: "İç",
     },
   },
   {
     id: 2,
-    key: "sound_insulation",
-    image: wall,
+    key: "external",
+    image: roof,
     name: {
-      en: "Sound Insulation",
-      ar: "العزل الصوتي",
-      de: "Schalldämmung",
-      tr: "Ses Yalıtımı",
+      en: "external",
+      ar: "خارجي",
+      de: "external",
+      tr: "Dış",
     },
   },
 ];

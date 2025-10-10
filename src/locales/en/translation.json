@@ -482,5 +482,8 @@
   "fireResistance": "Fire Resistance",
   "dimensions": "Dimensions",
   "weight": "Weight",
-  "type": "Type"
+  "type": "Type",
+
+  "external": "External",
+  "internal": "Internal"
 }

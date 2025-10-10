@@ -3,7 +3,7 @@ import testImage from "../assets/color-1.png";
 const insulationProductsDetailed = [
   {
     id: 1,
-    category: "thermal_insulation",
+    category: "external",
     image: testImage,
     name: {
       en: "Bondmax Premium Thermal Insulation",
@@ -157,7 +157,7 @@ const insulationProductsDetailed = [
 
   {
     id: 2,
-    category: "sound_insulation",
+    category: "external",
     image: testImage,
     name: {
       en: "Bondmax Excellent Sound Insulation",

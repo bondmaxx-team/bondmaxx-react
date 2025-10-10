@@ -4,12 +4,12 @@ import { useTranslation } from "react-i18next";
 export default function Footer() {
   const { t } = useTranslation();
 
-  const socialLinks = [
-    { icon: "fab fa-facebook-f", hoverColor: "#203F84" },
-    { icon: "fab fa-twitter", hoverColor: "#203F84" },
-    { icon: "fab fa-instagram", hoverColor: "#203F84" },
-    { icon: "fab fa-linkedin-in", hoverColor: "#203F84" },
-  ];
+  // const socialLinks = [
+  //   { icon: "fab fa-facebook-f", hoverColor: "#203F84" },
+  //   { icon: "fab fa-twitter", hoverColor: "#203F84" },
+  //   { icon: "fab fa-instagram", hoverColor: "#203F84" },
+  //   { icon: "fab fa-linkedin-in", hoverColor: "#203F84" },
+  // ];
 
   const products = [
     {
@@ -94,7 +94,7 @@ export default function Footer() {
           <p className="text-gray-300 mb-5 leading-relaxed">
             {t("company_description")}
           </p>
-          <div className="flex gap-4 mt-4">
+          {/* <div className="flex gap-4 mt-4">
             {socialLinks.map((social, index) => (
               <div
                 key={index}
@@ -110,7 +110,7 @@ export default function Footer() {
                 <i className={social.icon}></i>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* Products Section - المنتجات */}
