@@ -58,7 +58,7 @@ const ProductDetails = () => {
     return products?.find((p) => p.id === productId);
   }, [productId, productType, allProducts]);
 
-  // Enhanced translation helper
+  // Translation helper
   const getTranslation = (obj, fallback = "") => {
     if (!obj) return fallback;
     if (typeof obj === "string") return obj;
@@ -135,7 +135,7 @@ const ProductDetails = () => {
       translatedProduct?.color || "#f3f4f6";
   };
 
-  // Technical Specifications Rendering
+  // Technical Specs
   const renderTechnicalSpecs = () => {
     if (
       !translatedProduct?.technicalSpecs ||
@@ -183,7 +183,6 @@ const ProductDetails = () => {
     );
   };
 
-  // Usage Instructions Rendering
   const renderUsage = () => {
     if (
       !translatedProduct?.usage ||
@@ -218,7 +217,6 @@ const ProductDetails = () => {
     );
   };
 
-  // Storage Instructions Rendering
   const renderStorage = () => {
     if (
       !translatedProduct?.storage ||
@@ -231,7 +229,10 @@ const ProductDetails = () => {
       <div className="space-y-3">
         {translatedProduct.storage.shelfLife && (
           <div className="flex items-start gap-3">
-            <i className="fas fa-calendar-alt text-blue-600 mt-1"></i>
+            <i
+              className="fas fa-calendar-alt mt-1"
+              style={{ color: "#203F84" }}
+            ></i>
             <div>
               <span className="font-semibold">{t("shelf_life")}: </span>
               <span className="text-gray-700">
@@ -242,7 +243,10 @@ const ProductDetails = () => {
         )}
         {translatedProduct.storage.conditions && (
           <div className="flex items-start gap-3">
-            <i className="fas fa-thermometer-half text-blue-600 mt-1"></i>
+            <i
+              className="fas fa-thermometer-half mt-1"
+              style={{ color: "#203F84" }}
+            ></i>
             <div>
               <span className="font-semibold">{t("storage_conditions")}: </span>
               <span className="text-gray-700">
@@ -263,7 +267,7 @@ const ProductDetails = () => {
         aria-expanded={expandedSections[key]}
       >
         <div className="flex items-center gap-3">
-          <i className={`${icon} text-blue-600 text-xl`}></i>
+          <i className={`${icon} text-xl`} style={{ color: "#203F84" }}></i>
           <span className="text-base md:text-lg font-semibold text-gray-900">
             {title}
           </span>
@@ -282,7 +286,6 @@ const ProductDetails = () => {
     </div>
   );
 
-  // Loading or Not Found States
   if (!product || !translatedProduct) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-center px-4 py-20">
@@ -292,7 +295,10 @@ const ProductDetails = () => {
         </h2>
         <button
           onClick={() => navigate(-1)}
-          className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
+          className="text-white px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
+          style={{ backgroundColor: "#203F84" }}
+          onMouseEnter={(e) => (e.target.style.backgroundColor = "#1a3366")}
+          onMouseLeave={(e) => (e.target.style.backgroundColor = "#203F84")}
         >
           {t("back_button")}
         </button>
@@ -305,7 +311,8 @@ const ProductDetails = () => {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <button
           onClick={() => navigate(-1)}
-          className="mb-6 flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors group"
+          className="mb-6 flex items-center gap-2 hover:opacity-80 transition-colors group"
+          style={{ color: "#203F84" }}
         >
           <i
             className={`fas fa-arrow-${
@@ -376,7 +383,10 @@ const ProductDetails = () => {
 
               {/* Product Info */}
               <div className="pt-14 md:pt-0">
-                <p className="text-sm text-blue-600 font-medium mb-1">
+                <p
+                  className="text-sm font-medium mb-1"
+                  style={{ color: "#203F84" }}
+                >
                   {t(translatedProduct.category) || translatedProduct.category}
                 </p>
                 <h1 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight mb-3">
@@ -396,13 +406,21 @@ const ProductDetails = () => {
 
               {/* Key Features */}
               {translatedProduct.features?.length > 0 && (
-                <div className="space-y-3 bg-blue-50 p-4 rounded-lg">
+                <div
+                  className="space-y-3 p-4 rounded-lg"
+                  style={{ backgroundColor: "#E8EEF7" }}
+                >
                   <h3 className="font-semibold text-gray-900 text-lg">
                     {t("key_features")}:
                   </h3>
                   {translatedProduct.features.map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-3">
-                      <i className="fas fa-check-circle text-blue-600 text-lg mt-0.5"></i>
+                      <span
+                        className="text-lg mt-0.5"
+                        style={{ color: "#203F84" }}
+                      >
+                        ✓
+                      </span>
                       <span className="text-gray-700 text-sm md:text-base">
                         {feature}
                       </span>
@@ -416,27 +434,43 @@ const ProductDetails = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <Link
                     to="/search-dealer"
-                    className="px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all duration-300 text-center text-sm font-medium transform hover:scale-105 shadow-md"
+                    className="px-4 py-3 text-white rounded-lg hover:opacity-90 transition-all duration-300 text-center text-sm font-medium transform hover:scale-105 shadow-md"
+                    style={{ backgroundColor: "#203F84" }}
                   >
                     <i className="fas fa-store me-2"></i>
                     {t("find_dealer")}
                   </Link>
                   <Link
                     to="/color-collection"
-                    className="px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all duration-300 text-center text-sm font-medium transform hover:scale-105"
+                    className="px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:text-white hover:border-transparent transition-all duration-300 text-center text-sm font-medium transform hover:scale-105"
+                    style={{ transition: "all 0.3s" }}
+                    onMouseEnter={(e) =>
+                      (e.target.style.backgroundColor = "#203F84")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.target.style.backgroundColor = "transparent")
+                    }
                   >
                     <i className="fas fa-palette me-2"></i>
                     {t("search_color")}
                   </Link>
                   <Link
                     to="/paint-calculator"
-                    className="px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all duration-300 text-center text-sm font-medium transform hover:scale-105"
+                    className="px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:text-white hover:border-transparent transition-all duration-300 text-center text-sm font-medium transform hover:scale-105"
+                    style={{ transition: "all 0.3s" }}
+                    onMouseEnter={(e) =>
+                      (e.target.style.backgroundColor = "#203F84")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.target.style.backgroundColor = "transparent")
+                    }
                   >
                     <i className="fas fa-calculator me-2"></i>
                     {t("paint_calculator")}
                   </Link>
                 </div>
 
+                {/* ✅ Fixed WhatsApp Button */}
                 <a
                   href="#"
                   onClick={openWhatsApp}
@@ -464,38 +498,38 @@ const ProductDetails = () => {
             {translatedProduct.detailedFeatures?.length > 0 &&
               renderSection(
                 "features",
-                "fas fa-list-check",
+                "fas fa-star",
                 t("detailed_features"),
-                <ul className="space-y-3">
-                  {translatedProduct.detailedFeatures.map((f, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <i className="fas fa-star text-yellow-500 mt-1"></i>
-                      <span>{f}</span>
-                    </li>
+                <ul className="list-disc list-inside space-y-2">
+                  {translatedProduct.detailedFeatures.map((f, idx) => (
+                    <li key={idx}>{f}</li>
                   ))}
                 </ul>
               )}
 
-            {renderSection(
-              "specifications",
-              "fas fa-cog",
-              t("technical_specifications"),
-              renderTechnicalSpecs()
-            )}
+            {translatedProduct.technicalSpecs &&
+              renderSection(
+                "specifications",
+                "fas fa-cogs",
+                t("technical_specifications"),
+                renderTechnicalSpecs()
+              )}
 
-            {renderSection(
-              "usage",
-              "fas fa-paint-roller",
-              t("usage_instructions"),
-              renderUsage()
-            )}
+            {translatedProduct.usage &&
+              renderSection(
+                "usage",
+                "fas fa-paint-roller",
+                t("usage_instructions"),
+                renderUsage()
+              )}
 
-            {renderSection(
-              "storage",
-              "fas fa-warehouse",
-              t("storage_instructions"),
-              renderStorage()
-            )}
+            {translatedProduct.storage &&
+              renderSection(
+                "storage",
+                "fas fa-box",
+                t("storage_information"),
+                renderStorage()
+              )}
           </div>
         </div>
       </div>

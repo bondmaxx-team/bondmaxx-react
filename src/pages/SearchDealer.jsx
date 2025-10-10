@@ -71,7 +71,6 @@ const SearchDealerPage = ({
         const address = dealer.address?.toLowerCase() || "";
         const keywords = (dealer.keywords || []).map((k) => k.toLowerCase());
 
-        // ✅ Check across city, name, address, and keywords
         return (
           city.includes(query) ||
           name.includes(query) ||
@@ -141,7 +140,16 @@ const SearchDealerPage = ({
                 <button
                   onClick={handleLocationClick}
                   disabled={isLoading}
-                  className="flex items-center justify-center gap-3 bg-blue-500 hover:bg-blue-600 text-white px-6 py-4 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center justify-center gap-3"
+                  style={{
+                    backgroundColor: "#203F84",
+                    color: "#fff",
+                    padding: "1rem 1.5rem",
+                    borderRadius: "0.75rem",
+                    fontWeight: 500,
+                    transition: "all 0.3s",
+                    transform: "scale(1)",
+                  }}
                 >
                   {isLoading && (
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
@@ -157,9 +165,11 @@ const SearchDealerPage = ({
                     onKeyPress={handleKeyPress}
                     disabled={isLoading}
                     placeholder={t("enter_city_name")}
-                    className={`w-full px-6 py-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                      isRTL ? "text-right" : "text-left"
-                    } placeholder-gray-400 disabled:opacity-50`}
+                    className={`w-full px-6 py-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-2`}
+                    style={{
+                      borderColor: "#203F84",
+                      textAlign: isRTL ? "right" : "left",
+                    }}
                   />
                   <button
                     onClick={handleSearch}
@@ -202,7 +212,8 @@ const SearchDealerPage = ({
                         <div
                           className={`absolute top-4 ${
                             isRTL ? "right-4" : "left-4"
-                          } bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold`}
+                          } px-3 py-1 rounded-full text-sm font-semibold`}
+                          style={{ backgroundColor: "#203F84", color: "#fff" }}
                         >
                           {dealer.distance}
                         </div>
@@ -221,7 +232,11 @@ const SearchDealerPage = ({
                         {dealer.services.map((service, index) => (
                           <span
                             key={index}
-                            className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-medium"
+                            className="px-3 py-1 rounded-full text-xs font-medium"
+                            style={{
+                              backgroundColor: "#E0E4F0",
+                              color: "#203F84",
+                            }}
                           >
                             {service}
                           </span>
@@ -231,7 +246,8 @@ const SearchDealerPage = ({
                       <div className="flex gap-2">
                         <a
                           href={`tel:${dealer.phone}`}
-                          className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-xl font-semibold text-center transition-colors"
+                          className="flex-1 py-3 rounded-xl font-semibold text-center transition-all"
+                          style={{ backgroundColor: "#203F84", color: "#fff" }}
                         >
                           {t("call_now")}
                         </a>
@@ -240,7 +256,11 @@ const SearchDealerPage = ({
                           href={dealer.mapLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold text-center transition-colors"
+                          className="flex-1 py-3 rounded-xl font-semibold text-center transition-all"
+                          style={{
+                            backgroundColor: "#f3f4f6",
+                            color: "#203F84",
+                          }}
                         >
                           {t("get_directions")}
                         </a>

@@ -126,7 +126,30 @@ const ColorsPage = ({
                 <button
                   type="button"
                   onClick={onSearchSubmit}
-                  className="shrink-0 rounded-t-xl sm:rounded-s-xl sm:rounded-e-none sm:rounded-b-xl bg-gradient-to-br from-blue-500 to-blue-700 px-5 md:px-8 py-3 md:py-4 text-white font-semibold hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors"
+                  className="shrink-0 rounded-t-xl sm:rounded-s-xl sm:rounded-e-none sm:rounded-b-xl px-5 md:px-8 py-3 md:py-4 text-white font-semibold focus:outline-none transition-all duration-300"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom right, #203F84, #1a3366)",
+                    boxShadow: "0 4px 6px rgba(32, 63, 132, 0.2)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background =
+                      "linear-gradient(to bottom right, #1a3366, #142952)";
+                    e.currentTarget.style.transform = "scale(1.02)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background =
+                      "linear-gradient(to bottom right, #203F84, #1a3366)";
+                    e.currentTarget.style.transform = "scale(1)";
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.boxShadow =
+                      "0 0 0 3px rgba(32, 63, 132, 0.3)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.boxShadow =
+                      "0 4px 6px rgba(32, 63, 132, 0.2)";
+                  }}
                 >
                   {t("search_button")}
                 </button>
@@ -136,7 +159,16 @@ const ColorsPage = ({
                   value={searchQuery}
                   onChange={onSearchChange}
                   onKeyPress={handleKeyPress}
-                  className="w-full rounded-b-xl sm:rounded-e-xl sm:rounded-s-none sm:rounded-b-xl border border-gray-300 bg-white/60 ps-4 pe-4 py-3 md:py-4 text-base focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
+                  className="w-full rounded-b-xl sm:rounded-e-xl sm:rounded-s-none sm:rounded-b-xl border border-gray-300 bg-white/60 ps-4 pe-4 py-3 md:py-4 text-base focus:outline-none transition"
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#203F84";
+                    e.target.style.boxShadow =
+                      "0 0 0 3px rgba(32, 63, 132, 0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#d1d5db";
+                    e.target.style.boxShadow = "none";
+                  }}
                 />
               </>
             ) : (
@@ -147,12 +179,44 @@ const ColorsPage = ({
                   value={searchQuery}
                   onChange={onSearchChange}
                   onKeyPress={handleKeyPress}
-                  className="w-full rounded-t-xl sm:rounded-s-xl sm:rounded-e-none sm:rounded-b-xl border border-gray-300 bg-white/60 pl-4 pr-4 py-3 md:py-4 text-base focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
+                  className="w-full rounded-t-xl sm:rounded-s-xl sm:rounded-e-none sm:rounded-b-xl border border-gray-300 bg-white/60 pl-4 pr-4 py-3 md:py-4 text-base focus:outline-none transition"
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#203F84";
+                    e.target.style.boxShadow =
+                      "0 0 0 3px rgba(32, 63, 132, 0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#d1d5db";
+                    e.target.style.boxShadow = "none";
+                  }}
                 />
                 <button
                   type="button"
                   onClick={onSearchSubmit}
-                  className="shrink-0 rounded-b-xl sm:rounded-e-xl sm:rounded-s-none sm:rounded-b-xl bg-gradient-to-br from-blue-500 to-blue-700 px-5 md:px-8 py-3 md:py-4 text-white font-semibold hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-colors"
+                  className="shrink-0 rounded-b-xl sm:rounded-e-xl sm:rounded-s-none sm:rounded-b-xl px-5 md:px-8 py-3 md:py-4 text-white font-semibold focus:outline-none transition-all duration-300"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom right, #203F84, #1a3366)",
+                    boxShadow: "0 4px 6px rgba(32, 63, 132, 0.2)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background =
+                      "linear-gradient(to bottom right, #1a3366, #142952)";
+                    e.currentTarget.style.transform = "scale(1.02)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background =
+                      "linear-gradient(to bottom right, #203F84, #1a3366)";
+                    e.currentTarget.style.transform = "scale(1)";
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.boxShadow =
+                      "0 0 0 3px rgba(32, 63, 132, 0.3)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.boxShadow =
+                      "0 4px 6px rgba(32, 63, 132, 0.2)";
+                  }}
                 >
                   {t("search_button")}
                 </button>
@@ -173,10 +237,21 @@ const ColorsPage = ({
                   key={cat.id}
                   onClick={() => handleCategoryClick(cat)}
                   className={`group text-center p-2 rounded-xl transition-all ${
-                    isActive
-                      ? "bg-blue-100 shadow-md scale-105"
-                      : "hover:bg-blue-50 hover:scale-105"
+                    isActive ? "shadow-md scale-105" : "hover:scale-105"
                   }`}
+                  style={{
+                    backgroundColor: isActive ? "#E8EEF7" : "transparent",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.backgroundColor = "#f0f4ff";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.backgroundColor = "transparent";
+                    }
+                  }}
                 >
                   {cat.image && (
                     <div className="h-28 w-28 mx-auto rounded-full overflow-hidden">

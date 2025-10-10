@@ -92,11 +92,13 @@ export default function Header() {
 
   const menuItems = [
     { href: "/", label: t("home"), icon: "fas fa-home" },
+
     {
       href: "/interior-colors",
       label: t("interior_paints"),
-      icon: "fas fa-home",
+      icon: "fas fa-door-open",
     },
+    ,
     {
       href: "/exterior-colors",
       label: t("exterior_paints"),
@@ -133,7 +135,14 @@ export default function Header() {
               <button
                 title="button"
                 type="button"
-                className="relative flex items-center gap-1.5 sm:px-2.5 py-1.5 rounded-lg bg-white hover:bg-blue-50 hover:text-blue-600 active:scale-95 active:bg-blue-100 transition-all duration-150 text-sm"
+                className="relative flex items-center gap-1.5 sm:px-2.5 py-1.5 rounded-lg bg-white active:scale-95 transition-all duration-150 text-sm"
+                style={{ color: "#203F84" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#E8EEF7";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "white";
+                }}
                 onClick={toggleCart}
               >
                 <i className="fas fa-shopping-cart text-base"></i>
@@ -141,7 +150,10 @@ export default function Header() {
 
                 {/* badge */}
                 {cart.length > 0 && (
-                  <span className="absolute -top-1 -right-1 text-xs min-w-[18px] h-[18px] flex items-center justify-center rounded-full bg-blue-500 text-white font-medium">
+                  <span
+                    className="absolute -top-1 -right-1 text-xs min-w-[18px] h-[18px] flex items-center justify-center rounded-full text-white font-medium"
+                    style={{ backgroundColor: "#203F84" }}
+                  >
                     {cart.length}
                   </span>
                 )}
@@ -151,7 +163,14 @@ export default function Header() {
               <button
                 title="button"
                 type="button"
-                className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-lg bg-white hover:bg-red-50 hover:text-red-500 active:scale-95 active:bg-red-100 transition-all duration-150 text-sm"
+                className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-lg bg-white active:scale-95 transition-all duration-150 text-sm"
+                style={{ color: "#203F84" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#E8EEF7";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "white";
+                }}
                 onClick={toggleFavorites}
               >
                 <i className="fas fa-heart text-base"></i>
@@ -163,7 +182,14 @@ export default function Header() {
                 <button
                   title="button"
                   type="button"
-                  className="flex items-center gap-1.5 sm:px-2.5 py-1.5 rounded-lg bg-white hover:bg-gray-50 active:scale-95 active:bg-gray-100 transition-all duration-150 text-sm"
+                  className="flex items-center gap-1.5 sm:px-2.5 py-1.5 rounded-lg bg-white active:scale-95 transition-all duration-150 text-sm"
+                  style={{ color: "#203F84" }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "#E8EEF7";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "white";
+                  }}
                   onClick={toggleLanguageMenu}
                 >
                   <img
@@ -219,7 +245,14 @@ export default function Header() {
               <button
                 title="button"
                 type="button"
-                className="p-2 text-gray-600 bg-white hover:text-blue-600 hover:bg-gray-50 active:scale-95 active:bg-gray-100 rounded-lg transition-all duration-150"
+                className="p-2 text-gray-600 bg-white active:scale-95 active:bg-gray-100 rounded-lg transition-all duration-150"
+                style={{ color: "#203F84" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#E8EEF7";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "white";
+                }}
                 onClick={toggleSidebar}
               >
                 <i className="fas fa-bars text-lg"></i>
@@ -275,9 +308,15 @@ export default function Header() {
               key={index}
               to={item.href}
               onClick={closeSidebar}
-              className={`px-7 py-4 cursor-pointer hover:bg-blue-50 hover:text-blue-600 transition ${
+              className={`px-7 py-4 cursor-pointer transition text-gray-800 ${
                 item.icon ? "flex items-center gap-2" : ""
               }`}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#E8EEF7";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "transparent";
+              }}
             >
               {item.icon && <i className={item.icon}></i>}
               {item.label}
@@ -294,11 +333,14 @@ export default function Header() {
           isFavoritesOpen
             ? "translate-x-0"
             : isRTL
-            ? "translate-x-full" // hide off-screen to the right (RTL)
-            : "-translate-x-full" // hide off-screen to the left (LTR)
+            ? "translate-x-full"
+            : "-translate-x-full"
         }`}
       >
-        <div className="relative bg-gradient-to-r from-red-500 to-red-600 text-white p-6 border-b-2 border-red-200">
+        <div
+          className="relative text-white p-6 border-b-2 border-red-200"
+          style={{ background: "linear-gradient(to right, #ef4444, #dc2626)" }}
+        >
           <div className="flex items-center justify-center gap-3 text-xl font-semibold">
             <span>{t("favorites_title")}</span>
           </div>
@@ -366,11 +408,17 @@ export default function Header() {
           isCartOpen
             ? "translate-x-0"
             : isRTL
-            ? "translate-x-full" // hidden off-screen to the right (RTL)
-            : "-translate-x-full" // hidden off-screen to the left (LTR)
+            ? "translate-x-full"
+            : "-translate-x-full"
         }`}
       >
-        <div className="relative bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 border-b-2 border-blue-200">
+        <div
+          className="relative text-white p-6 border-b-2"
+          style={{
+            background: "linear-gradient(to right, #203F84, #1a3366)",
+            borderBottomColor: "#4a7bc8",
+          }}
+        >
           <div className="flex items-center justify-center gap-3 text-xl font-semibold">
             <span>{t("cart_page_title")}</span>
           </div>
@@ -402,7 +450,7 @@ export default function Header() {
                   className="fas fa-shopping-basket"
                   style={{
                     fontSize: "2.25rem",
-                    color: "#60a5fa",
+                    color: "#203F84",
                     marginBottom: "10px",
                   }}
                 ></i>
@@ -426,7 +474,16 @@ export default function Header() {
               <span className="font-semibold">{cartTotal}</span>
             </div>
             <button
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition font-medium"
+              className="w-full text-white py-3 rounded-lg transition font-medium"
+              style={{ backgroundColor: "#203F84" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#1a3366";
+                e.currentTarget.style.transform = "scale(1.02)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#203F84";
+                e.currentTarget.style.transform = "scale(1)";
+              }}
               type="button"
               onClick={submitCartToWhatsApp}
             >

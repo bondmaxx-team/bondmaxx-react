@@ -93,8 +93,14 @@ const ColorCollection = () => {
           />
 
           <div className="mt-4 sm:mt-5 flex items-center justify-between gap-4 text-xs sm:text-sm text-gray-600 font-medium">
-            <div className="flex items-center gap-2 bg-blue-50 px-3 sm:px-4 py-2 rounded-lg">
-              <i className="fas fa-layer-group text-blue-600"></i>
+            <div
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg"
+              style={{ backgroundColor: "#E8EEF7" }}
+            >
+              <i
+                className="fas fa-layer-group"
+                style={{ color: "#203F84" }}
+              ></i>
               <span>
                 {filteredFamilies.length} {t("familyCount")}
               </span>
@@ -152,7 +158,12 @@ const ColorCollection = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-2xl md:text-4xl font-extrabold mb-6 leading-[1.15]">
-            <span className="inline-block pb-[0.15em] bg-gradient-to-r text-blue-600">
+            <span
+              className="inline-block pb-[0.15em] bg-gradient-to-r from-[#203F84] via-[#2d5bb8] to-[#203F84] bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto] transition-all duration-300 hover:scale-105"
+              style={{
+                animation: "gradient 3s ease infinite",
+              }}
+            >
               {t("title")}
             </span>
           </h2>
@@ -170,12 +181,48 @@ const ColorCollection = () => {
         <div className="text-center mt-16" style={{ marginTop: "60px" }}>
           <button
             onClick={() => setShowAllColors(true)}
-            className="inline-flex items-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 font-semibold border-0 cursor-pointer"
+            className="group relative inline-flex items-center gap-3 text-white px-8 py-4 rounded-full shadow-lg hover:shadow-2xl transform hover:scale-110 transition-all duration-500 font-semibold border-0 cursor-pointer overflow-hidden"
+            style={{ backgroundColor: "#203F84" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#1a3366";
+              e.currentTarget.style.transform = "scale(1.1) translateY(-2px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "#203F84";
+              e.currentTarget.style.transform = "scale(1) translateY(0)";
+            }}
           >
-            <span>{t("exploreAllColors")}</span>
-            <i className="fas fa-palette"></i>
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-500 group-hover:animate-shimmer"></span>
+            <span className="relative z-10 transition-transform duration-300 group-hover:scale-110">
+              {t("exploreAllColors")}
+            </span>
+            <i className="fas fa-palette relative z-10 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-125"></i>
           </button>
         </div>
+
+        <style>{`
+          @keyframes gradient {
+            0%, 100% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+          }
+          
+          @keyframes shimmer {
+            0% {
+              transform: translateX(-100%);
+            }
+            100% {
+              transform: translateX(100%);
+            }
+          }
+          
+          .animate-shimmer {
+            animation: shimmer 2s infinite;
+          }
+        `}</style>
       </div>
     </section>
   );

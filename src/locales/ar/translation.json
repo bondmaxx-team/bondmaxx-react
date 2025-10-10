@@ -482,5 +482,6 @@
   "soundReductionIndex": "مؤشر تقليل الصوت",
   "fireResistance": "مقاومة الحريق",
   "dimensions": "الأبعاد",
-  "weight": "الوزن"
+  "weight": "الوزن",
+  "type": "النوع"
 }

@@ -86,16 +86,16 @@ export default function PaintingServices() {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-20 px-4"
+      className="min-h-screen bg-gradient-to-br from-[#203F84]/10 via-[#203F84]/20 to-[#203F84]/10 py-20 px-4"
       dir={isRTL ? "rtl" : "ltr"}
     >
       <div className="max-w-5xl mx-auto">
         {/* Header Card */}
         <div className="p-8 md:p-12 mb-8">
           <div className="text-center">
-            <div className="inline-block p-3 bg-blue-100 rounded-full mb-4">
+            <div className="inline-block p-3 bg-[#203F84]/10 rounded-full mb-4">
               <svg
-                className="w-12 h-12 text-blue-600"
+                className="w-12 h-12 text-[#203F84]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -128,7 +128,9 @@ export default function PaintingServices() {
                 }`}
               >
                 <svg
-                  className={`w-5 h-5 ${isRTL ? "ml-2" : "mr-2"} text-blue-600`}
+                  className={`w-5 h-5 ${
+                    isRTL ? "ml-2" : "mr-2"
+                  } text-[#203F84]`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -152,7 +154,7 @@ export default function PaintingServices() {
                 name="location"
                 value={formData.location}
                 onChange={handleChange}
-                className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-base bg-gray-50 hover:bg-white hover:border-blue-300 font-semibold"
+                className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#203F84] focus:border-[#203F84] outline-none transition-all text-base bg-gray-50 hover:bg-white hover:border-[#203F84]/50 font-semibold"
               >
                 <option value={t("syria")}>{t("syria")}</option>
               </select>
@@ -162,7 +164,7 @@ export default function PaintingServices() {
               {t("fill_form_or_contact")}{" "}
               <a
                 href="https://wa.me/905550004000"
-                className="font-bold underline hover:text-blue-200 transition-colors"
+                className="font-bold underline text-[#203F84] hover:text-[#203F84]/70 transition-colors"
               >
                 {t("or_contact_us")}
               </a>
@@ -185,7 +187,7 @@ export default function PaintingServices() {
                   name="city"
                   value={formData.city}
                   onChange={handleChange}
-                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-base bg-gray-50 hover:bg-white hover:border-blue-300"
+                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#203F84] focus:border-[#203F84] outline-none transition-all text-base bg-gray-50 hover:bg-white hover:border-[#203F84]/50"
                 >
                   <option value={t("choose")}>{t("choose_city")}</option>
                   <option value={t("idlib")}>{t("idlib")}</option>
@@ -215,12 +217,12 @@ export default function PaintingServices() {
                   value={formData.fullName}
                   onChange={handleChange}
                   placeholder={t("enter_full_name")}
-                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-base bg-gray-50 hover:bg-white hover:border-blue-300"
+                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#203F84] focus:border-[#203F84] outline-none transition-all text-base bg-gray-50 hover:bg-white hover:border-[#203F84]/50"
                 />
               </div>
             </div>
 
-            {/* Email, Phone Number, and Country Code Row */}
+            {/* Email, Phone Number, and Code */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
               <div className="lg:col-span-6">
                 <label
@@ -239,7 +241,7 @@ export default function PaintingServices() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder={t("email_placeholder")}
-                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-base bg-gray-50 hover:bg-white hover:border-blue-300"
+                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#203F84] focus:border-[#203F84] outline-none transition-all text-base bg-gray-50 hover:bg-white hover:border-[#203F84]/50"
                 />
               </div>
 
@@ -260,7 +262,7 @@ export default function PaintingServices() {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder={t("phone_placeholder")}
-                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-base bg-gray-50 hover:bg-white hover:border-blue-300"
+                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#203F84] focus:border-[#203F84] outline-none transition-all text-base bg-gray-50 hover:bg-white hover:border-[#203F84]/50"
                 />
               </div>
 
@@ -273,13 +275,13 @@ export default function PaintingServices() {
                   name="phoneCode"
                   value={formData.phoneCode}
                   onChange={handleChange}
-                  className="w-full px-3 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-base text-center font-bold bg-blue-50 hover:bg-blue-100"
+                  className="w-full px-3 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#203F84] focus:border-[#203F84] outline-none transition-all text-base text-center font-bold bg-[#203F84]/10 hover:bg-[#203F84]/20"
                   readOnly
                 />
               </div>
             </div>
 
-            {/* Service Type and Paint Type Row */}
+            {/* Paint Type & Service Type */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label
@@ -296,7 +298,7 @@ export default function PaintingServices() {
                   name="paintType"
                   value={formData.paintType}
                   onChange={handleChange}
-                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-base bg-gray-50 hover:bg-white hover:border-blue-300"
+                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#203F84] focus:border-[#203F84] outline-none transition-all text-base bg-gray-50 hover:bg-white hover:border-[#203F84]/50"
                 >
                   <option value={t("choose")}>
                     {t("choose_paint_type_option")}
@@ -325,7 +327,7 @@ export default function PaintingServices() {
                   name="serviceType"
                   value={formData.serviceType}
                   onChange={handleChange}
-                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-base bg-gray-50 hover:bg-white hover:border-blue-300"
+                  className="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#203F84] focus:border-[#203F84] outline-none transition-all text-base bg-gray-50 hover:bg-white hover:border-[#203F84]/50"
                 >
                   <option value={t("choose")}>
                     {t("choose_service_option")}
@@ -374,10 +376,10 @@ export default function PaintingServices() {
             <div className="flex justify-center pt-4">
               <button
                 onClick={handleSubmit}
-                className="group relative w-full md:w-auto px-16 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-lg font-bold rounded-xl transition-all duration-300 shadow-xl hover:shadow-2xl active:scale-95 transform hover:-translate-y-1 overflow-hidden"
+                className="group relative w-full md:w-auto px-16 py-4 bg-gradient-to-r from-[#203F84] to-[#203F84] hover:from-[#1b346f] hover:to-[#1b346f] text-white text-lg font-bold rounded-xl transition-all duration-300 shadow-xl hover:shadow-2xl active:scale-95 transform hover:-translate-y-1 overflow-hidden"
               >
                 <span className="relative z-10">{t("submit_request")}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/20 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               </button>
             </div>
           </div>
