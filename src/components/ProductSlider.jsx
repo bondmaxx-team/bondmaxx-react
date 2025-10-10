@@ -17,46 +17,9 @@ const ProductSlider = ({ title, products, color, linkTo, productType }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
-  // Color mapping for Tailwind classes
-  const colorClasses = {
-    blue: {
-      bg: "bg-blue-600",
-      hover: "hover:bg-blue-700",
-      hoverText: "hover:text-blue-600",
-    },
-    green: {
-      bg: "bg-green-600",
-      hover: "hover:bg-green-700",
-      hoverText: "hover:text-green-600",
-    },
-    red: {
-      bg: "bg-red-600",
-      hover: "hover:bg-red-700",
-      hoverText: "hover:text-red-600",
-    },
-    yellow: {
-      bg: "bg-yellow-600",
-      hover: "hover:bg-yellow-700",
-      hoverText: "hover:text-yellow-600",
-    },
-    purple: {
-      bg: "bg-purple-600",
-      hover: "hover:bg-purple-700",
-      hoverText: "hover:text-purple-600",
-    },
-    orange: {
-      bg: "bg-orange-600",
-      hover: "hover:bg-orange-700",
-      hoverText: "hover:text-orange-600",
-    },
-    pink: {
-      bg: "bg-pink-600",
-      hover: "hover:bg-pink-700",
-      hoverText: "hover:text-pink-600",
-    },
-  };
-
-  const currentColor = colorClasses[color] || colorClasses.blue;
+  // Fixed color for all "View All" buttons
+  const buttonColor = "#203F84";
+  const buttonHoverColor = "#1a3269";
 
   // Optional: reflect dir on the wrapper for consistency
   useEffect(() => {
@@ -128,7 +91,16 @@ const ProductSlider = ({ title, products, color, linkTo, productType }) => {
         <SwiperSlide>
           <Link
             to={linkTo}
-            className={`block ${currentColor.bg} ${currentColor.hover} text-white rounded-lg shadow-md p-6 text-center transition h-full flex flex-col items-center justify-center`}
+            className="block text-white rounded-lg shadow-md p-6 text-center transition h-full flex flex-col items-center justify-center"
+            style={{
+              backgroundColor: buttonColor,
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = buttonHoverColor)
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = buttonColor)
+            }
           >
             <i
               className={`fas ${
@@ -155,7 +127,10 @@ const ProductSlider = ({ title, products, color, linkTo, productType }) => {
           <button
             ref={prevRef}
             type="button"
-            className={`cursor-pointer text-gray-600 ${currentColor.hoverText} transition-colors`}
+            className="cursor-pointer transition-colors"
+            style={{ color: "#6b7280" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = buttonColor)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#6b7280")}
             aria-label="Previous"
           >
             <i
@@ -167,7 +142,10 @@ const ProductSlider = ({ title, products, color, linkTo, productType }) => {
           <button
             ref={nextRef}
             type="button"
-            className={`cursor-pointer text-gray-600 ${currentColor.hoverText} transition-colors`}
+            className="cursor-pointer transition-colors"
+            style={{ color: "#6b7280" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = buttonColor)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#6b7280")}
             aria-label="Next"
           >
             <i
