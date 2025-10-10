@@ -312,7 +312,7 @@ export default function Header() {
                 item.icon ? "flex items-center gap-2" : ""
               }`}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#E8EEF7";
+                e.currentTarget.style.backgroundColor = "#203F84";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = "transparent";

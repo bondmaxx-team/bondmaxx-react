@@ -5,10 +5,10 @@ export default function Footer() {
   const { t } = useTranslation();
 
   const socialLinks = [
-    { icon: "fab fa-facebook-f", hoverColor: "hover:bg-blue-600" },
-    { icon: "fab fa-twitter", hoverColor: "hover:bg-blue-600" },
-    { icon: "fab fa-instagram", hoverColor: "hover:bg-blue-600" },
-    { icon: "fab fa-linkedin-in", hoverColor: "hover:bg-blue-600" },
+    { icon: "fab fa-facebook-f", hoverColor: "#203F84" },
+    { icon: "fab fa-twitter", hoverColor: "#203F84" },
+    { icon: "fab fa-instagram", hoverColor: "#203F84" },
+    { icon: "fab fa-linkedin-in", hoverColor: "#203F84" },
   ];
 
   const products = [
@@ -86,8 +86,11 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white pt-12 px-6">
       <div className="max-w-7xl mx-auto grid gap-12 md:grid-cols-4">
+        {/* BONDMAXX Section */}
         <div>
-          <h3 className="text-xl font-bold mb-5">{t("company_name")}</h3>
+          <h3 className="text-xl font-bold mb-5" style={{ color: "#203F84" }}>
+            {t("company_name")}
+          </h3>
           <p className="text-gray-300 mb-5 leading-relaxed">
             {t("company_description")}
           </p>
@@ -95,7 +98,14 @@ export default function Footer() {
             {socialLinks.map((social, index) => (
               <div
                 key={index}
-                className={`w-10 h-10 flex items-center justify-center bg-white/10 rounded-lg cursor-pointer ${social.hoverColor} transition`}
+                className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-lg cursor-pointer transition"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = social.hoverColor;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor =
+                    "rgba(255, 255, 255, 0.1)";
+                }}
               >
                 <i className={social.icon}></i>
               </div>
@@ -103,16 +113,28 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Products Section - المنتجات */}
         <div>
-          <h3 className="text-xl font-bold mb-5">{t("products_title")}</h3>
+          <h3 className="text-xl font-bold mb-5" style={{ color: "#203F84" }}>
+            {t("products_title")}
+          </h3>
           <ul className="space-y-3">
             {products.map((product, index) => (
               <li key={index}>
                 <Link
                   to={product.href}
-                  className="flex items-center gap-2 text-gray-300 hover:text-white transition"
+                  className="flex items-center gap-2 text-gray-300 transition group"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#203F84";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "#d1d5db";
+                  }}
                 >
-                  <i className={product.icon}></i>
+                  <i
+                    className={product.icon}
+                    style={{ color: "#203F84", transition: "all 0.3s" }}
+                  ></i>
                   <span>{product.label}</span>
                 </Link>
               </li>
@@ -120,16 +142,28 @@ export default function Footer() {
           </ul>
         </div>
 
+        {/* Services Section - الخدمات */}
         <div>
-          <h3 className="text-xl font-bold mb-5">{t("services_title")}</h3>
+          <h3 className="text-xl font-bold mb-5" style={{ color: "#203F84" }}>
+            {t("services_title")}
+          </h3>
           <ul className="space-y-3">
             {services.map((service, index) => (
               <li key={index}>
                 <Link
                   to={service.href}
-                  className="flex items-center gap-2 text-gray-300 hover:text-white transition"
+                  className="flex items-center gap-2 text-gray-300 transition group"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#203F84";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "#d1d5db";
+                  }}
                 >
-                  <i className={service.icon}></i>
+                  <i
+                    className={service.icon}
+                    style={{ color: "#203F84", transition: "all 0.3s" }}
+                  ></i>
                   <span>{service.label}</span>
                 </Link>
               </li>
@@ -137,16 +171,28 @@ export default function Footer() {
           </ul>
         </div>
 
+        {/* Contact Section - تواصل معنا */}
         <div>
-          <h3 className="text-xl font-bold mb-5">{t("contact_title")}</h3>
+          <h3 className="text-xl font-bold mb-5" style={{ color: "#203F84" }}>
+            {t("contact_title")}
+          </h3>
           <ul className="space-y-3">
             {contactInfo.map((contact, index) => (
               <li key={index}>
                 <Link
                   to={contact.href}
-                  className={`flex items-center gap-2 text-gray-300 hover:text-white transition`}
+                  className="flex items-center gap-2 text-gray-300 transition group"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#203F84";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "#d1d5db";
+                  }}
                 >
-                  <i className={contact.icon}></i>
+                  <i
+                    className={contact.icon}
+                    style={{ color: "#203F84", transition: "all 0.3s" }}
+                  ></i>
 
                   {contact.type === "whatsapp" ? (
                     // Force phone number to stay LTR
@@ -195,20 +241,41 @@ export default function Footer() {
       </a>
 
       <div className="text-center py-6">
-        <Link to="/Imprint" className="mx-2 text-gray-600 hover:text-gray-900">
+        <Link
+          to="/Imprint"
+          className="mx-2 text-gray-600 transition"
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = "#203F84";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = "#4b5563";
+          }}
+        >
           Imprint
         </Link>
         |
         <Link
           to="/PrivacyPolicy"
-          className="mx-2 text-gray-600 hover:text-gray-900"
+          className="mx-2 text-gray-600 transition"
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = "#203F84";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = "#4b5563";
+          }}
         >
           Privacy Policy
         </Link>
         |
         <Link
           to="/DataProtection"
-          className="mx-2 text-gray-600 hover:text-gray-900"
+          className="mx-2 text-gray-600 transition"
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = "#203F84";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = "#4b5563";
+          }}
         >
           Data Protection
         </Link>

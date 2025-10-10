@@ -12,7 +12,7 @@ const ImprintPage = () => {
 
       <div className="bg-white shadow-lg rounded-xl p-8 max-w-3xl mx-auto text-gray-700">
         <p className="mb-4">
-          <strong>{t("company_name")}:</strong> BondMaxx
+          <strong>{t("company_name")}</strong>
         </p>
         <p className="mb-4">
           <strong>{t("address")}:</strong> maarat alnasan, Idlib, Syria
@@ -29,10 +29,10 @@ const ImprintPage = () => {
         <p className="mb-4">
           <strong>{t("phone")}:</strong>{" "}
           <a
-            href="tel:+90 555 000 40 00"
+            href="tel:+90 536 792 65 56"
             className="text-blue-600 hover:underline"
           >
-            +90 555 000 40 00
+            +90 536 792 65 56
           </a>
         </p>
         <p className="mb-4">
