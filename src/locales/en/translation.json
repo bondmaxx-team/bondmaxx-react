@@ -481,5 +481,6 @@
   "soundReductionIndex": "Sound Reduction Index",
   "fireResistance": "Fire Resistance",
   "dimensions": "Dimensions",
-  "weight": "Weight"
+  "weight": "Weight",
+  "type": "Type"
 }

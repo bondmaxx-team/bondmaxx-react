@@ -479,5 +479,6 @@
   "soundReductionIndex": "Ses Azaltma İndeksi",
   "fireResistance": "Yangın Dayanımı",
   "dimensions": "Boyutlar",
-  "weight": "Ağırlık"
+  "weight": "Ağırlık",
+  "type": "Tip"
 }

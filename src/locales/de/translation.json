@@ -484,5 +484,6 @@
   "soundReductionIndex": "Schalldämmindex",
   "fireResistance": "Feuerbeständigkeit",
   "dimensions": "Abmessungen",
-  "weight": "Gewicht"
+  "weight": "Gewicht",
+  "type": "Type"
 }

@@ -65,7 +65,7 @@ const exteriorProducts = [
     },
     technicalSpecs: {
       en: {
-        finish: "Matte or Gloss",
+        type: "Matte or Gloss",
         base: "Acrylic Resin",
         coverage: "12 m²/L",
         dryingTime: "2 hours",
@@ -73,7 +73,7 @@ const exteriorProducts = [
         packaging: "1L, 5L, 15L",
       },
       ar: {
-        finish: "مطفي أو لامع",
+        type: "مطفي أو لامع",
         base: "راتنج أكريليك",
         coverage: "12 م²/لتر",
         dryingTime: "2 ساعات",
@@ -81,7 +81,7 @@ const exteriorProducts = [
         packaging: "1 لتر، 5 لتر، 15 لتر",
       },
       de: {
-        finish: "Matt oder Glänzend",
+        type: "Matt oder Glänzend",
         base: "Acrylharz",
         coverage: "12 m²/L",
         dryingTime: "2 Stunden",
@@ -89,7 +89,7 @@ const exteriorProducts = [
         packaging: "1L, 5L, 15L",
       },
       tr: {
-        finish: "Mat veya Parlak",
+        type: "Mat veya Parlak",
         base: "Akrilik Reçine",
         coverage: "12 m²/L",
         dryingTime: "2 saat",
@@ -208,7 +208,7 @@ const exteriorProducts = [
     },
     technicalSpecs: {
       en: {
-        finish: "Matte",
+        type: "Matte",
         base: "Elastomeric Acrylic",
         coverage: "10 m²/L",
         dryingTime: "3 hours",
@@ -216,7 +216,7 @@ const exteriorProducts = [
         packaging: "5L, 15L",
       },
       ar: {
-        finish: "مطفي",
+        type: "مطفي",
         base: "أكريليك مرن",
         coverage: "10 م²/لتر",
         dryingTime: "3 ساعات",
@@ -224,7 +224,7 @@ const exteriorProducts = [
         packaging: "5 لتر، 15 لتر",
       },
       de: {
-        finish: "Matt",
+        type: "Matt",
         base: "Elastomerisches Acryl",
         coverage: "10 m²/L",
         dryingTime: "3 Stunden",
@@ -232,7 +232,7 @@ const exteriorProducts = [
         packaging: "5L, 15L",
       },
       tr: {
-        finish: "Mat",
+        type: "Mat",
         base: "Elastomerik Akrilik",
         coverage: "10 m²/L",
         dryingTime: "3 saat",
@@ -352,7 +352,7 @@ const exteriorProducts = [
         packaging: "1L, 5L",
       },
       ar: {
-        finish: "مطفي",
+        type: "مطفي",
         base: "برايمر أكريليك",
         coverage: "10-12 م²/لتر",
         dryingTime: "1 ساعة",
@@ -360,7 +360,7 @@ const exteriorProducts = [
         packaging: "1 لتر، 5 لتر",
       },
       de: {
-        finish: "Matt",
+        type: "Matt",
         base: "Acrylprimer",
         coverage: "10-12 m²/L",
         dryingTime: "1 Stunde",
@@ -368,7 +368,7 @@ const exteriorProducts = [
         packaging: "1L, 5L",
       },
       tr: {
-        finish: "Mat",
+        type: "Mat",
         base: "Akrilik Astar",
         coverage: "10-12 m²/L",
         dryingTime: "1 saat",
@@ -498,7 +498,7 @@ const exteriorProducts = [
         packaging: "0.75 لتر، 2.5 لتر، 5 لتر",
       },
       de: {
-        finish: "Glänzend",
+        type: "Glänzend",
         base: "Acryl-Varnish",
         coverage: "12 m²/L",
         dryingTime: "2 Stunden",
@@ -506,7 +506,7 @@ const exteriorProducts = [
         packaging: "0.75L, 2.5L, 5L",
       },
       tr: {
-        finish: "Parlak",
+        type: "Parlak",
         base: "Akrilik Vernik",
         coverage: "12 m²/L",
         dryingTime: "2 saat",
@@ -628,7 +628,7 @@ const exteriorProducts = [
         packaging: "1L, 5L",
       },
       ar: {
-        finish: "شفاف",
+        type: "شفاف",
         base: "سيلان/سيلوكسان",
         coverage: "8-10 م²/لتر",
         dryingTime: "1-2 ساعات",
@@ -636,7 +636,7 @@ const exteriorProducts = [
         packaging: "1 لتر، 5 لتر",
       },
       de: {
-        finish: "Transparent",
+        type: "Transparent",
         base: "Silane/Siloxan",
         coverage: "8-10 m²/L",
         dryingTime: "1-2 Stunden",
@@ -644,7 +644,7 @@ const exteriorProducts = [
         packaging: "1L, 5L",
       },
       tr: {
-        finish: "Şeffaf",
+        type: "Şeffaf",
         base: "Silane/Siloksan",
         coverage: "8-10 m²/L",
         dryingTime: "1-2 saat",
