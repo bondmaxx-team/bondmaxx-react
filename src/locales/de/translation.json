@@ -15,6 +15,7 @@
   "favorites_title": "Lieblingsfarben",
   "favorites_empty_title": "Keine Lieblingsfarben",
   "favorites_empty_message": "Beginnen Sie damit, Ihre Lieblingsfarben zur Favoritenliste hinzuzufügen",
+  "added_to_cart": "Erfolgreich zum Warenkorb hinzugefügt",
 
   "home": "Startseite",
   "interior": "Innenbereich",
@@ -38,6 +39,8 @@
   "de": "Deutsch",
 
   "view_all": "Alle anzeigen",
+  "our_products": "Unsere Produkte",
+  "products_description": "Entdecken Sie unsere Premium-Auswahl an hochwertigen Farben und Lacken, die Ihre Räume verwandeln",
   "interior_paints": "Innenfarben",
   "exterior_paints": "Außenfarben",
   "add_to_favorites": "Zu Favoriten hinzufügen",
@@ -120,8 +123,6 @@
 
   "product_description": "Produktbeschreibung",
   "product_features": "Eigenschaften",
-  "technical_specifications": "Technische Spezifikationen",
-  "usage_instructions": "Anwendungshinweise",
   "packaging_storage": "Verpackung und Lagerung",
   "manufacturer_info": "Herstellerinformationen",
   "manufacturer_address": "Maarat al-Numan, Idlib, Syrien",
@@ -239,7 +240,6 @@
   "bondmax_modern_facade": "Bondmax Moderne Fassadenfarbe",
   "bondmax_modern_description": "Ein moderner Touch für Ihre Hausfassade.",
   "stable_colors": "Stabile Farben, unempfindlich gegen Sonnenlicht",
-  "easy_cleaning": "Leicht zu reinigen und zu pflegen",
   "crack_resistant": "Beständig gegen Risse und Abblättern",
   "bondmax_anti_mold": "Bondmax Anti-Schimmel-Farbe",
   "bondmax_anti_mold_description": "Schutz vor Schimmel und Pilzen.",
@@ -271,8 +271,6 @@
   "noise_absorption": "Lärmabsorption",
   "light_easy_install": "Leicht und einfach zu installieren",
   "no_ventilation_block": "Blockiert nicht die Belüftung",
-  "ceilings": "Decken",
-  "walls": "Wände",
   "interior_products": "Innenfarbenprodukte",
   "interior_description": "Kaufen Sie BondMax-Produkte. Entdecken Sie unsere vielfältige Auswahl an hochwertigen Farben und wählen Sie Farben, die Schutz und Schönheit für Ihre Wände gleichzeitig bieten.",
 
@@ -394,7 +392,6 @@
   "bondmax_ceiling_white": "Bondmax Weiße Deckenfarbe",
   "perfect_white_ceiling": "Perfekt strahlend weiße Decke",
   "anti_yellowing": "Vergilbungsschutz",
-  "easy_application": "Einfache Anwendung",
   "quick_drying": "Schnell trocknend",
 
   "bondmax_luxury_silk": "Bondmax Luxus-Seidenfarbe",
@@ -460,6 +457,7 @@
   "technical_specifications": "Technische Spezifikationen",
   "usage_instructions": "Gebrauchsanweisung",
   "storage_instructions": "Lagerungshinweise",
+  "storage_information": "Lagerungsinformationen",
   "key_features": "Hauptmerkmale",
   "spec_color": "Farbe",
   "spec_type": "Typ",
@@ -487,5 +485,6 @@
   "weight": "Gewicht",
   "type": "Type",
   "external": "Extern",
-  "internal": "Intern"
+  "internal": "Intern",
+  "removed_from_cart": "Das Produkt wurde erfolgreich aus dem Warenkorb entfernt"
 }

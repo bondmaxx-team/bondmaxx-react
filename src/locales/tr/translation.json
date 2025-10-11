@@ -15,6 +15,7 @@
   "favorites_title": "Favori Renkler",
   "favorites_empty_title": "Favori Renk Yok",
   "favorites_empty_message": "Beğendiğiniz renkleri favori listenize eklemeye başlayın",
+  "added_to_cart": "Sepete başarıyla eklendi",
 
   "home": "Ana Sayfa",
   "interior": "İç Mekan",
@@ -38,6 +39,8 @@
   "de": "Deutsch",
 
   "view_all": "Tümünü Görüntüle",
+  "our_products": "Ürünlerimiz",
+  "products_description": "Mekanlarınızı dönüştürmek için tasarlanmış yüksek kaliteli boya ve renklerin premium seçkimizi keşfedin",
   "interior_paints": "İç Mekan Boyaları",
   "exterior_paints": "Dış Mekan Boyaları",
   "add_to_favorites": "Favorilere Ekle",
@@ -120,8 +123,6 @@
 
   "product_description": "Ürün Açıklaması",
   "product_features": "Özellikler",
-  "technical_specifications": "Teknik Özellikler",
-  "usage_instructions": "Kullanım Talimatları",
   "packaging_storage": "Ambalajlama ve Depolama",
   "manufacturer_info": "Üretici Bilgileri",
   "manufacturer_address": "Maarat al-Numan, İdlib, Suriye",
@@ -239,7 +240,6 @@
   "bondmax_modern_facade": "Bondmax Modern Cephe Boyası",
   "bondmax_modern_description": "Evinizin cephesine modern bir dokunuş.",
   "stable_colors": "Güneş ışığından etkilenmeyen sabit renkler",
-  "easy_cleaning": "Kolay temizlik ve bakım",
   "crack_resistant": "Çatlak ve soyulmaya karşı dayanıklı",
   "bondmax_anti_mold": "Bondmax Küf Önleyici Boya",
   "bondmax_anti_mold_description": "Küf ve mantarlara karşı koruma.",
@@ -271,8 +271,6 @@
   "noise_absorption": "Gürültü emilimi",
   "light_easy_install": "Hafif ve kolay kurulum",
   "no_ventilation_block": "Havalandırmayı engellemez",
-  "ceilings": "Tavanlar",
-  "walls": "Duvarlar",
   "interior_products": "İç Mekan Boya Ürünleri",
   "interior_description": "BondMax ürünlerini alışveriş yapın. Yüksek kaliteli boyalarımızın çeşitli seçimini keşfedin ve duvarlarınıza aynı anda koruma ve güzellik katan renkleri seçin.",
 
@@ -455,6 +453,7 @@
   "technical_specifications": "Teknik Özellikler",
   "usage_instructions": "Kullanım Talimatları",
   "storage_instructions": "Depolama Talimatları",
+  "storage_information": "Depolama Bilgileri",
   "key_features": "Ana Özellikler",
   "spec_color": "Renk",
   "spec_type": "Tür",
@@ -482,5 +481,6 @@
   "weight": "Ağırlık",
   "type": "Tip",
   "external": "Dış",
-  "internal": "İç"
+  "internal": "İç",
+  "removed_from_cart": "Ürün sepetten başarıyla kaldırıldı"
 }

@@ -15,6 +15,7 @@
   "favorites_title": "Favorite Colors",
   "favorites_empty_title": "No Favorite Colors",
   "favorites_empty_message": "Start adding colors you like to your favorites list",
+  "added_to_cart": "Added to cart successfully",
 
   "home": "Home",
   "interior": "Interior",
@@ -38,6 +39,8 @@
   "de": "German",
 
   "view_all": "View All",
+  "our_products": "Our Products",
+  "products_description": "Explore our premium selection of high-quality paints and colors designed to transform your spaces",
   "interior_paints": "Interior Paints",
   "exterior_paints": "Exterior Paints",
   "add_to_favorites": "Add to Favorites",
@@ -120,8 +123,6 @@
 
   "product_description": "Product Description",
   "product_features": "Features",
-  "technical_specifications": "Technical Specifications",
-  "usage_instructions": "Usage Instructions",
   "packaging_storage": "Packaging & Storage",
   "manufacturer_info": "Manufacturer Information",
   "manufacturer_address": "Maarat al-Nasan, Idlib, Syria",
@@ -239,7 +240,6 @@
   "bondmax_modern_facade": "Bondmax Modern Facade Paint",
   "bondmax_modern_description": "A modern touch for your home's facade.",
   "stable_colors": "Stable colors unaffected by sun",
-  "easy_cleaning": "Easy to clean and maintain",
   "crack_resistant": "Resistant to cracking and peeling",
   "bondmax_anti_mold": "Bondmax Anti-Mold Paint",
   "bondmax_anti_mold_description": "Protection from mold and fungi.",
@@ -271,14 +271,8 @@
   "noise_absorption": "Noise absorption",
   "light_easy_install": "Light and easy to install",
   "no_ventilation_block": "Does not block ventilation",
-
-  "ceilings": "Ceilings",
-  "walls": "Walls",
-
   "interior_products": "Interior Paint Products",
   "interior_description": "Shop BondMax products. Discover our diverse range of high-quality paints and choose colors that add protection and beauty to your walls at the same time.",
-  "ceilings": "Ceilings",
-  "walls": "Walls",
   "paints": "Paints",
   "bondmax_matte_paint": "Bondmax Matte Paint",
   "beautiful_walls_everyday": "Beautiful walls every day.",
@@ -391,7 +385,6 @@
   "bondmax_ceiling_white": "Bondmax White Ceiling Paint",
   "perfect_white_ceiling": "Perfect bright white ceiling",
   "anti_yellowing": "Anti-yellowing",
-  "easy_application": "Easy application",
   "quick_drying": "Quick drying",
 
   "bondmax_luxury_silk": "Bondmax Luxury Silk Paint",
@@ -457,6 +450,7 @@
   "technical_specifications": "Technical Specifications",
   "usage_instructions": "Usage Instructions",
   "storage_instructions": "Storage Instructions",
+  "storage_information": "Storage Information",
   "key_features": "Key Features",
   "spec_color": "Color",
   "spec_type": "Type",
@@ -485,5 +479,6 @@
   "type": "Type",
 
   "external": "External",
-  "internal": "Internal"
+  "internal": "Internal",
+  "removed_from_cart": "The product has been successfully removed from the cart"
 }
