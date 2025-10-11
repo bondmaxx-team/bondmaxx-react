@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 import About from "../pages/About";
 import HeroSection from "../components/HeroSection";
 import ProductSlider from "../components/ProductSlider";
-import { useLocation } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import productsCollections from "../data/productsCollections";
 
 export default function Home() {
@@ -32,7 +32,14 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <main className="mt-[70px]">
-        <HeroSection onDiscoverColors={() => navigate("color-collection")} />
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <HeroSection onDiscoverColors={() => navigate("color-collection")} />
+        </motion.div>
+
         <div className="max-w-[1400px] mx-auto px-6">
           <section
             className="py-20 relative overflow-hidden"
@@ -47,7 +54,6 @@ export default function Home() {
               }}
             />
 
-            {/* Decorative Background Elements */}
             <div className="absolute inset-0 -z-10 opacity-20">
               <div
                 className="absolute top-10 right-20 w-96 h-96 rounded-full blur-3xl animate-pulse-slow"
@@ -63,8 +69,13 @@ export default function Home() {
               />
             </div>
 
-            {/* Section Header */}
-            <div className="max-w-7xl mx-auto px-6 mb-12 text-center animate-fade-in">
+            <motion.div
+              className="max-w-7xl mx-auto px-6 mb-12 text-center"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+            >
               <h2
                 className="text-3xl md:text-5xl font-bold mb-4"
                 style={{
@@ -86,14 +97,19 @@ export default function Home() {
                   backgroundColor: "#203F84",
                 }}
               />
-            </div>
+            </motion.div>
 
             <div className="max-w-7xl mx-auto px-6 space-y-20">
               {productsCollections.map((product, index) => (
-                <div
+                <motion.div
                   key={product.titleKey}
-                  className="animate-fade-in-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.8,
+                    delay: index * 0.15,
+                  }}
+                  viewport={{ once: true, amount: 0.3 }}
                 >
                   <ProductSlider
                     title={t(product.titleKey)}
@@ -102,12 +118,20 @@ export default function Home() {
                     color={product.color}
                     linkTo={product.linkTo}
                   />
-                </div>
+                </motion.div>
               ))}
             </div>
           </section>
         </div>
-        <About />
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          <About />
+        </motion.div>
       </main>
     </div>
   );

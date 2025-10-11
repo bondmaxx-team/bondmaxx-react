@@ -205,7 +205,7 @@ export default function Footer() {
         rel="noopener noreferrer"
         title={t("whatsapp_contact")}
         className={`fixed bottom-5 ${
-          isRTL ? "left-5" : "right-5"
+          isRTL ? "left-5" : "-5"
         } w-12 h-12 md:w-16 md:h-16 z-50 cursor-pointer animate-bounce`}
       >
         <img

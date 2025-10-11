@@ -22,10 +22,9 @@ const HeroSection = ({ onDiscoverColors }) => {
           <span className="text-white drop-shadow-2xl">{t("main_title")}</span>
 
           <span
-            className="inline-block mt-4 px-8 py-3 rounded-full border border-white/40 bg-white/10 backdrop-blur-md text-[#203F84] font-extrabold shadow-lg hover:bg-white/20 hover:shadow-2xl transition-all duration-300 relative"
-            style={{
-              textShadow: "0 2px 6px rgba(32,63,132,0.4)",
-            }}
+            className="inline-block mt-4 px-8 py-3 rounded-full border border-white/40 bg-white/10 backdrop-blur-md 
+            text-shadow-[0_0_5px_white]
+            text-[#203F84] font-extrabold shadow-lg hover:bg-white/20 hover:shadow-2xl transition-all duration-300 relative"
           >
             BONDMAXX
             <span className="absolute inset-0 rounded-full bg-white/30 opacity-0 hover:opacity-100 transition-opacity blur-md"></span>
@@ -63,17 +62,8 @@ const HeroSection = ({ onDiscoverColors }) => {
             {/* تأثير التوهج الأزرق المائي */}
             <span className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/30 via-cyan-300/30 to-blue-400/30 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 animate-pulse-slow"></span>
 
-            <i
-              className="fas fa-palette text-lg relative z-10 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300"
-              style={{ color: "#203F84" }}
-            />
-            <span
-              className="relative z-10 font-extrabold"
-              style={{
-                color: "#203F84",
-                textShadow: "0 2px 4px rgba(32, 63, 132, 0.2)",
-              }}
-            >
+            <i className="fas fa-palette before:text-shadow-[0_0_4px_white] text-lg relative z-10 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300" />
+            <span className="relative z-10 font-extrabold text-shadow-[0_0_2px_white]">
               {t("cta_button")}
             </span>
           </button>
@@ -81,9 +71,18 @@ const HeroSection = ({ onDiscoverColors }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 max-w-3xl mx-auto">
           {[
-            { icon: "fa-certificate", text: t("quality_guarantee") },
-            { icon: "fa-swatchbook", text: t("colors_count") },
-            { icon: "fa-leaf", text: t("eco_friendly") },
+            {
+              icon: "fa-certificate  text-shadow-[0_0_3px_white]",
+              text: t("quality_guarantee"),
+            },
+            {
+              icon: "fa-swatchbook  text-shadow-[0_0_3px_white]",
+              text: t("colors_count"),
+            },
+            {
+              icon: "fa-leaf  text-shadow-[0_0_3px_white]",
+              text: t("eco_friendly"),
+            },
           ].map((feature, index) => (
             <div
               key={index}
