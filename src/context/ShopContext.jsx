@@ -7,45 +7,53 @@ import {
 } from "react";
 
 const LS_KEYS = {
-  favorites: "bondmaxx-favorites",
   cart: "bondmaxx-cart",
+  favorites: "bondmaxx-favorites",
 };
 
 // --- Reducer ---
 const initialState = {
-  favorites: [], // [{ id, ...product }]
   cart: [], // [{ qty, ...product }]
-  isHydrated: false, // Add this flag
+  favorites: [], // [{ id, name, image, price, ... }]
+  isHydrated: false,
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "HYDRATE": {
-      const { favorites, cart } = action.payload;
+      const { cart, favorites } = action.payload;
       return {
-        favorites: Array.isArray(favorites) ? favorites : [],
         cart: Array.isArray(cart) ? cart : [],
-        isHydrated: true, // Mark as hydrated
+        favorites: Array.isArray(favorites) ? favorites : [],
+        isHydrated: true,
       };
     }
 
-    case "TOGGLE_FAVORITE": {
-      const product = action.payload;
-      const exists = state.favorites.some((f) => f.id === product.id);
-      const favorites = exists
-        ? state.favorites.filter((f) => f.id !== product.id)
-        : [...state.favorites, product];
-      return { ...state, favorites };
+    case "ADD_TO_CART": {
+      const { product } = action.payload;
+      const exists = state.cart.find((c) => c.id === product.id);
+      // Toggle: if exists, remove it; otherwise add it with qty=1
+      const cart = exists
+        ? state.cart.filter((c) => c.id !== product.id)
+        : [...state.cart, { ...product, qty: 1 }];
+      return { ...state, cart };
     }
 
-    case "ADD_TO_CART": {
-      const { product, qty = 1 } = action.payload;
-      const exists = state.cart.find((c) => c.id === product.id);
-      const cart = exists
-        ? state.cart.map((c) =>
-            c.id === product.id ? { ...c, qty: c.qty + qty } : c
-          )
-        : [...state.cart, { ...product, qty }];
+    case "INCREMENT_QTY": {
+      const productId = action.payload;
+      const cart = state.cart.map((c) =>
+        c.id === productId ? { ...c, qty: c.qty + 1 } : c
+      );
+      return { ...state, cart };
+    }
+
+    case "DECREMENT_QTY": {
+      const productId = action.payload;
+      const cart = state.cart
+        .map((c) =>
+          c.id === productId ? { ...c, qty: Math.max(0, c.qty - 1) } : c
+        )
+        .filter((c) => c.qty > 0); // Remove if qty reaches 0
       return { ...state, cart };
     }
 
@@ -66,6 +74,15 @@ function reducer(state, action) {
     case "CLEAR_CART":
       return { ...state, cart: [] };
 
+    case "TOGGLE_FAVORITE": {
+      const item = action.payload;
+      const exists = state.favorites.find((f) => f.id === item.id);
+      const favorites = exists
+        ? state.favorites.filter((f) => f.id !== item.id)
+        : [...state.favorites, item];
+      return { ...state, favorites };
+    }
+
     default:
       return state;
   }
@@ -79,13 +96,13 @@ export function ShopProvider({ children }) {
     // Hydrate during initialization instead of useEffect
     if (typeof window !== "undefined") {
       try {
+        const cart = JSON.parse(sessionStorage.getItem(LS_KEYS.cart) || "[]");
         const favorites = JSON.parse(
           localStorage.getItem(LS_KEYS.favorites) || "[]"
         );
-        const cart = JSON.parse(localStorage.getItem(LS_KEYS.cart) || "[]");
         return {
-          favorites: Array.isArray(favorites) ? favorites : [],
           cart: Array.isArray(cart) ? cart : [],
+          favorites: Array.isArray(favorites) ? favorites : [],
           isHydrated: true,
         };
       } catch {
@@ -98,35 +115,39 @@ export function ShopProvider({ children }) {
   // Hydrate from localStorage once
   useEffect(() => {
     try {
+      const cart = JSON.parse(sessionStorage.getItem(LS_KEYS.cart) || "[]");
       const favorites = JSON.parse(
         localStorage.getItem(LS_KEYS.favorites) || "[]"
       );
-      const cart = JSON.parse(localStorage.getItem(LS_KEYS.cart) || "[]");
-      dispatch({ type: "HYDRATE", payload: { favorites, cart } });
+      dispatch({ type: "HYDRATE", payload: { cart, favorites } });
     } catch {
       dispatch({ type: "HYDRATE", payload: initialState });
     }
   }, []);
 
-  // Persist favorites & cart (only after hydration)
+  // Persist cart (only after hydration)
+  useEffect(() => {
+    if (state.isHydrated) {
+      sessionStorage.setItem(LS_KEYS.cart, JSON.stringify(state.cart));
+    }
+  }, [state.cart, state.isHydrated]);
+
+  // Persist favorites (only after hydration)
   useEffect(() => {
     if (state.isHydrated) {
       localStorage.setItem(LS_KEYS.favorites, JSON.stringify(state.favorites));
     }
   }, [state.favorites, state.isHydrated]);
 
-  useEffect(() => {
-    if (state.isHydrated) {
-      localStorage.setItem(LS_KEYS.cart, JSON.stringify(state.cart));
-    }
-  }, [state.cart, state.isHydrated]);
-
   // Actions
-  const toggleFavorite = (product) =>
-    dispatch({ type: "TOGGLE_FAVORITE", payload: product });
+  const addToCart = (product) =>
+    dispatch({ type: "ADD_TO_CART", payload: { product } });
 
-  const addToCart = (product, qty = 1) =>
-    dispatch({ type: "ADD_TO_CART", payload: { product, qty } });
+  const incrementQty = (productId) =>
+    dispatch({ type: "INCREMENT_QTY", payload: productId });
+
+  const decrementQty = (productId) =>
+    dispatch({ type: "DECREMENT_QTY", payload: productId });
 
   const setQty = (productId, qty) =>
     dispatch({ type: "SET_QTY", payload: { productId, qty } });
@@ -136,42 +157,40 @@ export function ShopProvider({ children }) {
 
   const clearCart = () => dispatch({ type: "CLEAR_CART" });
 
+  const toggleFavorite = (item) =>
+    dispatch({ type: "TOGGLE_FAVORITE", payload: item });
+
   // Selectors / helpers
-  // const isFavorite = (id) => state.favorites.some((f) => f.id === id);
-  const isFavorite = (id, productType) =>
-    state.favorites.some((f) => f.id === id && f.productType === productType);
   const inCart = (id) => state.cart.some((c) => c.id === id);
 
+  const isFavorite = (id) => state.favorites.some((f) => f.id === id);
+
+  // Total number of items (sum of all quantities)
   const cartCount = useMemo(
     () => state.cart.reduce((sum, item) => sum + (item.qty || 1), 0),
     [state.cart]
   );
 
-  // If you have prices later, compute a total:
-  const cartTotal = useMemo(
-    () =>
-      state.cart.reduce((sum, item) => {
-        const price = Number(item.price || 0);
-        return sum + price * (item.qty || 1);
-      }, 0),
-    [state.cart]
-  );
+  // Number of unique products in cart
+  const cartTotal = useMemo(() => state.cart.length, [state.cart]);
 
   const value = useMemo(
     () => ({
-      favorites: state.favorites,
       cart: state.cart,
+      favorites: state.favorites,
       // actions
-      toggleFavorite,
       addToCart,
+      incrementQty,
+      decrementQty,
       setQty,
       removeFromCart,
       clearCart,
+      toggleFavorite,
       // helpers
-      isFavorite,
       inCart,
-      cartCount,
-      cartTotal,
+      isFavorite,
+      cartCount, // مجموع الكميات (5 قطع مثلاً)
+      cartTotal, // عدد المنتجات المختلفة (2 منتج مثلاً)
     }),
     [state, cartCount, cartTotal]
   );

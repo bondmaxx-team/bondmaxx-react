@@ -1,15 +1,18 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import useWhatsApp from "@/hooks/useWhatsApp";
 import { WHATSAPP_DEFAULT_GREETING } from "@/config/whatsapp";
 
 export default function WhatsAppFloatingButton({
   message = WHATSAPP_DEFAULT_GREETING,
   number,
-  position = "br", // br (bottom-right), bl (bottom-left)
 }) {
+  const { i18n } = useTranslation();
   const { sendMessage } = useWhatsApp(number);
+  const isRTL = i18n.dir() === "rtl";
 
-  const posClass = position === "bl" ? "left-4" : "right-4";
+  // Position based on language direction: RTL -> left, LTR -> right
+  const posClass = isRTL ? "left-4" : "right-4";
 
   return (
     <button

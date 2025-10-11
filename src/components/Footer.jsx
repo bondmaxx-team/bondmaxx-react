@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export default function Footer() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.dir() === "rtl";
 
   // const socialLinks = [
   //   { icon: "fab fa-facebook-f", hoverColor: "#203F84" },
@@ -88,7 +89,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid gap-12 md:grid-cols-4">
         {/* BONDMAXX Section */}
         <div>
-          <h3 className="text-xl font-bold mb-5" style={{ color: "#203F84" }}>
+          <h3 className="text-xl font-bold mb-5 text-[var(--header-primary)]">
             {t("company_name")}
           </h3>
           <p className="text-gray-300 mb-5 leading-relaxed">
@@ -98,14 +99,7 @@ export default function Footer() {
             {socialLinks.map((social, index) => (
               <div
                 key={index}
-                className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-lg cursor-pointer transition"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = social.hoverColor;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor =
-                    "rgba(255, 255, 255, 0.1)";
-                }}
+                className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-lg cursor-pointer transition hover:bg-[var(--header-primary)]"
               >
                 <i className={social.icon}></i>
               </div>
@@ -115,7 +109,7 @@ export default function Footer() {
 
         {/* Products Section - المنتجات */}
         <div>
-          <h3 className="text-xl font-bold mb-5" style={{ color: "#203F84" }}>
+          <h3 className="text-xl font-bold mb-5 text-[var(--header-primary)]">
             {t("products_title")}
           </h3>
           <ul className="space-y-3">
@@ -123,17 +117,10 @@ export default function Footer() {
               <li key={index}>
                 <Link
                   to={product.href}
-                  className="flex items-center gap-2 text-gray-300 transition group"
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#203F84";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#d1d5db";
-                  }}
+                  className="flex items-center gap-2 text-gray-300 transition group hover:text-[var(--header-primary)]"
                 >
                   <i
-                    className={product.icon}
-                    style={{ color: "#203F84", transition: "all 0.3s" }}
+                    className={`${product.icon} text-[var(--header-primary)] transition-all duration-300`}
                   ></i>
                   <span>{product.label}</span>
                 </Link>
@@ -144,7 +131,7 @@ export default function Footer() {
 
         {/* Services Section - الخدمات */}
         <div>
-          <h3 className="text-xl font-bold mb-5" style={{ color: "#203F84" }}>
+          <h3 className="text-xl font-bold mb-5 text-[var(--header-primary)]">
             {t("services_title")}
           </h3>
           <ul className="space-y-3">
@@ -152,17 +139,10 @@ export default function Footer() {
               <li key={index}>
                 <Link
                   to={service.href}
-                  className="flex items-center gap-2 text-gray-300 transition group"
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#203F84";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#d1d5db";
-                  }}
+                  className="flex items-center gap-2 text-gray-300 transition group hover:text-[var(--header-primary)]"
                 >
                   <i
-                    className={service.icon}
-                    style={{ color: "#203F84", transition: "all 0.3s" }}
+                    className={`${service.icon} text-[var(--header-primary)] transition-all duration-300`}
                   ></i>
                   <span>{service.label}</span>
                 </Link>
@@ -173,7 +153,7 @@ export default function Footer() {
 
         {/* Contact Section - تواصل معنا */}
         <div>
-          <h3 className="text-xl font-bold mb-5" style={{ color: "#203F84" }}>
+          <h3 className="text-xl font-bold mb-5 text-[var(--header-primary)]">
             {t("contact_title")}
           </h3>
           <ul className="space-y-3">
@@ -181,17 +161,10 @@ export default function Footer() {
               <li key={index}>
                 <Link
                   to={contact.href}
-                  className="flex items-center gap-2 text-gray-300 transition group"
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#203F84";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#d1d5db";
-                  }}
+                  className="flex items-center gap-2 text-gray-300 transition group hover:text-[var(--header-primary)]"
                 >
                   <i
-                    className={contact.icon}
-                    style={{ color: "#203F84", transition: "all 0.3s" }}
+                    className={`${contact.icon} text-[var(--header-primary)] transition-all duration-300`}
                   ></i>
 
                   {contact.type === "whatsapp" ? (
@@ -231,7 +204,9 @@ export default function Footer() {
         target="_blank"
         rel="noopener noreferrer"
         title={t("whatsapp_contact")}
-        className="fixed bottom-5 right-5 w-12 h-12 md:w-16 md:h-16 z-50 cursor-pointer animate-bounce"
+        className={`fixed bottom-5 ${
+          isRTL ? "left-5" : "right-5"
+        } w-12 h-12 md:w-16 md:h-16 z-50 cursor-pointer animate-bounce`}
       >
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
@@ -243,39 +218,21 @@ export default function Footer() {
       <div className="text-center py-6">
         <Link
           to="/Imprint"
-          className="mx-2 text-gray-600 transition"
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "#203F84";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "#4b5563";
-          }}
+          className="mx-2 text-gray-600 transition hover:text-[var(--header-primary)]"
         >
           Imprint
         </Link>
         |
         <Link
           to="/PrivacyPolicy"
-          className="mx-2 text-gray-600 transition"
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "#203F84";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "#4b5563";
-          }}
+          className="mx-2 text-gray-600 transition hover:text-[var(--header-primary)]"
         >
           Privacy Policy
         </Link>
         |
         <Link
           to="/DataProtection"
-          className="mx-2 text-gray-600 transition"
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "#203F84";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "#4b5563";
-          }}
+          className="mx-2 text-gray-600 transition hover:text-[var(--header-primary)]"
         >
           Data Protection
         </Link>

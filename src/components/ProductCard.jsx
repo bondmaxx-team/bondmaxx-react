@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useShop } from "../context/ShopContext";
 import { useTranslation } from "react-i18next";
+import { toast } from "sonner";
 
 const ProductCard = ({
   product,
@@ -9,25 +10,22 @@ const ProductCard = ({
   categoryMap = {},
 }) => {
   const { t, i18n } = useTranslation();
-  const { toggleFavorite, isFavorite, addToCart } = useShop();
+  const { addToCart, inCart } = useShop();
   const navigate = useNavigate();
   const lang = i18n.language;
   const isRTL = i18n.dir() === "rtl";
-  const favorite = isFavorite(product.id, productType);
-
-  const handleFavoriteClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    toggleFavorite({
-      ...product,
-      productType,
-    });
-  };
+  const isInCart = inCart(product.id);
 
   const handleCartClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
     addToCart(product);
+
+    if (!isInCart) {
+      toast.success(t("added_to_cart"));
+    } else {
+      toast.info(t("removed_from_cart"));
+    }
   };
 
   const handleCardClick = (e) => {
@@ -133,7 +131,7 @@ const ProductCard = ({
         e.currentTarget.style.borderColor = "#e5e7eb";
       }}
     >
-      {/* أزرار المفضلة والسلة */}
+      {/* أزرار السلة */}
       <div
         className={`absolute top-2 ${
           isRTL ? "left-2" : "right-2"
@@ -142,21 +140,11 @@ const ProductCard = ({
         <button
           onClick={handleCartClick}
           className="p-1.5 bg-white rounded-full shadow-md transition-all duration-200 hover:shadow-lg"
-          aria-label={t("add_to_cart") || "Add to cart"}
+          aria-label={isInCart ? t("remove_from_cart") : t("add_to_cart")}
         >
           <i
-            className="fas fa-shopping-cart text-gray-600"
-            style={{ fontSize: "14px" }}
-          ></i>
-        </button>
-        <button
-          onClick={handleFavoriteClick}
-          className="p-1.5 bg-white rounded-full shadow-md transition-all duration-200 hover:shadow-lg"
-          aria-label={t("add_to_favorites_aria") || "Add to favorites"}
-        >
-          <i
-            className={`fa-heart ${
-              favorite ? "fas text-red-500" : "far text-gray-600"
+            className={`fas fa-shopping-cart ${
+              isInCart ? "text-blue-900" : "text-gray-600"
             }`}
             style={{ fontSize: "14px" }}
           ></i>

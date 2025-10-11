@@ -8,11 +8,11 @@ const CollectionPagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(Math.max(1, currentPage - 1))}
         disabled={currentPage === 1}
-        className="px-4 py-2 rounded-lg bg-white border-2 border-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-400 transition-all"
+        className="px-4 py-2 rounded-lg bg-white border-2 border-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-[var(--header-border)] transition-all"
       >
         {t("previous")}
       </button>
-      <div className="flex gap-2">
+      <div className="hidden md:flex gap-2">
         {[...Array(Math.min(5, totalPages))].map((_, i) => {
           let pageNum;
           if (totalPages <= 5) {
@@ -30,8 +30,8 @@ const CollectionPagination = ({ currentPage, totalPages, onPageChange }) => {
               onClick={() => onPageChange(pageNum)}
               className={`px-4 py-2 rounded-lg border-2 transition-all ${
                 currentPage === pageNum
-                  ? "bg-blue-600 text-white border-blue-600"
-                  : "bg-white border-gray-200 hover:border-blue-400"
+                  ? "bg-[var(--header-primary)] text-white border-[var(--header-primary)]"
+                  : "bg-white border-gray-200 hover:border--[var(--header-border)]"
               }`}
             >
               {pageNum}
@@ -42,7 +42,7 @@ const CollectionPagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
         disabled={currentPage === totalPages}
-        className="px-4 py-2 rounded-lg bg-white border-2 border-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-blue-400 transition-all"
+        className="px-4 py-2 rounded-lg bg-white border-2 border-gray-200 disabled:opacity-50 disabled:cursor-not-allowed hover:border-[var(--header-border)] transition-all"
       >
         {t("next")}
       </button>

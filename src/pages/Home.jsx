@@ -34,17 +34,75 @@ export default function Home() {
       <main className="mt-[70px]">
         <HeroSection onDiscoverColors={() => navigate("color-collection")} />
         <div className="max-w-[1400px] mx-auto px-6">
-          <section className="py-16 bg-white" id="products-section">
-            <div className="max-w-7xl mx-auto px-6 space-y-16">
-              {productsCollections.map((product) => (
-                <ProductSlider
+          <section
+            className="py-20 relative overflow-hidden"
+            id="products-section"
+          >
+            {/* Gradient Background */}
+            <div
+              className="absolute inset-0 -z-10"
+              style={{
+                background:
+                  "linear-gradient(to bottom right, #f9fafb, rgba(32, 63, 132, 0.05), rgba(32, 63, 132, 0.08))",
+              }}
+            />
+
+            {/* Decorative Background Elements */}
+            <div className="absolute inset-0 -z-10 opacity-20">
+              <div
+                className="absolute top-10 right-20 w-96 h-96 rounded-full blur-3xl animate-pulse-slow"
+                style={{ backgroundColor: "#203F84" }}
+              />
+              <div
+                className="absolute bottom-20 left-20 w-80 h-80 rounded-full blur-3xl animate-pulse-slow"
+                style={{ animationDelay: "2s", backgroundColor: "#203F84" }}
+              />
+              <div
+                className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full blur-3xl animate-pulse-slow"
+                style={{ animationDelay: "1s", backgroundColor: "#203F84" }}
+              />
+            </div>
+
+            {/* Section Header */}
+            <div className="max-w-7xl mx-auto px-6 mb-12 text-center animate-fade-in">
+              <h2
+                className="text-3xl md:text-5xl font-bold mb-4"
+                style={{
+                  background:
+                    "linear-gradient(to right, #374151, #203F84, #203F84)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  color: "transparent",
+                }}
+              >
+                {t("our_products")}
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                {t("products_description")}
+              </p>
+              <div
+                className="w-32 h-1.5 mx-auto mt-6 rounded-full relative z-10"
+                style={{
+                  backgroundColor: "#203F84",
+                }}
+              />
+            </div>
+
+            <div className="max-w-7xl mx-auto px-6 space-y-20">
+              {productsCollections.map((product, index) => (
+                <div
                   key={product.titleKey}
-                  title={t(product.titleKey)}
-                  products={product.collection}
-                  productType={product.type}
-                  color={product.color}
-                  linkTo={product.linkTo}
-                />
+                  className="animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <ProductSlider
+                    title={t(product.titleKey)}
+                    products={product.collection}
+                    productType={product.type}
+                    color={product.color}
+                    linkTo={product.linkTo}
+                  />
+                </div>
               ))}
             </div>
           </section>

@@ -12,46 +12,36 @@ const ProductSlider = ({ title, products, color, linkTo, productType }) => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n?.language === "ar";
 
-  // Keep a ref to the swiper instance and nav buttons
   const swiperRef = useRef(null);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
-  // Fixed color for all "View All" buttons
   const buttonColor = "#203F84";
   const buttonHoverColor = "#1a3269";
 
-  // Optional: reflect dir on the wrapper for consistency
   useEffect(() => {
     document.documentElement.setAttribute("dir", isRTL ? "rtl" : "ltr");
   }, [isRTL]);
 
-  // When direction changes, tell Swiper & rebind navigation
   useEffect(() => {
     const swiper = swiperRef.current;
     if (!swiper) return;
 
-    // Flip direction (no full destroy needed)
     swiper.changeDirection(isRTL ? "rtl" : "ltr", false);
-
-    // Rebind navigation to the current refs
     swiper.params.navigation.prevEl = prevRef.current;
     swiper.params.navigation.nextEl = nextRef.current;
-
-    // Re-init & update
     swiper.navigation.destroy();
     swiper.navigation.init();
     swiper.navigation.update();
     swiper.update();
   }, [isRTL]);
 
-  // ✅ ترجم العنوان هنا
   const translatedTitle = t(title);
 
   return (
     <div className="mb-16" dir={isRTL ? "rtl" : "ltr"}>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">{title}</h2>
+        <h2 className="text-2xl font-bold text-gray-800">{translatedTitle}</h2>
       </div>
 
       <Swiper
@@ -61,7 +51,7 @@ const ProductSlider = ({ title, products, color, linkTo, productType }) => {
         spaceBetween={16}
         pagination={{
           clickable: true,
-          el: ".custom-pagination", // link to our custom container
+          el: ".custom-pagination",
         }}
         onBeforeInit={(swiper) => {
           swiper.params.navigation = {
@@ -113,7 +103,6 @@ const ProductSlider = ({ title, products, color, linkTo, productType }) => {
           </Link>
         </SwiperSlide>
 
-        {/* Custom pagination container aligned to the end */}
         <div
           className={`custom-pagination flex ${
             isRTL ? "justify-start" : "justify-end"

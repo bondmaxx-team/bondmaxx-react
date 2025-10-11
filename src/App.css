@@ -42,11 +42,6 @@
   transform: translateX(100%) !important;
 }
 
-/* .swiper-button-next,
-.swiper-button-prev {
-  z-index: 20;
-} */
-
 .slide-up-overlay {
   background: linear-gradient(
     to top,
@@ -90,7 +85,7 @@
   transform: none !important;
   width: auto !important;
   text-align: right !important;
-  position: absolute; /* ensure it's positioned over the Swiper */
+  position: absolute;
 }
 
 /* Keep bullets nicely spaced */
@@ -110,6 +105,7 @@
   opacity: 1;
 }
 
+/* Animation keyframes */
 @keyframes subtle-zoom {
   0%,
   100% {
@@ -123,7 +119,18 @@
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -134,11 +141,11 @@
 @keyframes pulse-slow {
   0%,
   100% {
-    opacity: 0.3;
+    opacity: 0.2;
     transform: scale(1);
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.3;
     transform: scale(1.1);
   }
 }
@@ -148,11 +155,15 @@
 }
 
 .animate-fade-in {
-  animation: fade-in 1.2s ease-out;
+  animation: fade-in 1s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out both;
 }
 
 .animate-pulse-slow {
-  animation: pulse-slow 4s ease-in-out infinite;
+  animation: pulse-slow 6s ease-in-out infinite;
 }
 
 @theme inline {
@@ -226,6 +237,14 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Custom Header colors - الأزرق المعتمد */
+  --header-primary: #203f84;
+  --header-primary-hover: #1a3269;
+  --header-light-bg: #e8eef7;
+  --header-border: #203f84;
+  --header-gradient-start: #203f84;
+  --header-gradient-end: #1a3269;
 }
 
 .dark {
@@ -270,6 +289,7 @@
     @apply bg-background text-foreground;
   }
 }
+
 /* Fix pagination button colors */
 .pagination-button-active {
   background-color: #203f84 !important;
@@ -281,4 +301,25 @@
   background-color: #ffffff !important;
   border-color: #e5e7eb !important;
   color: #374151 !important;
+}
+
+/* Cart header gradient */
+.cart-header-gradient {
+  background: linear-gradient(
+    to right,
+    var(--header-gradient-start),
+    var(--header-gradient-end)
+  );
+  border-bottom-color: var(--header-border);
+}
+
+/* Custom styles for Swiper pagination dots */
+.custom-pagination .swiper-pagination-bullet {
+  background-color: #d1d5db;
+  opacity: 1;
+  transition: background-color 0.3s ease;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+  background-color: #203f84;
 }

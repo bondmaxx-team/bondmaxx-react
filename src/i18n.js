@@ -7,8 +7,10 @@ import en from "./locales/en/translation.json";
 import tr from "./locales/tr/translation.json";
 import de from "./locales/de/translation.json";
 
+const storedLanguage =
+  typeof window !== "undefined" && localStorage.getItem("lang");
 await i18n.use(initReactI18next).init({
-  lng: "ar", // default language
+  lng: storedLanguage || "ar", // default language
   fallbackLng: "ar",
   supportedLngs: ["en", "ar", "tr", "de"],
   debug: false,

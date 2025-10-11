@@ -13,7 +13,7 @@ const ProductDetails = () => {
   const { t, i18n } = useTranslation();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const { addToCart, toggleFavorite, isFavorite } = useShop();
+  const { addToCart, inCart } = useShop();
   const { sendMessage } = useWhatsApp();
 
   const lang = i18n.language;
@@ -87,31 +87,16 @@ const ProductDetails = () => {
     };
   }, [product, lang]);
 
-  const favorite = useMemo(
-    () => isFavorite(productId?.toString()),
-    [isFavorite, productId]
-  );
-
   const handleAddToCart = (e) => {
     e.stopPropagation();
     if (product) {
-      addToCart(product, 1);
-      toast.success(t("added_to_cart"));
-    }
-  };
-
-  const handleToggleFavorite = (e) => {
-    e.stopPropagation();
-    if (translatedProduct) {
-      toggleFavorite({
-        id: productId.toString(),
-        image: translatedProduct.image,
-        name: translatedProduct.name,
-        price: translatedProduct.price,
-      });
-      toast.success(
-        favorite ? t("removed_from_favorites") : t("added_to_favorites")
-      );
+      const isInCart = inCart(product.id);
+      addToCart(product);
+      if (!isInCart) {
+        toast.success(t("added_to_cart"));
+      } else {
+        toast.info(t("removed_from_cart"));
+      }
     }
   };
 
@@ -347,38 +332,18 @@ const ProductDetails = () => {
                   isRTL ? "left-0" : "right-0"
                 } z-10`}
               >
-                <div
-                  className={`flex ${
-                    isRTL ? "flex-row-reverse" : "flex-row"
-                  } items-center gap-2`}
+                <button
+                  type="button"
+                  onClick={handleAddToCart}
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-110"
+                  aria-label={t("add_to_cart")}
                 >
-                  <button
-                    type="button"
-                    onClick={handleToggleFavorite}
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-110"
-                    aria-label={
-                      favorite
-                        ? t("remove_from_favorites")
-                        : t("add_to_favorites")
-                    }
-                  >
-                    <i
-                      className={`${
-                        favorite
-                          ? "fas fa-heart text-red-500"
-                          : "far fa-heart text-gray-500"
-                      } text-lg transition-colors`}
-                    />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleAddToCart}
-                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-110"
-                    aria-label={t("add_to_cart")}
-                  >
-                    <i className="fas fa-shopping-cart text-gray-600 hover:text-emerald-600 text-lg transition-colors" />
-                  </button>
-                </div>
+                  <i
+                    className={`fas fa-shopping-cart text-lg transition-colors ${
+                      inCart(product.id) ? "text-blue-900" : "text-gray-600"
+                    }`}
+                  />
+                </button>
               </div>
 
               {/* Product Info */}
@@ -454,23 +419,9 @@ const ProductDetails = () => {
                     <i className="fas fa-palette me-2"></i>
                     {t("search_color")}
                   </Link>
-                  <Link
-                    to="/paint-calculator"
-                    className="px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:text-white hover:border-transparent transition-all duration-300 text-center text-sm font-medium transform hover:scale-105"
-                    style={{ transition: "all 0.3s" }}
-                    onMouseEnter={(e) =>
-                      (e.target.style.backgroundColor = "#203F84")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.target.style.backgroundColor = "transparent")
-                    }
-                  >
-                    <i className="fas fa-calculator me-2"></i>
-                    {t("paint_calculator")}
-                  </Link>
                 </div>
 
-                {/* ✅ Fixed WhatsApp Button */}
+                {/* WhatsApp Button */}
                 <a
                   href="#"
                   onClick={openWhatsApp}
