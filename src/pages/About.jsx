@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import backgroundImage from "../assets/1.jpeg";
+import backgroundImage from "../assets/10.png";
 import { useTranslation } from "react-i18next";
 
 export default function About() {
@@ -45,14 +45,14 @@ export default function About() {
 
   return (
     <div
-      className="min-h-screen bg-gray-50"
+      className="min-h-screen "
       dir="rtl"
       style={{ fontFamily: "Cairo, Tajawal, Arial, sans-serif" }}
     >
       <section className="relative text-white overflow-hidden">
         <div className="relative py-28 md:py-36">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 transform transition-transform duration-700 hover:scale-110"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat hover:scale-110"
             style={{ backgroundImage: `url(${backgroundImage})` }}
           ></div>
 
@@ -60,7 +60,7 @@ export default function About() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.8))",
+                "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8))",
             }}
           ></div>
 

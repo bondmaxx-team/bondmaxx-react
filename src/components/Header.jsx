@@ -31,17 +31,13 @@ export default function Header() {
     removeFromCart,
   } = useShop();
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const closeSidebar = () => {
     setIsSidebarOpen(false);
     closeLanguageMenu();
   };
 
   const toggleCart = () => {
-    // If opening the cart and it's empty, notify the user instead
     if (!isCartOpen && (!cart || cart.length === 0)) {
       toast.info(t("cart_empty_message"));
       return;
@@ -50,9 +46,7 @@ export default function Header() {
     closeLanguageMenu();
   };
 
-  const closeCart = () => {
-    setIsCartOpen(false);
-  };
+  const closeCart = () => setIsCartOpen(false);
 
   const submitCartToWhatsApp = () => {
     if (!cart?.length) {
@@ -121,19 +115,17 @@ export default function Header() {
       <header className="fixed top-0 left-0 right-0 z-40 bg-white shadow-sm border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16">
           <div className="flex justify-between items-center h-full">
-            {/* Left - Favorites + Language */}
+            {/* Left - Cart + Language */}
             <div className="flex items-center gap-3 flex-1">
               {/* Cart */}
               <button
                 title="button"
                 type="button"
-                className="relative flex items-center gap-1.5 sm:px-2.5 py-1.5 rounded-lg bg-white hover:bg-[var(--header-light-bg)] active:scale-95 transition-all duration-150 text-sm text-[var(--header-primary)]"
+                className="relative flex items-center gap-1.5 sm:px-2.5 py-1.5 rounded-lg bg-white hover:bg-[var(--header-light-bg)] active:scale-95 hover:scale-105 transition-all duration-150 text-sm text-[var(--header-primary)]"
                 onClick={toggleCart}
               >
                 <i className="fas fa-shopping-cart text-base"></i>
                 <span className="hidden sm:inline">{t("cart_title")}</span>
-
-                {/* badge */}
                 {cart.length > 0 && (
                   <span className="absolute -top-1 -right-1 text-xs min-w-[18px] h-[18px] flex items-center justify-center rounded-full text-white font-medium bg-[var(--header-primary)]">
                     {cart.length}
@@ -146,7 +138,7 @@ export default function Header() {
                 <button
                   title="button"
                   type="button"
-                  className="flex items-center gap-1.5 sm:px-2.5 py-1.5 rounded-lg bg-white hover:bg-[var(--header-light-bg)] active:scale-95 transition-all duration-150 text-sm text-[var(--header-primary)]"
+                  className="flex items-center gap-1.5 sm:px-2.5 py-1.5 rounded-lg bg-white hover:bg-[var(--header-light-bg)] active:scale-95 hover:scale-105 transition-all duration-150 text-sm text-[var(--header-primary)]"
                   onClick={toggleLanguageMenu}
                 >
                   <img
@@ -169,7 +161,7 @@ export default function Header() {
                   {languages.map((lang) => (
                     <div
                       key={lang.code}
-                      className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-gray-50"
+                      className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-gray-50 active:scale-95 hover:scale-105 transition-all duration-150"
                       onClick={() =>
                         selectLanguage(lang.code, lang.name, lang.flag)
                       }
@@ -192,7 +184,7 @@ export default function Header() {
                 <img
                   alt="BONDMAXX Painting"
                   src={logo}
-                  className="h-14 sm:h-22 cursor-pointer hover:opacity-90 transition-opacity"
+                  className="h-14 sm:h-22 cursor-pointer hover:opacity-90 hover:scale-105 transition-all duration-150"
                 />
               </Link>
             </div>
@@ -202,7 +194,7 @@ export default function Header() {
               <button
                 title="button"
                 type="button"
-                className="p-2 text-[var(--header-primary)] bg-white hover:bg-[var(--header-light-bg)] active:scale-95 active:bg-gray-100 rounded-lg transition-all duration-150"
+                className="p-2 text-[var(--header-primary)] bg-white hover:bg-[var(--header-light-bg)] active:scale-95 hover:scale-105 rounded-lg transition-all duration-150"
                 onClick={toggleSidebar}
               >
                 <i className="fas fa-bars text-lg"></i>
@@ -245,7 +237,7 @@ export default function Header() {
           <button
             title="button"
             type="button"
-            className="p-2 rounded-md bg-gray-100 hover:bg-gray-200 transition text-gray-700"
+            className="p-2 rounded-md bg-gray-100 hover:bg-gray-200 active:scale-95 hover:scale-105 transition text-gray-700"
             onClick={closeSidebar}
           >
             <i className="fas fa-times"></i>
@@ -258,7 +250,7 @@ export default function Header() {
               key={index}
               to={item.href}
               onClick={closeSidebar}
-              className={`px-7 py-4 cursor-pointer transition text-gray-800 hover:bg-[var(--header-primary)] hover:text-white ${
+              className={`px-7 py-4 cursor-pointer transition text-gray-800 hover:bg-[var(--header-primary)] hover:text-white active:scale-95 hover:scale-105 ${
                 item.icon ? "flex items-center gap-2" : ""
               }`}
             >
@@ -285,14 +277,12 @@ export default function Header() {
           <div className="flex items-center justify-center gap-3 text-xl font-semibold">
             <span>{t("cart_page_title")}</span>
           </div>
-
-          {/* Close button aligns to edge based on dir */}
           <button
             title="button"
             type="button"
             className={`absolute top-6 ${
               isRTL ? "right-6" : "left-6"
-            } p-2 rounded-md bg-white/20 hover:bg-white/30 transition text-white`}
+            } p-2 rounded-md bg-white/20 hover:bg-white/30 active:scale-95 hover:scale-105 transition text-white`}
             onClick={closeCart}
           >
             <i className="fas fa-times"></i>
@@ -325,10 +315,9 @@ export default function Header() {
                   return (
                     <div
                       key={idx}
-                      className="bg-white rounded-lg p-3 shadow-sm border border-gray-200 flex gap-3"
+                      className="bg-white rounded-lg p-3 shadow-sm border border-gray-200 flex gap-3 active:scale-95 hover:scale-105 transition-all duration-150"
                       dir={isRTL ? "rtl" : "ltr"}
                     >
-                      {/* Product Image */}
                       {item.image && (
                         <img
                           src={item.image}
@@ -336,8 +325,6 @@ export default function Header() {
                           className="w-20 h-20 object-cover rounded-md bg-gray-50"
                         />
                       )}
-
-                      {/* Product Info */}
                       <div className="flex-1 flex flex-col justify-between">
                         <div>
                           <h4 className="font-semibold text-gray-800 text-sm mb-1 line-clamp-2">
@@ -349,35 +336,29 @@ export default function Header() {
                             </p>
                           )}
                         </div>
-
-                        {/* Quantity Controls */}
                         <div className="flex items-center justify-between mt-2">
                           <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-1">
                             <button
                               onClick={() => decrementQty(item.id)}
-                              className="w-8 h-8 flex items-center justify-center rounded-md bg-white hover:bg-gray-200 transition text-gray-700 font-bold"
+                              className="w-8 h-8 flex items-center justify-center rounded-md bg-white hover:bg-gray-200 active:scale-95 hover:scale-105 transition text-gray-700 font-bold"
                               type="button"
                             >
                               <i className="fas fa-minus text-xs"></i>
                             </button>
-
                             <span className="min-w-[2rem] text-center font-semibold text-gray-800">
                               {item.qty || 1}
                             </span>
-
                             <button
                               onClick={() => incrementQty(item.id)}
-                              className="w-8 h-8 flex items-center justify-center rounded-md bg-white hover:bg-gray-200 transition text-gray-700 font-bold"
+                              className="w-8 h-8 flex items-center justify-center rounded-md bg-white hover:bg-gray-200 active:scale-95 hover:scale-105 transition text-gray-700 font-bold"
                               type="button"
                             >
                               <i className="fas fa-plus text-xs"></i>
                             </button>
                           </div>
-
-                          {/* Delete Button */}
                           <button
                             onClick={() => removeFromCart(item.id)}
-                            className="p-2 text-red-500 hover:bg-red-50 rounded-md transition"
+                            className="p-2 text-red-500 hover:bg-red-50 active:scale-95 hover:scale-105 rounded-md transition"
                             type="button"
                             title={isRTL ? "حذف" : "Delete"}
                           >
@@ -398,7 +379,7 @@ export default function Header() {
               <span className="font-semibold">{cartCount}</span>
             </div>
             <button
-              className="w-full text-white py-3 rounded-lg transition font-medium bg-[var(--header-primary)] hover:bg-[var(--header-primary-hover)] hover:scale-[1.02]"
+              className="w-full text-white py-3 rounded-lg transition font-medium bg-[var(--header-primary)] hover:bg-[var(--header-primary-hover)] hover:scale-[1.02] active:scale-95"
               type="button"
               onClick={submitCartToWhatsApp}
             >
