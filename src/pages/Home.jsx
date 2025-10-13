@@ -29,6 +29,10 @@ export default function Home() {
     document.documentElement.lang = i18n.language;
   }, [i18n.language, i18n]);
 
+  const handleDiscoverColors = () => {
+    navigate("/color-collection");
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <main className="mt-[70px]">
@@ -37,7 +41,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <HeroSection onDiscoverColors={() => navigate("color-collection")} />
+          <HeroSection onDiscoverColors={handleDiscoverColors} />
         </motion.div>
 
         <div className="max-w-[1400px] mx-auto px-6">
@@ -117,6 +121,8 @@ export default function Home() {
                     productType={product.type}
                     color={product.color}
                     linkTo={product.linkTo}
+                    showDiscoverButton={index === 0}
+                    onDiscoverColors={handleDiscoverColors}
                   />
                 </motion.div>
               ))}
@@ -124,14 +130,7 @@ export default function Home() {
           </section>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.15 }}
-        >
-          <About />
-        </motion.div>
+        <About />
       </main>
     </div>
   );

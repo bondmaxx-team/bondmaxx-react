@@ -70,4 +70,41 @@ const ProductCard = ({ product, productType }) => {
   );
 };
 
+// Component الزر منفصل
+export const DiscoverColorsButton = ({ onClick }) => {
+  const { t } = useTranslation();
+
+  return (
+    <div className="flex justify-center pt-8">
+      <button
+        onClick={onClick}
+        className="group relative flex items-center gap-3 px-12 py-5 font-bold text-lg rounded-full border-2 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden backdrop-blur-md"
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.1)",
+          borderColor: "#203F84",
+          color: "#203F84",
+        }}
+      >
+        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out shimmer"></span>
+
+        <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <span className="bubble bubble-1"></span>
+          <span className="bubble bubble-2"></span>
+          <span className="bubble bubble-3"></span>
+          <span className="bubble bubble-4"></span>
+        </span>
+
+        <span className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 scale-0 group-hover:scale-150 transition-all duration-700 ease-out"></span>
+
+        <span className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/30 via-cyan-300/30 to-blue-400/30 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 animate-pulse-slow"></span>
+
+        <i className="fas fa-palette before:text-shadow-[0_0_4px_white] text-lg relative z-10 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300" />
+        <span className="relative z-10 font-extrabold text-shadow-[0_0_2px_white]">
+          {t("cta_button")}
+        </span>
+      </button>
+    </div>
+  );
+};
+
 export default ProductCard;

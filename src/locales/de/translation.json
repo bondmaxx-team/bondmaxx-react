@@ -486,5 +486,8 @@
   "type": "Type",
   "external": "Extern",
   "internal": "Intern",
-  "removed_from_cart": "Das Produkt wurde erfolgreich aus dem Warenkorb entfernt"
+  "removed_from_cart": "Das Produkt wurde erfolgreich aus dem Warenkorb entfernt",
+  "slogan": "Bondmaxx - Die Expertise, die den Unterschied in Qualität und Preis macht",
+  "email_subject": "Anfrage von der Bondmaxx-Website",
+  "email_body": "Hallo,\n\nIch möchte mich erkundigen über "
 }

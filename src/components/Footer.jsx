@@ -5,13 +5,6 @@ export default function Footer() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
 
-  // const socialLinks = [
-  //   { icon: "fab fa-facebook-f", hoverColor: "#203F84" },
-  //   { icon: "fab fa-twitter", hoverColor: "#203F84" },
-  //   { icon: "fab fa-instagram", hoverColor: "#203F84" },
-  //   { icon: "fab fa-linkedin-in", hoverColor: "#203F84" },
-  // ];
-
   const products = [
     {
       icon: "fas fa-home",
@@ -85,9 +78,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white pt-12 px-6">
+    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white pt-12 px-6 relative">
       <div className="max-w-7xl mx-auto grid gap-12 md:grid-cols-4">
-        {/* BONDMAXX Section */}
+        {/* Company Info */}
         <div>
           <h3 className="text-xl font-bold mb-5 text-[var(--header-primary)]">
             {t("company_name")}
@@ -95,19 +88,9 @@ export default function Footer() {
           <p className="text-gray-300 mb-5 leading-relaxed">
             {t("company_description")}
           </p>
-          {/* <div className="flex gap-4 mt-4">
-            {socialLinks.map((social, index) => (
-              <div
-                key={index}
-                className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-lg cursor-pointer transition hover:bg-[var(--header-primary)]"
-              >
-                <i className={social.icon}></i>
-              </div>
-            ))}
-          </div> */}
         </div>
 
-        {/* Products Section - المنتجات */}
+        {/* Products */}
         <div>
           <h3 className="text-xl font-bold mb-5 text-[var(--header-primary)]">
             {t("products_title")}
@@ -117,10 +100,10 @@ export default function Footer() {
               <li key={index}>
                 <Link
                   to={product.href}
-                  className="flex items-center gap-2 text-gray-300 transition group hover:text-[var(--header-primary)]"
+                  className="flex items-center gap-2 text-gray-300 transition hover:text-[var(--header-primary)]"
                 >
                   <i
-                    className={`${product.icon} text-[var(--header-primary)] transition-all duration-300`}
+                    className={`${product.icon} text-[var(--header-primary)]`}
                   ></i>
                   <span>{product.label}</span>
                 </Link>
@@ -129,7 +112,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Services Section - الخدمات */}
+        {/* Services */}
         <div>
           <h3 className="text-xl font-bold mb-5 text-[var(--header-primary)]">
             {t("services_title")}
@@ -137,21 +120,23 @@ export default function Footer() {
           <ul className="space-y-3">
             {services.map((service, index) => (
               <li key={index}>
-                <Link
-                  to={service.href}
-                  className="flex items-center gap-2 text-gray-300 transition group hover:text-[var(--header-primary)]"
+                <a
+                  href={service.href}
+                  className="flex items-center gap-2 text-gray-300 transition hover:text-[var(--header-primary)]"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <i
-                    className={`${service.icon} text-[var(--header-primary)] transition-all duration-300`}
+                    className={`${service.icon} text-[var(--header-primary)]`}
                   ></i>
                   <span>{service.label}</span>
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Contact Section - تواصل معنا */}
+        {/* Contact */}
         <div>
           <h3 className="text-xl font-bold mb-5 text-[var(--header-primary)]">
             {t("contact_title")}
@@ -159,46 +144,66 @@ export default function Footer() {
           <ul className="space-y-3">
             {contactInfo.map((contact, index) => (
               <li key={index}>
-                <Link
-                  to={contact.href}
-                  className="flex items-center gap-2 text-gray-300 transition group hover:text-[var(--header-primary)]"
+                <a
+                  href={contact.href}
+                  className="flex items-center gap-2 text-gray-300 transition hover:text-[var(--header-primary)]"
+                  target={contact.type === "whatsapp" ? "_blank" : "_self"}
+                  rel="noopener noreferrer"
                 >
                   <i
-                    className={`${contact.icon} text-[var(--header-primary)] transition-all duration-300`}
+                    className={`${contact.icon} text-[var(--header-primary)]`}
                   ></i>
-
                   {contact.type === "whatsapp" ? (
-                    // Force phone number to stay LTR
                     <span dir="ltr" className="font-mono tracking-wide">
                       {contact.label}
                     </span>
                   ) : (
                     <span>{contact.label}</span>
                   )}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
         </div>
       </div>
 
-      <div className="border-t border-gray-700 pt-8 mt-10">
-        <div className="text-center text-gray-300 text-sm leading-relaxed space-y-2">
-          <p className="mb-3">
-            &copy; {new Date().getFullYear()} {t("all_rights_reserved")}
-            <span className="font-semibold text-white mx-1">
-              {t("company_name")}
-            </span>
-          </p>
-          <p className="text-xs text-gray-400">
-            {t("designed_by")}
-            <span className="font-semibold text-gray-200 mx-1">
-              {t("dev_team")}
-            </span>
-          </p>
-        </div>
+      {/* Footer Bottom */}
+      <div className="border-t border-gray-700 pt-8 mt-10 text-center text-gray-300 text-sm leading-relaxed space-y-2">
+        <p>
+          &copy; {new Date().getFullYear()} {t("all_rights_reserved")}
+          <span className="font-semibold text-white mx-1">
+            {t("company_name")}
+          </span>
+        </p>
+        <p className="text-xs text-gray-400">
+          {t("designed_by")}
+          <span className="font-semibold text-gray-200 mx-1">
+            {t("dev_team")}
+          </span>
+        </p>
       </div>
 
+      <a
+        href={`https://mail.google.com/mail/?view=cm&fs=1&to=info@bondmaxx.com&su=${encodeURIComponent(
+          t("email_subject")
+        )}&body=${encodeURIComponent(t("email_body"))}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={t("email_contact")}
+        className={`fixed bottom-20 md:bottom-24 ${
+          ["ar"].includes(i18n.language) ? "left-5" : "right-5"
+        } w-12 h-12 md:w-16 md:h-16 z-50 cursor-pointer animate-bounce`}
+        style={{ animationDelay: "0.2s" }}
+      >
+        <div
+          className="w-full h-full rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110"
+          style={{ backgroundColor: "#203F84" }}
+        >
+          <i className="fas fa-envelope text-white text-xl md:text-3xl"></i>
+        </div>
+      </a>
+
+      {/* Floating WhatsApp Button */}
       <a
         href="https://wa.me/905550004000"
         target="_blank"
@@ -215,6 +220,7 @@ export default function Footer() {
         />
       </a>
 
+      {/* Legal Links */}
       <div className="text-center py-6">
         <Link
           to="/Imprint"

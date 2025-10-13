@@ -1,6 +1,7 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import backgroundImage from "../assets/10.png";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 export default function About() {
   const { t } = useTranslation();
@@ -45,14 +46,20 @@ export default function About() {
 
   return (
     <div
-      className="min-h-screen "
+      className="min-h-screen"
       dir="rtl"
       style={{ fontFamily: "Cairo, Tajawal, Arial, sans-serif" }}
     >
       <section className="relative text-white overflow-hidden">
-        <div className="relative py-28 md:py-36">
+        <motion.div
+          className="relative py-28 md:py-36"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat hover:scale-110"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 hover:scale-110"
             style={{ backgroundImage: `url(${backgroundImage})` }}
           ></div>
 
@@ -68,6 +75,7 @@ export default function About() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 drop-shadow-lg tracking-wide leading-tight">
               {t("about_bondmaxx")}
             </h1>
+
             <h2
               className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-10"
               style={{
@@ -87,31 +95,42 @@ export default function About() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
           className="relative py-14 md:py-20 shadow-lg"
           style={{ backgroundColor: "#203F84" }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           <div className="max-w-5xl mx-auto px-6 text-center">
             <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white leading-snug drop-shadow-md">
               {t("choose_bondmaxx")} 🌟 <br />
               {t("elevate_experience")}
             </p>
+
             <button
               onClick={handleClick}
-              className="inline-block mt-8 px-8 py-4 font-bold rounded-full shadow-lg hover:opacity-90 transition"
+              className="inline-block mt-8 px-8 py-4 font-bold rounded-full shadow-lg hover:opacity-90 transition-all duration-300 hover:scale-105"
               style={{ backgroundColor: "#fff", color: "#203F84" }}
             >
               {t("discover_products")}
             </button>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <h2
               className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4"
               style={{ color: "#203F84" }}
@@ -125,9 +144,15 @@ export default function About() {
             <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
               {t("industries_description")}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {industries.map((industry, index) => (
               <div
                 key={index}
@@ -162,15 +187,19 @@ export default function About() {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <section
+      <motion.section
         className="relative py-16 overflow-hidden"
         style={{
           background: "linear-gradient(to right, #203F84, #203F84, #1B326E)",
         }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.3 }}
       >
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 right-20 w-64 h-64 bg-white rounded-full filter blur-3xl"></div>
@@ -181,9 +210,11 @@ export default function About() {
           <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">
             {t("ready_to_transform")}
           </h3>
+
           <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
             {t("cta_description")}
           </p>
+
           <button
             onClick={() => window.open("https://wa.me/905550004000", "_blank")}
             className="px-8 md:px-10 py-3 md:py-4 rounded-full text-base md:text-lg font-bold hover:opacity-90 transform hover:scale-105 transition-all duration-300"
@@ -192,7 +223,7 @@ export default function About() {
             {t("contact_now")}
           </button>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

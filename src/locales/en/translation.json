@@ -480,5 +480,8 @@
 
   "external": "External",
   "internal": "Internal",
-  "removed_from_cart": "The product has been successfully removed from the cart"
+  "removed_from_cart": "The product has been successfully removed from the cart",
+  "slogan": "Bondmaxx - The expertise that makes the difference in quality and price",
+  "email_subject": "Inquiry from Bondmaxx Website",
+  "email_body": "Hello,\n\nI would like to inquire about "
 }

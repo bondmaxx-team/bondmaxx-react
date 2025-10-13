@@ -48,7 +48,7 @@ const ImprintPage = () => {
         </p>
 
         <p className="mt-6 text-sm text-gray-500">
-          © {new Date().getFullYear()} BondMaxx. {t("all_rights_reserved")}
+          {t("all_rights_reserved")} © {new Date().getFullYear()} Bondmaxx
         </p>
       </div>
     </div>

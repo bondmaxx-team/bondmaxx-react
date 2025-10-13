@@ -482,5 +482,8 @@
   "type": "Tip",
   "external": "Dış",
   "internal": "İç",
-  "removed_from_cart": "Ürün sepetten başarıyla kaldırıldı"
+  "removed_from_cart": "Ürün sepetten başarıyla kaldırıldı",
+  "slogan": "Bondmaxx - Kalite ve fiyatta fark yaratan uzmanlık",
+  "email_subject": "Bondmaxx Web Sitesinden Sorgu",
+  "email_body": "Merhaba,\n\nHakkında bilgi almak istiyorum "
 }
