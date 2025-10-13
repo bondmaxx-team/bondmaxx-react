@@ -115,8 +115,7 @@ export default function About() {
         >
           <div className="max-w-5xl mx-auto px-6 text-center">
             <p className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white leading-snug drop-shadow-md">
-              {t("choose_bondmaxx")} 🌟 <br />
-              {t("elevate_experience")}
+              {t("elevate_experience")}🌟
             </p>
 
             <button
