@@ -18,13 +18,15 @@ const HeroSection = ({ onDiscoverColors }) => {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center mt-12 animate-fade-in">
-        <h1 className="text-4xl md:text-6xl font-bold leading-tight text-center">
-          <span className="text-white drop-shadow-2xl">{t("main_title")}</span>
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight text-center">
+          <span className="text-white drop-shadow-2xl block mb-3 sm:mb-4">
+            {t("main_title")}
+          </span>
 
           <span
-            className="inline-block mt-4 px-8 py-3 rounded-full border border-white/40 bg-white/10 backdrop-blur-md 
-            text-shadow-[0_0_5px_white]
-            text-[#203F84] font-extrabold shadow-lg hover:bg-white/20 hover:shadow-2xl transition-all duration-300 relative"
+            className="inline-block px-8 sm:px-10 md:px-12 py-3 sm:py-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl rounded-full border border-white/40 bg-white/10 backdrop-blur-md 
+    text-shadow-[0_0_5px_white]
+    text-[#203F84] font-extrabold shadow-lg hover:bg-white/20 hover:shadow-2xl transition-all duration-300 relative"
           >
             BONDMAXX
             <span className="absolute inset-0 rounded-full bg-white/30 opacity-0 hover:opacity-100 transition-opacity blur-md"></span>
@@ -61,7 +63,7 @@ const HeroSection = ({ onDiscoverColors }) => {
             {/* تأثير التوهج الأزرق المائي */}
             <span className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/30 via-cyan-300/30 to-blue-400/30 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 animate-pulse-slow"></span>
 
-            <i className="fas fa-palette before:text-shadow-[0_0_4px_white] text-2xl md:text-3xl relative z-10 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300" />
+            <i className="before:text-shadow-[0_0_4px_white] text-2xl md:text-3xl relative z-10 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300" />
             <span className="relative z-10 font-extrabold text-xl md:text-2xl text-shadow-[0_0_2px_white]">
               {t("slogan")}
             </span>
