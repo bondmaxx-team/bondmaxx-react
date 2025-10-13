@@ -8,6 +8,12 @@ import { toast } from "sonner";
 import interiorProducts from "../data/interiorProducts";
 import exteriorProducts from "../data/exteriorProducts";
 import insulationProducts from "../data/insulationProducts";
+import oilPaintsProducts from "../data/oilPaintsProducts";
+import waterPaintsProducts from "../data/waterPaintsProducts";
+import primerPaintsProducts from "../data/primerPaintsProducts";
+import epoxyProducts from "../data/epoxyProducts";
+import puttyProducts from "../data/puttyProducts";
+import accessoriesProducts from "../data/accessoriesProducts";
 
 const ProductDetails = () => {
   const { t, i18n } = useTranslation();
@@ -39,7 +45,17 @@ const ProductDetails = () => {
 
   const productType = useMemo(() => {
     const type = searchParams.get("type");
-    return ["interior", "exterior", "insulation"].includes(type)
+    return [
+      "interior",
+      "exterior",
+      "insulation",
+      "oil-paints",
+      "water-paints",
+      "primer-paints",
+      "epoxy",
+      "putty",
+      "accessories",
+    ].includes(type)
       ? type
       : "interior";
   }, [searchParams]);
@@ -49,6 +65,12 @@ const ProductDetails = () => {
       interior: interiorProducts,
       exterior: exteriorProducts,
       insulation: insulationProducts,
+      "oil-paints": oilPaintsProducts,
+      "water-paints": waterPaintsProducts,
+      "primer-paints": primerPaintsProducts,
+      epoxy: epoxyProducts,
+      putty: puttyProducts,
+      accessories: accessoriesProducts,
     }),
     []
   );
@@ -150,6 +172,26 @@ const ProductDetails = () => {
       fireResistance: t("fireResistance"),
       dimensions: t("dimensions"),
       weight: t("weight"),
+      mixRatio: t("mixRatio"),
+      potLife: t("potLife"),
+      walkable: t("walkable"),
+      fullCure: t("fullCure"),
+      workingTime: t("workingTime"),
+      sandingTime: t("sandingTime"),
+      sizes: t("sizes"),
+      suitable: t("suitable"),
+      cleaning: t("cleaning"),
+      frameSize: t("frameSize"),
+      poleLength: t("poleLength"),
+      rollerTypes: t("rollerTypes"),
+      traySize: t("traySize"),
+      includes: t("includes"),
+      puttySizes: t("puttySizes"),
+      sandpaper: t("sandpaper"),
+      tapeWidth: t("tapeWidth"),
+      dropCloth: t("dropCloth"),
+      elongation: t("elongation"),
+      workingTemp: t("workingTemp"),
     };
 
     return (
@@ -196,6 +238,14 @@ const ProductDetails = () => {
             <p className="text-gray-700">
               {translatedProduct.usage.application}
             </p>
+          </div>
+        )}
+        {translatedProduct.usage.care && (
+          <div>
+            <h4 className="font-semibold text-gray-800 mb-2">
+              {t("care_instructions")}:
+            </h4>
+            <p className="text-gray-700">{translatedProduct.usage.care}</p>
           </div>
         )}
       </div>

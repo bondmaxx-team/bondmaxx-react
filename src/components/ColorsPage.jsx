@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "./ProductCard";
+import { ellipse } from "framer-motion/client";
 
 const ColorsPage = ({
   productsData = [],
@@ -100,7 +101,11 @@ const ColorsPage = ({
 
   const handleCategoryClick = (cat) => {
     const categoryKey = cat.key || cat.name;
-    setActiveCategory(activeCategory === categoryKey ? null : categoryKey);
+    if (categoryKey === "all") {
+      setActiveCategory(null);
+    } else {
+      setActiveCategory(activeCategory === categoryKey ? null : categoryKey);
+    }
   };
 
   return (

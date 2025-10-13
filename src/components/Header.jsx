@@ -12,6 +12,7 @@ export default function Header() {
   const isRTL = i18n.language === "ar";
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
   const {
     languages,
     currentLanguage,
@@ -34,8 +35,11 @@ export default function Header() {
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const closeSidebar = () => {
     setIsSidebarOpen(false);
+    setIsProductsOpen(false);
     closeLanguageMenu();
   };
+
+  const toggleProducts = () => setIsProductsOpen(!isProductsOpen);
 
   const toggleCart = () => {
     if (!isCartOpen && (!cart || cart.length === 0)) {
@@ -78,19 +82,46 @@ export default function Header() {
     }
   };
 
+  const productItems = [
+    {
+      href: "/OilPaintsPage",
+      label: t("oil_paints"),
+      icon: "fas fa-oil-can",
+    },
+    {
+      href: "/WaterPaintsPage",
+      label: t("water_paints"),
+      icon: "fas fa-tint",
+    },
+    {
+      href: "/PrimerPaintsPage",
+      label: t("primer_paints"),
+      icon: "fas fa-layer-group",
+    },
+    {
+      href: "/InsulationPage",
+      label: t("insulation"),
+      icon: "fas fa-shield-alt",
+    },
+    {
+      href: "/EpoxyPage",
+      label: t("epoxy"),
+      icon: "fas fa-fill-drip",
+    },
+    {
+      href: "/PuttyPage",
+      label: t("putty"),
+      icon: "fas fa-tools",
+    },
+  ];
+
   const menuItems = [
     { href: "/", label: t("home"), icon: "fas fa-home" },
     {
-      href: "/interior-colors",
-      label: t("interior_paints"),
-      icon: "fas fa-door-open",
+      href: "/AccessoriesPage",
+      label: t("accessories"),
+      icon: "fas fa-toolbox",
     },
-    {
-      href: "/exterior-colors",
-      label: t("exterior_paints"),
-      icon: "fas fa-building",
-    },
-    { href: "/insulation", label: t("insulation"), icon: "fas fa-shield-alt" },
     {
       href: "/color-collection",
       label: t("color_collection"),
@@ -224,7 +255,7 @@ export default function Header() {
       <div
         className={`fixed top-0 ${
           isRTL ? "right-0" : "left-0"
-        } h-full w-80 bg-gradient-to-br from-white to-gray-100 z-50 shadow-xl transform transition-transform ${
+        } h-full w-80 bg-gradient-to-br from-white to-gray-50 z-50 shadow-xl transform transition-transform duration-300 ${
           isSidebarOpen
             ? "translate-x-0"
             : isRTL
@@ -232,7 +263,7 @@ export default function Header() {
             : "-translate-x-full"
         }`}
       >
-        <div className="flex justify-between items-center p-6 bg-white border-b border-gray-200">
+        <div className="flex justify-between items-center p-6 bg-white border-b border-gray-200 shadow-sm">
           <img alt="BONDMAXX" src={logo} className="h-14 sm:h-20" />
           <button
             title="button"
@@ -244,18 +275,68 @@ export default function Header() {
           </button>
         </div>
 
-        <div className="flex flex-col py-8">
-          {menuItems.map((item, index) => (
+        <div className="flex flex-col py-8 overflow-y-auto h-[calc(100vh-120px)]">
+          {/* الرئيسية */}
+          <Link
+            to="/"
+            onClick={closeSidebar}
+            className="px-7 py-4 cursor-pointer transition-all duration-200 text-gray-800 hover:bg-[var(--header-primary)] hover:text-white active:scale-95 hover:scale-105 flex items-center gap-3 relative overflow-hidden group"
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+            <i className="fas fa-home relative z-10"></i>
+            <span className="relative z-10">{t("home")}</span>
+          </Link>
+
+          {/* Products Dropdown */}
+          <div className="mt-1">
+            <button
+              onClick={toggleProducts}
+              className="w-full px-7 py-4 cursor-pointer transition-all duration-200 text-gray-800 hover:bg-[var(--header-primary)] hover:text-white active:scale-95 hover:scale-105 flex items-center justify-between relative overflow-hidden group"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+              <div className="flex items-center gap-3 relative z-10">
+                <i className="fas fa-box-open"></i>
+                <span>{t("products")}</span>
+              </div>
+              <i
+                className={`fas fa-chevron-${
+                  isProductsOpen ? "up" : "down"
+                } text-sm transition-all duration-300 relative z-10 ${
+                  isProductsOpen ? "rotate-180" : ""
+                }`}
+              ></i>
+            </button>
+
+            {/* Dropdown Items */}
+            <div
+              className={`overflow-hidden transition-all duration-300 ease-in-out bg-gray-50 ${
+                isProductsOpen ? "max-h-96" : "max-h-0"
+              }`}
+            >
+              {productItems.map((item, index) => (
+                <Link
+                  key={index}
+                  to={item.href}
+                  onClick={closeSidebar}
+                  className="px-12 py-3 cursor-pointer transition-all duration-200 text-gray-700 hover:bg-[var(--header-primary)] hover:text-white active:scale-95 hover:scale-105 flex items-center gap-3 text-sm border-l-2 border-transparent hover:border-white ml-4"
+                >
+                  {item.icon && <i className={item.icon}></i>}
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {menuItems.slice(1).map((item, index) => (
             <Link
               key={index}
               to={item.href}
               onClick={closeSidebar}
-              className={`px-7 py-4 cursor-pointer transition text-gray-800 hover:bg-[var(--header-primary)] hover:text-white active:scale-95 hover:scale-105 ${
-                item.icon ? "flex items-center gap-2" : ""
-              }`}
+              className="px-7 py-4 cursor-pointer transition-all duration-200 text-gray-800 hover:bg-[var(--header-primary)] hover:text-white active:scale-95 hover:scale-105 flex items-center gap-3 relative overflow-hidden group"
             >
-              {item.icon && <i className={item.icon}></i>}
-              {item.label}
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+              {item.icon && <i className={`${item.icon} relative z-10`}></i>}
+              <span className="relative z-10">{item.label}</span>
             </Link>
           ))}
         </div>

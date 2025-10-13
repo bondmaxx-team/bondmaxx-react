@@ -24,7 +24,13 @@ import SearchDealerPage from "./pages/SearchDealer";
 import ColorCollection from "./pages/ColorCollection";
 import PaintingServices from "./pages/PaintingServices";
 import ExteriorColorsPage from "./pages/ExteriorColors";
-import InsulationPage from "./pages/Insulation";
+import OilPaintsPage from "./pages/OilPaintsPage";
+import WaterPaintsPage from "./pages/WaterPaintsPage";
+import PrimerPaintsPage from "./pages/PrimerPaintsPage";
+import InsulationPage from "./pages/InsulationPage"; // اسم الملف القديم
+import EpoxyPage from "./pages/EpoxyPage";
+import PuttyPage from "./pages/PuttyPage";
+import AccessoriesPage from "./pages/AccessoriesPage";
 import { useTranslation } from "react-i18next";
 import ImprintPage from "./pages/Imprint";
 import PrivacyPolicyPage from "./pages/PrivacyPolicy";
@@ -66,6 +72,7 @@ function App() {
       document.documentElement.lang = i18n.language;
     }
   }, [i18n.language]);
+
   return (
     <ErrorBoundary
       FallbackComponent={Fallback}
@@ -83,7 +90,16 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/interior-colors" element={<InteriorColorsPage />} />
               <Route path="/exterior-colors" element={<ExteriorColorsPage />} />
-              <Route path="/insulation" element={<InsulationPage />} />
+
+              {/* New Product Routes */}
+              <Route path="/OilPaintsPage" element={<OilPaintsPage />} />
+              <Route path="/WaterPaintsPage" element={<WaterPaintsPage />} />
+              <Route path="/PrimerPaintsPage" element={<PrimerPaintsPage />} />
+              <Route path="/InsulationPage" element={<InsulationPage />} />
+              <Route path="/EpoxyPage" element={<EpoxyPage />} />
+              <Route path="/PuttyPage" element={<PuttyPage />} />
+              <Route path="/AccessoriesPage" element={<AccessoriesPage />} />
+
               <Route path="/search-dealer" element={<SearchDealerPage />} />
               <Route path="/color-collection" element={<ColorCollection />} />
               <Route path="/product-details" element={<ProductDetails />} />

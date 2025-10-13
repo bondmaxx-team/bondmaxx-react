@@ -163,40 +163,29 @@
   "usage_step_4": "Tragen Sie die zweite Schicht nach vollständiger Trocknung der ersten auf",
   "usage_step_5": "Optimale Temperatur: zwischen +10 und +35°C",
   "usage_step_6": "Reinigen Sie Werkzeuge sofort nach Gebrauch mit Wasser",
-
   "storage_info_1": "Haltbarkeit: 24 Monate in ungeöffneter Originalverpackung",
   "storage_info_2": "Vor direkter Sonneneinstrahlung und Frost schützen",
   "storage_info_3": "VOC-Gehalt: ≤ 30 g/l",
-
   "about_bondmaxx": "Über BONDMAXX",
   "bring_colors_to_life": "Wir erwecken Farben zum Leben und machen sie zu einem Teil Ihres Lebens",
   "intro_paragraph_1": "BONDMAXX ist ein führendes Unternehmen in der Herstellung hochwertiger Farben und Beschichtungen. Wir sind stolz darauf, innovative Produkte anzubieten, die überlegene Leistung mit außergewöhnlicher Schönheit verbinden und jeden Raum mit Leben und Farben erfüllen.",
   "intro_paragraph_2": "Mit über 360 verfügbaren Farben und einer breiten Palette spezialisierter Produkte sind wir bestrebt, die Bedürfnisse unserer Kunden in verschiedenen Sektoren zu erfüllen, von Wohnhäusern bis zu großen Industrieprojekten.",
   "choose_bondmaxx": "Wählen Sie BONDMAXX für ein außergewöhnliches Erlebnis",
-
   "elevate_experience": "BONDMAXX — Globales Fachwissen, deutsche Qualität, amerikanische Technologie und libanesische Handwerkskunst, die den Unterschied macht",
-
   "discover_products": "Entdecken Sie unsere Produkte",
-
   "industries_we_serve": "Branchen, die wir bedienen",
   "industries_description": "Wir bieten umfassende und spezialisierte Lacklösungen für verschiedene Branchen, mit Fokus auf Qualität und Innovation in jedem Projekt.",
-
   "residential_sector": "Wohnbereich",
   "residential_description": "Perfekte Lacklösungen für Häuser und Wohnungen, die dauerhafte Schönheit und hervorragenden Schutz für Innen- und Außenwände bieten.",
-
   "commercial_sector": "Gewerbebereich",
   "commercial_description": "Professionelle Farben für Büros, Geschäfte und öffentliche Einrichtungen, die elegantes Aussehen mit hoher Haltbarkeit verbinden.",
-
   "industrial_sector": "Industriebereich",
   "industrial_description": "Spezialisierte Industriebeschichtungen, die rauen Bedingungen standhalten und langfristigen Schutz für Anlagen und Ausrüstung bieten.",
-
   "marine_sector": "Marinebereich",
   "marine_description": "Wasser- und salzbeständige Schiffsfarben, speziell zum Schutz von Schiffen und Meeresanlagen entwickelt.",
-
   "ready_to_transform": "Sind Sie bereit, Ihren Raum zu verwandeln?",
   "cta_description": "Kontaktieren Sie uns jetzt für eine kostenlose Beratung und beginnen Sie Ihre Reise zur Verwirklichung des perfekten Raums.",
   "contact_now": "Jetzt kontaktieren",
-
   "back_to_home": "Zurück zur Startseite",
   "search_placeholder": "Suchen Sie nach Farbfamilie oder Code...",
   "all_color_categories": "Alle Farbkategorien",
@@ -217,7 +206,6 @@
   "sunny_yellow": "Sonnengelb",
   "crystal_cyan": "Kristallhimmelblau",
   "natural_green": "Naturgrün",
-
   "exterior_products": "Außenfarbenprodukte",
   "exterior_description": "Schützen Sie die Fassade Ihres Hauses mit den besten Außenfarben von BondMax. Eine vielfältige Auswahl wetterfester Farben mit stabilen, langlebigen Farben, die Ihrer Fassade ein modernes, unverwechselbares Aussehen verleihen.",
   "search_product": "Produkt suchen",
@@ -235,7 +223,6 @@
   "apply_button": "Anwenden",
   "no_results": "Keine Ergebnisse",
   "no_results_search_message": "Versuchen Sie es mit anderen Suchbegriffen",
-
   "bondmax_ultra_durable": "Bondmax Ultra-Haltbare Außenfarbe",
   "bondmax_ultra_description": "Maximaler Schutz gegen raue Wetterbedingungen.",
   "uv_resistant": "UV-beständig",
@@ -250,7 +237,6 @@
   "antibacterial_technology": "Antibakterielle Technologie",
   "ideal_humid_areas": "Ideal für feuchte Bereiche",
   "maintains_wall_cleanliness": "Erhält die Sauberkeit der Wände",
-
   "insulation_products": "Dämmstoffe",
   "insulation_description": "Schützen Sie Ihr Haus oder Büro mit den besten Dämmlösungen von BondMax. Eine vielfältige Auswahl an Wärme- und Schalldämmung für hohen Komfort und Effizienz.",
   "thermal_insulation": "Wärmedämmung",
@@ -277,17 +263,14 @@
   "no_ventilation_block": "Blockiert nicht die Belüftung",
   "interior_products": "Innenfarbenprodukte",
   "interior_description": "Kaufen Sie BondMax-Produkte. Entdecken Sie unsere vielfältige Auswahl an hochwertigen Farben und wählen Sie Farben, die Schutz und Schönheit für Ihre Wände gleichzeitig bieten.",
-
   "paints": "Farben",
   "bondmax_matte_paint": "Bondmax Mattfarbe",
   "beautiful_walls_everyday": "Schöne Wände jeden Tag.",
   "luxurious_silk_touch": "Luxuriöse seidige Haptik",
   "high_washability": "Hohe Waschbeständigkeit",
   "precise_warm_colors": "Präzise warme Farben",
-
   "page_not_found_title": "404",
   "page_not_found_message": "Entschuldigung! Die gesuchte Seite existiert nicht.",
-
   "services_page_title": "Erneuern Sie Ihr Zuhause einfach mit unseren Dienstleistungen",
   "services_page_subtitle": "Buchen Sie einen professionellen Maler für jeden Bereich oder bestellen Sie Farbe zu Ihnen nach Hause. All dies können Sie bequem von zu Hause aus erledigen.",
   "choose_location": "Wählen Sie Ihren Standort",
@@ -327,7 +310,6 @@
   "alert_choose_paint_type": "Bitte wählen Sie eine Farbart",
   "alert_choose_service_type": "Bitte wählen Sie eine Serviceart",
   "success_message": "Formular erfolgreich gesendet!",
-
   "dealer_page_title": "Geschäft finden",
   "dealer_page_subtitle": "Finden Sie den nächsten Händler für Ihre Produkte",
   "use_current_location": "Meinen aktuellen Standort verwenden",
@@ -347,7 +329,6 @@
   "discount_10": "10% Rabatt",
   "fast_delivery": "Schnelle Lieferung",
   "technical_consultation": "Technische Beratung",
-
   "faq_title": "Häufig gestellte Fragen",
   "faq_question_1": "Wie finde ich das nächste Geschäft?",
   "faq_answer_1": "Verwenden Sie die Schaltfläche 'Meinen Standort verwenden' oder geben Sie Ihren Stadtnamen in das Suchfeld ein, um das nächste Geschäft zu finden.",
@@ -357,12 +338,10 @@
   "faq_answer_3": "Wir akzeptieren Nachnahme, Kreditkarten und Banküberweisung.",
   "faq_question_4": "Kann ich eine kostenlose Beratung erhalten?",
   "faq_answer_4": "Ja, alle unsere Geschäfte bieten kostenlose Beratung durch Farbexperten, um Ihnen bei der Auswahl des richtigen Produkts zu helfen.",
-
   "store_damascus": "Bondmax Store - Damaskus",
   "store_aleppo": "Bondmax Store - Aleppo",
   "store_homs": "Bondmax Store - Homs",
   "saturday_thursday": "Samstag - Donnerstag",
-
   "imprint_title": "Rechtliche Informationen",
   "address": "Adresse",
   "phone": "Telefon",
@@ -372,71 +351,58 @@
   "data_protection_title": "Datenschutz",
   "data_protection_text": "Bondmaxx hält alle geltenden Datenschutzgesetze ein, einschließlich der DSGVO. Sie haben das Recht, jederzeit auf Ihre personenbezogenen Daten zuzugreifen, sie zu korrigieren oder zu löschen.",
   "contact_us": "Kontaktieren Sie uns",
-
   "light_blue_interior": "Hellblau (Innenbereich)",
   "medium_blue_interior": "Mittelblau (Innenbereich)",
   "dark_blue_interior": "Dunkelblau (Innenbereich)",
   "deep_blue_interior": "Tiefblau (Innenbereich)",
-
   "light_green_exterior": "Hellgrün (Außenbereich)",
   "medium_green_exterior": "Mittelgrün (Außenbereich)",
   "dark_green_exterior": "Dunkelgrün (Außenbereich)",
   "deep_green_exterior": "Tiefgrün (Außenbereich)",
-
   "thermal_insulation_gold": "Wärmedämmung (Gold)",
   "water_insulation_yellow": "Wasserabdichtung (Gelb)",
   "sound_insulation_orange": "Schalldämmung (Orange)",
   "multi_purpose_insulation": "Mehrzweckdämmung",
-
   "light_purple_collection": "Hellviolett (Kollektion)",
   "medium_purple_collection": "Mittelviolett (Kollektion)",
   "dark_purple_collection": "Dunkelviolett (Kollektion)",
   "deep_purple_collection": "Tiefviolett (Kollektion)",
-
   "bondmax_ceiling_white": "Bondmax Weiße Deckenfarbe",
   "perfect_white_ceiling": "Perfekt strahlend weiße Decke",
   "anti_yellowing": "Vergilbungsschutz",
   "quick_drying": "Schnell trocknend",
-
   "bondmax_luxury_silk": "Bondmax Luxus-Seidenfarbe",
   "luxury_silk_finish": "Luxuriöses Seidenfinish",
   "elegant_sheen": "Eleganter Glanz",
   "stain_resistant": "Fleckenbeständig",
   "long_lasting_beauty": "Langanhaltende Schönheit",
-
   "bondmax_kids_safe": "Bondmax Kindersichere Farbe",
   "safe_for_children": "Völlig sicher für Kinderzimmer",
   "non_toxic_formula": "Ungiftige Formel",
   "vibrant_colors": "Lebendige Farben",
-
   "bondmax_kitchen_bath": "Bondmax Küchen- und Badfarbe",
   "moisture_resistant_paint": "Feuchtigkeitsbeständige Farbe",
   "anti_mold": "Anti-Schimmel",
   "water_resistant": "Wasserbeständig",
   "easy_maintenance": "Pflegeleicht",
-
   "bondmax_premium_ceiling": "Bondmax Premium Deckenfarbe",
   "premium_ceiling_finish": "Premium-Deckenfinish",
   "smooth_application": "Glatter Auftrag",
   "no_drip_formula": "Tropffreie Formel",
-
   "ceilings": "Decken",
   "walls": "Wände",
-
   "bondmax_exterior_weatherproof": "Wetterfeste Außenfarbe",
   "bondmax_exterior_façade": "Perfekte Fassadenfarbe",
   "bondmax_exterior_metalwood": "Schutzfarbe für Metall & Holz",
   "bondmax_exterior_elastic": "Elastische und rissfreie Farbe",
   "bondmax_exterior_premium": "Premium Außenfinish",
   "bondmax_exterior_matt": "Matte Außenfarbe",
-
   "weather_resistant_finish": "Wetterbeständiges Finish",
   "perfect_for_facades": "Perfekt für Fassaden",
   "protects_metal_and_wood": "Schützt Metall und Holz vor Schäden",
   "elastic_and_crack_free": "Elastisch und rissfrei",
   "premium_outdoor_finish": "Premium Außenfinish",
   "matte_finish_exterior": "Mattes Außenfinish",
-
   "uv_protection": "UV-Schutz",
   "water_repellent": "Wasserabweisend",
   "long_last_color": "Langanhaltende Farbe",
@@ -455,7 +421,6 @@
   "modern_look": "Modernes Aussehen",
   "anti_dust": "Staubabweisend",
   "washable_surface": "Abwaschbare Oberfläche",
-
   "full_description": "Produktbeschreibung",
   "detailed_features": "Detaillierte Merkmale",
   "technical_specifications": "Technische Spezifikationen",
@@ -491,13 +456,49 @@
   "external": "Extern",
   "internal": "Intern",
   "removed_from_cart": "Das Produkt wurde erfolgreich aus dem Warenkorb entfernt",
-  "slogan": "Bondmaxx Die Expertise, die den Unterschied in Qualität und Preis macht",
+  "slogan": "Bondmaxx Die Expertise die den Unterschied in Qualität und Preis macht",
   "email_subject": "Anfrage von der Bondmaxx-Website",
   "email_body": "Hallo,\n\nIch möchte mich erkundigen über ",
   "competitive_prices": "Wettbewerbsfähige Preise",
   "quality_guarantee": "Qualitätsgarantie",
   "colors_count": "+360 Farben",
-  "american_technology": "Amerikanische Technologie",
-  "lebanese_expertise": "Libanesisches Fachwissen",
-  "german_materials": "Deutsche Materialien"
+  "american_technology": "Weltklasse-Standards",
+  "lebanese_expertise": "Weltklasse-Fachwissen",
+  "german_materials": "Umweltfreundlich",
+  "products": "Produkte",
+  "oil_paints": "Ölfarben",
+  "water_paints": "Wasserbasierte Farben",
+  "primer_paints": "Grundierfarben",
+  "insulation": "Isolierung",
+  "epoxy": "Epoxid",
+  "putty": "Spachtelmasse",
+  "accessories": "Zubehör",
+  "oil_paints_description": "Hochwertige Ölfarben für vielfältige Anwendungen",
+  "water_paints_description": "Umweltfreundliche Wasserfarben mit einfacher Anwendung",
+  "primer_paints_description": "Grundierfarben für perfekte Oberflächenvorbereitung",
+  "insulation_description": "Hochleistungs-Wärme- und Wasserdichtungsisolierung",
+  "epoxy_description": "Starkes und langlebiges Epoxid für Böden und Wände",
+  "putty_description": "Hochwertige Spachtelmasse zum Glätten und Vorbereiten von Oberflächen",
+  "accessories_description": "Professionelle Malwerkzeuge und Zubehör",
+  "mixRatio": "Mischungsverhältnis",
+  "potLife": "Topfzeit",
+  "walkable": "Begehbar nach",
+  "fullCure": "Vollständige Aushärtung",
+  "workingTime": "Verarbeitungszeit",
+  "sandingTime": "Schleifzeit",
+  "sizes": "Größen",
+  "suitable": "Geeignet für",
+  "cleaning": "Reinigung",
+  "frameSize": "Rahmengröße",
+  "poleLength": "Stangenlänge",
+  "rollerTypes": "Rollertypen",
+  "traySize": "Wannengröße",
+  "includes": "Beinhaltet",
+  "puttySizes": "Spachtelgrößen",
+  "sandpaper": "Schleifpapier",
+  "tapeWidth": "Bandbreite",
+  "dropCloth": "Abdeckfolie",
+  "elongation": "Dehnung",
+  "workingTemp": "Arbeitstemperatur",
+  "care_instructions": "Pflegehinweise"
 }
