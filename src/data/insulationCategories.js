@@ -1,28 +1,44 @@
-import roof from "../assets/2.jpeg";
-import wall from "../assets/1.jpeg";
-
-// Categories for Insulation page (aligned with product categories)
+// Categories for Insulation page
 const insulationCategories = [
   {
     id: 1,
-    key: "internal",
-    image: wall,
+    key: "all",
     name: {
-      en: "internal",
-      ar: "داخلي ",
-      de: "Intern",
-      tr: "İç",
+      en: "All Products",
+      ar: "جميع المنتجات",
+      de: "Alle Produkte",
+      tr: "Tüm Ürünler",
+    },
+  },
+
+  {
+    id: 2,
+    key: "interior-waterproof",
+    name: {
+      en: "Interior Waterproof",
+      ar: "عزل داخلي مقاوم للماء",
+      de: "Innen Wasserdicht",
+      tr: "İç Su Geçirmez",
     },
   },
   {
-    id: 2,
-    key: "external",
-    image: roof,
+    id: 3,
+    key: "exterior-waterproof",
     name: {
-      en: "external",
-      ar: "خارجي",
-      de: "external",
-      tr: "Dış",
+      en: "Exterior Waterproof",
+      ar: "عزل خارجي مقاوم للماء",
+      de: "Außen Wasserdicht",
+      tr: "Dış Su Geçirmez",
+    },
+  },
+  {
+    id: 4,
+    key: "empty-insulation",
+    name: {
+      en: "Empty Insulation",
+      ar: "عازل نفضي",
+      de: "Leere Dämmung",
+      tr: "Boş İzolasyon",
     },
   },
 ];

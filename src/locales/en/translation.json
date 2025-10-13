@@ -529,5 +529,8 @@
   "workingTemp": "Working Temperature",
   "care_instructions": "Care Instructions",
   "recommendedThickness": "Recommended Thickness",
-  "applicationTemperature": "Application Temperature"
+  "applicationTemperature": "Application Temperature",
+  "applicationMethod": "Application Method",
+  "curingTime": "Curing Time",
+  " temperatureResistance": "Temperature Resistance"
 }

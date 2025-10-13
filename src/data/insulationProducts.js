@@ -1,311 +1,406 @@
 import testImage from "../assets/color-1.png";
-
-const insulationProductsDetailed = [
+const insulationProducts = [
   {
     id: 1,
-    category: "external",
     image: testImage,
+    category: "interior-waterproof",
     name: {
-      en: "Bondmax Premium Thermal Insulation",
-      ar: "عازل حراري بوندماكس بريميوم",
-      de: "Bondmax Premium Wärmedämmung",
-      tr: "Bondmax Premium Isı Yalıtımı",
+      en: "Internal Waterproof Wall Coating",
+      ar: "عازل الجدران والرطوبة المائي الداخلي",
+      de: "Innen Wasserdichte Wandbeschichtung",
+      tr: "İç Su Geçirmez Duvar Kaplaması",
     },
     description: {
-      en: "High-performance thermal insulation that reduces energy consumption and protects against moisture.",
-      ar: "عازل حراري عالي الأداء يقلل استهلاك الطاقة ويحمي من الرطوبة.",
-      de: "Hochleistungswärmedämmung, die den Energieverbrauch senkt und vor Feuchtigkeit schützt.",
-      tr: "Enerji tüketimini azaltan ve neme karşı koruma sağlayan yüksek performanslı ısı yalıtımı.",
+      en: "High-quality water-based interior wall coating that prevents moisture penetration and protects indoor surfaces.",
+      ar: "طلاء داخلي عالي الجودة مقاوم للماء يمنع تسرب الرطوبة ويحمي الأسطح الداخلية.",
+      de: "Hochwertige wasserbasierte Innenwandbeschichtung, die das Eindringen von Feuchtigkeit verhindert und Innenflächen schützt.",
+      tr: "Yüksek kaliteli su bazlı iç duvar kaplaması, nem sızıntısını önler ve iç yüzeyleri korur.",
     },
     features: {
-      en: [
-        "Reduces energy consumption",
-        "Moisture resistant",
-        "Easy installation",
-      ],
-      ar: ["يقلل استهلاك الطاقة", "مقاوم للرطوبة", "سهل التركيب"],
+      en: ["Moisture resistant", "Easy to apply", "Durable finish"],
+      ar: ["مقاوم للرطوبة", "سهل التطبيق", "تشطيب متين"],
       de: [
-        "Reduziert den Energieverbrauch",
         "Feuchtigkeitsbeständig",
-        "Einfache Installation",
+        "Einfach aufzutragen",
+        "Langlebige Oberfläche",
       ],
-      tr: ["Enerji tüketimini azaltır", "Neme dayanıklı", "Kolay montaj"],
+      tr: ["Neme dayanıklı", "Uygulaması kolay", "Dayanıklı kaplama"],
     },
     fullDescription: {
-      en: "Bondmax Premium Thermal Insulation is designed to provide superior heat resistance and reduce energy costs for residential and commercial buildings. It also helps maintain comfortable indoor temperatures year-round.",
-      ar: "تم تصميم عازل بوندماكس الحراري بريميوم لتوفير مقاومة حرارية فائقة وتقليل تكاليف الطاقة للمباني السكنية والتجارية. كما يساعد على الحفاظ على درجات حرارة داخلية مريحة طوال العام.",
-      de: "Bondmax Premium Wärmedämmung wurde entwickelt, um überlegene Wärmebeständigkeit zu bieten und Energiekosten für Wohn- und Geschäftsgebäude zu senken. Es trägt auch zur Aufrechterhaltung angenehmer Innentemperaturen bei.",
-      tr: "Bondmax Premium Isı Yalıtımı, konut ve ticari binalar için üstün ısı direnci sağlamak ve enerji maliyetlerini azaltmak amacıyla tasarlanmıştır. Ayrıca yıl boyunca konforlu iç mekan sıcaklıklarının korunmasına yardımcı olur.",
+      en: "Internal Waterproof Wall Coating forms a protective barrier against moisture and humidity, ideal for bathrooms, kitchens, and basements. It provides a smooth, durable finish that maintains interior aesthetics.",
+      ar: "يُكوّن عازل الجدران الداخلي المائي حاجزًا واقيًا ضد الرطوبة والرطوبة الزائدة، مثالي للحمامات والمطابخ والطوابق السفلية. يوفر تشطيبًا أملسًا ومتينًا يحافظ على جمالية الديكور الداخلي.",
+      de: "Innen Wasserdichte Wandbeschichtung bildet eine Schutzbarriere gegen Feuchtigkeit, ideal für Badezimmer, Küchen und Keller. Es bietet ein glattes, langlebiges Finish, das die Innenästhetik bewahrt.",
+      tr: "İç Su Geçirmez Duvar Kaplaması, nem ve rutubete karşı koruyucu bir bariyer oluşturur; banyolar, mutfaklar ve bodrumlar için idealdir. Pürüzsüz ve dayanıklı bir yüzey sağlar.",
     },
     detailedFeatures: {
       en: [
-        "Superior thermal resistance",
-        "Reduces heating and cooling costs",
-        "Moisture and mold resistant",
-        "Lightweight and easy to install",
+        "Prevents water penetration",
+        "Resistant to mold and mildew",
+        "Non-toxic and environmentally friendly",
+        "Smooth and decorative finish",
         "Long-lasting durability",
-        "Environmentally friendly",
       ],
       ar: [
-        "مقاومة حرارية فائقة",
-        "يقلل من تكاليف التدفئة والتبريد",
-        "مقاوم للرطوبة والعفن",
-        "خفيف وسهل التركيب",
+        "يمنع تسرب الماء",
+        "مقاوم للعفن والفطريات",
+        "غير سام وصديق للبيئة",
+        "تشطيب ناعم وزخرفي",
         "متين وطويل الأمد",
-        "صديق للبيئة",
       ],
       de: [
-        "Überlegene Wärmedämmung",
-        "Reduziert Heiz- und Kühlkosten",
-        "Feuchtigkeits- und schimmelresistent",
-        "Leicht und einfach zu installieren",
+        "Verhindert das Eindringen von Wasser",
+        "Schimmel- und mehltauresistent",
+        "Ungiftig und umweltfreundlich",
+        "Glattes und dekoratives Finish",
         "Langlebig",
-        "Umweltfreundlich",
       ],
       tr: [
-        "Üstün ısı direnci",
-        "Isıtma ve soğutma maliyetlerini azaltır",
-        "Neme ve küfe dayanıklı",
-        "Hafif ve kolay kurulum",
+        "Su sızmasını önler",
+        "Küf ve mantara dayanıklı",
+        "Toksik olmayan ve çevre dostu",
+        "Pürüzsüz ve dekoratif yüzey",
         "Uzun ömürlü",
-        "Çevre dostu",
       ],
     },
     technicalSpecs: {
       en: {
-        material: "High-density foam",
-        thickness: "50mm",
-        thermalConductivity: "0.035 W/mK",
-        fireResistance: "Class B",
-        dimensions: "1200mm x 600mm sheets",
-        weight: "5 kg per sheet",
+        type: "Water-based coating",
+        color: "White",
+        coverage: "10-12 m² per liter",
+        dryingTime: "2-4 hours",
+        applicationMethod: "Brush, roller, or spray",
       },
       ar: {
-        material: "رغوة عالية الكثافة",
-        thickness: "50 مم",
-        thermalConductivity: "0.035 واط/م×ك",
-        fireResistance: "الدرجة B",
-        dimensions: "ألواح 1200 مم × 600 مم",
-        weight: "5 كجم لكل لوح",
+        type: "طلاء مائي",
+        color: "أبيض",
+        coverage: "10-12 متر مربع لكل لتر",
+        dryingTime: "2-4 ساعات",
+        applicationMethod: "فرشاة، رولر، أو بخاخ",
       },
       de: {
-        material: "Hochdichter Schaum",
-        thickness: "50mm",
-        thermalConductivity: "0,035 W/mK",
-        fireResistance: "Klasse B",
-        dimensions: "1200mm x 600mm Platten",
-        weight: "5 kg pro Platte",
+        type: "Wasserbasierte Beschichtung",
+        color: "Weiß",
+        coverage: "10-12 m² pro Liter",
+        dryingTime: "2-4 Stunden",
+        applicationMethod: "Pinsel, Rolle oder Sprühgerät",
       },
       tr: {
-        material: "Yüksek yoğunluklu köpük",
-        thickness: "50mm",
-        thermalConductivity: "0,035 W/mK",
-        fireResistance: "Sınıf B",
-        dimensions: "1200mm x 600mm levhalar",
-        weight: "Her levha 5 kg",
+        type: "Su bazlı kaplama",
+        color: "Beyaz",
+        coverage: "Litre başına 10-12 m²",
+        dryingTime: "2-4 saat",
+        applicationMethod: "Fırça, rulo veya sprey",
       },
     },
     usage: {
       en: {
-        surfacePrep:
-          "Ensure surface is clean, dry, and free of dust. Repair any cracks before installation.",
+        surfacePrep: "Ensure surface is clean, dry, and free of dust.",
         application:
-          "Cut insulation to fit, place against the wall or ceiling, and fix with adhesive or mechanical fasteners as needed.",
+          "Apply 2 coats with roller or brush, allowing 2-4 hours drying between coats.",
       },
       ar: {
-        surfacePrep:
-          "تأكد من أن السطح نظيف وجاف وخالٍ من الغبار. أصلح أي تشققات قبل التركيب.",
+        surfacePrep: "تأكد من أن السطح نظيف وجاف وخالٍ من الغبار.",
         application:
-          "قم بقص العازل ليتناسب مع المكان، وضعه على الحائط أو السقف وثبته باستخدام لاصق أو مسامير حسب الحاجة.",
+          "ضع طبقتين باستخدام الرولر أو الفرشاة مع السماح بجفاف 2-4 ساعات بين الطبقات.",
       },
       de: {
         surfacePrep:
-          "Stellen Sie sicher, dass die Oberfläche sauber, trocken und staubfrei ist. Risse vor der Installation ausbessern.",
+          "Stellen Sie sicher, dass die Oberfläche sauber, trocken und staubfrei ist.",
         application:
-          "Dämmung zuschneiden, an Wand oder Decke anbringen und bei Bedarf mit Kleber oder mechanischen Befestigungen fixieren.",
+          "Tragen Sie 2 Schichten mit Rolle oder Pinsel auf, 2-4 Stunden Trocknungszeit zwischen den Schichten.",
       },
       tr: {
-        surfacePrep:
-          "Yüzeyin temiz, kuru ve tozdan arınmış olduğundan emin olun. Kurulumdan önce çatlakları onarın.",
+        surfacePrep: "Yüzeyin temiz, kuru ve tozsuz olduğundan emin olun.",
         application:
-          "Yalıtımı uygun şekilde kesin, duvar veya tavana yerleştirin ve gerekirse yapıştırıcı veya mekanik bağlantılarla sabitleyin.",
+          "2 kat uygulayın, katlar arasında 2-4 saat kurumasını bekleyin.",
       },
     },
     storage: {
       en: {
-        shelfLife: "36 months from production date",
-        conditions:
-          "Store flat in original packaging, protected from moisture and direct sunlight.",
+        shelfLife: "24 months from production date",
+        conditions: "Store in a cool, dry place, away from direct sunlight.",
       },
       ar: {
-        shelfLife: "36 شهرًا من تاريخ الإنتاج",
-        conditions:
-          "يُخزّن مستويًا في عبواته الأصلية، بعيدًا عن الرطوبة وأشعة الشمس المباشرة.",
+        shelfLife: "24 شهرًا من تاريخ الإنتاج",
+        conditions: "يُخزن في مكان بارد وجاف بعيدًا عن أشعة الشمس المباشرة.",
       },
       de: {
-        shelfLife: "36 Monate ab Produktionsdatum",
+        shelfLife: "24 Monate ab Produktionsdatum",
         conditions:
-          "Flach in Originalverpackung lagern, vor Feuchtigkeit und direkter Sonneneinstrahlung schützen.",
+          "Kühl und trocken lagern, vor direkter Sonneneinstrahlung schützen.",
       },
       tr: {
-        shelfLife: "Üretim tarihinden itibaren 36 ay",
+        shelfLife: "Üretim tarihinden itibaren 24 ay",
         conditions:
-          "Orijinal ambalajında düz şekilde saklayın, nemden ve doğrudan güneş ışığından koruyun.",
+          "Serin ve kuru bir yerde, doğrudan güneş ışığından uzakta saklayın.",
       },
     },
   },
 
   {
     id: 2,
-    category: "external",
     image: testImage,
+    category: "exterior-waterproof",
     name: {
-      en: "Bondmax Excellent Sound Insulation",
-      ar: "عازل صوت بوندماكس الممتاز",
-      de: "Bondmax Hervorragende Schalldämmung",
-      tr: "Bondmax Mükemmel Ses Yalıtımı",
+      en: "External Waterproof Wall Coating",
+      ar: "عازل الجدران والرطوبة المائي الخارجي",
+      de: "Außen Wasserdichte Wandbeschichtung",
+      tr: "Dış Su Geçirmez Duvar Kaplaması",
     },
     description: {
-      en: "Lightweight and durable sound insulation offering excellent noise absorption for interior spaces.",
-      ar: "عازل صوت خفيف الوزن ومتين يوفر امتصاصًا ممتازًا للضوضاء للمساحات الداخلية.",
-      de: "Leichte und langlebige Schalldämmung mit hervorragender Geräuschabsorption für Innenräume.",
-      tr: "İç mekanlar için mükemmel gürültü emilimi sağlayan hafif ve dayanıklı ses yalıtımı.",
+      en: "Durable exterior coating that protects walls from water and weather damage.",
+      ar: "طلاء خارجي متين يحمي الجدران من المياه وأضرار الطقس.",
+      de: "Langlebige Außenbeschichtung, die Wände vor Wasser und Witterungsschäden schützt.",
+      tr: "Dış duvarları su ve hava koşullarına karşı koruyan dayanıklı kaplama.",
     },
     features: {
-      en: [
-        "Excellent sound absorption",
-        "Lightweight",
-        "Durable and long lasting",
-      ],
-      ar: ["امتصاص ممتاز للصوت", "خفيف الوزن", "متين وطويل الأمد"],
-      de: [
-        "Hervorragende Schallabsorption",
-        "Leichtgewichtig",
-        "Langlebig und strapazierfähig",
-      ],
-      tr: ["Mükemmel ses emilimi", "Hafif", "Dayanıklı ve uzun ömürlü"],
+      en: ["Weather resistant", "Waterproof", "Long-lasting protection"],
+      ar: ["مقاوم للطقس", "مقاوم للماء", "حماية طويلة الأمد"],
+      de: ["Witterungsbeständig", "Wasserdicht", "Langzeit-Schutz"],
+      tr: ["Hava koşullarına dayanıklı", "Su geçirmez", "Uzun süreli koruma"],
     },
     fullDescription: {
-      en: "Bondmax Excellent Sound Insulation provides superior noise reduction for homes and offices, making spaces more comfortable and private. Ideal for walls, ceilings, and partitions.",
-      ar: "يوفر عازل صوت بوندماكس الممتاز تقليلًا ممتازًا للضوضاء للمنازل والمكاتب، مما يجعل المساحات أكثر راحة وخصوصية. مثالي للجدران والأسقف والفواصل.",
-      de: "Bondmax Hervorragende Schalldämmung bietet überlegene Geräuschreduzierung für Häuser und Büros und macht Räume komfortabler und privater. Ideal für Wände, Decken und Trennwände.",
-      tr: "Bondmax Mükemmel Ses Yalıtımı, evler ve ofisler için üstün gürültü azaltımı sağlar, mekanları daha konforlu ve özel hale getirir. Duvarlar, tavanlar ve bölmeler için idealdir.",
+      en: "External Waterproof Wall Coating provides a protective layer that shields exterior walls from rain, moisture, and temperature changes, ensuring structural integrity and aesthetic appeal.",
+      ar: "يقدم العازل الخارجي المائي طبقة واقية تحمي الجدران الخارجية من الأمطار والرطوبة وتغيرات درجات الحرارة، مما يضمن سلامة الهيكل والمظهر الجمالي.",
+      de: "Außen Wasserdichte Wandbeschichtung bietet eine Schutzschicht, die Außenwände vor Regen, Feuchtigkeit und Temperaturschwankungen schützt und so die strukturelle Integrität und Optik gewährleistet.",
+      tr: "Dış Su Geçirmez Duvar Kaplaması, dış duvarları yağmur, nem ve sıcaklık değişimlerinden koruyan bir koruyucu tabaka sağlar, yapısal bütünlük ve estetik görünümü garanti eder.",
     },
     detailedFeatures: {
       en: [
-        "Superior noise reduction",
-        "Lightweight and easy to handle",
-        "Long-lasting durability",
-        "Does not affect wall structure",
-        "Fire resistant",
-        "Eco-friendly materials",
+        "Prevents water infiltration",
+        "Resistant to UV and weathering",
+        "Crack resistant",
+        "Durable and long-lasting",
+        "Environmentally friendly",
       ],
       ar: [
-        "تقليل ضوضاء ممتاز",
-        "خفيف وسهل التعامل معه",
+        "يمنع تسرب الماء",
+        "مقاوم للأشعة فوق البنفسجية والعوامل الجوية",
+        "مقاوم للتشققات",
         "متين وطويل الأمد",
-        "لا يؤثر على هيكل الجدار",
-        "مقاوم للحريق",
-        "مواد صديقة للبيئة",
+        "صديق للبيئة",
       ],
       de: [
-        "Überlegene Geräuschreduktion",
-        "Leicht und einfach zu handhaben",
+        "Verhindert Wassereintritt",
+        "UV- und witterungsbeständig",
+        "Rissbeständig",
         "Langlebig",
-        "Beeinflusst nicht die Wandstruktur",
-        "Feuerbeständig",
-        "Umweltfreundliche Materialien",
+        "Umweltfreundlich",
       ],
       tr: [
-        "Üstün gürültü azaltımı",
-        "Hafif ve kullanımı kolay",
-        "Uzun ömürlü",
-        "Duvar yapısını etkilemez",
-        "Yangına dayanıklı",
-        "Çevre dostu malzemeler",
+        "Su sızmasını önler",
+        "UV ve hava koşullarına dayanıklı",
+        "Çatlamaya dayanıklı",
+        "Dayanıklı ve uzun ömürlü",
+        "Çevre dostu",
       ],
     },
     technicalSpecs: {
       en: {
-        material: "Acoustic foam",
-        thickness: "30mm",
-        soundReductionIndex: "NRR 28 dB",
-        fireResistance: "Class B",
-        dimensions: "1200mm x 600mm sheets",
-        weight: "3 kg per sheet",
+        type: "Waterproof exterior coating",
+        color: "White / Grey",
+        coverage: "8-10 m² per liter",
+        dryingTime: "4-6 hours",
+        applicationMethod: "Brush, roller, or spray",
       },
       ar: {
-        material: "رغوة صوتية",
-        thickness: "30 مم",
-        soundReductionIndex: "NRR 28 ديسيبل",
-        fireResistance: "الدرجة B",
-        dimensions: "ألواح 1200 مم × 600 مم",
-        weight: "3 كجم لكل لوح",
+        type: "طلاء خارجي مقاوم للماء",
+        color: "أبيض / رمادي",
+        coverage: "8-10 متر مربع لكل لتر",
+        dryingTime: "4-6 ساعات",
+        applicationMethod: "فرشاة، رولر، أو بخاخ",
       },
       de: {
-        material: "Akustikschaum",
-        thickness: "30mm",
-        soundReductionIndex: "NRR 28 dB",
-        fireResistance: "Klasse B",
-        dimensions: "1200mm x 600mm Platten",
-        weight: "3 kg pro Platte",
+        type: "Wasserdichte Außenbeschichtung",
+        color: "Weiß / Grau",
+        coverage: "8-10 m² pro Liter",
+        dryingTime: "4-6 Stunden",
+        applicationMethod: "Pinsel, Rolle oder Sprühgerät",
       },
       tr: {
-        material: "Akustik köpük",
-        thickness: "30mm",
-        soundReductionIndex: "NRR 28 dB",
-        fireResistance: "Sınıf B",
-        dimensions: "1200mm x 600mm levhalar",
-        weight: "Her levha 3 kg",
+        type: "Su geçirmez dış kaplama",
+        color: "Beyaz / Gri",
+        coverage: "Litre başına 8-10 m²",
+        dryingTime: "4-6 saat",
+        applicationMethod: "Fırça, rulo veya sprey",
       },
     },
     usage: {
       en: {
-        surfacePrep: "Ensure surface is clean and dry. Remove dust and debris.",
+        surfacePrep: "Clean surface, remove loose particles, ensure dry.",
         application:
-          "Attach insulation using adhesive or screws. Overlap edges slightly for full coverage.",
+          "Apply 2 coats allowing 4-6 hours drying time between coats.",
       },
       ar: {
-        surfacePrep: "تأكد من أن السطح نظيف وجاف. أزل الغبار والحطام.",
-        application:
-          "ثبت العازل باستخدام لاصق أو مسامير. قم بتداخل الحواف قليلاً لتغطية كاملة.",
+        surfacePrep: "نظف السطح، أزل الجزيئات الفضفاضة، وتأكد من جفافه.",
+        application: "ضع طبقتين مع السماح بجفاف 4-6 ساعات بين الطبقات.",
       },
       de: {
         surfacePrep:
-          "Stellen Sie sicher, dass die Oberfläche sauber und trocken ist. Entfernen Sie Staub und Schmutz.",
+          "Reinigen Sie die Oberfläche, lose Partikel entfernen, trocken sein.",
         application:
-          "Dämmung mit Kleber oder Schrauben befestigen. Kanten leicht überlappen für vollständige Abdeckung.",
+          "2 Schichten auftragen, 4-6 Stunden Trocknungszeit zwischen den Schichten.",
       },
       tr: {
         surfacePrep:
-          "Yüzeyin temiz ve kuru olduğundan emin olun. Toz ve kalıntıları temizleyin.",
+          "Yüzeyi temizleyin, gevşek parçaları çıkarın, kuru olduğundan emin olun.",
         application:
-          "Yalıtımı yapıştırıcı veya vidalarla sabitleyin. Tam kaplama için kenarları hafifçe üst üste getirin.",
+          "2 kat uygulayın, katlar arasında 4-6 saat kurumasını bekleyin.",
       },
     },
     storage: {
       en: {
-        shelfLife: "36 months from production date",
-        conditions:
-          "Store flat in original packaging, protect from moisture and sunlight.",
+        shelfLife: "24 months from production date",
+        conditions: "Store in cool, dry place, protected from sunlight.",
       },
       ar: {
-        shelfLife: "36 شهرًا من تاريخ الإنتاج",
-        conditions:
-          "يُخزّن مستويًا في عبواته الأصلية، بعيدًا عن الرطوبة وأشعة الشمس.",
+        shelfLife: "24 شهرًا من تاريخ الإنتاج",
+        conditions: "يخزن في مكان بارد وجاف بعيدًا عن أشعة الشمس.",
       },
       de: {
-        shelfLife: "36 Monate ab Produktionsdatum",
-        conditions:
-          "Flach in Originalverpackung lagern, vor Feuchtigkeit und Sonnenlicht schützen.",
+        shelfLife: "24 Monate ab Produktionsdatum",
+        conditions: "Kühl und trocken lagern, vor Sonnenlicht schützen.",
       },
       tr: {
-        shelfLife: "Üretim tarihinden itibaren 36 ay",
-        conditions:
-          "Orijinal ambalajında düz şekilde saklayın, nem ve güneş ışığından koruyun.",
+        shelfLife: "Üretim tarihinden itibaren 24 ay",
+        conditions: "Serin ve kuru yerde, güneş ışığından koruyarak saklayın.",
+      },
+    },
+  },
+
+  {
+    id: 3,
+    image: testImage,
+    category: "empty-insulation",
+    name: {
+      en: "Elastic Bituminous Waterproof Coating",
+      ar: "تربروف نفضي (للأسطح، المعادن، الجدران)",
+      de: "Elastische bituminöse Abdichtung",
+      tr: "Elastik Bitümlü Su Yalıtım Kaplaması",
+    },
+    description: {
+      en: "Flexible bituminous coating suitable for roofs, metals, and walls, providing waterproof protection.",
+      ar: "طلاء بيتوميني مرن مناسب للأسطح والمعادن والجدران، يوفر حماية ضد الماء.",
+      de: "Flexible bituminöse Beschichtung für Dächer, Metalle und Wände, bietet wasserdichten Schutz.",
+      tr: "Esnek bitümlü kaplama, çatılar, metaller ve duvarlar için uygundur, su geçirmez koruma sağlar.",
+    },
+    features: {
+      en: ["Flexible and durable", "Waterproof", "UV resistant"],
+      ar: ["مرن ومتین", "مقاوم للماء", "مقاوم للأشعة فوق البنفسجية"],
+      de: ["Flexibel und langlebig", "Wasserdicht", "UV-beständig"],
+      tr: ["Esnek ve dayanıklı", "Su geçirmez", "UV dayanıklı"],
+    },
+    fullDescription: {
+      en: "Elastic Bituminous Waterproof Coating is ideal for surfaces that require a flexible and robust waterproof barrier. Can be applied on roofs, metal surfaces, and walls, ensuring long-term protection.",
+      ar: "طلاء بيتوميني نفضي مثالي للأسطح التي تتطلب حاجزًا مرنًا ومتينًا ضد الماء. يمكن تطبيقه على الأسطح والمعادن والجدران لضمان حماية طويلة الأمد.",
+      de: "Elastische bituminöse Abdichtung eignet sich ideal für Oberflächen, die eine flexible und robuste wasserfeste Barriere benötigen. Kann auf Dächern, Metallflächen und Wänden aufgetragen werden und sorgt für langfristigen Schutz.",
+      tr: "Elastik Bitümlü Su Yalıtım Kaplaması, esnek ve sağlam bir su geçirmez bariyer gerektiren yüzeyler için idealdir. Çatılar, metal yüzeyler ve duvarlara uygulanabilir, uzun süreli koruma sağlar.",
+    },
+    detailedFeatures: {
+      en: [
+        "Flexible and elastic",
+        "Waterproof and durable",
+        "UV and weather resistant",
+        "Adheres to multiple surfaces",
+        "Long-lasting protection",
+      ],
+      ar: [
+        "مرن ومرن",
+        "مقاوم للماء وطويل الأمد",
+        "مقاوم للأشعة والعوامل الجوية",
+        "يلتصق بأسطح متعددة",
+        "حماية طويلة الأمد",
+      ],
+      de: [
+        "Flexibel und elastisch",
+        "Wasserdicht und langlebig",
+        "UV- und witterungsbeständig",
+        "Haftet auf verschiedenen Oberflächen",
+        "Langzeit-Schutz",
+      ],
+      tr: [
+        "Esnek ve elastik",
+        "Su geçirmez ve dayanıklı",
+        "UV ve hava koşullarına dayanıklı",
+        "Çeşitli yüzeylere yapışır",
+        "Uzun süreli koruma",
+      ],
+    },
+    technicalSpecs: {
+      en: {
+        type: "Bituminous waterproof coating",
+        color: "Black",
+        coverage: "1-1.5 m² per kg",
+        dryingTime: "6-8 hours",
+        applicationMethod: "Brush, roller, or trowel",
+      },
+      ar: {
+        type: "طلاء بيتوميني مقاوم للماء",
+        color: "أسود",
+        coverage: "1-1.5 متر مربع لكل كجم",
+        dryingTime: "6-8 ساعات",
+        applicationMethod: "فرشاة، رولر، أو مجرفة",
+      },
+      de: {
+        type: "Bituminöse wasserdichte Beschichtung",
+        color: "Schwarz",
+        coverage: "1-1,5 m² pro kg",
+        dryingTime: "6-8 Stunden",
+        applicationMethod: "Pinsel, Rolle oder Kelle",
+      },
+      tr: {
+        type: "Bitümlü su yalıtım kaplaması",
+        color: "Siyah",
+        coverage: "Kg başına 1-1,5 m²",
+        dryingTime: "6-8 saat",
+        applicationMethod: "Fırça, rulo veya mala",
+      },
+    },
+    usage: {
+      en: {
+        surfacePrep:
+          "Ensure surface is clean, dry, and free of dust and loose particles.",
+        application:
+          "Apply evenly using brush, roller, or trowel. Allow 6-8 hours drying before exposure to water.",
+      },
+      ar: {
+        surfacePrep:
+          "تأكد من أن السطح نظيف وجاف وخالٍ من الغبار والجزيئات الفضفاضة.",
+        application:
+          "ضع الطلاء بالتساوي باستخدام الفرشاة أو الرولر أو المجرفة. اتركه يجف 6-8 ساعات قبل التعرض للماء.",
+      },
+      de: {
+        surfacePrep:
+          "Stellen Sie sicher, dass die Oberfläche sauber, trocken und frei von Staub und losen Partikeln ist.",
+        application:
+          "Gleichmäßig mit Pinsel, Rolle oder Kelle auftragen. 6-8 Stunden Trocknen lassen, bevor Wasser ausgesetzt wird.",
+      },
+      tr: {
+        surfacePrep:
+          "Yüzeyin temiz, kuru ve gevşek parçalar içermediğinden emin olun.",
+        application:
+          "Fırça, rulo veya mala ile eşit şekilde uygulayın. Suya maruz bırakmadan önce 6-8 saat kurumasını bekleyin.",
+      },
+    },
+    storage: {
+      en: {
+        shelfLife: "24 months from production date",
+        conditions: "Store in cool, dry place, protected from sunlight.",
+      },
+      ar: {
+        shelfLife: "24 شهرًا من تاريخ الإنتاج",
+        conditions: "يُخزن في مكان بارد وجاف بعيدًا عن أشعة الشمس.",
+      },
+      de: {
+        shelfLife: "24 Monate ab Produktionsdatum",
+        conditions: "Kühl und trocken lagern, vor Sonnenlicht schützen.",
+      },
+      tr: {
+        shelfLife: "Üretim tarihinden itibaren 24 ay",
+        conditions: "Serin ve kuru yerde, güneş ışığından koruyarak saklayın.",
       },
     },
   },
 ];
 
-export default insulationProductsDetailed;
+export default insulationProducts;

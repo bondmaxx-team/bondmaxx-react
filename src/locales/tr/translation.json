@@ -537,5 +537,8 @@
   "workingTemp": "Çalışma Sıcaklığı",
   "care_instructions": "Bakım Talimatları",
   "recommendedThickness": "Önerilen Kalınlık",
-  "applicationTemperature": "Uygulama Sıcaklığı"
+  "applicationTemperature": "Uygulama Sıcaklığı",
+  "applicationMethod": "Uygulama Yöntemi",
+  "curingTime": "Kürlenme Süresi",
+  "temperatureResistance": "Sıcaklık Dayanımı"
 }

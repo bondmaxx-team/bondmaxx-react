@@ -1,6 +1,7 @@
 const waterPaintsCategories = [
   {
-    id: "all",
+    id: 1,
+    key: "all",
     name: {
       en: "All Products",
       ar: "جميع المنتجات",
@@ -9,7 +10,18 @@ const waterPaintsCategories = [
     },
   },
   {
-    id: "acrylic",
+    id: 2,
+    key: "emulsion",
+    name: {
+      en: "Emulsion Paints",
+      ar: "دهانات إيملشن",
+      de: "Dispersionsfarben",
+      tr: "Emülsiyon Boyalar",
+    },
+  },
+  {
+    id: 3,
+    key: "acrylic",
     name: {
       en: "Acrylic Paints",
       ar: "دهانات أكريليك",
@@ -17,22 +29,15 @@ const waterPaintsCategories = [
       tr: "Akrilik Boyalar",
     },
   },
+
   {
-    id: "latex",
+    id: 4,
+    key: "silicone",
     name: {
-      en: "Latex Paints",
-      ar: "دهانات لاتكس",
-      de: "Latexfarben",
-      tr: "Lateks Boyalar",
-    },
-  },
-  {
-    id: "washable",
-    name: {
-      en: "Washable Paints",
-      ar: "دهانات قابلة للغسيل",
-      de: "Waschbare Farben",
-      tr: "Yıkanabilir Boyalar",
+      en: "Silicone-Based Paints",
+      ar: "دهانات سيليكونية",
+      de: "Silikonfarben",
+      tr: "Silikon Bazlı Boyalar",
     },
   },
 ];

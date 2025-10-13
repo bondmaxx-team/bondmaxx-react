@@ -502,5 +502,8 @@
   "workingTemp": "Arbeitstemperatur",
   "care_instructions": "Pflegehinweise",
   "recommendedThickness": "Empfohlene Dicke",
-  "applicationTemperature": "Anwendungstemperatur"
+  "applicationTemperature": "Anwendungstemperatur",
+  "applicationMethod": "Anwendungsmethode",
+  "curingTime": "Aushärtezeit",
+  "temperatureResistance": "Temperaturbeständigkeit"
 }

@@ -1,6 +1,7 @@
 const puttyCategories = [
   {
-    id: "all",
+    id: 1,
+    key: "all",
     name: {
       en: "All Products",
       ar: "جميع المنتجات",
@@ -8,31 +9,35 @@ const puttyCategories = [
       tr: "Tüm Ürünler",
     },
   },
+
   {
-    id: "wall",
+    id: 2,
+    key: "filler",
     name: {
-      en: "Wall Putty",
-      ar: "معجون جدران",
-      de: "Wandspachtel",
-      tr: "Duvar Macunu",
+      en: "Filler",
+      ar: "حشو",
+      de: "Füllstoff",
+      tr: "Doldurucu",
     },
   },
   {
-    id: "wood",
+    id: 3,
+    key: "drywall",
     name: {
-      en: "Wood Putty",
-      ar: "معجون خشب",
-      de: "Holzspachtel",
-      tr: "Ahşap Macunu",
+      en: "Drywall",
+      ar: "جدران جبسية",
+      de: "Trockenbau",
+      tr: "Alçıpan",
     },
   },
   {
-    id: "repair",
+    id: 4,
+    key: "caulk",
     name: {
-      en: "Repair Putty",
-      ar: "معجون إصلاح",
-      de: "Reparaturspachtel",
-      tr: "Onarım Macunu",
+      en: "Caulk",
+      ar: "سيليكون/معجون سد الفجوات",
+      de: "Dichtstoff",
+      tr: "Mastik/Derz Dolgu",
     },
   },
 ];

@@ -539,5 +539,8 @@
   "workingTemp": "درجة حرارة العمل",
   "care_instructions": "تعليمات العناية",
   "recommendedThickness": "السمك الموصى به",
-  "applicationTemperature": "درجة حرارة التطبيق"
+  "applicationTemperature": "درجة حرارة التطبيق",
+  "applicationMethod": "طريقة التطبيق",
+  "curingTime": "زمن المعالجة",
+  "temperatureResistance": "مقاومة الحرارة"
 }

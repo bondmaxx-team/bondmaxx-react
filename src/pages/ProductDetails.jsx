@@ -194,6 +194,9 @@ const ProductDetails = () => {
       workingTemp: t("workingTemp"),
       recommendedThickness: t("recommendedThickness"),
       applicationTemperature: t("applicationTemperature"),
+      curingTime: t("curingTime"),
+      temperatureResistance: t("temperatureResistance"),
+      applicationMethod: t("applicationMethod"),
     };
 
     return (
