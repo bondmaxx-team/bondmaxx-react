@@ -26,19 +26,10 @@ export default function Footer() {
   const services = [
     {
       icon: "fas fa-comments",
-      label: t("color_consultation"),
+      label: t("request_consultation"),
       href: "https://wa.me/905550004000",
     },
-    {
-      icon: "fas fa-chalkboard-teacher",
-      label: t("technical_training"),
-      href: "https://wa.me/905550004000",
-    },
-    {
-      icon: "fas fa-tools",
-      label: t("technical_support"),
-      href: "https://wa.me/905550004000",
-    },
+
     {
       icon: "fas fa-certificate",
       label: t("quality_guarantee_footer"),
@@ -50,7 +41,6 @@ export default function Footer() {
       href: "/search-dealer",
     },
   ];
-
   const contactInfo = [
     {
       type: "whatsapp",

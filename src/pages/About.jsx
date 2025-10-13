@@ -70,28 +70,36 @@ export default function About() {
                 "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8))",
             }}
           ></div>
-
           <div className="max-w-6xl mx-auto px-6 relative z-10 text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 drop-shadow-lg tracking-wide leading-tight">
-              {t("about_bondmaxx")}
+              {t("about_bondmaxx_title")}
             </h1>
 
             <h2
-              className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-10"
+              className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-12"
               style={{
                 color: "#203F84",
                 textShadow: "1px 1px 4px rgba(0,0,0,0.6)",
               }}
             >
-              {t("bring_colors_to_life")} ✨
+              {t("about_bondmaxx_subtitle")}
             </h2>
 
-            <div className="max-w-3xl mx-auto space-y-6">
+            <div className="max-w-5xl mx-auto space-y-8">
               <p className="text-base md:text-lg lg:text-xl leading-relaxed drop-shadow-md text-gray-200">
-                {t("intro_paragraph_1")}
+                {t("about_bondmaxx_paragraph_1")}
               </p>
               <p className="text-base md:text-lg lg:text-xl leading-relaxed drop-shadow-md text-gray-200">
-                {t("intro_paragraph_2")}
+                {t("about_bondmaxx_paragraph_2")}
+              </p>
+              <p className="text-base md:text-lg lg:text-xl leading-relaxed drop-shadow-md text-gray-200">
+                {t("about_bondmaxx_paragraph_3")}
+              </p>
+              <p className="text-base md:text-lg lg:text-xl leading-relaxed drop-shadow-md text-gray-200">
+                {t("about_bondmaxx_paragraph_4")}
+              </p>
+              <p className="text-base md:text-lg lg:text-xl leading-relaxed drop-shadow-md text-gray-200">
+                {t("about_bondmaxx_paragraph_5")}
               </p>
             </div>
           </div>

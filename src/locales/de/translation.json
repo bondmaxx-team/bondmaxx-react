@@ -1,7 +1,7 @@
 {
   "main_title": "Willkommen in der Welt der Farben",
   "brand_name": "BONDMAXX",
-  "description": "Entdecken Sie eine einzigartige Kollektion luxuriöser Farben und Lacke, wo Qualität auf Kreativität trifft. Wir bieten innovative und umfassende Lacklösungen, die alle Ihre Bedürfnisse für Innen- und Außengestaltung erfüllen und Eleganz und Präzision in jedem Detail garantieren.",
+  "description": "Entdecken Sie eine vielfältige Kollektion von luxuriösen Farben und Zubehör, bei der unsere Produkte höchste Qualitätsstandards und erschwingliche Preise erfüllen, damit Sie immer vorne bleiben.",
   "cta_button": "Alle Farben entdecken",
   "quality_guarantee": "Qualitätsgarantie",
   "colors_count": "+360 Farben",
@@ -40,7 +40,7 @@
 
   "view_all": "Alle anzeigen",
   "our_products": "Unsere Produkte",
-  "products_description": "Entdecken Sie unsere Premium-Auswahl an hochwertigen Farben und Lacken, die Ihre Räume verwandeln",
+  "products_description": "Entdecken Sie unsere exklusive Kollektion hochwertiger Farben und Zubehör, die speziell entwickelt wurden, um die Bedürfnisse Ihrer Kunden zu erfüllen.",
   "interior_paints": "Innenfarben",
   "exterior_paints": "Außenfarben",
   "add_to_favorites": "Zu Favoriten hinzufügen",
@@ -52,7 +52,9 @@
   "company_description": "Ein führendes Unternehmen im Bereich hochwertiger Farben und Lacke. Wir bieten innovative und fortschrittliche Lösungen für alle Ihre Mal- und Dekorationsbedürfnisse.",
   "products_title": "Produkte",
   "services_title": "Dienstleistungen",
-  "color_consultation": "Farbberatung",
+
+  "request_consultation": "Beratung anfordern",
+
   "technical_training": "Technische Schulung",
   "technical_support": "Technischer Support",
   "quality_guarantee_footer": "Qualitätsgarantie",
@@ -487,7 +489,7 @@
   "external": "Extern",
   "internal": "Intern",
   "removed_from_cart": "Das Produkt wurde erfolgreich aus dem Warenkorb entfernt",
-  "slogan": "Bondmaxx - Die Expertise, die den Unterschied in Qualität und Preis macht",
+  "slogan": "Bondmaxx Die Expertise, die den Unterschied in Qualität und Preis macht",
   "email_subject": "Anfrage von der Bondmaxx-Website",
   "email_body": "Hallo,\n\nIch möchte mich erkundigen über "
 }

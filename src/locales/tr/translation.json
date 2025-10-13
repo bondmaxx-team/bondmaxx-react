@@ -1,7 +1,7 @@
 {
   "main_title": "Renklerin Dünyasına Hoş Geldiniz",
   "brand_name": "BONDMAXX",
-  "description": "Kalitenin yaratıcılıkla buluştuğu benzersiz lüks boya ve vernik koleksiyonunu keşfedin. İç ve dış tasarım ihtiyaçlarınızın tümünü karşılayan, her detayda zarafet ve hassasiyet garantisi veren yenilikçi ve kapsamlı boya çözümleri sunuyoruz.",
+  "description": "Lüks boya ve aksesuarlardan oluşan çeşitli bir koleksiyon keşfedin ürünlerimiz en yüksek kalite standartlarını ve uygun fiyatları karşılayarak sizi her zaman bir adım önde tutar.",
   "cta_button": "Tüm Renkleri Keşfedin",
   "quality_guarantee": "Kalite Garantisi",
   "colors_count": "+360 Renk",
@@ -40,7 +40,7 @@
 
   "view_all": "Tümünü Görüntüle",
   "our_products": "Ürünlerimiz",
-  "products_description": "Mekanlarınızı dönüştürmek için tasarlanmış yüksek kaliteli boya ve renklerin premium seçkimizi keşfedin",
+  "products_description": "Müşterinizin ihtiyaçlarını karşılamak için özel olarak tasarlanmış yüksek kaliteli boyalar ve aksesuarlardan oluşan özel koleksiyonumuzu keşfedin.",
   "interior_paints": "İç Mekan Boyaları",
   "exterior_paints": "Dış Mekan Boyaları",
   "add_to_favorites": "Favorilere Ekle",
@@ -52,7 +52,9 @@
   "company_description": "Yüksek kaliteli boya ve vernikler alanında lider bir şirket. Tüm boya ve dekorasyon ihtiyaçlarınız için yenilikçi ve gelişmiş çözümler sunuyoruz.",
   "products_title": "Ürünler",
   "services_title": "Hizmetler",
-  "color_consultation": "Renk Danışmanlığı",
+
+  "request_consultation": "Danışmanlık Talep Et",
+
   "technical_training": "Teknik Eğitim",
   "technical_support": "Teknik Destek",
   "quality_guarantee_footer": "Kalite Garantisi",
@@ -166,10 +168,14 @@
   "storage_info_2": "Doğrudan güneş ışığından ve dondan uzak tutun",
   "storage_info_3": "VOC içeriği: ≤ 30 g/l",
 
-  "about_bondmaxx": "BONDMAXX Hakkında",
-  "bring_colors_to_life": "Renkleri hayata geçiriyor ve hayatınızın bir parçası yapıyoruz",
-  "intro_paragraph_1": "BONDMAXX, yüksek kaliteli boya ve kaplamalar üretiminde lider bir şirkettir. Üstün performansı olağanüstü güzellikle birleştiren, her alanı yaşam ve renklerle dolduran yenilikçi ürünler sunmaktan gurur duyuyoruz.",
-  "intro_paragraph_2": "360'tan fazla mevcut renk ve geniş bir özel ürün yelpazesi ile konut projelerinden büyük endüstriyel projelere kadar farklı sektörlerdeki müşterilerimizin ihtiyaçlarını karşılamaya kararlıyız.",
+  "about_bondmaxx_title": "BONDMAXX Hakkında",
+  "about_bondmaxx_subtitle": "Renkleri hayata geçiriyor ve ticari başarınızın bir parçası yapıyoruz ✨",
+  "about_bondmaxx_paragraph_1": "BONDMAXX, mükemmel performans, olağanüstü güzellik ve yüksek ticari değeri bir araya getiren ürünler arayan toptancıların ve distribütörlerin ihtiyaçlarını karşılamak üzere özel olarak tasarlanmış, yüksek kaliteli boya ve kaplamalar üretiminde öncü bir şirkettir.",
+  "about_bondmaxx_paragraph_2": "BONDMAXX'te, uzun ömürlü kaliteyi ve küresel çevre sürdürülebilirlik standartlarına tam uyumu garantilemek için çevre dostu Alman hammaddelerine güveniyoruz. Ayrıca, bu alanda en yüksek yenilik seviyelerini yansıtan renk doğruluğu, stabilite ve ideal kaplama sağlamak için en son Amerikan üretim teknolojilerini kullanıyoruz.",
+  "about_bondmaxx_paragraph_3": "Üretim süreci, boya ve kaplama üretim endüstrisinde yirmi yılı aşkın Lübnan uzmanlığıyla gerçekleştirilmekte olup, ürünlerimize geleneksel uzmanlık ile modern teknik hassasiyet arasında benzersiz bir denge kazandırmaktadır.",
+  "about_bondmaxx_paragraph_4": "Bu kapsamlı deneyim ve gelişmiş teknolojiler sayesinde BONDMAXX, konut, ticari ve endüstriyel projelerin ihtiyaçlarını karşılayan 360'tan fazla renk ve geniş bir özel kaplama yelpazesi sunmaktadır.",
+  "about_bondmaxx_paragraph_5": "Toptan satış pazarında verimlilik ve rekabet gücünün önemini anladığımız için, müşterilerimize kaliteden ödün vermeden en yüksek kar marjlarını elde etmelerini sağlayan esnek ve rekabetçi fiyatlar sunuyoruz.",
+
   "choose_bondmaxx": "Olağanüstü bir deneyim için BONDMAXX'ı seçin",
   "elevate_experience": "Alanlarınızı yeni bir güzellik ve kalite seviyesine yükseltin",
   "discover_products": "Ürünlerimizi Keşfedin",
@@ -483,7 +489,7 @@
   "external": "Dış",
   "internal": "İç",
   "removed_from_cart": "Ürün sepetten başarıyla kaldırıldı",
-  "slogan": "Bondmaxx - Kalite ve fiyatta fark yaratan uzmanlık",
+  "slogan": "Bondmaxx Kalite ve fiyatta fark yaratan uzmanlık",
   "email_subject": "Bondmaxx Web Sitesinden Sorgu",
   "email_body": "Merhaba,\n\nHakkında bilgi almak istiyorum "
 }
