@@ -61,36 +61,59 @@ const HeroSection = ({ onDiscoverColors }) => {
             {/* تأثير التوهج الأزرق المائي */}
             <span className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/30 via-cyan-300/30 to-blue-400/30 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 animate-pulse-slow"></span>
 
-            <i className="before:text-shadow-[0_0_4px_white] text-2xl md:text-3xl relative z-10 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300" />
+            <i className="fas fa-palette before:text-shadow-[0_0_4px_white] text-2xl md:text-3xl relative z-10 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300" />
             <span className="relative z-10 font-extrabold text-xl md:text-2xl text-shadow-[0_0_2px_white]">
               {t("slogan")}
             </span>
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 max-w-3xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-16 max-w-4xl mx-auto">
           {[
             {
-              icon: "fa-certificate  text-shadow-[0_0_3px_white]",
+              icon: "fa-hand-holding-usd",
+              text: t("competitive_prices"),
+            },
+            {
+              icon: "fa-certificate",
               text: t("quality_guarantee"),
             },
             {
-              icon: "fa-swatchbook  text-shadow-[0_0_3px_white]",
+              icon: "fa-swatchbook",
               text: t("colors_count"),
             },
             {
-              icon: "fa-leaf  text-shadow-[0_0_3px_white]",
-              text: t("eco_friendly"),
+              icon: "fa-tools",
+              text: t("american_technology"),
+            },
+            {
+              icon: "fa-users",
+              text: t("lebanese_expertise"),
+            },
+            {
+              icon: "fa-leaf",
+              text: t("german_materials"),
             },
           ].map((feature, index) => (
             <div
               key={index}
-              className="flex flex-col items-center justify-center gap-3 text-white"
+              className="flex flex-col items-center justify-center gap-2 text-white group"
             >
-              <div className="relative flex items-center justify-center w-16 h-16 rounded-full backdrop-blur-md bg-gradient-to-br from-white/20 to-white/10 border border-white/30 shadow-md">
-                <i className={`fas ${feature.icon} text-2xl text-[#203F84]`} />
+              {/* الأيقونة */}
+              <div className="flex items-center justify-center w-14 h-14 rounded-full backdrop-blur-md bg-gradient-to-br from-white/20 to-white/10 border-2 border-white/30 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <i
+                  className={`fas ${feature.icon} text-xl text-[#203F84]`}
+                  style={{
+                    filter: "drop-shadow(0 0 3px rgba(255, 255, 255, 0.8))",
+                    textShadow: "0 0 3px rgba(255, 255, 255, 0.8)",
+                  }}
+                />
               </div>
-              <span className="font-semibold text-blue-50">{feature.text}</span>
+
+              {/* النص */}
+              <span className="font-semibold text-sm text-blue-50 text-center">
+                {feature.text}
+              </span>
             </div>
           ))}
         </div>

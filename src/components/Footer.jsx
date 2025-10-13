@@ -7,7 +7,7 @@ export default function Footer() {
 
   const products = [
     {
-      icon: "fas fa-home",
+      icon: "fas fa-door-open",
       label: t("interior_paints"),
       href: "/interior-colors",
     },
@@ -17,9 +17,9 @@ export default function Footer() {
       href: "/exterior-colors",
     },
     {
-      icon: "fas fa-palette",
-      label: t("color_collection"),
-      href: "/color-collection",
+      icon: "fas fa-shield-alt",
+      label: t("insulation"),
+      href: "/insulation",
     },
   ];
 
