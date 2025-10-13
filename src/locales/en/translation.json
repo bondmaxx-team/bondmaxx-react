@@ -527,5 +527,7 @@
   "dropCloth": "Drop Cloth",
   "elongation": "Elongation",
   "workingTemp": "Working Temperature",
-  "care_instructions": "Care Instructions"
+  "care_instructions": "Care Instructions",
+  "recommendedThickness": "Recommended Thickness",
+  "applicationTemperature": "Application Temperature"
 }

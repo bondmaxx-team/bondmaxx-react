@@ -1,6 +1,7 @@
 const epoxyCategories = [
   {
-    id: "all",
+    id: 1,
+    key: "all",
     name: {
       en: "All Products",
       ar: "جميع المنتجات",
@@ -9,30 +10,53 @@ const epoxyCategories = [
     },
   },
   {
-    id: "floor",
+    id: 2,
+    key: "marine",
+    name: {
+      en: "Marine Coatings",
+      ar: "دهانات بحرية",
+      de: "Schiffsbeschichtungen",
+      tr: "Deniz Kaplamaları",
+    },
+  },
+  {
+    id: 3,
+    key: "floor",
     name: {
       en: "Floor Coatings",
-      ar: "طلاءات الأرضيات",
+      ar: "أرضيات",
       de: "Bodenbeschichtungen",
       tr: "Zemin Kaplamaları",
     },
   },
   {
-    id: "adhesive",
+    id: 4,
+    key: "interior",
     name: {
-      en: "Epoxy Adhesives",
-      ar: "لاصقات إيبوكسي",
-      de: "Epoxid-Klebstoffe",
-      tr: "Epoksi Yapıştırıcılar",
+      en: "Interior Coatings",
+      ar: "دهانات داخلية",
+      de: "Innenbeschichtungen",
+      tr: "İç Mekan Kaplamaları",
     },
   },
   {
-    id: "grout",
+    id: 5,
+    key: "exterior",
     name: {
-      en: "Epoxy Grout",
-      ar: "جروت إيبوكسي",
-      de: "Epoxid-Fugenmörtel",
-      tr: "Epoksi Derz Dolgusu",
+      en: "Exterior Coatings",
+      ar: "دهانات خارجية",
+      de: "Außenbeschichtungen",
+      tr: "Dış Mekan Kaplamaları",
+    },
+  },
+  {
+    id: 6,
+    key: "metal",
+    name: {
+      en: "Metal Coatings",
+      ar: "دهان معادن",
+      de: "Metallbeschichtungen",
+      tr: "Metal Kaplamaları",
     },
   },
 ];

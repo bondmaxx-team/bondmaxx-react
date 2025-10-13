@@ -500,5 +500,7 @@
   "dropCloth": "Abdeckfolie",
   "elongation": "Dehnung",
   "workingTemp": "Arbeitstemperatur",
-  "care_instructions": "Pflegehinweise"
+  "care_instructions": "Pflegehinweise",
+  "recommendedThickness": "Empfohlene Dicke",
+  "applicationTemperature": "Anwendungstemperatur"
 }

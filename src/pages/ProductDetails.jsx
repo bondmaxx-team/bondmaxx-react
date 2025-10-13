@@ -192,6 +192,8 @@ const ProductDetails = () => {
       dropCloth: t("dropCloth"),
       elongation: t("elongation"),
       workingTemp: t("workingTemp"),
+      recommendedThickness: t("recommendedThickness"),
+      applicationTemperature: t("applicationTemperature"),
     };
 
     return (

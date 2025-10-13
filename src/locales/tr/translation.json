@@ -535,5 +535,7 @@
   "dropCloth": "Koruma Örtüsü",
   "elongation": "Uzama",
   "workingTemp": "Çalışma Sıcaklığı",
-  "care_instructions": "Bakım Talimatları"
+  "care_instructions": "Bakım Talimatları",
+  "recommendedThickness": "Önerilen Kalınlık",
+  "applicationTemperature": "Uygulama Sıcaklığı"
 }
