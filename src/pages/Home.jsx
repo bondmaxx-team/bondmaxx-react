@@ -121,7 +121,7 @@ export default function Home() {
                     productType={product.type}
                     color={product.color}
                     linkTo={product.linkTo}
-                    showDiscoverButton={index === 0}
+                    showDiscoverButton={index === 2}
                     onDiscoverColors={handleDiscoverColors}
                   />
                 </motion.div>
