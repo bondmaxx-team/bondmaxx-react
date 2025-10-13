@@ -10,7 +10,8 @@ const oilPaintsCategories = [
     },
   },
   {
-    id: "glossy",
+    id: 4,
+    key: "glossy",
     name: {
       en: "Glossy Oil Paint",
       ar: "زيتي لامع",

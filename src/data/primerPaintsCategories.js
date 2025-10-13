@@ -1,6 +1,7 @@
 const primerPaintsCategories = [
   {
-    id: "all",
+    id: 1,
+    key: "all",
     name: {
       en: "All Products",
       ar: "جميع المنتجات",
@@ -9,29 +10,32 @@ const primerPaintsCategories = [
     },
   },
   {
-    id: "universal",
+    id: 2,
+    key: "water-based",
     name: {
-      en: "Universal Primers",
-      ar: "برايمر شامل",
-      de: "Universal-Grundierungen",
-      tr: "Evrensel Astarlar",
+      en: "Water-based Primers",
+      ar: "أساس مائي",
+      de: "Wasserbasierte Grundierungen",
+      tr: "Su Bazlı Astarlar",
     },
   },
   {
-    id: "wood",
+    id: 3,
+    key: "solvent-based",
     name: {
-      en: "Wood Primers",
-      ar: "برايمر خشب",
-      de: "Holz-Grundierungen",
-      tr: "Ahşap Astarları",
+      en: "Solvent-based Primers",
+      ar: "أساس نفضي",
+      de: "Lösungsmittelbasierte Grundierungen",
+      tr: "Çözücü Bazlı Astarlar",
     },
   },
   {
-    id: "metal",
+    id: 4,
+    key: "metal",
     name: {
       en: "Metal Primers",
-      ar: "برايمر معدن",
-      de: "Metall-Grundierungen",
+      ar: "أساس معدني",
+      de: "Metallgrundierungen",
       tr: "Metal Astarları",
     },
   },
