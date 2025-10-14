@@ -167,9 +167,14 @@ export default function Footer() {
         </p>
         <p className="text-xs text-gray-400">
           {t("designed_by")}
-          <span className="font-semibold text-gray-200 mx-1">
+          <a
+            href="https://www.golden-net.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-gray-200 mx-1 hover:text-[var(--header-primary)] transition"
+          >
             {t("dev_team")}
-          </span>
+          </a>
         </p>
       </div>
 

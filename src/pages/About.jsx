@@ -219,17 +219,13 @@ export default function About() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
-          <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 px-2">
-            {t("ready_to_transform")}
-          </h3>
-
-          <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white leading-snug drop-shadow-md px-2">
             {t("cta_description")}
           </p>
 
           <button
             onClick={() => window.open("https://wa.me/905550004000", "_blank")}
-            className="px-6 sm:px-8 md:px-10 py-3 md:py-4 rounded-full text-sm sm:text-base md:text-lg font-bold hover:opacity-90 transform hover:scale-105 transition-all duration-300"
+            className="mt-8 px-6 sm:px-8 md:px-10 py-3 md:py-4 rounded-full text-sm sm:text-base md:text-lg font-bold hover:opacity-90 transform hover:scale-105 transition-all duration-300"
             style={{ backgroundColor: "#fff", color: "#203F84" }}
           >
             {t("contact_now")}

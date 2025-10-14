@@ -65,7 +65,7 @@
   "working_hours": "Sonntag - Donnerstag: 8:00 - 18:00 Uhr",
   "all_rights_reserved": "Alle Rechte vorbehalten",
   "designed_by": "Design und Entwicklung von",
-  "dev_team": "Goldennet Technical Team",
+  "dev_team": "Golden Net Technical Team",
   "whatsapp_contact": "Kontaktieren Sie uns über WhatsApp",
 
   "back_button": "Zurück",
@@ -171,7 +171,7 @@
   "intro_paragraph_1": "BONDMAXX ist ein führendes Unternehmen in der Herstellung hochwertiger Farben und Beschichtungen. Wir sind stolz darauf, innovative Produkte anzubieten, die überlegene Leistung mit außergewöhnlicher Schönheit verbinden und jeden Raum mit Leben und Farben erfüllen.",
   "intro_paragraph_2": "Mit über 360 verfügbaren Farben und einer breiten Palette spezialisierter Produkte sind wir bestrebt, die Bedürfnisse unserer Kunden in verschiedenen Sektoren zu erfüllen, von Wohnhäusern bis zu großen Industrieprojekten.",
   "choose_bondmaxx": "Wählen Sie BONDMAXX für ein außergewöhnliches Erlebnis",
-  "elevate_experience": "BONDMAXX — Globales Fachwissen, deutsche Qualität, amerikanische Technologie und libanesische Handwerkskunst, die den Unterschied macht",
+  "elevate_experience": "BONDMAXX — Erfahrung und Qualität nach globalen Standards, die den Unterschied machen.",
   "discover_products": "Entdecken Sie unsere Produkte",
   "industries_we_serve": "Branchen, die wir bedienen",
   "industries_description": "Wir bieten umfassende und spezialisierte Lacklösungen für verschiedene Branchen, mit Fokus auf Qualität und Innovation in jedem Projekt.",
@@ -183,8 +183,8 @@
   "industrial_description": "Spezialisierte Industriebeschichtungen, die rauen Bedingungen standhalten und langfristigen Schutz für Anlagen und Ausrüstung bieten.",
   "marine_sector": "Marinebereich",
   "marine_description": "Wasser- und salzbeständige Schiffsfarben, speziell zum Schutz von Schiffen und Meeresanlagen entwickelt.",
-  "ready_to_transform": "Sind Sie bereit, Ihren Raum zu verwandeln?",
-  "cta_description": "Kontaktieren Sie uns jetzt für eine kostenlose Beratung und beginnen Sie Ihre Reise zur Verwirklichung des perfekten Raums.",
+
+  "cta_description": " Werden Sie Partner bei BONDMAXX und erhalten Sie die hochwertigsten Produkte zu wettbewerbsfähigen Preisen sowie Mengenrabatte",
   "contact_now": "Jetzt kontaktieren",
   "back_to_home": "Zurück zur Startseite",
   "search_placeholder": "Suchen Sie nach Farbfamilie oder Code...",
@@ -279,7 +279,7 @@
   "or_contact_us": "Kontaktieren Sie uns",
   "city": "Stadt",
   "choose_city": "Stadt wählen",
-  "store_idlib": "BondMax Store - Maarat al-Numan",
+  "store_idlib": "Bondmaxx Store - Maarat al-Numan",
   "idlib": "Idlib",
   "maarat_al_nasan": "Maarat al-Numan",
   "full_name": "Vollständiger Name",
@@ -521,5 +521,14 @@
   "water-based": "Wasserbasiert",
   "glossy": "Glänzend",
   "matte": "Matt",
-  "semi-glossy": "Halbglanz"
+  "semi-glossy": "Halbglanz",
+
+  "about_bondmaxx_title": "Über BONDMAXX",
+  "about_bondmaxx_subtitle": "Wir erwecken Farben zum Leben und machen sie zu einem Teil Ihres Geschäftserfolgs ✨",
+  "about_bondmaxx_paragraph_1": "BONDMAXX gehört zu den führenden Unternehmen in der Herstellung hochwertiger Farben und Beschichtungen, die speziell entwickelt wurden, um die Anforderungen von Großhändlern und Vertriebspartnern zu erfüllen, die Produkte mit hervorragender Leistung, außergewöhnlicher Ästhetik und hohem kommerziellen Wert suchen.",
+  "about_bondmaxx_paragraph_2": "Bei BONDMAXX verwenden wir umweltfreundliche Rohstoffe deutschen Ursprungs, um eine langanhaltende Qualität und vollständige Übereinstimmung mit den globalen Standards für ökologische Nachhaltigkeit zu gewährleisten. Darüber hinaus nutzen wir die neuesten globalen Technologien in unseren Produktionsprozessen, um Farbgenauigkeit, Beständigkeit und perfekte Deckkraft sicherzustellen – ein Spiegelbild höchster Innovationsstandards in diesem Bereich.",
+  "about_bondmaxx_paragraph_3": "Der Produktionsprozess erfolgt nach internationalen Spezifikationen und basiert auf über zwanzig Jahren weltweiter Erfahrung in der Farben- und Beschichtungsindustrie. Dies verleiht unseren Produkten ein einzigartiges Gleichgewicht zwischen traditionellem Know-how und moderner technischer Präzision.",
+  "about_bondmaxx_paragraph_4": "Dank dieser langjährigen Erfahrung und fortschrittlichen Technologien bietet BONDMAXX über 360 Farben und eine breite Palette spezialisierter Beschichtungen, die den Anforderungen von Wohn-, Gewerbe- und Industrieprojekten gleichermaßen gerecht werden.",
+  "about_bondmaxx_paragraph_5": "Da wir die Bedeutung von Effizienz und Wettbewerbsfähigkeit auf dem Großhandelsmarkt verstehen, bieten wir unseren Kunden flexible und wettbewerbsfähige Preise, die es ihnen ermöglichen, höchste Gewinnmargen zu erzielen, ohne Kompromisse bei der Qualität einzugehen.",
+  "elevate_experience": "BONDMAXX – Erfahrung und Qualität nach internationalen Standards, die den Unterschied machen."
 }

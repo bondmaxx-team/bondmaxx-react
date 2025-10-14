@@ -65,7 +65,7 @@
   "working_hours": "Pazar - Perşembe: 08:00 - 18:00",
   "all_rights_reserved": "Tüm hakları saklıdır",
   "designed_by": "Tasarım ve Geliştirme",
-  "dev_team": "Goldennet Teknik Ekibi",
+  "dev_team": "Golden Net Teknik Ekibi",
   "whatsapp_contact": "WhatsApp üzerinden iletişime geçin",
 
   "back_button": "Geri",
@@ -167,17 +167,15 @@
   "storage_info_1": "Raf ömrü: Açılmamış orijinal ambalajında 24 ay",
   "storage_info_2": "Doğrudan güneş ışığından ve dondan uzak tutun",
   "storage_info_3": "VOC içeriği: ≤ 30 g/l",
-
-  "about_bondmaxx_title": "BONDMAXX Hakkında",
-  "about_bondmaxx_subtitle": "Renkleri hayata geçiriyor ve ticari başarınızın bir parçası yapıyoruz ✨",
-  "about_bondmaxx_paragraph_1": "BONDMAXX, mükemmel performans, olağanüstü güzellik ve yüksek ticari değeri bir araya getiren ürünler arayan toptancıların ve distribütörlerin ihtiyaçlarını karşılamak üzere özel olarak tasarlanmış, yüksek kaliteli boya ve kaplamalar üretiminde öncü bir şirkettir.",
-  "about_bondmaxx_paragraph_2": "BONDMAXX'te, uzun ömürlü kaliteyi ve küresel çevre sürdürülebilirlik standartlarına tam uyumu garantilemek için çevre dostu Alman hammaddelerine güveniyoruz. Ayrıca, bu alanda en yüksek yenilik seviyelerini yansıtan renk doğruluğu, stabilite ve ideal kaplama sağlamak için en son Amerikan üretim teknolojilerini kullanıyoruz.",
-  "about_bondmaxx_paragraph_3": "Üretim süreci, boya ve kaplama üretim endüstrisinde yirmi yılı aşkın Lübnan uzmanlığıyla gerçekleştirilmekte olup, ürünlerimize geleneksel uzmanlık ile modern teknik hassasiyet arasında benzersiz bir denge kazandırmaktadır.",
-  "about_bondmaxx_paragraph_4": "Bu kapsamlı deneyim ve gelişmiş teknolojiler sayesinde BONDMAXX, konut, ticari ve endüstriyel projelerin ihtiyaçlarını karşılayan 360'tan fazla renk ve geniş bir özel kaplama yelpazesi sunmaktadır.",
-  "about_bondmaxx_paragraph_5": "Toptan satış pazarında verimlilik ve rekabet gücünün önemini anladığımız için, müşterilerimize kaliteden ödün vermeden en yüksek kar marjlarını elde etmelerini sağlayan esnek ve rekabetçi fiyatlar sunuyoruz.",
+  "about_bondmaxx_subtitle": "Renkleri hayata geçiriyor ve onları ticari başarınızın bir parçası haline getiriyoruz ✨",
+  "about_bondmaxx_paragraph_1": "BONDMAXX, üstün performans, olağanüstü estetik ve yüksek ticari değeri bir araya getiren ürünler arayan toptancılar ve distribütörlerin ihtiyaçlarını karşılamak üzere özel olarak tasarlanmış yüksek kaliteli boya ve kaplama üretiminde lider firmalardan biridir.",
+  "about_bondmaxx_paragraph_2": "BONDMAXX olarak, uzun ömürlü kaliteyi ve küresel çevresel sürdürülebilirlik standartlarına tam uyumu sağlamak için çevre dostu, Alman menşeli hammaddeler kullanıyoruz. Ayrıca, renk doğruluğu, dayanıklılık ve mükemmel kaplama sağlamak için üretim süreçlerimizde en son teknolojileri kullanıyoruz — bu da sektördeki en yüksek yenilik standartlarını yansıtır.",
+  "about_bondmaxx_paragraph_3": "Üretim sürecimiz, uluslararası standartlara uygun olarak yürütülmekte olup, boya ve kaplama üretiminde yirmi yılı aşkın küresel deneyime dayanmaktadır. Bu, ürünlerimize geleneksel uzmanlık ile modern teknik hassasiyet arasında benzersiz bir denge kazandırır.",
+  "about_bondmaxx_paragraph_4": "Bu uzun yıllara dayanan deneyim ve gelişmiş teknoloji sayesinde BONDMAXX, hem konut hem ticari hem de endüstriyel projelerin ihtiyaçlarını karşılayan 360’tan fazla renk ve geniş bir özel kaplama yelpazesi sunmaktadır.",
+  "about_bondmaxx_paragraph_5": "Toptan satış pazarında verimlilik ve rekabetin önemini bildiğimiz için, müşterilerimize kaliteden ödün vermeden en yüksek kâr marjlarını elde etmelerini sağlayan esnek ve rekabetçi fiyatlar sunuyoruz.",
 
   "choose_bondmaxx": "Olağanüstü bir deneyim için BONDMAXX'ı seçin",
-  "elevate_experience": "BONDMAXX — Küresel uzmanlık, Alman kalitesi, Amerikan teknolojisi ve fark yaratan Lübnan ustalığı",
+  "elevate_experience": "BONDMAXX — Küresel standartlarda kalite ve uzmanlık, farkı sizin için yaratır.",
   "discover_products": "Ürünlerimizi Keşfedin",
 
   "industries_we_serve": "Hizmet Verdiğimiz Sektörler",
@@ -195,8 +193,7 @@
   "marine_sector": "Denizcilik Sektörü",
   "marine_description": "Gemileri ve deniz tesislerini korumak için özel olarak tasarlanmış su ve tuz dirençli deniz boyaları.",
 
-  "ready_to_transform": "Alanınızı Dönüştürmeye Hazır mısınız?",
-  "cta_description": "Ücretsiz danışmanlık için şimdi bizimle iletişime geçin ve mükemmel alanı gerçekleştirme yolculuğunuza başlayın.",
+  "cta_description": "Bondmaxx'ta iş ortağımız olun ve en kaliteli ürünleri rekabetçi fiyatlarla ve toplu alımlarda indirimlerle edinin",
   "contact_now": "Şimdi İletişime Geçin",
 
   "back_to_home": "Ana Sayfaya Dön",
@@ -298,7 +295,7 @@
   "or_contact_us": "Bizimle İletişime Geçin",
   "city": "Şehir",
   "choose_city": "Şehir Seçin",
-  "store_idlib": "BondMax Mağaza - Maarat al-Numan",
+  "store_idlib": "Bondmaxx Mağaza - Maarat al-Numan",
   "idlib": "İdlib",
   "maarat_al_nasan": "Maarat al-Numan",
   "full_name": "Tam Ad",
