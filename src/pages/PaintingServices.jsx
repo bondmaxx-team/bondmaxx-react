@@ -1,3 +1,5 @@
+{
+  /*
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
@@ -90,7 +92,7 @@ export default function PaintingServices() {
       dir={isRTL ? "rtl" : "ltr"}
     >
       <div className="max-w-5xl mx-auto">
-        {/* Header Card */}
+      
         <div className="p-8 md:p-12 mb-8">
           <div className="text-center">
             <div className="inline-block p-3 bg-[#203F84]/10 rounded-full mb-4">
@@ -117,10 +119,9 @@ export default function PaintingServices() {
           </div>
         </div>
 
-        {/* Form Card */}
         <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
           <div className="space-y-7">
-            {/* Location Selection */}
+           
             <div>
               <label
                 className={`flex items-center text-gray-800 font-bold mb-3 text-base ${
@@ -170,7 +171,7 @@ export default function PaintingServices() {
               </a>
             </p>
 
-            {/* City and Full Name Row */}
+       
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label
@@ -222,7 +223,7 @@ export default function PaintingServices() {
               </div>
             </div>
 
-            {/* Email, Phone Number, and Code */}
+         
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
               <div className="lg:col-span-6">
                 <label
@@ -281,7 +282,7 @@ export default function PaintingServices() {
               </div>
             </div>
 
-            {/* Paint Type & Service Type */}
+          
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label
@@ -346,7 +347,7 @@ export default function PaintingServices() {
               </div>
             </div>
 
-            {/* Terms Notice */}
+          
             <div
               className={`bg-amber-50 ${
                 isRTL ? "border-r-4" : "border-l-4"
@@ -372,7 +373,6 @@ export default function PaintingServices() {
               </div>
             </div>
 
-            {/* Submit Button */}
             <div className="flex justify-center pt-4">
               <button
                 onClick={handleSubmit}
@@ -385,7 +385,7 @@ export default function PaintingServices() {
           </div>
         </div>
 
-        {/* Footer Note */}
+
         <div className="text-center mt-8 text-gray-600 text-sm">
           <p>
             {t("required_fields_note")}{" "}
@@ -395,4 +395,6 @@ export default function PaintingServices() {
       </div>
     </div>
   );
+}
+*/
 }

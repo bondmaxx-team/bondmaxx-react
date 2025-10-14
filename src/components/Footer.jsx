@@ -5,21 +5,42 @@ export default function Footer() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
 
+  // ✅ جميع المنتجات
   const products = [
     {
-      icon: "fas fa-door-open",
-      label: t("interior_paints"),
-      href: "/interior-colors",
+      icon: "fas fa-oil-can",
+      label: t("oil_paints"),
+      href: "/OilPaintsPage",
     },
     {
-      icon: "fas fa-building",
-      label: t("exterior_paints"),
-      href: "/exterior-colors",
+      icon: "fas fa-tint",
+      label: t("water_paints"),
+      href: "/WaterPaintsPage",
+    },
+    {
+      icon: "fas fa-layer-group",
+      label: t("primer_paints"),
+      href: "/PrimerPaintsPage",
     },
     {
       icon: "fas fa-shield-alt",
       label: t("insulation"),
-      href: "/insulation",
+      href: "/InsulationPage",
+    },
+    {
+      icon: "fas fa-fill-drip",
+      label: t("epoxy"),
+      href: "/EpoxyPage",
+    },
+    {
+      icon: "fas fa-tools",
+      label: t("putty"),
+      href: "/PuttyPage",
+    },
+    {
+      icon: "fas fa-toolbox",
+      label: t("accessories"),
+      href: "/AccessoriesPage",
     },
   ];
 
@@ -29,7 +50,6 @@ export default function Footer() {
       label: t("request_consultation"),
       href: "https://wa.me/905550004000",
     },
-
     {
       icon: "fas fa-certificate",
       label: t("quality_guarantee_footer"),
@@ -41,6 +61,7 @@ export default function Footer() {
       href: "/search-dealer",
     },
   ];
+
   const contactInfo = [
     {
       type: "whatsapp",
@@ -70,7 +91,7 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white pt-12 px-6 relative">
       <div className="max-w-7xl mx-auto grid gap-12 md:grid-cols-4">
-        {/* Company Info */}
+        {/* 🏢 Company Info */}
         <div>
           <h3 className="text-xl font-bold mb-5 text-[var(--header-primary)]">
             {t("company_name")}
@@ -80,7 +101,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Products */}
+        {/* 🎨 Products */}
         <div>
           <h3 className="text-xl font-bold mb-5 text-[var(--header-primary)]">
             {t("products_title")}
@@ -102,7 +123,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Services */}
+        {/* 🧰 Services */}
         <div>
           <h3 className="text-xl font-bold mb-5 text-[var(--header-primary)]">
             {t("services_title")}
@@ -126,7 +147,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Contact */}
+        {/* 📞 Contact */}
         <div>
           <h3 className="text-xl font-bold mb-5 text-[var(--header-primary)]">
             {t("contact_title")}
@@ -178,6 +199,7 @@ export default function Footer() {
         </p>
       </div>
 
+      {/* Floating Email Button */}
       <a
         href={`https://mail.google.com/mail/?view=cm&fs=1&to=info@bondmaxx.com&su=${encodeURIComponent(
           t("email_subject")

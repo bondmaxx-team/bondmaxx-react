@@ -22,12 +22,11 @@ import ProductDetails from "./pages/ProductDetails";
 import InteriorColorsPage from "./pages/InteriorColors";
 import SearchDealerPage from "./pages/SearchDealer";
 import ColorCollection from "./pages/ColorCollection";
-import PaintingServices from "./pages/PaintingServices";
 import ExteriorColorsPage from "./pages/ExteriorColors";
 import OilPaintsPage from "./pages/OilPaintsPage";
 import WaterPaintsPage from "./pages/WaterPaintsPage";
 import PrimerPaintsPage from "./pages/PrimerPaintsPage";
-import InsulationPage from "./pages/InsulationPage"; // اسم الملف القديم
+import InsulationPage from "./pages/Insulation";
 import EpoxyPage from "./pages/EpoxyPage";
 import PuttyPage from "./pages/PuttyPage";
 import AccessoriesPage from "./pages/AccessoriesPage";
@@ -50,10 +49,15 @@ function ScrollToTop() {
 
 // Layouts
 function LayoutWithHeader() {
+  const location = useLocation(); // ✅ إضافة هذا السطر
+  const isHomePage = location.pathname === "/"; // ✅ إضافة هذا السطر
+
   return (
     <>
       <Header />
-      <Outlet />
+      <main className={isHomePage ? "" : "mt-24 sm:mt-28"}>
+        <Outlet />
+      </main>
       <Footer />
     </>
   );
@@ -103,7 +107,6 @@ function App() {
               <Route path="/search-dealer" element={<SearchDealerPage />} />
               <Route path="/color-collection" element={<ColorCollection />} />
               <Route path="/product-details" element={<ProductDetails />} />
-              <Route path="/painting-services" element={<PaintingServices />} />
               <Route path="/imprint" element={<ImprintPage />} />
               <Route path="/PrivacyPolicy" element={<PrivacyPolicyPage />} />
               <Route path="/DataProtection" element={<DataProtectionPage />} />

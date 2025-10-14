@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import useWhatsApp from "@/hooks/useWhatsApp";
 import useLanguageSelect from "@/hooks/useLanguageSelect";
 import { toast } from "sonner";
+import NavigationBreadcrumb from "./NavigationBreadcrumb";
 
 export default function Header() {
   const { t, i18n } = useTranslation();
@@ -111,11 +112,7 @@ export default function Header() {
       label: t("color_collection"),
       icon: "fas fa-palette",
     },
-    {
-      href: "/painting-services",
-      label: t("painting_services"),
-      icon: "fas fa-paint-roller",
-    },
+
     {
       href: "/search-dealer",
       label: t("search_dealer"),
@@ -215,6 +212,9 @@ export default function Header() {
             </div>
           </div>
         </div>
+
+        {/* Breadcrumb - مباشرة تحت الـ Header */}
+        <NavigationBreadcrumb currentLang={i18n.language} />
       </header>
 
       {/* Sidebar */}
