@@ -124,7 +124,7 @@ export default function Header() {
   return (
     <>
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-40 bg-white shadow-sm border-b border-gray-100">
+      <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16">
           <div className="flex justify-between items-center h-full">
             {/* Left */}
