@@ -558,5 +558,8 @@
   "water-based": "أساس مائي",
   "glossy": "لامع",
   "matte": "مطفي",
-  "semi-glossy": "نصف لامع"
+  "semi-glossy": "نصف لامع",
+
+  "explore_categories": "استكشف الفئات",
+  "categories_description": "تصفح جميع فئات منتجاتنا المتنوعة"
 }

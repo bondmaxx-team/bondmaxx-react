@@ -547,5 +547,8 @@
   "water-based": "Water-Based",
   "glossy": "Glossy",
   "matte": "Matte",
-  "semi-glossy": "Semi-Glossy"
+  "semi-glossy": "Semi-Glossy",
+
+  "explore_categories": "Explore Categories",
+  "categories_description": "Browse all our diverse product categories"
 }

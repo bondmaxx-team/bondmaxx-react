@@ -553,5 +553,8 @@
   "water-based": "Su Bazlı",
   "glossy": "Parlak",
   "matte": "Mat",
-  "semi-glossy": "Yarı Parlak"
+  "semi-glossy": "Yarı Parlak",
+
+  "explore_categories": "Kategorileri Keşfet",
+  "categories_description": "Tüm çeşitli ürün kategorilerimize göz atın"
 }

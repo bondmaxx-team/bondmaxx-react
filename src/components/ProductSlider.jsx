@@ -2,21 +2,13 @@ import { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
-import ProductCard, { DiscoverColorsButton } from "./MainSectionProductCard";
+import ProductCard from "./MainSectionProductCard";
 import { useTranslation } from "react-i18next";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const ProductSlider = ({
-  title,
-  products,
-  color,
-  linkTo,
-  productType,
-  showDiscoverButton = false,
-  onDiscoverColors,
-}) => {
+const ProductSlider = ({ title, products, color, linkTo, productType }) => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n?.language === "ar";
 
@@ -47,7 +39,7 @@ const ProductSlider = ({
   const translatedTitle = t(title);
 
   return (
-    <div className="mb-16" dir={isRTL ? "rtl" : "ltr"}>
+    <div className="mb-6" dir={isRTL ? "rtl" : "ltr"}>
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold text-gray-800">{translatedTitle}</h2>
       </div>
@@ -153,10 +145,6 @@ const ProductSlider = ({
           </button>
         </div>
       </div>
-
-      {showDiscoverButton && onDiscoverColors && (
-        <DiscoverColorsButton onClick={onDiscoverColors} />
-      )}
     </div>
   );
 };

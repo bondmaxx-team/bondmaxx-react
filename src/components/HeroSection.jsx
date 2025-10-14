@@ -17,22 +17,21 @@ const HeroSection = ({ onDiscoverColors }) => {
         <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/30 to-black/50" />
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center mt-12 animate-fade-in">
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col justify-center h-screen">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight">
           <span className="text-white drop-shadow-2xl block mb-3 sm:mb-4">
             {t("main_title")}
           </span>
 
           <span
             className="inline-block px-8 sm:px-10 md:px-12 py-3 sm:py-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl rounded-full border border-white/40 bg-white/10 backdrop-blur-md 
-    text-shadow-[0_0_5px_white]
-    text-[#203F84] font-extrabold shadow-lg hover:bg-white/20 hover:shadow-2xl transition-all duration-300 relative"
+      text-shadow-[0_0_5px_white]
+      text-[#203F84] font-extrabold shadow-lg hover:bg-white/20 hover:shadow-2xl transition-all duration-300 relative"
           >
             BONDMAXX
             <span className="absolute inset-0 rounded-full bg-white/30 opacity-0 hover:opacity-100 transition-opacity blur-md"></span>
           </span>
         </h1>
-
         <p className="text-xl md:text-2xl text-blue-50 max-w-3xl mx-auto leading-relaxed font-light drop-shadow-lg mt-6">
           {t("description")}
         </p>
@@ -69,7 +68,6 @@ const HeroSection = ({ onDiscoverColors }) => {
             </span>
           </button>
         </div>
-
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-16 max-w-4xl mx-auto">
           {[
             {
