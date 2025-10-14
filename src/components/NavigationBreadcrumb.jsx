@@ -184,7 +184,7 @@ const NavigationBreadcrumb = ({ currentLang = "ar" }) => {
       >
         <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm flex-wrap">
           <span
-            className="cursor-pointer text-[#203F84] hover:text-[#1a3270] font-medium transition-colors duration-200 hover:underline whitespace-nowrap"
+            className="cursor-pointer text-[#203F84] hover:text-[#1a3270] transition-colors duration-200 hover:underline whitespace-nowrap"
             onClick={() => navigate("/")}
           >
             {homeLabel[currentLang] || homeLabel.en}
@@ -193,7 +193,7 @@ const NavigationBreadcrumb = ({ currentLang = "ar" }) => {
           {mainLabel && (
             <>
               <span className="text-gray-400 select-none">›</span>
-              <span className="text-gray-700 font-medium whitespace-nowrap">
+              <span className="text-gray-700 whitespace-nowrap">
                 {mainLabel}
               </span>
             </>
@@ -202,7 +202,9 @@ const NavigationBreadcrumb = ({ currentLang = "ar" }) => {
           {subLabel && (
             <>
               <span className="text-gray-400 select-none">›</span>
-              <span className="text-[#203F84] font-semibold">{subLabel}</span>
+              <span className=" border-[#203F84] text-[#203F84] px-2 py-1 font-semibold">
+                {subLabel}
+              </span>
             </>
           )}
         </div>
