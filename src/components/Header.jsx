@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useShop } from "../context/ShopContext";
 import { useTranslation } from "react-i18next";
 import useWhatsApp from "@/hooks/useWhatsApp";
@@ -11,6 +11,7 @@ import NavigationBreadcrumb from "./NavigationBreadcrumb";
 export default function Header() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === "ar";
+  const location = useLocation();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
@@ -39,6 +40,12 @@ export default function Header() {
     setIsProductsOpen(false);
     closeLanguageMenu();
   };
+
+  useEffect(() => {
+    setIsProductsOpen(
+      productItems.map((item) => item.href).includes(location.pathname)
+    );
+  }, [location.pathname]);
 
   const toggleProducts = () => setIsProductsOpen(!isProductsOpen);
 
@@ -280,7 +287,12 @@ export default function Header() {
                   key={index}
                   to={item.href}
                   onClick={closeSidebar}
-                  className="px-12 py-3 flex items-center gap-3 text-sm text-[#203F84] hover:bg-[#203F84] hover:text-white transition-all duration-200 active:scale-95 hover:scale-105"
+                  className={
+                    (location.pathname === item.href
+                      ? "bg-[#203F84] text-white"
+                      : "text-[#203F84] hover:bg-[#203F84] hover:text-white") +
+                    ` px-12 py-3 flex items-center gap-3 text-sm  transition-all duration-200 active:scale-95 hover:scale-105`
+                  }
                 >
                   <i className={item.icon}></i>
                   {item.label}
@@ -294,10 +306,17 @@ export default function Header() {
               key={index}
               to={item.href}
               onClick={closeSidebar}
-              className="px-7 py-4 flex items-center gap-3 text-[#203F84] hover:bg-[#203F84] hover:text-white transition-all duration-200 active:scale-95 hover:scale-105"
+              className={
+                (location.pathname === item.href
+                  ? "bg-[#203F84] text-white"
+                  : "text-[#203F84] hover:bg-[#203F84] hover:text-white") +
+                ` px-7 py-4`
+              }
             >
-              <i className={item.icon}></i>
-              <span>{item.label}</span>
+              <span className="flex items-center gap-3 transition-all duration-200 active:scale-95 hover:scale-105">
+                <i className={item.icon}></i>
+                <span>{item.label}</span>
+              </span>
             </Link>
           ))}
         </div>
