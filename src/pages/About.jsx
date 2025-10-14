@@ -84,7 +84,7 @@ export default function About() {
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 md:mb-12 px-2"
               style={{
                 color: "#203F84",
-                textShadow: "1px 1px 4px rgba(0,0,0,0.6)",
+                textShadow: "0 0 3px white, 0 0 5px white, 0 0 3px white",
               }}
             >
               {t("about_bondmaxx_subtitle")}
