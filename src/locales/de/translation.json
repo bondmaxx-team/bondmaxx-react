@@ -505,5 +505,21 @@
   "applicationTemperature": "Anwendungstemperatur",
   "applicationMethod": "Anwendungsmethode",
   "curingTime": "Aushärtezeit",
-  "temperatureResistance": "Temperaturbeständigkeit"
+  "temperatureResistance": "Temperaturbeständigkeit",
+  "epoxy_coatings": "Epoxidbeschichtungen",
+  "wall-sealer": "Wandversiegelung",
+  "silicone-cracks": "Silikon-Rissfüller",
+  "gypsum-thick": "Dicker Gips",
+  "interior-waterproof": "Innenabdichtung",
+  "empty-insulation": "Wärmedämmung",
+  "exterior-waterproof": "Außenabdichtung",
+  "brushes": "Pinsel",
+  "rollers": "Rollen",
+  "tools": "Werkzeuge",
+  "metal": "Metallfarben",
+  "solvent-based": "Lösemittelbasiert",
+  "water-based": "Wasserbasiert",
+  "glossy": "Glänzend",
+  "matte": "Matt",
+  "semi-glossy": "Halbglanz"
 }

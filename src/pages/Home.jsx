@@ -5,7 +5,11 @@ import { motion } from "framer-motion";
 import About from "../pages/About";
 import HeroSection from "../components/HeroSection";
 import ProductSlider from "../components/ProductSlider";
-import productsCollections from "../data/productsCollections";
+
+// استيراد المنتجات من الملفات
+import oilPaintsProducts from "../data/oilPaintsProducts";
+import waterPaintsProducts from "../data/waterPaintsProducts";
+import epoxyProducts from "../data/epoxyProducts";
 
 export default function Home() {
   const location = useLocation();
@@ -104,28 +108,55 @@ export default function Home() {
             </motion.div>
 
             <div className="max-w-7xl mx-auto px-6 space-y-20">
-              {productsCollections.map((product, index) => (
-                <motion.div
-                  key={product.titleKey}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.8,
-                    delay: index * 0.15,
-                  }}
-                  viewport={{ once: true, amount: 0.3 }}
-                >
-                  <ProductSlider
-                    title={t(product.titleKey)}
-                    products={product.collection}
-                    productType={product.type}
-                    color={product.color}
-                    linkTo={product.linkTo}
-                    showDiscoverButton={index === 2}
-                    onDiscoverColors={handleDiscoverColors}
-                  />
-                </motion.div>
-              ))}
+              {/* سلايدر الدهانات الزيتية */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                <ProductSlider
+                  title="oil_paints"
+                  products={oilPaintsProducts}
+                  productType="oil-paints"
+                  color="#203F84"
+                  linkTo="/oil-paints"
+                />
+              </motion.div>
+
+              {/* سلايدر الدهانات المائية */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.15 }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                <ProductSlider
+                  title="water_paints"
+                  products={waterPaintsProducts}
+                  productType="water-paints"
+                  color="#203F84"
+                  linkTo="/water-paints"
+                />
+              </motion.div>
+
+              {/* سلايدر الإيبوكسي */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                <ProductSlider
+                  title="epoxy_coatings"
+                  products={epoxyProducts}
+                  productType="epoxy"
+                  color="#203F84"
+                  linkTo="/epoxy"
+                  showDiscoverButton={true}
+                  onDiscoverColors={handleDiscoverColors}
+                />
+              </motion.div>
             </div>
           </section>
         </div>

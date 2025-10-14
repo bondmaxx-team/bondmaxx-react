@@ -542,5 +542,21 @@
   "applicationTemperature": "درجة حرارة التطبيق",
   "applicationMethod": "طريقة التطبيق",
   "curingTime": "زمن المعالجة",
-  "temperatureResistance": "مقاومة الحرارة"
+  "temperatureResistance": "مقاومة الحرارة",
+  "epoxy_coatings": "طلاءات الإيبوكسي",
+  "wall-sealer": "عازل الجدران",
+  "silicone-cracks": "معجون سيليكون للشقوق",
+  "gypsum-thick": "جبس سميك",
+  "interior-waterproof": "عزل داخلي مائي",
+  "empty-insulation": "عزل حراري",
+  "exterior-waterproof": "عزل خارجي مائي",
+  "brushes": "فرش",
+  "rollers": "رولات",
+  "tools": "أدوات",
+  "metal": "دهانات المعادن",
+  "solvent-based": "أساس المذيبات",
+  "water-based": "أساس مائي",
+  "glossy": "لامع",
+  "matte": "مطفي",
+  "semi-glossy": "نصف لامع"
 }

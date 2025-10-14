@@ -540,5 +540,21 @@
   "applicationTemperature": "Uygulama Sıcaklığı",
   "applicationMethod": "Uygulama Yöntemi",
   "curingTime": "Kürlenme Süresi",
-  "temperatureResistance": "Sıcaklık Dayanımı"
+  "temperatureResistance": "Sıcaklık Dayanımı",
+  "epoxy_coatings": "Epoksi Kaplamalar",
+  "wall-sealer": "Duvar Sızdırmazlık",
+  "silicone-cracks": "Silikon Çatlak Dolgusu",
+  "gypsum-thick": "Kalın Alçı",
+  "interior-waterproof": "İç Mekan Su Yalıtımı",
+  "empty-insulation": "Isı Yalıtımı",
+  "exterior-waterproof": "Dış Mekan Su Yalıtımı",
+  "brushes": "Fırçalar",
+  "rollers": "Rulolar",
+  "tools": "Araçlar",
+  "metal": "Metal Boyaları",
+  "solvent-based": "Solvent Bazlı",
+  "water-based": "Su Bazlı",
+  "glossy": "Parlak",
+  "matte": "Mat",
+  "semi-glossy": "Yarı Parlak"
 }

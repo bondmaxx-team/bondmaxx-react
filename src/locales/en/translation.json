@@ -532,5 +532,21 @@
   "applicationTemperature": "Application Temperature",
   "applicationMethod": "Application Method",
   "curingTime": "Curing Time",
-  " temperatureResistance": "Temperature Resistance"
+  " temperatureResistance": "Temperature Resistance",
+  "epoxy_coatings": "Epoxy Coatings",
+  "wall-sealer": "Wall Sealer",
+  "silicone-cracks": "Silicone Cracks Filler",
+  "gypsum-thick": "Thick Gypsum",
+  "interior-waterproof": "Interior Waterproofing",
+  "empty-insulation": "Thermal Insulation",
+  "exterior-waterproof": "Exterior Waterproofing",
+  "brushes": "Brushes",
+  "rollers": "Rollers",
+  "tools": "Tools",
+  "metal": "Metal Paints",
+  "solvent-based": "Solvent-Based",
+  "water-based": "Water-Based",
+  "glossy": "Glossy",
+  "matte": "Matte",
+  "semi-glossy": "Semi-Glossy"
 }
