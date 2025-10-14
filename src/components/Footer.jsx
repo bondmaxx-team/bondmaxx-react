@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { DEFAULT_WHATSAPP_NUMBER } from "@/config/whatsapp";
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
@@ -48,7 +49,7 @@ export default function Footer() {
     {
       icon: "fas fa-comments",
       label: t("request_consultation"),
-      href: "https://wa.me/905550004000",
+      href: "https://wa.me/" + DEFAULT_WHATSAPP_NUMBER,
     },
     {
       icon: "fas fa-certificate",
@@ -67,7 +68,7 @@ export default function Footer() {
       type: "whatsapp",
       icon: "fab fa-whatsapp",
       label: t("phone_number"),
-      href: "https://wa.me/905550004000",
+      href: "https://wa.me/" + DEFAULT_WHATSAPP_NUMBER,
     },
     {
       type: "email",
@@ -222,7 +223,7 @@ export default function Footer() {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/905550004000"
+        href={`https://wa.me/${DEFAULT_WHATSAPP_NUMBER}`}
         target="_blank"
         rel="noopener noreferrer"
         title={t("whatsapp_contact")}

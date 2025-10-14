@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import backgroundImage from "../assets/10.png";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+import { DEFAULT_WHATSAPP_NUMBER } from "@/config/whatsapp";
 
 export default function About() {
   const { t } = useTranslation();
@@ -224,7 +225,9 @@ export default function About() {
           </p>
 
           <button
-            onClick={() => window.open("https://wa.me/905550004000", "_blank")}
+            onClick={() =>
+              window.open("https://wa.me/" + DEFAULT_WHATSAPP_NUMBER, "_blank")
+            }
             className="mt-8 px-6 sm:px-8 md:px-10 py-3 md:py-4 rounded-full text-sm sm:text-base md:text-lg font-bold hover:opacity-90 transform hover:scale-105 transition-all duration-300"
             style={{ backgroundColor: "#fff", color: "#203F84" }}
           >
