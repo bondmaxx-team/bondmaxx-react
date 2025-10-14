@@ -55,7 +55,7 @@ function LayoutWithHeader() {
   return (
     <>
       <Header />
-      <main className={isHomePage ? "" : "mt-24 sm:mt-28"}>
+      <main>
         <Outlet />
       </main>
       <Footer />

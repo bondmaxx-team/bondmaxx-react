@@ -152,7 +152,7 @@ const ColorCollection = () => {
 
   return (
     <section
-      className="py-24 bg-gradient-to-br from-gray-50 to-white mt-[70px]"
+      className="py-24 bg-gradient-to-br from-gray-50 to-white"
       dir={isRTL ? "rtl" : "ltr"}
     >
       <div className="max-w-7xl mx-auto px-6">
