@@ -56,31 +56,19 @@ const SearchDealerPage = ({
   const [showResults, setShowResults] = useState(false);
 
   const handleLocationClick = () => {
-    if (!navigator.geolocation) {
-      toast.error(t("location_not_supported"));
-      return;
-    }
-
     setIsLoading(true);
     setShowResults(false);
 
-    navigator.geolocation.getCurrentPosition(
-      () => {
-        const updatedDealers = initialDealers.map((dealer) => ({
-          ...dealer,
-          distance: "2.5 " + t("distance_km"),
-        }));
-        setTimeout(() => {
-          setFilteredDealers(updatedDealers);
-          setIsLoading(false);
-          setShowResults(true);
-        }, 1500);
-      },
-      () => {
-        toast.error(t("location_error"));
-        setIsLoading(false);
-      }
-    );
+    const updatedDealers = initialDealers.map((dealer) => ({
+      ...dealer,
+      distance: "2.5 " + t("distance_km"),
+    }));
+
+    setTimeout(() => {
+      setFilteredDealers(updatedDealers);
+      setIsLoading(false);
+      setShowResults(true);
+    }, 1000);
   };
 
   return (
