@@ -15,7 +15,7 @@ const ImprintPage = () => {
           <strong>{t("company_name")}</strong>
         </p>
         <p className="mb-4">
-          <strong>{t("address")}:</strong> maarat alnasan, Idlib, Syria
+          <strong>{t("address")}:</strong> {t("Address")}
         </p>
         <p className="mb-4">
           <strong>{t("email")}:</strong>{" "}
@@ -29,12 +29,16 @@ const ImprintPage = () => {
         <p className="mb-4">
           <strong>{t("phone")}:</strong>{" "}
           <a
-            href="tel:+90 536 792 65 56"
-            className="text-blue-600 hover:underline"
+            href="tel:+963933993929"
+            className={`text-blue-600 hover:underline ${
+              i18n.language === "ar" ? "text-right" : "text-left"
+            }`}
+            dir={i18n.language === "ar" ? "rtl" : "ltr"}
           >
-            +90 536 792 65 56
+            +963 933 993 929
           </a>
         </p>
+
         <p className="mb-4">
           <strong>{t("website")}:</strong>{" "}
           <a
