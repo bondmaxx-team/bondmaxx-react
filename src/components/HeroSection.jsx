@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import heroImage from "../assets/22.jpeg";
-import heroImage1 from "../assets/car1.jpg";
+import heroImage1 from "../assets/car1_11zon.jpg";
 import heroImage2 from "../assets/fire1.jpg";
 
 const HeroSection = ({ onDiscoverColors }) => {
@@ -83,7 +83,7 @@ const HeroSection = ({ onDiscoverColors }) => {
   const showFullContent = slides[currentSlide].showFullContent;
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center mb-28">
       {/* صور السلايدر */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
@@ -94,7 +94,7 @@ const HeroSection = ({ onDiscoverColors }) => {
             }`}
           >
             <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-100"
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat "
               style={{
                 backgroundImage: `url(${slide.image})`,
               }}
@@ -105,7 +105,7 @@ const HeroSection = ({ onDiscoverColors }) => {
       </div>
 
       {/* أسهم التنقل - تحت الهيرو */}
-      <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-4">
+      <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 z-30 flex items-center gap-4">
         <button
           onClick={prevSlide}
           className="bg-[#203F84]/80 hover:bg-[#203F84] backdrop-blur-md p-3 md:p-4 rounded-full transition-all duration-300 border border-[#203F84] shadow-xl group"
@@ -121,7 +121,7 @@ const HeroSection = ({ onDiscoverColors }) => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d="M15 19l-7-7 7-7"
+              d="M9 5l7 7-7 7"
             />
           </svg>
         </button>
@@ -135,7 +135,7 @@ const HeroSection = ({ onDiscoverColors }) => {
               className={`h-2 md:h-3 rounded-full transition-all duration-300 ${
                 index === currentSlide
                   ? "bg-[#203F84] w-6 md:w-8 shadow-lg"
-                  : "bg-white/40 hover:bg-[#203F84]/60 w-2 md:w-3"
+                  : "bg-[#203F84] hover:bg-[#203F84]/60 w-2 md:w-3"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -157,13 +157,13 @@ const HeroSection = ({ onDiscoverColors }) => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d="M9 5l7 7-7 7"
+              d="M15 19l-7-7 7-7"
             />
           </svg>
         </button>
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col justify-center h-screen">
+      <div className="z-10 max-w-4xl mx-auto px-6 text-center flex flex-col justify-center h-screen">
         {/* المحتوى حسب السلايد */}
         {showFullContent ? (
           // الصورة الأساسية مع كل العناصر
@@ -269,10 +269,7 @@ const HeroSection = ({ onDiscoverColors }) => {
             </div>
           </>
         ) : (
-          <div
-            key={`${currentSlide}-${currentLang}`}
-            className="animate-fade-in relative"
-          >
+          <div key={`${currentSlide}-${currentLang}`}>
             {/* كلمة قريباً - في الزاوية اليمنى العلوية */}
             <div className="absolute top-4 md:top-6 right-4 md:right-8 z-20">
               <div

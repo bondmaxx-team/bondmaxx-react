@@ -51,43 +51,9 @@ const SearchDealerPage = ({
     { question: t("faq_question_4"), answer: t("faq_answer_4") },
   ];
 
-  const [searchQuery, setSearchQuery] = useState("");
   const [filteredDealers, setFilteredDealers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showResults, setShowResults] = useState(false);
-
-  const handleSearch = () => {
-    if (!searchQuery.trim()) return;
-
-    setIsLoading(true);
-    setShowResults(false);
-
-    setTimeout(() => {
-      const query = searchQuery.trim().toLowerCase();
-
-      const results = initialDealers.filter((dealer) => {
-        const city = dealer.city?.toLowerCase() || "";
-        const name = dealer.name?.toLowerCase() || "";
-        const address = dealer.address?.toLowerCase() || "";
-        const keywords = (dealer.keywords || []).map((k) => k.toLowerCase());
-
-        return (
-          city.includes(query) ||
-          name.includes(query) ||
-          address.includes(query) ||
-          keywords.some((k) => k.includes(query))
-        );
-      });
-
-      setFilteredDealers(results);
-      setIsLoading(false);
-      setShowResults(true);
-    }, 1000);
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") handleSearch();
-  };
 
   const handleLocationClick = () => {
     if (!navigator.geolocation) {
@@ -121,67 +87,49 @@ const SearchDealerPage = ({
     <div dir={isRTL ? "rtl" : "ltr"} className="relative">
       {/* Hero Section */}
       <section
-        className="bg-cover bg-center h-screen w-full flex items-center justify-center relative overflow-hidden"
+        className="bg-cover bg-center min-h-screen w-full flex items-center justify-center relative overflow-hidden py-20"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/40"></div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-2xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
+            <h1
+              className="text-5xl md:text-6xl font-bold mb-8 leading-tight drop-shadow-2xl"
+              style={{ color: "#ffffff" }}
+            >
               {title || t("dealer_page_title")}
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 mb-12">
+            <p
+              className="text-xl md:text-2xl mb-16 font-medium drop-shadow-xl"
+              style={{ color: "#ffffff" }}
+            >
               {subtitle || t("dealer_page_subtitle")}
             </p>
 
-            <div className="bg-white rounded-2xl shadow-2xl p-8 backdrop-blur-sm bg-opacity-95">
-              <div className="flex flex-col md:flex-row gap-4">
-                <button
-                  onClick={handleLocationClick}
-                  disabled={isLoading}
-                  className="flex items-center justify-center gap-3"
-                  style={{
-                    backgroundColor: "#203F84",
-                    color: "#fff",
-                    padding: "1rem 1.5rem",
-                    borderRadius: "0.75rem",
-                    fontWeight: 500,
-                    transition: "all 0.3s",
-                    transform: "scale(1)",
-                  }}
-                >
-                  {isLoading && (
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  )}
-                  <span>{t("use_current_location")}</span>
-                </button>
-
-                <div className="relative flex-1 flex items-center">
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    disabled={isLoading}
-                    placeholder={t("enter_city_name")}
-                    className={`w-full px-6 py-4 rounded-xl border border-gray-200 focus:outline-none focus:ring-2`}
-                    style={{
-                      borderColor: "#203F84",
-                      textAlign: isRTL ? "right" : "left",
-                    }}
-                  />
-                  <button
-                    onClick={handleSearch}
-                    disabled={isLoading}
-                    className={`absolute ${
-                      isRTL ? "left-2" : "right-2"
-                    } bg-gray-100 hover:bg-gray-200 p-3 rounded-lg transition-colors`}
-                  >
-                    🔍
-                  </button>
-                </div>
-              </div>
+            <div className="flex justify-center">
+              <button
+                onClick={handleLocationClick}
+                disabled={isLoading}
+                className="flex items-center justify-center gap-3 hover:scale-105 active:scale-95"
+                style={{
+                  backgroundColor: "#203F84",
+                  color: "#fff",
+                  padding: "1.25rem 3rem",
+                  borderRadius: "1rem",
+                  fontWeight: 600,
+                  fontSize: "1.1rem",
+                  transition: "all 0.3s",
+                  cursor: isLoading ? "not-allowed" : "pointer",
+                  opacity: isLoading ? 0.7 : 1,
+                  boxShadow: "0 4px 15px rgba(32, 63, 132, 0.3)",
+                }}
+              >
+                {isLoading && (
+                  <div className="w-5 h-5 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
+                )}
+                <span>{t("use_current_location")}</span>
+              </button>
             </div>
           </div>
         </div>
@@ -189,9 +137,12 @@ const SearchDealerPage = ({
 
       {/* Results Section */}
       {showResults && (
-        <section className="py-16 bg-gray-50">
+        <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+            <h2
+              className="text-4xl md:text-5xl font-bold text-center mb-16"
+              style={{ color: "#203F84" }}
+            >
               {t("nearby_stores")}
             </h2>
 
@@ -200,69 +151,80 @@ const SearchDealerPage = ({
                 {filteredDealers.map((dealer) => (
                   <div
                     key={dealer.id}
-                    className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+                    className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 border border-gray-100"
                   >
-                    <div className="relative h-48 overflow-hidden">
+                    <div className="relative h-56 overflow-hidden">
                       <img
                         src={dealer.image}
                         alt={dealer.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                       />
                       {dealer.distance && (
                         <div
                           className={`absolute top-4 ${
                             isRTL ? "right-4" : "left-4"
-                          } px-3 py-1 rounded-full text-sm font-semibold`}
+                          } px-4 py-2 rounded-full text-sm font-bold shadow-lg`}
                           style={{ backgroundColor: "#203F84", color: "#fff" }}
                         >
-                          {dealer.distance}
+                          📍 {dealer.distance}
                         </div>
                       )}
                     </div>
 
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    <div className="p-8">
+                      <h3
+                        className="text-2xl font-bold mb-3"
+                        style={{ color: "#203F84" }}
+                      >
                         {dealer.name}
                       </h3>
-                      <p className="text-gray-600 mb-2">{dealer.address}</p>
-                      <p className="text-gray-600 mb-2">
-                        {t("working_hours_label")}: {dealer.workingHours}
+                      <p className="text-gray-700 mb-3 flex items-start gap-2">
+                        <span className="text-lg">📍</span>
+                        <span>{dealer.address}</span>
                       </p>
-                      <div className="flex flex-wrap gap-2 mb-4">
+                      <p className="text-gray-700 mb-4 flex items-center gap-2">
+                        <span className="text-lg">🕒</span>
+                        <span>
+                          <strong>{t("working_hours_label")}:</strong>{" "}
+                          {dealer.workingHours}
+                        </span>
+                      </p>
+                      <div className="flex flex-wrap gap-3 mb-6">
                         {dealer.services.map((service, index) => (
                           <span
                             key={index}
-                            className="px-3 py-1 rounded-full text-xs font-medium"
+                            className="px-4 py-2 rounded-full text-sm font-semibold shadow-sm"
                             style={{
-                              backgroundColor: "#E0E4F0",
+                              backgroundColor: "#E8EBF5",
                               color: "#203F84",
                             }}
                           >
-                            {service}
+                            ✓ {service}
                           </span>
                         ))}
                       </div>
 
-                      <div className="flex gap-2">
+                      <div className="flex gap-3">
                         <a
                           href={`tel:${dealer.phone}`}
-                          className="flex-1 py-3 rounded-xl font-semibold text-center transition-all"
+                          className="flex-1 py-4 rounded-xl font-bold text-center transition-all hover:scale-105 active:scale-95 shadow-lg"
                           style={{ backgroundColor: "#203F84", color: "#fff" }}
                         >
-                          {t("call_now")}
+                          📞 {t("call_now")}
                         </a>
 
                         <a
                           href={dealer.mapLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 py-3 rounded-xl font-semibold text-center transition-all"
+                          className="flex-1 py-4 rounded-xl font-bold text-center transition-all hover:scale-105 active:scale-95 border-2"
                           style={{
-                            backgroundColor: "#f3f4f6",
+                            backgroundColor: "transparent",
                             color: "#203F84",
+                            borderColor: "#203F84",
                           }}
                         >
-                          {t("get_directions")}
+                          🗺️ {t("get_directions")}
                         </a>
                       </div>
                     </div>
@@ -279,22 +241,30 @@ const SearchDealerPage = ({
       )}
 
       {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2
+            className="text-4xl md:text-5xl font-bold text-center mb-16"
+            style={{ color: "#203F84" }}
+          >
             {t("faq_title")}
           </h2>
 
-          <div className="space-y-6">
+          <div className="space-y-5">
             {faqs.map((faq, index) => (
               <details
                 key={index}
-                className="bg-white rounded-2xl shadow-lg p-6 cursor-pointer transition-all duration-300"
+                className="bg-white rounded-2xl shadow-md hover:shadow-xl p-7 cursor-pointer transition-all duration-300 border border-gray-100"
               >
-                <summary className="font-semibold text-gray-900 text-lg">
+                <summary
+                  className="font-semibold text-lg"
+                  style={{ color: "#203F84" }}
+                >
                   {faq.question}
                 </summary>
-                <p className="mt-4 text-gray-600">{faq.answer}</p>
+                <p className="mt-4 text-gray-700 leading-relaxed">
+                  {faq.answer}
+                </p>
               </details>
             ))}
           </div>
