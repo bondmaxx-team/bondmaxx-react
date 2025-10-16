@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import heroImage from "../assets/22.jpeg";
-import heroImage1 from "../assets/car1.png";
-import heroImage2 from "../assets/fire1.jpg";
+import heroImage1 from "../assets/car.jpg";
+import heroImage2 from "../assets/fire .jpg";
 
 const HeroSection = ({ onDiscoverColors }) => {
   const { t, i18n } = useTranslation();
@@ -25,19 +25,23 @@ const HeroSection = ({ onDiscoverColors }) => {
       texts: {
         ar: {
           line1: "لأول مرة في سوريا تصنيع طلاء",
-          line2: "سيارات ينافس المنتجات الأوروبية",
+          line2: "سيارات ينافس المنتجات",
+          line3: "الأوروبية",
         },
         en: {
-          line1: "For the first time in Syria, manufacturing paint",
-          line2: "Cars competing with European products",
+          line1: "For the first time in Syria",
+          line2: "manufacturing paint",
+          line3: "Cars competing with European products",
         },
         tr: {
-          line1: "Suriye'de ilk kez boya üretimi",
-          line2: "Avrupa ürünleriyle rekabet eden arabalar",
+          line1: "Suriye'de ilk kez",
+          line2: "boya üretimi",
+          line3: "Avrupa ürünleriyle rekabet eden arabalar",
         },
         de: {
-          line1: "Zum ersten Mal in Syrien Farbherstellung",
-          line2: "Autos konkurrieren mit europäischen Produkten",
+          line1: "Zum ersten Mal in Syrien",
+          line2: "Farbherstellung",
+          line3: "Autos konkurrieren mit europäischen Produkten",
         },
       },
     },
@@ -83,8 +87,12 @@ const HeroSection = ({ onDiscoverColors }) => {
   const showFullContent = slides[currentSlide].showFullContent;
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center mb-28">
-      {/* صور السلايدر */}
+    <section
+      className="relative min-h-screen flex items-center justify-center mb-28"
+      style={{
+        fontFamily: "'Cairo', 'Tajawal', 'IBM Plex Sans Arabic', sans-serif",
+      }}
+    >
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
           <div
@@ -99,7 +107,6 @@ const HeroSection = ({ onDiscoverColors }) => {
                 backgroundImage: `url(${slide.image})`,
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/30 to-black/50" />
           </div>
         ))}
       </div>
@@ -163,11 +170,11 @@ const HeroSection = ({ onDiscoverColors }) => {
         </button>
       </div>
 
-      <div className="z-10 max-w-4xl mx-auto px-6 text-center flex flex-col justify-center h-screen">
+      <div className="z-10 w-full px-6 flex flex-col justify-center h-screen">
         {/* المحتوى حسب السلايد */}
         {showFullContent ? (
           // الصورة الأساسية مع كل العناصر
-          <>
+          <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight">
               <span className="text-white drop-shadow-2xl block mb-3 sm:mb-4">
                 {t("main_title")}
@@ -177,6 +184,8 @@ const HeroSection = ({ onDiscoverColors }) => {
                 className="inline-block px-8 sm:px-10 md:px-12 py-3 sm:py-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl rounded-full border border-white/40 bg-white/10 backdrop-blur-md text-[#203F84] font-extrabold shadow-lg hover:bg-white/20 hover:shadow-2xl transition-all duration-300 relative"
                 style={{
                   textShadow: "0 0 5px white",
+                  fontFamily: "'Montserrat', 'Poppins', sans-serif",
+                  fontWeight: 900,
                 }}
               >
                 BONDMAXX
@@ -221,7 +230,7 @@ const HeroSection = ({ onDiscoverColors }) => {
               </button>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-16 max-w-4xl mx-auto">
+            <div className="grid grid-cols-3 gap-3 md:gap-6 pt-12 md:pt-16 max-w-2xl mx-auto px-2">
               {[
                 {
                   icon: "fa-hand-holding-usd",
@@ -250,126 +259,83 @@ const HeroSection = ({ onDiscoverColors }) => {
               ].map((feature, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center justify-center gap-2 text-white group"
+                  className="flex flex-col items-center justify-center gap-1.5 text-white group"
                 >
-                  <div className="flex items-center justify-center w-14 h-14 rounded-full backdrop-blur-md bg-gradient-to-br from-white/20 to-white/10 border-2 border-white/30 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <div className="flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full backdrop-blur-md bg-gradient-to-br from-white/20 to-white/10 border-2 border-white/30 shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <i
-                      className={`fas ${feature.icon} text-xl text-[#203F84]`}
+                      className={`fas ${feature.icon} text-base md:text-xl text-[#203F84]`}
                       style={{
                         filter: "drop-shadow(0 0 3px rgba(255, 255, 255, 0.8))",
                         textShadow: "0 0 3px rgba(255, 255, 255, 0.8)",
                       }}
                     />
                   </div>
-                  <span className="font-semibold text-sm text-blue-50 text-center">
+                  <span className="font-semibold text-[10px] md:text-sm text-blue-50 text-center leading-tight px-1">
                     {feature.text}
                   </span>
                 </div>
               ))}
             </div>
-          </>
+          </div>
         ) : (
-          <div key={`${currentSlide}-${currentLang}`}>
-            {/* كلمة قريباً - في الزاوية اليمنى العلوية */}
-            <div className="absolute top-4 md:top-6 right-4 md:right-8 z-20">
+          <div key={`${currentSlide}-${currentLang}`} className="w-full">
+            {/* كلمة قريباً - على اليمين فوق الكتابة */}
+            <div className="flex justify-end mr-8 md:mr-16 mb-4 md:mb-6">
               <div
-                className="inline-block px-6 md:px-8 py-2 md:py-2.5 text-lg md:text-xl lg:text-2xl rounded-xl border-2 border-[#203F84]/70 bg-gradient-to-br from-[#203F84]/20 to-[#203F84]/10 backdrop-blur-md text-white font-bold shadow-2xl"
+                className="inline-flex items-center gap-3 px-8 md:px-12 py-3 md:py-4 text-xl md:text-2xl lg:text-3xl rounded-2xl border-2 border-[#203F84]/50 bg-[#203F84]/20 backdrop-blur-xl text-white font-bold shadow-2xl"
                 style={{
                   textShadow:
-                    "0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(32, 63, 132, 0.6)",
+                    "0 0 15px rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 255, 255, 0.5)",
+                  fontWeight: 800,
                 }}
               >
-                {currentLang === "ar" && "قريباً"}
-                {currentLang === "en" && "Coming Soon"}
-                {currentLang === "tr" && "Yakında"}
-                {currentLang === "de" && "Demnächst"}
+                <i className="fas fa-bell text-white animate-pulse"></i>
+                <span>
+                  {currentLang === "ar" && "قريباً"}
+                  {currentLang === "en" && "Coming Soon"}
+                  {currentLang === "tr" && "Yakında"}
+                  {currentLang === "de" && "Demnächst"}
+                </span>
               </div>
             </div>
 
-            <div className="space-y-4 md:space-y-6 max-w-5xl mx-auto pt-16 md:pt-20">
-              {/* العنوان الرئيسي */}
-              <div className="space-y-2 md:space-y-3">
+            {/* العناوين الرئيسية - في اليمين */}
+            <div className="text-right max-w-6xl ml-auto mr-8 md:mr-16 space-y-3 md:space-y-4 mb-10 md:mb-16">
+              <h2
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-tight"
+                style={{
+                  textShadow:
+                    "0 0 30px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.6), 0 4px 25px rgba(0, 0, 0, 0.8)",
+                  filter: "drop-shadow(0 15px 40px rgba(0, 0, 0, 0.7))",
+                  fontWeight: 900,
+                }}
+              >
+                {currentText.line1}
+              </h2>
+              <h2
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-tight"
+                style={{
+                  textShadow:
+                    "0 0 30px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.6), 0 4px 25px rgba(0, 0, 0, 0.8)",
+                  filter: "drop-shadow(0 15px 40px rgba(0, 0, 0, 0.7))",
+                  fontWeight: 900,
+                }}
+              >
+                {currentText.line2}
+              </h2>
+              {currentText.line3 && (
                 <h2
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight px-4"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-tight"
                   style={{
                     textShadow:
-                      "0 0 20px rgba(32, 63, 132, 0.8), 0 0 40px rgba(32, 63, 132, 0.6), 0 0 60px rgba(32, 63, 132, 0.4)",
-                    filter: "drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5))",
+                      "0 0 30px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.6), 0 4px 25px rgba(0, 0, 0, 0.8)",
+                    filter: "drop-shadow(0 15px 40px rgba(0, 0, 0, 0.7))",
+                    fontWeight: 900,
                   }}
                 >
-                  {currentText.line1}
+                  {currentText.line3}
                 </h2>
-                <h2
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight px-4"
-                  style={{
-                    textShadow:
-                      "0 0 20px rgba(32, 63, 132, 0.8), 0 0 40px rgba(32, 63, 132, 0.6), 0 0 60px rgba(32, 63, 132, 0.4)",
-                    filter: "drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5))",
-                  }}
-                >
-                  {currentText.line2}
-                </h2>
-                {currentText.line3 && (
-                  <h2
-                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight px-4"
-                    style={{
-                      textShadow:
-                        "0 0 20px rgba(32, 63, 132, 0.8), 0 0 40px rgba(32, 63, 132, 0.6), 0 0 60px rgba(32, 63, 132, 0.4)",
-                      filter: "drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5))",
-                    }}
-                  >
-                    {currentText.line3}
-                  </h2>
-                )}
-              </div>
-
-              {/* خط فاصل مع تأثير وهج */}
-              <div className="flex justify-center items-center gap-3 py-3">
-                <div className="h-0.5 w-16 md:w-24 bg-gradient-to-r from-transparent via-[#203F84] to-transparent rounded-full opacity-60"></div>
-                <div className="w-2 h-2 rounded-full bg-[#203F84] animate-pulse shadow-lg shadow-[#203F84]/50"></div>
-                <div className="h-0.5 w-16 md:w-24 bg-gradient-to-r from-transparent via-[#203F84] to-transparent rounded-full opacity-60"></div>
-              </div>
-
-              <div className="flex justify-center">
-                <div
-                  className="inline-block px-6 md:px-10 py-2 md:py-3 text-xl md:text-2xl lg:text-3xl rounded-full border-2 border-white/40 bg-white/10 backdrop-blur-md text-[#203F84] font-extrabold shadow-xl hover:bg-white/20 hover:shadow-2xl transition-all duration-300"
-                  style={{
-                    textShadow: "0 0 15px rgba(255, 255, 255, 0.8)",
-                  }}
-                >
-                  BONDMAXX
-                </div>
-              </div>
-
-              <div className="flex justify-center gap-4 md:gap-6 pt-3">
-                {[
-                  {
-                    icon: "fa-certificate",
-                    text: currentSlide === 1 ? "معتمد دولياً" : "حماية كاملة",
-                  },
-                  { icon: "fa-star", text: "جودة مضمونة" },
-                  { icon: "fa-shield-alt", text: "ضمان طويل" },
-                ].map((feature, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col items-center gap-1.5 group"
-                  >
-                    <div className="flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full backdrop-blur-md bg-gradient-to-br from-white/20 to-white/10 border-2 border-white/30 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <i
-                        className={`fas ${feature.icon} text-base md:text-xl text-[#203F84]`}
-                        style={{
-                          filter:
-                            "drop-shadow(0 0 5px rgba(255, 255, 255, 0.9))",
-                          textShadow: "0 0 5px rgba(255, 255, 255, 0.9)",
-                        }}
-                      />
-                    </div>
-                    <span className="text-[10px] md:text-xs font-bold text-white text-center">
-                      {feature.text}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              )}
             </div>
           </div>
         )}
