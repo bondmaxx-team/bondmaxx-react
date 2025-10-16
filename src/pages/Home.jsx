@@ -10,6 +10,7 @@ import ProductSlider from "../components/ProductSlider";
 import oilPaintsProducts from "../data/oilPaintsProducts";
 import waterPaintsProducts from "../data/waterPaintsProducts";
 import epoxyProducts from "../data/epoxyProducts";
+import accessoriesProducts from "../data/accessoriesProducts"; // إضافة الملحقات
 
 export default function Home() {
   const location = useLocation();
@@ -194,6 +195,22 @@ export default function Home() {
                   productType="epoxy"
                   color="#203F84"
                   linkTo="/epoxy"
+                />
+              </motion.div>
+
+              {/* سلايدر الملحقات - جديد */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.45 }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                <ProductSlider
+                  title="accessories"
+                  products={accessoriesProducts}
+                  productType="accessories"
+                  color="#203F84"
+                  linkTo="/accessories"
                 />
               </motion.div>
             </div>
