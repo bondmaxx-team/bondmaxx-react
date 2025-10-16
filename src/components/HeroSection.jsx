@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import heroImage from "../assets/22.jpeg";
-import heroImage1 from "../assets/car1_11zon.jpg";
+import heroImage1 from "../assets/car1.png";
 import heroImage2 from "../assets/fire1.jpg";
 
 const HeroSection = ({ onDiscoverColors }) => {
@@ -89,7 +89,7 @@ const HeroSection = ({ onDiscoverColors }) => {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
+            className={`absolute inset-0 transition-opacity duration-1000  ${
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           >
