@@ -16,7 +16,7 @@ const ColorsPage = ({
   subtitle,
   productType,
 }) => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
   const lang = i18n.language;
   const navigate = useNavigate();
@@ -34,9 +34,73 @@ const ColorsPage = ({
   const [selectedWeight, setSelectedWeight] = useState("");
   const [selectedQuality, setSelectedQuality] = useState("");
 
-  const availableWeights = ["1kg", "4kg", "10kg", "20kg", "25kg"];
+  // ----------------- Filter Labels -----------------
+  const filterLabels = {
+    weight: { en: "Weight", tr: "Ağırlık", de: "Gewicht", ar: "الوزن" },
+    quality: { en: "Quality", tr: "Kalite", de: "Qualität", ar: "الجودة" },
+    all: { en: "All", tr: "Hepsi", de: "Alle", ar: "الكل" },
+    clearAll: {
+      en: "Clear All",
+      tr: "Hepsini Temizle",
+      de: "Alle löschen",
+      ar: "مسح الفلاتر",
+    },
+    searchPlaceholder: {
+      en: "Search product",
+      tr: "Ürün ara",
+      de: "Produkt suchen",
+      ar: "ابحث عن منتج",
+    },
+    searchButton: { en: "Search", tr: "Ara", de: "Suchen", ar: "بحث" },
+    noResults: {
+      en: "No results",
+      tr: "Sonuç yok",
+      de: "Keine Ergebnisse",
+      ar: "لا توجد نتائج",
+    },
+    noResultsMessage: {
+      en: "Try searching with different keywords",
+      tr: "Farklı anahtar kelimelerle aramayı deneyin",
+      de: "Versuchen Sie es mit anderen Suchbegriffen",
+      ar: "حاول البحث بكلمات أخرى",
+    },
+    productsCountOf: { en: "of", tr: "den", de: "von", ar: "من" },
+    productsCountProduct: {
+      en: "products",
+      tr: "ürün",
+      de: "Produkte",
+      ar: "منتج",
+    },
+  };
 
-  const availableQualities = ["gold", "normal"];
+  // ----------------- Available Weights & Qualities -----------------
+  const availableWeights = [
+    { value: "1kg", label: { en: "1 kg", ar: "1 كغ", de: "1 kg", tr: "1 kg" } },
+    { value: "4kg", label: { en: "4 kg", ar: "4 كغ", de: "4 kg", tr: "4 kg" } },
+    {
+      value: "10kg",
+      label: { en: "10 kg", ar: "10 كغ", de: "10 kg", tr: "10 kg" },
+    },
+    {
+      value: "20kg",
+      label: { en: "20 kg", ar: "20 كغ", de: "20 kg", tr: "20 kg" },
+    },
+    {
+      value: "25kg",
+      label: { en: "25 kg", ar: "25 كغ", de: "25 kg", tr: "25 kg" },
+    },
+  ];
+
+  const availableQualities = [
+    {
+      value: "gold",
+      label: { en: "Gold", ar: "ذهبي", de: "Gold", tr: "Altın" },
+    },
+    {
+      value: "normal",
+      label: { en: "Normal", ar: "عادي", de: "Normal", tr: "Normal" },
+    },
+  ];
 
   // ----------------- Categories Memo -----------------
   const categories = useMemo(() => {
@@ -164,7 +228,7 @@ const ColorsPage = ({
           <div className="relative flex flex-col sm:flex-row gap-2">
             <input
               type="search"
-              placeholder={t("search_product") || "ابحث عن منتج"}
+              placeholder={filterLabels.searchPlaceholder[lang]}
               value={searchQuery}
               onChange={onSearchChange}
               onKeyPress={handleKeyPress}
@@ -175,7 +239,7 @@ const ColorsPage = ({
               onClick={onSearchSubmit}
               className="px-4 py-3 bg-[#203F84] text-white rounded-lg hover:bg-[#1a3366] transition"
             >
-              {t("search_button") || "بحث"}
+              {filterLabels.searchButton[lang]}
             </button>
           </div>
 
@@ -218,17 +282,17 @@ const ColorsPage = ({
           {/* Weight Filter */}
           <div>
             <label className="block mb-1 font-semibold text-gray-700">
-              {t("weight") || "الوزن"}
+              {filterLabels.weight[lang]}
             </label>
             <select
               value={selectedWeight}
               onChange={(e) => setSelectedWeight(e.target.value)}
               className="rounded-lg border border-gray-300 px-3 py-2 focus:outline-none"
             >
-              <option value="">{t("all") || "الكل"}</option>
+              <option value="">{filterLabels.all[lang]}</option>
               {availableWeights.map((w) => (
-                <option key={w} value={w}>
-                  {w} {t("kg") || "كجم"}
+                <option key={w.value} value={w.value}>
+                  {w.label[lang]}
                 </option>
               ))}
             </select>
@@ -237,17 +301,17 @@ const ColorsPage = ({
           {/* Quality Filter */}
           <div>
             <label className="block mb-1 font-semibold text-gray-700">
-              {t("quality") || "الجودة"}
+              {filterLabels.quality[lang]}
             </label>
             <select
               value={selectedQuality}
               onChange={(e) => setSelectedQuality(e.target.value)}
               className="rounded-lg border border-gray-300 px-3 py-2 focus:outline-none"
             >
-              <option value="">{t("all") || "الكل"}</option>
+              <option value="">{filterLabels.all[lang]}</option>
               {availableQualities.map((q) => (
-                <option key={q} value={q}>
-                  {q.charAt(0).toUpperCase() + q.slice(1)}
+                <option key={q.value} value={q.value}>
+                  {q.label[lang]}
                 </option>
               ))}
             </select>
@@ -262,7 +326,7 @@ const ColorsPage = ({
               onClick={clearFilters}
               className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition self-end"
             >
-              {t("clear_all") || "مسح الفلاتر"}
+              {filterLabels.clearAll[lang]}
             </button>
           )}
         </div>
@@ -273,9 +337,9 @@ const ColorsPage = ({
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
           <div className="text-sm text-gray-600">
             <span className="font-semibold">{filteredProducts.length}</span>{" "}
-            {t("products_count_of") || "من"}{" "}
+            {filterLabels.productsCountOf[lang]}{" "}
             <span className="font-semibold">{productsData.length}</span>{" "}
-            {t("products_count_product") || "منتج"}
+            {filterLabels.productsCountProduct[lang]}
           </div>
 
           {activeCategory && (
@@ -309,10 +373,10 @@ const ColorsPage = ({
               <i className="fas fa-search text-3xl text-gray-400"></i>
             </div>
             <h3 className="mt-4 text-lg font-medium">
-              {t("no_results") || "لا توجد نتائج"}
+              {filterLabels.noResults[lang]}
             </h3>
             <p className="mt-2 text-sm">
-              {t("no_results_search_message") || "حاول البحث بكلمات أخرى"}
+              {filterLabels.noResultsMessage[lang]}
             </p>
           </div>
         )}
