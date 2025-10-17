@@ -7,6 +7,8 @@ const puttyProducts = [
     id: 602,
     type: "putty",
     category: "Filler",
+    quality: "normal",
+    weight: "1kg",
     image: Image1,
     name: {
       en: "Wall Sealer Putty",
@@ -136,6 +138,8 @@ const puttyProducts = [
     id: 603,
     type: "putty",
     category: "drywall",
+    quality: "normal",
+    weight: "1kg",
     image: Image2,
     name: {
       en: "Gypsum Board Thick Putty",
@@ -264,6 +268,8 @@ const puttyProducts = [
     id: 604,
     type: "putty",
     category: "caulk",
+    quality: "normal",
+    weight: "1kg",
     image: Image3,
     name: {
       en: "Interior & Exterior Silicone Putty",

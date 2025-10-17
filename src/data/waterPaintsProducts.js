@@ -7,6 +7,8 @@ const waterPaintsProducts = [
     id: 201,
     type: "water-paints",
     category: "emulsion",
+    quality: "normal",
+    weight: "1kg",
     image: Image1,
     name: {
       en: "Bondmax Emulsion Wall Paint",
@@ -171,6 +173,8 @@ const waterPaintsProducts = [
     id: 202,
     type: "water-paints",
     category: "acrylic",
+    quality: "normal",
+    weight: "1kg",
     image: Image2,
     name: {
       en: "Bondmax Acrylic / Latex Wall Paint",
@@ -335,6 +339,8 @@ const waterPaintsProducts = [
     id: 203,
     type: "water-paints",
     category: "silicone",
+    quality: "normal",
+    weight: "1kg",
     image: Image3,
     name: {
       en: "Bondmax Silicone-Based Wall Paint",

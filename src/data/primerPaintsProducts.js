@@ -9,6 +9,8 @@ const primerPaintsProducts = [
     id: 401,
     type: "primer-paints",
     category: "water-based",
+    quality: "normal",
+    weight: "1kg",
     image: Image1,
     name: {
       en: "White Water Based Sealer",
@@ -171,6 +173,8 @@ const primerPaintsProducts = [
     id: 402,
     type: "primer-paints",
     category: "water-based",
+    quality: "normal",
+    weight: "1kg",
     image: Image2,
     name: {
       en: "Transparent Water Based Sealer",
@@ -333,6 +337,8 @@ const primerPaintsProducts = [
     id: 403,
     type: "primer-paints",
     category: "water-based",
+    quality: "normal",
+    weight: "1kg",
     image: Image3,
     name: {
       en: "Water Based Undercoat",
@@ -500,6 +506,8 @@ const primerPaintsProducts = [
     id: 404,
     type: "primer-paints",
     category: "solvent-based",
+    quality: "normal",
+    weight: "1kg",
     image: Image4,
     name: {
       en: "Oil Based Undercoat",
@@ -666,6 +674,8 @@ const primerPaintsProducts = [
     id: 405,
     type: "primer-paints",
     category: "metal",
+    quality: "normal",
+    weight: "1kg",
     image: Image5,
     name: {
       en: "Red Oxide Primer",

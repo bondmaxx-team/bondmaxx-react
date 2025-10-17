@@ -5,6 +5,8 @@ const exteriorProducts = [
     id: 1,
     category: "walls",
     image: testImage,
+    quality: "normal",
+    weight: "1kg",
     name: {
       en: "Bondmax Weatherproof Exterior Paint",
       ar: "دهان خارجي بوندماكس مقاوم للعوامل الجوية",
@@ -151,6 +153,8 @@ const exteriorProducts = [
   {
     id: 2,
     category: "walls",
+    quality: "normal",
+    weight: "1kg",
     image: testImage,
     name: {
       en: "Bondmax Roof Shield",
@@ -291,6 +295,8 @@ const exteriorProducts = [
   {
     id: 3,
     category: "walls",
+    quality: "normal",
+    weight: "1kg",
     image: testImage,
     name: {
       en: "Bondmax Exterior Primer",
@@ -425,6 +431,8 @@ const exteriorProducts = [
   {
     id: 4,
     category: "walls",
+    quality: "normal",
+    weight: "1kg",
     image: testImage,
     name: {
       en: "Bondmax WoodGuard Exterior Varnish",
@@ -563,6 +571,8 @@ const exteriorProducts = [
   {
     id: 5,
     category: "ceilings",
+    quality: "normal",
+    weight: "1kg",
     image: testImage,
     name: {
       en: "Bondmax Stone & Concrete Sealer",

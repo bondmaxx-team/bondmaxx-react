@@ -6,6 +6,8 @@ const insulationProducts = [
     id: 1,
     image: Image1,
     category: "interior-waterproof",
+    quality: "Economy",
+    weight: "1kg",
     name: {
       en: "Internal Waterproof Wall Coating",
       ar: "عازل الجدران والرطوبة المائي الداخلي",
@@ -143,6 +145,8 @@ const insulationProducts = [
     id: 2,
     image: Image2,
     category: "exterior-waterproof",
+    quality: "Economy",
+    weight: "1kg",
     name: {
       en: "External Waterproof Wall Coating",
       ar: "عازل الجدران والرطوبة المائي الخارجي",
@@ -274,6 +278,8 @@ const insulationProducts = [
     id: 3,
     image: Image3,
     category: "empty-insulation",
+    quality: "Economy",
+    weight: "1kg",
     name: {
       en: "Elastic Bituminous Waterproof Coating",
       ar: "تربروف نفضي (للأسطح، المعادن، الجدران)",

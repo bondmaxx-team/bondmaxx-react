@@ -10,6 +10,8 @@ const epoxyProducts = [
     id: 501,
     type: "epoxy",
     category: "marine",
+    quality: "normal",
+    weight: "1kg",
     image: Image1,
     name: {
       en: "Bondmax Marine Epoxy Coating",
@@ -156,6 +158,8 @@ const epoxyProducts = [
     id: 502,
     type: "epoxy",
     category: "floor",
+    quality: "normal",
+    weight: "1kg",
     image: Image2,
     name: {
       en: "Bondmax Industrial Floor Coating",
@@ -302,6 +306,8 @@ const epoxyProducts = [
     id: 503,
     type: "epoxy",
     category: "interior",
+    quality: "normal",
+    weight: "1kg",
     image: Image3,
     name: {
       en: "Bondmax Interior Wall Epoxy",
@@ -448,6 +454,8 @@ const epoxyProducts = [
     id: 505,
     type: "epoxy",
     category: "metal",
+    quality: "normal",
+    weight: "1kg",
     image: Image4,
     name: {
       en: "Bondmax Metal Protection Epoxy",
@@ -592,6 +600,8 @@ const epoxyProducts = [
     id: 503,
     type: "epoxy",
     category: "exterior",
+    quality: "normal",
+    weight: "1kg",
     image: Image5,
     name: {
       en: "Bondmax outerior Wall Epoxy",

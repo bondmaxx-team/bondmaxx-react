@@ -26,11 +26,19 @@ const ColorsPage = ({
     navigate(`/product-details?id=${product.id}&type=${productType}`);
   };
 
+  // ----------------- States -----------------
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState(productsData);
   const [activeCategory, setActiveCategory] = useState(null);
   const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
+  const [selectedWeight, setSelectedWeight] = useState("");
+  const [selectedQuality, setSelectedQuality] = useState("");
 
+  const availableWeights = ["1kg", "4kg", "10kg", "20kg", "25kg"];
+
+  const availableQualities = ["gold", "normal"];
+
+  // ----------------- Categories Memo -----------------
   const categories = useMemo(() => {
     return categoriesData.map((c) => ({
       ...c,
@@ -44,6 +52,7 @@ const ColorsPage = ({
     }));
   }, [categoriesData, lang]);
 
+  // ----------------- Apply Filters -----------------
   const applyFilter = useCallback(() => {
     const q = searchQuery.toLowerCase().trim();
 
@@ -80,27 +89,42 @@ const ColorsPage = ({
           p.categoryKey === activeCategory ||
           categoryName === activeCategory;
 
-      return matchActiveCategory;
+      const matchWeight = !selectedWeight
+        ? true
+        : p.weight?.toString() === selectedWeight;
+
+      const matchQuality = !selectedQuality
+        ? true
+        : p.quality?.toString() === selectedQuality;
+
+      return matchActiveCategory && matchWeight && matchQuality;
     });
 
     setFilteredProducts(next);
-  }, [productsData, lang, searchQuery, activeCategory]);
+  }, [
+    productsData,
+    lang,
+    searchQuery,
+    activeCategory,
+    selectedWeight,
+    selectedQuality,
+  ]);
 
   useEffect(() => setFilteredProducts(productsData), [productsData]);
   useEffect(() => applyFilter(), [applyFilter]);
 
-  // إخفاء القائمة عند الضغط خارجها
+  // ----------------- Click Outside Dropdown -----------------
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
         setShowCategoryDropdown(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // ----------------- Handlers -----------------
   const onSearchChange = (e) => setSearchQuery(e.target.value);
   const onSearchSubmit = () => applyFilter();
   const handleKeyPress = (e) => e.key === "Enter" && onSearchSubmit();
@@ -115,6 +139,14 @@ const ColorsPage = ({
     setShowCategoryDropdown(false);
   };
 
+  const clearFilters = () => {
+    setSelectedWeight("");
+    setSelectedQuality("");
+    setSearchQuery("");
+    setActiveCategory(null);
+  };
+
+  // ----------------- Render -----------------
   return (
     <div
       className="bg-gradient-to-b from-blue-50 to-blue-100 min-h-screen"
@@ -129,134 +161,109 @@ const ColorsPage = ({
 
         {/* Search with Category Dropdown */}
         <div className="max-w-3xl w-full relative" ref={searchRef}>
-          <div className="relative flex flex-col sm:flex-row">
-            {isRTL ? (
-              <>
-                <button
-                  type="button"
-                  onClick={onSearchSubmit}
-                  className="shrink-0 rounded-t-xl sm:rounded-s-xl sm:rounded-e-none sm:rounded-b-xl px-5 md:px-8 py-3 md:py-4 text-white font-semibold focus:outline-none transition-all duration-300"
-                  style={{
-                    background:
-                      "linear-gradient(to bottom right, #203F84, #1a3366)",
-                    boxShadow: "0 4px 6px rgba(32, 63, 132, 0.2)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background =
-                      "linear-gradient(to bottom right, #1a3366, #142952)";
-                    e.currentTarget.style.transform = "scale(1.02)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background =
-                      "linear-gradient(to bottom right, #203F84, #1a3366)";
-                    e.currentTarget.style.transform = "scale(1)";
-                  }}
-                >
-                  {t("search_button")}
-                </button>
-                <input
-                  type="search"
-                  placeholder={t("search_product")}
-                  value={searchQuery}
-                  onChange={onSearchChange}
-                  onKeyPress={handleKeyPress}
-                  onFocus={() => setShowCategoryDropdown(true)}
-                  onMouseEnter={() => setShowCategoryDropdown(true)}
-                  className="w-full rounded-b-xl sm:rounded-e-xl sm:rounded-s-none sm:rounded-b-xl border border-gray-300 bg-white/60 ps-4 pe-4 py-3 md:py-4 text-base focus:outline-none transition"
-                  style={{
-                    borderColor: showCategoryDropdown ? "#203F84" : "#d1d5db",
-                  }}
-                />
-              </>
-            ) : (
-              <>
-                <input
-                  type="search"
-                  placeholder={t("search_product")}
-                  value={searchQuery}
-                  onChange={onSearchChange}
-                  onKeyPress={handleKeyPress}
-                  onFocus={() => setShowCategoryDropdown(true)}
-                  onMouseEnter={() => setShowCategoryDropdown(true)}
-                  className="w-full rounded-t-xl sm:rounded-s-xl sm:rounded-e-none sm:rounded-b-xl border border-gray-300 bg-white/60 pl-4 pr-4 py-3 md:py-4 text-base focus:outline-none transition"
-                  style={{
-                    borderColor: showCategoryDropdown ? "#203F84" : "#d1d5db",
-                  }}
-                />
-                <button
-                  type="button"
-                  onClick={onSearchSubmit}
-                  className="shrink-0 rounded-b-xl sm:rounded-e-xl sm:rounded-s-none sm:rounded-b-xl px-5 md:px-8 py-3 md:py-4 text-white font-semibold focus:outline-none transition-all duration-300"
-                  style={{
-                    background:
-                      "linear-gradient(to bottom right, #203F84, #1a3366)",
-                    boxShadow: "0 4px 6px rgba(32, 63, 132, 0.2)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background =
-                      "linear-gradient(to bottom right, #1a3366, #142952)";
-                    e.currentTarget.style.transform = "scale(1.02)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background =
-                      "linear-gradient(to bottom right, #203F84, #1a3366)";
-                    e.currentTarget.style.transform = "scale(1)";
-                  }}
-                >
-                  {t("search_button")}
-                </button>
-              </>
-            )}
+          <div className="relative flex flex-col sm:flex-row gap-2">
+            <input
+              type="search"
+              placeholder={t("search_product") || "ابحث عن منتج"}
+              value={searchQuery}
+              onChange={onSearchChange}
+              onKeyPress={handleKeyPress}
+              onFocus={() => setShowCategoryDropdown(true)}
+              className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none"
+            />
+            <button
+              onClick={onSearchSubmit}
+              className="px-4 py-3 bg-[#203F84] text-white rounded-lg hover:bg-[#1a3366] transition"
+            >
+              {t("search_button") || "بحث"}
+            </button>
           </div>
 
           {showCategoryDropdown && categories.length > 0 && (
             <div className="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-2xl z-50 max-h-80 overflow-y-auto">
-              <div className="p-3">
+              <div className="p-3 flex flex-col gap-1">
                 {categories.map((cat) => {
                   const isActive = activeCategory === (cat.key || cat.name);
                   return (
                     <button
                       key={cat.id}
                       onClick={() => handleCategoryClick(cat)}
-                      className="w-full px-4 py-3 rounded-lg transition-all duration-200 flex items-center gap-3 mb-1"
-                      style={{
-                        textAlign: isRTL ? "right" : "left",
-                        direction: isRTL ? "rtl" : "ltr",
-                        backgroundColor: isActive ? "#203F84" : "transparent",
-                        color: isActive ? "white" : "#374151",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = "#203F84";
-                        e.currentTarget.style.color = "white";
-                        const img = e.currentTarget.querySelector("img");
-                        if (img) img.style.borderColor = "white";
-                      }}
-                      onMouseLeave={(e) => {
-                        if (!isActive) {
-                          e.currentTarget.style.backgroundColor = "transparent";
-                          e.currentTarget.style.color = "#374151";
-                          const img = e.currentTarget.querySelector("img");
-                          if (img) img.style.borderColor = "#e5e7eb";
-                        }
-                      }}
+                      className={`w-full px-4 py-2 rounded-lg transition flex items-center gap-3 ${
+                        isActive
+                          ? "bg-[#203F84] text-white"
+                          : "bg-transparent text-gray-700"
+                      }`}
                     >
                       {cat.image && (
                         <img
                           src={cat.image}
                           alt={cat.name}
-                          className="w-10 h-10 rounded-full object-cover border-2 shadow-sm transition-all duration-200"
-                          style={{
-                            borderColor: isActive ? "white" : "#e5e7eb",
-                          }}
+                          className="w-10 h-10 rounded-full object-cover border-2"
                         />
                       )}
-                      <span className="font-medium flex-1">{cat.name}</span>
-                      {isActive && <i className="fas fa-check text-sm"></i>}
+                      <span className="flex-1 font-medium">{cat.name}</span>
+                      {isActive && <i className="fas fa-check"></i>}
                     </button>
                   );
                 })}
               </div>
             </div>
+          )}
+        </div>
+      </section>
+
+      {/* Filters Dropdown Section */}
+      <section className="px-4 lg:px-10 py-6">
+        <div className="flex flex-wrap gap-4 mb-6">
+          {/* Weight Filter */}
+          <div>
+            <label className="block mb-1 font-semibold text-gray-700">
+              {t("weight") || "الوزن"}
+            </label>
+            <select
+              value={selectedWeight}
+              onChange={(e) => setSelectedWeight(e.target.value)}
+              className="rounded-lg border border-gray-300 px-3 py-2 focus:outline-none"
+            >
+              <option value="">{t("all") || "الكل"}</option>
+              {availableWeights.map((w) => (
+                <option key={w} value={w}>
+                  {w} {t("kg") || "كجم"}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Quality Filter */}
+          <div>
+            <label className="block mb-1 font-semibold text-gray-700">
+              {t("quality") || "الجودة"}
+            </label>
+            <select
+              value={selectedQuality}
+              onChange={(e) => setSelectedQuality(e.target.value)}
+              className="rounded-lg border border-gray-300 px-3 py-2 focus:outline-none"
+            >
+              <option value="">{t("all") || "الكل"}</option>
+              {availableQualities.map((q) => (
+                <option key={q} value={q}>
+                  {q.charAt(0).toUpperCase() + q.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Clear Filters */}
+          {(selectedWeight ||
+            selectedQuality ||
+            searchQuery ||
+            activeCategory) && (
+            <button
+              onClick={clearFilters}
+              className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition self-end"
+            >
+              {t("clear_all") || "مسح الفلاتر"}
+            </button>
           )}
         </div>
       </section>
@@ -271,7 +278,6 @@ const ColorsPage = ({
             {t("products_count_product") || "منتج"}
           </div>
 
-          {/* عرض الفئة النشطة */}
           {activeCategory && (
             <button
               onClick={() => setActiveCategory(null)}

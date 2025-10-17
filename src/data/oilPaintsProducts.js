@@ -6,6 +6,8 @@ const oilPaintsProducts = [
     id: 1,
     type: "oil-paints",
     category: "glossy",
+    quality: "normal",
+    weight: "1kg",
     image: Image1,
     name: {
       de: "Bondmax Glänzende Ölfarbe",
@@ -168,6 +170,8 @@ const oilPaintsProducts = [
     id: 2,
     type: "oil-paints",
     category: "semi-glossy",
+    quality: "normal",
+    weight: "1kg",
     image: Image2,
     name: {
       de: "Bondmax Halbglanz Email",
@@ -315,6 +319,8 @@ const oilPaintsProducts = [
     id: 3,
     type: "oil-paints",
     category: "matte",
+    quality: "normal",
+    weight: "1kg",
     image: Image3,
     name: {
       de: "Bondmax Matte",
