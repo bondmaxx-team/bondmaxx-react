@@ -1,12 +1,13 @@
-import testImage from "../assets/color-1.png";
-
+import Image1 from "../assets/Emulsion Wall Paint.png";
+import Image2 from "../assets/Acrylic Wall Paint.png";
+import Image3 from "../assets/Silicone-Based Wall Paint.png";
 const waterPaintsProducts = [
   // 🏠 Emulsion Wall Paint
   {
     id: 201,
     type: "water-paints",
     category: "emulsion",
-    image: testImage,
+    image: Image1,
     name: {
       en: "Bondmax Emulsion Wall Paint",
       ar: "دهان بوندماكس إيملشن للجدران",
@@ -170,7 +171,7 @@ const waterPaintsProducts = [
     id: 202,
     type: "water-paints",
     category: "acrylic",
-    image: testImage,
+    image: Image2,
     name: {
       en: "Bondmax Acrylic / Latex Wall Paint",
       ar: "دهان بوندماكس أكريليك / لاتكس للجدران",
@@ -334,7 +335,7 @@ const waterPaintsProducts = [
     id: 203,
     type: "water-paints",
     category: "silicone",
-    image: testImage,
+    image: Image3,
     name: {
       en: "Bondmax Silicone-Based Wall Paint",
       ar: "دهان بوندماكس سيليكون للجدران",

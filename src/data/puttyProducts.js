@@ -1,12 +1,13 @@
-import testImage from "../assets/color-1.png";
-
+import Image1 from "../assets/Wall Sealer Putty.png";
+import Image2 from "../assets/Gypsum Board Thick Putty.png";
+import Image3 from "../assets/Interior & Exterior Silicone Putty.png";
 const puttyProducts = [
   // 1. معجون سيلر لتسوية الجدران
   {
     id: 602,
     type: "putty",
-    category: "wall-sealer",
-    image: testImage,
+    category: "Filler",
+    image: Image1,
     name: {
       en: "Wall Sealer Putty",
       ar: "معجون سيلر لتسوية الجدران",
@@ -134,8 +135,8 @@ const puttyProducts = [
   {
     id: 603,
     type: "putty",
-    category: "gypsum-thick",
-    image: testImage,
+    category: "drywall",
+    image: Image2,
     name: {
       en: "Gypsum Board Thick Putty",
       ar: "معجون سماكات جبسن بورد",
@@ -262,8 +263,8 @@ const puttyProducts = [
   {
     id: 604,
     type: "putty",
-    category: "silicone-cracks",
-    image: testImage,
+    category: "caulk",
+    image: Image3,
     name: {
       en: "Interior & Exterior Silicone Putty",
       ar: "معجون سيلكون للشقوق داخلي وخارجي",

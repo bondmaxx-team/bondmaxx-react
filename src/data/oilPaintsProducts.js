@@ -1,11 +1,12 @@
-import testImage from "../assets/color-1.png";
-
+import Image1 from "../assets/Glossy Oil Paint.png";
+import Image2 from "../assets/Semi-Gloss Enamel.png";
+import Image3 from "../assets/Matte oil Paint.png";
 const oilPaintsProducts = [
   {
     id: 1,
     type: "oil-paints",
     category: "glossy",
-    image: testImage,
+    image: Image1,
     name: {
       de: "Bondmax Glänzende Ölfarbe",
       tr: "Bondmax Parlak Yağlı Boya",
@@ -167,7 +168,7 @@ const oilPaintsProducts = [
     id: 2,
     type: "oil-paints",
     category: "semi-glossy",
-    image: testImage,
+    image: Image2,
     name: {
       de: "Bondmax Halbglanz Email",
       tr: "Bondmax Yarı Parlak Emaye",
@@ -314,7 +315,7 @@ const oilPaintsProducts = [
     id: 3,
     type: "oil-paints",
     category: "matte",
-    image: testImage,
+    image: Image3,
     name: {
       de: "Bondmax Matte",
       tr: "Bondmax Mat Boya",

@@ -1,11 +1,15 @@
-import testImage from "../assets/color-1.png";
+import Image1 from "../assets/White Water Based Sealer.png";
+import Image2 from "../assets/Transparent Water Based Sealer.png";
+import Image3 from "../assets/Water Based Undercoat.png";
+import Image4 from "../assets/Oil Based Undercoat.png";
+import Image5 from "../assets/Red Oxide Primer.png";
 
 const primerPaintsProducts = [
   {
     id: 401,
     type: "primer-paints",
     category: "water-based",
-    image: testImage,
+    image: Image1,
     name: {
       en: "White Water Based Sealer",
       ar: "سيلر مائي أبيض",
@@ -167,7 +171,7 @@ const primerPaintsProducts = [
     id: 402,
     type: "primer-paints",
     category: "water-based",
-    image: testImage,
+    image: Image2,
     name: {
       en: "Transparent Water Based Sealer",
       ar: "سيلر مائي شفاف",
@@ -329,7 +333,7 @@ const primerPaintsProducts = [
     id: 403,
     type: "primer-paints",
     category: "water-based",
-    image: testImage,
+    image: Image3,
     name: {
       en: "Water Based Undercoat",
       ar: "أساس مائي",
@@ -496,7 +500,7 @@ const primerPaintsProducts = [
     id: 404,
     type: "primer-paints",
     category: "solvent-based",
-    image: testImage,
+    image: Image4,
     name: {
       en: "Oil Based Undercoat",
       ar: "أساس زيتي",
@@ -662,7 +666,7 @@ const primerPaintsProducts = [
     id: 405,
     type: "primer-paints",
     category: "metal",
-    image: testImage,
+    image: Image5,
     name: {
       en: "Red Oxide Primer",
       ar: "برايمر أكسيد أحمر",

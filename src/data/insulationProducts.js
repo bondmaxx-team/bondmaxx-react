@@ -1,8 +1,10 @@
-import testImage from "../assets/color-1.png";
+import Image1 from "../assets/Internal Waterproof Wall Coating.png";
+import Image2 from "../assets/External Waterproof Wall Coating.png";
+import Image3 from "../assets/Elastic Bituminous Waterproof Coating.png";
 const insulationProducts = [
   {
     id: 1,
-    image: testImage,
+    image: Image1,
     category: "interior-waterproof",
     name: {
       en: "Internal Waterproof Wall Coating",
@@ -139,7 +141,7 @@ const insulationProducts = [
 
   {
     id: 2,
-    image: testImage,
+    image: Image2,
     category: "exterior-waterproof",
     name: {
       en: "External Waterproof Wall Coating",
@@ -270,7 +272,7 @@ const insulationProducts = [
 
   {
     id: 3,
-    image: testImage,
+    image: Image3,
     category: "empty-insulation",
     name: {
       en: "Elastic Bituminous Waterproof Coating",

@@ -1,4 +1,8 @@
-import testImage from "../assets/color-1.png";
+import Image1 from "../assets/Marine Epoxy Coating.png";
+import Image2 from "../assets/EPOXY Floor Coating.png";
+import Image3 from "../assets/Interior Wall Epoxy.png";
+import Image4 from "../assets/Metal Protection.png";
+import Image5 from "../assets/OUTERIOR Wall EPOXY.png";
 
 const epoxyProducts = [
   // 🚢 MARINE EPOXY
@@ -6,7 +10,7 @@ const epoxyProducts = [
     id: 501,
     type: "epoxy",
     category: "marine",
-    image: testImage,
+    image: Image1,
     name: {
       en: "Bondmax Marine Epoxy Coating",
       ar: "طلاء إيبوكسي بحري بوندماكس",
@@ -152,7 +156,7 @@ const epoxyProducts = [
     id: 502,
     type: "epoxy",
     category: "floor",
-    image: testImage,
+    image: Image2,
     name: {
       en: "Bondmax Industrial Floor Coating",
       ar: "طلاء أرضيات صناعي بوندماكس",
@@ -298,7 +302,7 @@ const epoxyProducts = [
     id: 503,
     type: "epoxy",
     category: "interior",
-    image: testImage,
+    image: Image3,
     name: {
       en: "Bondmax Interior Wall Epoxy",
       ar: "طلاء إيبوكسي للجدران الداخلية بوندماكس",
@@ -444,7 +448,7 @@ const epoxyProducts = [
     id: 505,
     type: "epoxy",
     category: "metal",
-    image: testImage,
+    image: Image4,
     name: {
       en: "Bondmax Metal Protection Epoxy",
       ar: "طلاء حماية المعادن بوندماكس",
@@ -581,6 +585,150 @@ const epoxyProducts = [
         shelfLife: "Üretim tarihinden itibaren 18 ay",
         conditions:
           "Kapalı kaplarda +5°C ila +25°C arasında saklayın. Nem ve doğrudan güneş ışığından koruyun.",
+      },
+    },
+  },
+  {
+    id: 503,
+    type: "epoxy",
+    category: "exterior",
+    image: Image5,
+    name: {
+      en: "Bondmax outerior Wall Epoxy",
+      ar: "طلاء إيبوكسي للجدران الخارحية بوندماكس",
+      de: "Bondmax Epoxid-Außenwandfarbe",
+      tr: "Bondmax Dış  Duvarlar Epoksi Kaplaması",
+    },
+    description: {
+      en: "Smooth and washable epoxy coating for interior walls, providing aesthetic finish and hygiene.",
+      ar: "طلاء إيبوكسي ناعم وقابل للغسل للجدران الخارحية يوفر مظهرًا جماليًا ونظافة عالية.",
+      de: "Glatte, abwaschbare Epoxidbeschichtung für Innenwände mit ästhetischem Finish und hoher Hygiene.",
+      tr: "İç duvarlar için pürüzsüz ve yıkanabilir epoksi kaplama; estetik görünüm ve hijyen sağlar.",
+    },
+    fullDescription: {
+      en: "Bondmax Interior Wall Epoxy is a decorative, two-component coating offering a glossy, hygienic surface ideal for hospitals, kitchens, and clean rooms.",
+      ar: "طلاء إيبوكسي للجدران الخارجبة من بوندماكس هو طلاء ديكوري ثنائي المكونات يوفر سطحًا لامعًا وصحيًا مثاليًا للمستشفيات والمطابخ وغرف النظافة.",
+      de: "Bondmax Innenwand-Epoxid ist eine dekorative Zweikomponentenbeschichtung mit glänzender, hygienischer Oberfläche – ideal für Krankenhäuser und Küchen.",
+      tr: "Bondmax İç Cephe Epoksi, parlak ve hijyenik yüzey sunan dekoratif, iki bileşenli bir kaplamadır; hastaneler ve mutfaklar için idealdir.",
+    },
+    detailedFeatures: {
+      en: [
+        "Smooth glossy finish",
+        "Resistant to stains and moisture",
+        "Washable and easy to clean",
+        "Non-yellowing formula",
+        "Excellent adhesion to plaster and concrete",
+      ],
+      ar: [
+        "تشطيب لامع وناعم",
+        "مقاوم للبقع والرطوبة",
+        "قابل للغسل وسهل التنظيف",
+        "لا يصفر مع الوقت",
+        "التصاق ممتاز بالجبس والخرسانة",
+      ],
+      de: [
+        "Glatte, glänzende Oberfläche",
+        "Beständig gegen Flecken und Feuchtigkeit",
+        "Abwaschbar und leicht zu reinigen",
+        "Vergilbt nicht mit der Zeit",
+        "Haftet hervorragend auf Putz und Beton",
+      ],
+      tr: [
+        "Pürüzsüz parlak yüzey",
+        "Leke ve neme dayanıklı",
+        "Yıkanabilir ve kolay temizlenir",
+        "Zamanla sararmaz",
+        "Alçı ve betona mükemmel yapışma",
+      ],
+    },
+    technicalSpecs: {
+      en: {
+        color: "White, beige, pastel shades",
+        mixRatio: "2:1 by weight (A:B)",
+        potLife: "25 minutes at 25°C",
+        walkable: "12 hours",
+        fullCure: "5 days",
+        coverage: "0.15–0.3 kg/m² per coat",
+        recommendedThickness: "0.2–0.4 mm",
+        applicationTemperature: "+10°C to +30°C",
+      },
+      ar: {
+        color: "أبيض، بيج، ألوان باهتة",
+        mixRatio: "2:1 بالوزن (أ:ب)",
+        potLife: "25 دقيقة عند 25 درجة مئوية",
+        walkable: "12 ساعة",
+        fullCure: "5 أيام",
+        coverage: "0.15–0.3 كجم/م² لكل طبقة",
+        recommendedThickness: "0.2–0.4 مم",
+        applicationTemperature: "من +10 إلى +30 درجة مئوية",
+      },
+      de: {
+        color: "Weiß, Beige, Pastelltöne",
+        mixRatio: "2:1 nach Gewicht (A:B)",
+        potLife: "25 Minuten bei 25°C",
+        walkable: "12 Stunden",
+        fullCure: "5 Tage",
+        coverage: "0,15–0,3 kg/m² pro Schicht",
+        recommendedThickness: "0,2–0,4 mm",
+        applicationTemperature: "+10°C bis +30°C",
+      },
+      tr: {
+        color: "Beyaz, bej, pastel tonları",
+        mixRatio: "2:1 (A:B, ağırlıkça)",
+        potLife: "25°C’de 25 dakika",
+        walkable: "12 saat",
+        fullCure: "5 gün",
+        coverage: "Kat başına 0.15–0.3 kg/m²",
+        recommendedThickness: "0.2–0.4 mm",
+        applicationTemperature: "+10°C ila +30°C",
+      },
+    },
+    usage: {
+      en: {
+        surfacePrep:
+          "Clean surface from dust, dirt, and loose paint. Repair cracks. Ensure substrate is dry.",
+        application:
+          "Mix thoroughly and apply with brush or roller in 2 coats. Allow 12 hours between coats.",
+      },
+      ar: {
+        surfacePrep:
+          "نظف السطح من الغبار والأوساخ والطلاء المتقشر. أصلح التشققات. تأكد من أن السطح جاف.",
+        application:
+          "اخلط جيدًا وطبّق بالفرشاة أو الرول على 2 طبقة. اترك 12 ساعة بين كل طبقة.",
+      },
+      de: {
+        surfacePrep:
+          "Oberfläche von Staub, Schmutz und loser Farbe reinigen. Risse reparieren. Untergrund muss trocken sein.",
+        application:
+          "Gründlich mischen und mit Pinsel oder Rolle in 2 Schichten auftragen. 12 Stunden zwischen den Schichten warten.",
+      },
+      tr: {
+        surfacePrep:
+          "Yüzeyi toz, kir ve gevşek boyadan temizleyin. Çatlakları onarın. Alt yüzeyin kuru olduğundan emin olun.",
+        application:
+          "İyice karıştırın ve fırça veya rulo ile 2 kat uygulayın. Katlar arasında 12 saat bekleyin.",
+      },
+    },
+    storage: {
+      en: {
+        shelfLife: "12 months from production date",
+        conditions:
+          "Keep in sealed containers at +5°C to +25°C, away from direct sunlight and moisture.",
+      },
+      ar: {
+        shelfLife: "12 شهرًا من تاريخ الإنتاج",
+        conditions:
+          "احتفظ بالعبوات مغلقة بين +5 و +25 درجة مئوية، بعيدًا عن أشعة الشمس والرطوبة.",
+      },
+      de: {
+        shelfLife: "12 Monate ab Produktionsdatum",
+        conditions:
+          "In verschlossenen Behältern bei +5°C bis +25°C lagern. Vor direkter Sonneneinstrahlung und Feuchtigkeit schützen.",
+      },
+      tr: {
+        shelfLife: "Üretim tarihinden itibaren 12 ay",
+        conditions:
+          "Kapalı kaplarda +5°C ila +25°C arasında saklayın. Doğrudan güneş ışığından ve nemden koruyun.",
       },
     },
   },
