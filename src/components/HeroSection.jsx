@@ -194,9 +194,7 @@ const HeroSection = ({ onDiscoverColors }) => {
             </h1>
 
             <p className="text-lg md:text-xl lg:text-2xl text-white max-w-4xl mx-auto leading-relaxed font-medium drop-shadow-lg mt-6 px-4">
-              اكتشفوا تشكيلة متنوعة من الطلاء الفاخرة وملحقاتها، حيث تلبي
-              منتجاتنا أعلى معايير الجودة وأسعار مناسبة لتكونوا دائمًا في
-              المقدمة
+              {t("description")}
             </p>
 
             <div className="flex justify-center pt-8">

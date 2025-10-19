@@ -8,6 +8,13 @@ import useLanguageSelect from "@/hooks/useLanguageSelect";
 import { toast } from "sonner";
 import NavigationBreadcrumb from "./NavigationBreadcrumb";
 
+// إضافة ستايل مخصص للـ toast
+const customToastStyle = {
+  background: "#203F84",
+  color: "white",
+  border: "2px solid #1a3270",
+};
+
 export default function Header() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === "ar";
@@ -51,7 +58,11 @@ export default function Header() {
 
   const toggleCart = () => {
     if (!isCartOpen && (!cart || cart.length === 0)) {
-      toast.info(t("cart_empty_message"));
+      toast.info(t("cart_empty_message"), {
+        style: customToastStyle,
+        duration: 5000,
+        position: "top-center",
+      });
       return;
     }
     setIsCartOpen(!isCartOpen);
@@ -62,7 +73,11 @@ export default function Header() {
 
   const submitCartToWhatsApp = () => {
     if (!cart?.length) {
-      toast.warning(t("cart_empty_message"));
+      toast.warning(t("cart_empty_message"), {
+        style: customToastStyle,
+        duration: 5000,
+        position: "top-center",
+      });
       return;
     }
 
@@ -87,6 +102,11 @@ export default function Header() {
     if (ok) {
       closeCart();
       clearCart();
+      toast.success(t("order_sent_successfully") || "تم إرسال الطلب بنجاح", {
+        style: customToastStyle,
+        duration: 5000,
+        position: "top-center",
+      });
     }
   };
 

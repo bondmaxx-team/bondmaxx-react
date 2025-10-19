@@ -5,10 +5,19 @@ import {
   useMemo,
   useReducer,
 } from "react";
+import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 const LS_KEYS = {
   cart: "bondmaxx-cart",
   favorites: "bondmaxx-favorites",
+};
+
+// ستايل الرسائل الزرقاء
+const customToastStyle = {
+  background: "#203F84",
+  color: "white",
+  border: "2px solid #1a3270",
 };
 
 // --- Reducer ---
@@ -92,6 +101,8 @@ function reducer(state, action) {
 const ShopContext = createContext(null);
 
 export function ShopProvider({ children }) {
+  const { t, i18n } = useTranslation();
+
   const [state, dispatch] = useReducer(reducer, initialState, (initial) => {
     // Hydrate during initialization instead of useEffect
     if (typeof window !== "undefined") {
@@ -139,26 +150,109 @@ export function ShopProvider({ children }) {
     }
   }, [state.favorites, state.isHydrated]);
 
-  // Actions
-  const addToCart = (product) =>
+  // Actions مع الرسائل
+  const addToCart = (product) => {
+    const exists = state.cart.find((c) => c.id === product.id);
+
+    if (exists) {
+      // إذا كان موجود، سيتم حذفه
+      toast.info(t("product_removed_from_cart") || "تم إزالة المنتج من السلة", {
+        style: customToastStyle,
+        duration: 3000,
+        position: "top-center",
+      });
+    } else {
+      // إذا لم يكن موجود، سيتم إضافته
+      const productName =
+        product.name?.[i18n.language] ||
+        product.name?.ar ||
+        product.name?.en ||
+        "المنتج";
+      toast.success(
+        `✓ ${
+          t("product_added_to_cart") || "تمت الإضافة للسلة"
+        }: ${productName}`,
+        {
+          style: customToastStyle,
+          duration: 3000,
+          position: "top-center",
+        }
+      );
+    }
+
     dispatch({ type: "ADD_TO_CART", payload: { product } });
+  };
 
-  const incrementQty = (productId) =>
+  const incrementQty = (productId) => {
+    toast.success(t("quantity_increased") || "تم زيادة الكمية", {
+      style: customToastStyle,
+      duration: 2000,
+      position: "top-center",
+    });
     dispatch({ type: "INCREMENT_QTY", payload: productId });
+  };
 
-  const decrementQty = (productId) =>
+  const decrementQty = (productId) => {
+    const item = state.cart.find((c) => c.id === productId);
+
+    if (item && item.qty === 1) {
+      toast.info(t("product_removed_from_cart") || "تم إزالة المنتج من السلة", {
+        style: customToastStyle,
+        duration: 2000,
+        position: "top-center",
+      });
+    } else {
+      toast.info(t("quantity_decreased") || "تم تقليل الكمية", {
+        style: customToastStyle,
+        duration: 2000,
+        position: "top-center",
+      });
+    }
+
     dispatch({ type: "DECREMENT_QTY", payload: productId });
+  };
 
-  const setQty = (productId, qty) =>
+  const setQty = (productId, qty) => {
     dispatch({ type: "SET_QTY", payload: { productId, qty } });
+  };
 
-  const removeFromCart = (productId) =>
+  const removeFromCart = (productId) => {
+    toast.error(t("product_removed_from_cart") || "تم حذف المنتج من السلة", {
+      style: customToastStyle,
+      duration: 2000,
+      position: "top-center",
+    });
     dispatch({ type: "REMOVE_FROM_CART", payload: productId });
+  };
 
-  const clearCart = () => dispatch({ type: "CLEAR_CART" });
+  const clearCart = () => {
+    toast.info(t("cart_cleared") || "تم تفريغ السلة", {
+      style: customToastStyle,
+      duration: 2000,
+      position: "top-center",
+    });
+    dispatch({ type: "CLEAR_CART" });
+  };
 
-  const toggleFavorite = (item) =>
+  const toggleFavorite = (item) => {
+    const exists = state.favorites.find((f) => f.id === item.id);
+
+    if (exists) {
+      toast.info(t("removed_from_favorites") || "تم الإزالة من المفضلة", {
+        style: customToastStyle,
+        duration: 2000,
+        position: "top-center",
+      });
+    } else {
+      toast.success(t("added_to_favorites") || "تمت الإضافة للمفضلة ❤️", {
+        style: customToastStyle,
+        duration: 2000,
+        position: "top-center",
+      });
+    }
+
     dispatch({ type: "TOGGLE_FAVORITE", payload: item });
+  };
 
   // Selectors / helpers
   const inCart = (id) => state.cart.some((c) => c.id === id);

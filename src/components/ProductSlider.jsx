@@ -72,16 +72,16 @@ const ProductSlider = ({ title, products, color, linkTo, productType }) => {
         }}
         className="mb-4 relative"
       >
-        {products.map((product) => (
-          <SwiperSlide key={product.id}>
+        {products.map((product, index) => (
+          <SwiperSlide key={`product-${product.id}-${index}`}>
             <ProductCard product={product} productType={productType} />
           </SwiperSlide>
         ))}
 
-        <SwiperSlide>
+        <SwiperSlide key="view-all-slide">
           <Link
-            to={linkTo}
-            className="block text-white rounded-lg shadow-md p-6 text-center transition h-full flex flex-col items-center justify-center"
+            to={linkTo || "/"}
+            className="block text-white rounded-lg shadow-md p-6 text-center transition h-full flex flex-col items-center justify-center min-h-[300px] hover:shadow-xl"
             style={{
               backgroundColor: buttonColor,
             }}
@@ -97,7 +97,7 @@ const ProductSlider = ({ title, products, color, linkTo, productType }) => {
                 isRTL ? "fa-arrow-left" : "fa-arrow-right"
               } mb-2 text-2xl`}
             />
-            <p>
+            <p className="font-semibold">
               {t("view_all")} {translatedTitle}
             </p>
           </Link>
