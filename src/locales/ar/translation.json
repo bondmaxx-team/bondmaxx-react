@@ -562,5 +562,18 @@
 
   "explore_categories": "استكشف الفئات",
   "categories_description": "تصفح جميع فئات منتجاتنا المتنوعة",
-  "Address": " معرة النعسان، إدلب، سوريا"
+  "Address": " معرة النعسان، إدلب، سوريا",
+
+  "cart_title": "السلة",
+  "cart_page_title": "سلة التسوق",
+  "cart_empty_message": "السلة فارغة",
+  "color": "اللون",
+  "total_items": "إجمالي القطع",
+  "send_to_whatsapp": "إرسال للواتساب",
+  "clear_cart": "إفراغ السلة",
+
+  "whatsapp_greeting": "مرحباً، أود الاستفسار عن المنتجات التالية:",
+  "whatsapp_quantity": "الكمية",
+  "whatsapp_color": "اللون",
+  "whatsapp_sent_from": "أُرسلت من موقعكم"
 }

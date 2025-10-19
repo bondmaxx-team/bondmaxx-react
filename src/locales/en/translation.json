@@ -551,5 +551,18 @@
 
   "explore_categories": "Explore Categories",
   "categories_description": "Browse all our diverse product categories",
-  "Address": " maarat alnasan, Idlib, Syria"
+  "Address": " maarat alnasan, Idlib, Syria",
+
+  "cart_title": "Cart",
+  "cart_page_title": "Shopping Cart",
+  "cart_empty_message": "Cart is empty",
+  "color": "Color",
+  "total_items": "Total Items",
+  "send_to_whatsapp": "Send to WhatsApp",
+  "clear_cart": "Clear Cart",
+
+  "whatsapp_greeting": "Hello, I would like to inquire about the following products:",
+  "whatsapp_quantity": "Quantity",
+  "whatsapp_color": "Color",
+  "whatsapp_sent_from": "Sent from your website"
 }

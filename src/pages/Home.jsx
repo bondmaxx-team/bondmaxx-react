@@ -10,7 +10,7 @@ import ProductSlider from "../components/ProductSlider";
 import oilPaintsProducts from "../data/oilPaintsProducts";
 import waterPaintsProducts from "../data/waterPaintsProducts";
 import epoxyProducts from "../data/epoxyProducts";
-import accessoriesProducts from "../data/accessoriesProducts"; // إضافة الملحقات
+import accessoriesProducts from "../data/accessoriesProducts";
 
 export default function Home() {
   const location = useLocation();
@@ -162,7 +162,7 @@ export default function Home() {
                   products={oilPaintsProducts}
                   productType="oil-paints"
                   color="#203F84"
-                  linkTo="/oil-paints"
+                  linkTo="/OilPaintsPage"
                 />
               </motion.div>
 
@@ -178,7 +178,7 @@ export default function Home() {
                   products={waterPaintsProducts}
                   productType="water-paints"
                   color="#203F84"
-                  linkTo="/water-paints"
+                  linkTo="/WaterPaintsPage"
                 />
               </motion.div>
 
@@ -194,11 +194,11 @@ export default function Home() {
                   products={epoxyProducts}
                   productType="epoxy"
                   color="#203F84"
-                  linkTo="/epoxy"
+                  linkTo="/EpoxyPage"
                 />
               </motion.div>
 
-              {/* سلايدر الملحقات - جديد */}
+              {/* سلايدر الملحقات */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -210,7 +210,7 @@ export default function Home() {
                   products={accessoriesProducts}
                   productType="accessories"
                   color="#203F84"
-                  linkTo="/accessories"
+                  linkTo="/AccessoriesPage"
                 />
               </motion.div>
             </div>

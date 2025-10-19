@@ -342,7 +342,7 @@ const HeroSection = ({ onDiscoverColors }) => {
       </div>
 
       {/* التأثيرات */}
-      <style jsx>{`
+      <style>{`
         @keyframes fade-in {
           from {
             opacity: 0;

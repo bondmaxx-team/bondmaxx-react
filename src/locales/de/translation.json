@@ -534,5 +534,18 @@
 
   "explore_categories": "Kategorien erkunden",
   "categories_description": "Durchsuchen Sie alle unsere vielfältigen Produktkategorien",
-  "Address": "Maarat al-Nasan, Idlib, Syrien"
+  "Address": "Maarat al-Nasan, Idlib, Syrien",
+
+  "cart_title": "Warenkorb",
+  "cart_page_title": "Einkaufswagen",
+  "cart_empty_message": "Warenkorb ist leer",
+  "color": "Farbe",
+  "total_items": "Artikel insgesamt",
+  "send_to_whatsapp": "An WhatsApp senden",
+  "clear_cart": "Warenkorb leeren",
+
+  "whatsapp_greeting": "Hallo, ich möchte mich über die folgenden Produkte informieren:",
+  "whatsapp_quantity": "Menge",
+  "whatsapp_color": "Farbe",
+  "whatsapp_sent_from": "Von Ihrer Website gesendet"
 }

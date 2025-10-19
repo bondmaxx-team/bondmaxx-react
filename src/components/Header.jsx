@@ -67,20 +67,20 @@ export default function Header() {
     }
 
     const lines = [];
-    lines.push("*مرحباً، أود الاستفسار عن المنتجات التالية:*");
+    lines.push(`*${t("whatsapp_greeting")}*`);
     lines.push("");
 
     for (const item of cart) {
       lines.push(
         `• *${item.name[i18n.language]}* (ID: ${item.id})` +
-          `\n  الكمية: ${item.qty ?? 1}` +
-          (item.color ? `\n  اللون: ${item.color}` : "")
+          `\n  ${t("whatsapp_quantity")}: ${item.qty ?? 1}` +
+          (item.color ? `\n  ${t("whatsapp_color")}: ${item.color}` : "")
       );
       lines.push("");
     }
 
     lines.push("━━━━━━━━━━━━━━━━━━");
-    lines.push(`أُرسلت من موقعكم: ${window.location.origin}`);
+    lines.push(`${t("whatsapp_sent_from")}: ${window.location.origin}`);
 
     const message = lines.join("\n");
     const ok = sendMessage(message);
@@ -220,7 +220,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Breadcrumb - مباشرة تحت الـ Header */}
+        {/* Breadcrumb */}
         <NavigationBreadcrumb currentLang={i18n.language} />
       </header>
 
@@ -348,7 +348,99 @@ export default function Header() {
             <i className="fas fa-times"></i>
           </button>
         </div>
+
+        {/* Cart Items */}
+        <div className="flex-1 p-4 space-y-3">
+          {cart.length === 0 ? (
+            <div className="text-center py-12 text-gray-500">
+              <i className="fas fa-shopping-cart text-4xl mb-3"></i>
+              <p>{t("cart_empty_message")}</p>
+            </div>
+          ) : (
+            cart.map((item) => (
+              <div
+                key={item.id}
+                className="bg-white border rounded-lg p-3 shadow-sm"
+              >
+                <div className="flex gap-3">
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      alt={item.name[i18n.language]}
+                      className="w-16 h-16 object-cover rounded"
+                    />
+                  )}
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-sm text-[#203F84]">
+                      {item.name[i18n.language]}
+                    </h3>
+                    {item.color && (
+                      <p className="text-xs text-gray-600 mt-1">
+                        {t("color")}: {item.color}
+                      </p>
+                    )}
+                    <div className="flex items-center gap-2 mt-2">
+                      <button
+                        onClick={() => decrementQty(item.id)}
+                        className="w-6 h-6 rounded bg-gray-200 hover:bg-gray-300 flex items-center justify-center"
+                      >
+                        <i className="fas fa-minus text-xs"></i>
+                      </button>
+                      <span className="text-sm font-medium">{item.qty}</span>
+                      <button
+                        onClick={() => incrementQty(item.id)}
+                        className="w-6 h-6 rounded bg-gray-200 hover:bg-gray-300 flex items-center justify-center"
+                      >
+                        <i className="fas fa-plus text-xs"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => removeFromCart(item.id)}
+                    className="text-red-500 hover:text-red-700"
+                  >
+                    <i className="fas fa-trash text-sm"></i>
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* Cart Footer */}
+        {cart.length > 0 && (
+          <div className="border-t p-4 space-y-3 bg-gray-50">
+            <div className="flex justify-between text-sm">
+              <span>{t("total_items")}:</span>
+              <span className="font-bold">{cartCount}</span>
+            </div>
+            <button
+              onClick={submitCartToWhatsApp}
+              className="w-full py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium flex items-center justify-center gap-2"
+            >
+              <i className="fab fa-whatsapp text-lg"></i>
+              <span>{t("send_to_whatsapp")}</span>
+            </button>
+            <button
+              onClick={clearCart}
+              className="w-full py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg text-sm"
+            >
+              {t("clear_cart")}
+            </button>
+          </div>
+        )}
       </div>
+
+      {/* Overlay للسايدبارات */}
+      {(isSidebarOpen || isCartOpen) && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40"
+          onClick={() => {
+            closeSidebar();
+            closeCart();
+          }}
+        />
+      )}
     </>
   );
 }

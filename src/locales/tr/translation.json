@@ -557,5 +557,18 @@
 
   "explore_categories": "Kategorileri Keşfet",
   "categories_description": "Tüm çeşitli ürün kategorilerimize göz atın",
-  "Address": "Maarat Alnasan, İdlib, Suriye"
+  "Address": "Maarat Alnasan, İdlib, Suriye",
+
+  "cart_title": "Sepet",
+  "cart_page_title": "Alışveriş Sepeti",
+  "cart_empty_message": "Sepet boş",
+  "color": "Renk",
+  "total_items": "Toplam Ürün",
+  "send_to_whatsapp": "WhatsApp'a Gönder",
+  "clear_cart": "Sepeti Temizle",
+
+  "whatsapp_greeting": "Merhaba, aşağıdaki ürünler hakkında bilgi almak istiyorum:",
+  "whatsapp_quantity": "Miktar",
+  "whatsapp_color": "Renk",
+  "whatsapp_sent_from": "Web sitenizden gönderildi"
 }

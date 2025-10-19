@@ -282,13 +282,13 @@ const insulationProducts = [
     weight: "1kg",
     name: {
       en: "Elastic Bituminous Waterproof Coating",
-      ar: "تربروف نفضي (للأسطح، المعادن، الجدران)",
+      ar: "وتربروف نفضي (للأسطح، المعادن، الجدران)",
       de: "Elastische bituminöse Abdichtung",
       tr: "Elastik Bitümlü Su Yalıtım Kaplaması",
     },
     description: {
       en: "Flexible bituminous coating suitable for roofs, metals, and walls, providing waterproof protection.",
-      ar: "طلاء بيتوميني مرن مناسب للأسطح والمعادن والجدران، يوفر حماية ضد الماء.",
+      ar: " طلاء بيتوميني مرن مناسب للأسطح والمعادن والجدران، يوفر حماية ضد الماء.",
       de: "Flexible bituminöse Beschichtung für Dächer, Metalle und Wände, bietet wasserdichten Schutz.",
       tr: "Esnek bitümlü kaplama, çatılar, metaller ve duvarlar için uygundur, su geçirmez koruma sağlar.",
     },
