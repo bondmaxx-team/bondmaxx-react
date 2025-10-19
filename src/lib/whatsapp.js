@@ -34,9 +34,9 @@ export function openWhatsApp({
 } = {}) {
   try {
     const url = buildWhatsAppUrl({ number, text });
-    const win = window.open(url, "_blank", "noopener,noreferrer");
-    if (!win) {
-      // Popup blocked
+    try {
+      window.open(url, "_blank", "noopener,noreferrer");
+    } catch {
       window.location.href = url;
     }
     return true;
