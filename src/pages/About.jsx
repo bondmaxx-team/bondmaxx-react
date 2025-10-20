@@ -32,10 +32,9 @@ export default function About() {
       description: t("marine_description"),
     },
   ];
-
   const values = [
     {
-      icon: "fa-lightbulb",
+      icon: "fa-lightbulb", // الابتكار
       title: {
         ar: "الابتكار",
         en: "Innovation",
@@ -50,7 +49,7 @@ export default function About() {
       },
     },
     {
-      icon: "fa-handshake",
+      icon: "fa-handshake", // التعاون
       title: {
         ar: "التعاون",
         en: "Collaboration",
@@ -65,7 +64,7 @@ export default function About() {
       },
     },
     {
-      icon: "fa-certificate",
+      icon: "fa-certificate", // الأصالة
       title: {
         ar: "الأصالة",
         en: "Authenticity",
@@ -80,7 +79,7 @@ export default function About() {
       },
     },
     {
-      icon: "fa-star",
+      icon: "fa-star", // الجودة
       title: {
         ar: "الجودة",
         en: "Quality",
@@ -98,7 +97,7 @@ export default function About() {
 
   const mission = [
     {
-      icon: "fa-lightbulb",
+      icon: "fa-rocket", // ابتكار حلول شاملة - أيقونة جديدة
       title: {
         ar: "ابتكار حلول شاملة",
         en: "Innovating Comprehensive Solutions",
@@ -113,7 +112,7 @@ export default function About() {
       },
     },
     {
-      icon: "fa-handshake",
+      icon: "fa-users", // الشراكة مع عملائنا - أيقونة جديدة
       title: {
         ar: "الشراكة مع عملائنا",
         en: "Partnering with Our Clients",
@@ -128,7 +127,7 @@ export default function About() {
       },
     },
     {
-      icon: "fa-leaf",
+      icon: "fa-leaf", // الالتزام بالاستدامة
       title: {
         ar: "الالتزام بالاستدامة",
         en: "Committing to Sustainability",
