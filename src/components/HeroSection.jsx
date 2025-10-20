@@ -73,6 +73,15 @@ const HeroSection = ({ onDiscoverColors }) => {
     },
   ];
 
+  // التغيير التلقائي للسلايدر
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000); // تغيير كل 4 ثواني
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
