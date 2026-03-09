@@ -2,13 +2,34 @@ import { useLocation, useNavigate } from "react-router-dom";
 import backgroundImage from "../assets/10.png";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { DEFAULT_WHATSAPP_NUMBER } from "@/config/whatsapp";
 
 export default function About() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const isRTL = i18n.language === "ar";
+
+  // Add these translation keys to your Turkish translation file
+  const aboutTranslations = {
+    our_vision: {
+      ar: "رؤيتنا",
+      en: "Our Vision",
+      tr: "Vizyonumuz",
+      de: "Unsere Vision"
+    },
+    our_mission: {
+      ar: "مهمتنا",
+      en: "Our Mission", 
+      tr: "Misyonumuz",
+      de: "Unsere Mission"
+    },
+    our_values: {
+      ar: "قيمنا",
+      en: "Our Values",
+      tr: "Değerlerimiz",
+      de: "Unsere Werte"
+    }
+  };
 
   const industries = [
     {
@@ -32,9 +53,10 @@ export default function About() {
       description: t("marine_description"),
     },
   ];
+
   const values = [
     {
-      icon: "fa-lightbulb", // الابتكار
+      icon: "fa-lightbulb",
       title: {
         ar: "الابتكار",
         en: "Innovation",
@@ -49,7 +71,7 @@ export default function About() {
       },
     },
     {
-      icon: "fa-handshake", // التعاون
+      icon: "fa-handshake",
       title: {
         ar: "التعاون",
         en: "Collaboration",
@@ -64,7 +86,7 @@ export default function About() {
       },
     },
     {
-      icon: "fa-certificate", // الأصالة
+      icon: "fa-certificate",
       title: {
         ar: "الأصالة",
         en: "Authenticity",
@@ -79,7 +101,7 @@ export default function About() {
       },
     },
     {
-      icon: "fa-star", // الجودة
+      icon: "fa-star",
       title: {
         ar: "الجودة",
         en: "Quality",
@@ -97,7 +119,7 @@ export default function About() {
 
   const mission = [
     {
-      icon: "fa-rocket", // ابتكار حلول شاملة - أيقونة جديدة
+      icon: "fa-rocket",
       title: {
         ar: "ابتكار حلول شاملة",
         en: "Innovating Comprehensive Solutions",
@@ -112,7 +134,7 @@ export default function About() {
       },
     },
     {
-      icon: "fa-users", // الشراكة مع عملائنا - أيقونة جديدة
+      icon: "fa-users",
       title: {
         ar: "الشراكة مع عملائنا",
         en: "Partnering with Our Clients",
@@ -127,7 +149,7 @@ export default function About() {
       },
     },
     {
-      icon: "fa-leaf", // الالتزام بالاستدامة
+      icon: "fa-leaf",
       title: {
         ar: "الالتزام بالاستدامة",
         en: "Committing to Sustainability",
@@ -162,6 +184,7 @@ export default function About() {
       navigate("/", { state: { scrollTo: targetId } });
     }
   };
+
   return (
     <div
       className="min-h-screen"
@@ -223,13 +246,7 @@ export default function About() {
             transition={{ duration: 0.7 }}
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
-              {isRTL
-                ? "رؤيتنا"
-                : i18n.language === "en"
-                ? "Our Vision"
-                : i18n.language === "tr"
-                ? "Vizyonumuz"
-                : "Unsere Vision"}
+              {aboutTranslations.our_vision[i18n.language] || aboutTranslations.our_vision.ar}
             </h2>
             <div className="w-20 h-1 mx-auto mb-8 bg-white"></div>
             <motion.div
@@ -256,13 +273,7 @@ export default function About() {
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-900">
-            {isRTL
-              ? "مهمتنا"
-              : i18n.language === "en"
-              ? "Our Mission"
-              : i18n.language === "tr"
-              ? "Misyonumuz"
-              : "Unsere Mission"}
+            {aboutTranslations.our_mission[i18n.language] || aboutTranslations.our_mission.ar}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {mission.map((item, idx) => (
@@ -298,13 +309,7 @@ export default function About() {
       <section className="py-16 md:py-24 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-blue-900">
-            {isRTL
-              ? "قيمنا"
-              : i18n.language === "en"
-              ? "Our Values"
-              : i18n.language === "tr"
-              ? "Değerlerimiz"
-              : "Unsere Werte"}
+            {aboutTranslations.our_values[i18n.language] || aboutTranslations.our_values.ar}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {values.map((val, idx) => (

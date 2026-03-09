@@ -50,16 +50,19 @@ export default function Footer() {
       icon: "fas fa-comments",
       label: t("request_consultation"),
       href: "https://wa.me/" + DEFAULT_WHATSAPP_NUMBER,
+      external: true
     },
     {
       icon: "fas fa-certificate",
       label: t("quality_guarantee_footer"),
       href: "#",
+      external: false
     },
     {
       icon: "fas fa-search",
       label: t("search_dealer"),
       href: "/search-dealer",
+      external: false
     },
   ];
 
@@ -69,23 +72,34 @@ export default function Footer() {
       icon: "fab fa-whatsapp",
       label: t("phone_number"),
       href: "https://wa.me/" + DEFAULT_WHATSAPP_NUMBER,
+      external: true
     },
     {
       type: "email",
       icon: "fas fa-envelope",
       label: t("email_address"),
-      href: "mailto:info@bondmaxx.com",
+      href: "mailto:sales@bondmaxx.com",
+      external: true
     },
     {
       icon: "fas fa-map-marker-alt",
       label: t("location"),
       href: "#",
+      external: false
     },
     {
       type: "other",
       icon: "fas fa-clock",
       label: t("working_hours"),
       href: "#",
+      external: false
+    },
+     {
+      type: "other",
+      icon: "fas fa-info-circle",
+      label: t("about"),
+      href: "#about",
+      external: false
     },
   ];
 
@@ -132,17 +146,29 @@ export default function Footer() {
           <ul className="space-y-3">
             {services.map((service, index) => (
               <li key={index}>
-                <a
-                  href={service.href}
-                  className="flex items-center gap-2 text-gray-300 transition hover:text-[var(--header-primary)]"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i
-                    className={`${service.icon} text-[var(--header-primary)]`}
-                  ></i>
-                  <span>{service.label}</span>
-                </a>
+                {service.external ? (
+                  <a
+                    href={service.href}
+                    className="flex items-center gap-2 text-gray-300 transition hover:text-[var(--header-primary)]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i
+                      className={`${service.icon} text-[var(--header-primary)]`}
+                    ></i>
+                    <span>{service.label}</span>
+                  </a>
+                ) : (
+                  <Link
+                    to={service.href}
+                    className="flex items-center gap-2 text-gray-300 transition hover:text-[var(--header-primary)]"
+                  >
+                    <i
+                      className={`${service.icon} text-[var(--header-primary)]`}
+                    ></i>
+                    <span>{service.label}</span>
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -156,23 +182,35 @@ export default function Footer() {
           <ul className="space-y-3">
             {contactInfo.map((contact, index) => (
               <li key={index}>
-                <a
-                  href={contact.href}
-                  className="flex items-center gap-2 text-gray-300 transition hover:text-[var(--header-primary)]"
-                  target={contact.type === "whatsapp" ? "_blank" : "_self"}
-                  rel="noopener noreferrer"
-                >
-                  <i
-                    className={`${contact.icon} text-[var(--header-primary)]`}
-                  ></i>
-                  {contact.type === "whatsapp" ? (
-                    <span dir="ltr" className="font-mono tracking-wide">
-                      {contact.label}
-                    </span>
-                  ) : (
+                {contact.external ? (
+                  <a
+                    href={contact.href}
+                    className="flex items-center gap-2 text-gray-300 transition hover:text-[var(--header-primary)]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i
+                      className={`${contact.icon} text-[var(--header-primary)]`}
+                    ></i>
+                    {contact.type === "whatsapp" ? (
+                      <span dir="ltr" className="font-mono tracking-wide">
+                        {contact.label}
+                      </span>
+                    ) : (
+                      <span>{contact.label}</span>
+                    )}
+                  </a>
+                ) : (
+                  <Link
+                    to={contact.href}
+                    className="flex items-center gap-2 text-gray-300 transition hover:text-[var(--header-primary)]"
+                  >
+                    <i
+                      className={`${contact.icon} text-[var(--header-primary)]`}
+                    ></i>
                     <span>{contact.label}</span>
-                  )}
-                </a>
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -202,7 +240,7 @@ export default function Footer() {
 
       {/* Floating Email Button */}
       <a
-        href={`https://mail.google.com/mail/?view=cm&fs=1&to=info@bondmaxx.com&su=${encodeURIComponent(
+        href={`https://mail.google.com/mail/?view=cm&fs=1&to=sales@bondmaxx.com&su=${encodeURIComponent(
           t("email_subject")
         )}&body=${encodeURIComponent(t("email_body"))}`}
         target="_blank"

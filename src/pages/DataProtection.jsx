@@ -15,10 +15,10 @@ const DataProtectionPage = () => {
         <p>
           {t("contact_us")}:{" "}
           <a
-            href="mailto:info@bondmaxx.com"
+            href="mailto:sales@bondmaxx.com"
             className="text-blue-600 hover:underline"
           >
-            info@bondmaxx.com
+            sales@bondmaxx.com
           </a>
         </p>
       </div>

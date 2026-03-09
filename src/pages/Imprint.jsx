@@ -20,10 +20,10 @@ const ImprintPage = () => {
         <p className="mb-4">
           <strong>{t("email")}:</strong>{" "}
           <a
-            href="mailto:info@bondmaxx.com"
+            href="mailto:sales@bondmaxx.com"
             className="text-blue-600 hover:underline"
           >
-            info@bondmaxx.com
+            sales@bondmaxx.com
           </a>
         </p>
         <p className="mb-4">

@@ -60,7 +60,7 @@
   "quality_guarantee_footer": "Qualitätsgarantie",
   "contact_title": "Kontaktieren Sie uns",
   "phone_number": "+963 933 993 929",
-  "email_address": "info@bondmaxx.com",
+  "email_address": "sales@bondmaxx.com",
   "location": "Syrien - Idlib",
   "working_hours": "Sonntag - Donnerstag: 8:00 - 18:00 Uhr",
   "all_rights_reserved": "Alle Rechte vorbehalten",
@@ -127,7 +127,7 @@
   "product_features": "Eigenschaften",
   "packaging_storage": "Verpackung und Lagerung",
   "manufacturer_info": "Herstellerinformationen",
-  "manufacturer_address": "Maarat al-Numan, Idlib, Syrien",
+  "manufacturer_address": "Maarat al-Nasan, Idlib, Syrien",
 
   "full_product_description": "Bondmaxx Wirtschaftsfarbe - Eine wirtschaftliche Wasserdispersionsfarbe für den Innenbereich, die sich durch einfache Anwendung, schnelle Trocknung und hervorragende Oberflächendeckung auszeichnet. Sie hat eine hohe Fließfähigkeit und ist die ideale Wahl für Decken, Lagerräume und Treppen, wo keine hohe Wasch- oder Schmutzbeständigkeit erforderlich ist. Geruchsfrei und bietet eine glatte, matte Oberfläche mit langer Haltbarkeit.",
 
@@ -279,9 +279,9 @@
   "or_contact_us": "Kontaktieren Sie uns",
   "city": "Stadt",
   "choose_city": "Stadt wählen",
-  "store_idlib": "Bondmaxx Store - Maarat al-Numan",
+  "store_idlib": "Bondmaxx Store - Maarat al-Nasan",
   "idlib": "Idlib",
-  "maarat_al_nasan": "Maarat al-Numan",
+  "maarat_al_nasan": "Maarat al-Nasan",
   "full_name": "Vollständiger Name",
   "enter_full_name": "Geben Sie Ihren vollständigen Namen ein",
   "email": "E-Mail",
@@ -556,4 +556,5 @@
   "whatsapp_quantity": "Menge",
   "whatsapp_color": "Farbe",
   "whatsapp_sent_from": "Von Ihrer Website gesendet"
+  
 }

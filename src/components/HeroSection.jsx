@@ -208,7 +208,7 @@ const HeroSection = ({ onDiscoverColors }) => {
 
             <div className="flex justify-center pt-8">
               <button
-                onClick={onDiscoverColors}
+                //onClick={onDiscoverColors}
                 className="group relative flex items-center gap-3 px-12 py-5 font-bold text-lg rounded-full border-2 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden backdrop-blur-md"
                 style={{
                   backgroundColor: "rgba(255, 255, 255, 0.1)",

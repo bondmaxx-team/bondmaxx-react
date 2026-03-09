@@ -27,7 +27,7 @@
   "color_collection": "Renk Koleksiyonu",
 
   "total": "Toplam:",
-  "checkout_button": "Ödemeye Geç",
+  "checkout_button": "Ödemaye Geç",
   "decrease_qty": "Miktarı Azalt",
   "increase_qty": "Miktarı Artır",
   "remove_item": "Kaldır",
@@ -60,7 +60,7 @@
   "quality_guarantee_footer": "Kalite Garantisi",
   "contact_title": "Bize Ulaşın",
   "phone_number": "+963 933 993 929",
-  "email_address": "info@bondmaxx.com",
+  "email_address": "sales@bondmaxx.com",
   "location": "Suriye - İdlib",
   "working_hours": "Pazar - Perşembe: 08:00 - 18:00",
   "all_rights_reserved": "Tüm hakları saklıdır",
@@ -127,7 +127,7 @@
   "product_features": "Özellikler",
   "packaging_storage": "Ambalajlama ve Depolama",
   "manufacturer_info": "Üretici Bilgileri",
-  "manufacturer_address": "Maarat al-Numan, İdlib, Suriye",
+  "manufacturer_address": "Maarat al-Nasan, İdlib, Suriye",
 
   "full_product_description": "Bondmaxx Ekonomik Boya - İç mekan kullanımı için ekonomik su bazlı emülsiyon boya, kolay uygulama, hızlı kuruma ve mükemmel yüzey kaplaması ile öne çıkar. Yüksek akışkanlığa sahiptir ve yüksek yıkama veya kirlenme direncinin gerekli olmadığı tavanlar, depo odaları ve merdivenler için ideal bir seçimdir. Kokusuz olup, uzun ömürlü pürüzsüz ve mat bir yüzey sağlar.",
 
@@ -167,11 +167,13 @@
   "storage_info_1": "Raf ömrü: Açılmamış orijinal ambalajında 24 ay",
   "storage_info_2": "Doğrudan güneş ışığından ve dondan uzak tutun",
   "storage_info_3": "VOC içeriği: ≤ 30 g/l",
+
+  "about_bondmaxx_title": "BONDMAXX Hakkında",
   "about_bondmaxx_subtitle": "Renkleri hayata geçiriyor ve onları ticari başarınızın bir parçası haline getiriyoruz ✨",
   "about_bondmaxx_paragraph_1": "BONDMAXX, üstün performans, olağanüstü estetik ve yüksek ticari değeri bir araya getiren ürünler arayan toptancılar ve distribütörlerin ihtiyaçlarını karşılamak üzere özel olarak tasarlanmış yüksek kaliteli boya ve kaplama üretiminde lider firmalardan biridir.",
-  "about_bondmaxx_paragraph_2": "BONDMAXX olarak, uzun ömürlü kaliteyi ve küresel çevresel sürdürülebilirlik standartlarına tam uyumu sağlamak için çevre dostu, Alman menşeli hammaddeler kullanıyoruz. Ayrıca, renk doğruluğu, dayanıklılık ve mükemmel kaplama sağlamak için üretim süreçlerimizde en son teknolojileri kullanıyoruz — bu da sektördeki en yüksek yenilik standartlarını yansıtır.",
+  "about_bondmaxx_paragraph_2": "BONDMAXX olarak, uzun ömürlü kaliteyi ve küresel çevresel sürdürülebilirlik standartlarına tam uyumu sağlamak için çevre dostu, Alman menşeli hammaddeler kullanıyoruz. Ayrıca, renk doğruluğu, dayanıklılık ve mükemmel kaplama sağlamak için üretim süreçlerimizde en last teknolojileri kullanıyoruz — bu da sektördeki en yüksek yenilik standartlarını yansıtır.",
   "about_bondmaxx_paragraph_3": "Üretim sürecimiz, uluslararası standartlara uygun olarak yürütülmekte olup, boya ve kaplama üretiminde yirmi yılı aşkın küresel deneyime dayanmaktadır. Bu, ürünlerimize geleneksel uzmanlık ile modern teknik hassasiyet arasında benzersiz bir denge kazandırır.",
-  "about_bondmaxx_paragraph_4": "Bu uzun yıllara dayanan deneyim ve gelişmiş teknoloji sayesinde BONDMAXX, hem konut hem ticari hem de endüstriyel projelerin ihtiyaçlarını karşılayan 360’tan fazla renk ve geniş bir özel kaplama yelpazesi sunmaktadır.",
+  "about_bondmaxx_paragraph_4": "Bu uzun yıllara dayanan deneyim ve gelişmiş teknoloji sayesinde BONDMAXX, hem konut hem ticari hem de endüstriyel projelerin ihtiyaçlarını karşılayan 360'tan fazla renk ve geniş bir özel kaplama yelpazesi sunmaktadır.",
   "about_bondmaxx_paragraph_5": "Toptan satış pazarında verimlilik ve rekabetin önemini bildiğimiz için, müşterilerimize kaliteden ödün vermeden en yüksek kâr marjlarını elde etmelerini sağlayan esnek ve rekabetçi fiyatlar sunuyoruz.",
 
   "choose_bondmaxx": "Olağanüstü bir deneyim için BONDMAXX'ı seçin",
@@ -218,7 +220,7 @@
   "natural_green": "Doğal Yeşil",
 
   "exterior_products": "Dış Mekan Boya Ürünleri",
-  "exterior_description": "Evinizin cephesini BondMax'in en iyi dış mekan boyalarıyla koruyun. Cephenize modern ve ayırt edici bir görünüm kazandıran sabit, uzun ömürlü renklerle hava koşullarına dayanıklı boyaların çeşitli seçimi.",
+  "exterior_description": "Evinizin cephesini BondMax'in en iyi dış mekan boyalarıyla koruyon. Cephenize modern ve ayırt edici bir görünüm kazandıran sabit, uzun ömürlü renklerle hava koşullarına dayanıklı boyaların çeşitli seçimi.",
   "search_product": "Ürün Ara",
   "search_button": "Ara",
   "facade_paints": "Cephe Boyaları",
@@ -295,9 +297,9 @@
   "or_contact_us": "Bizimle İletişime Geçin",
   "city": "Şehir",
   "choose_city": "Şehir Seçin",
-  "store_idlib": "Bondmaxx Mağaza - Maarat al-Numan",
+  "store_idlib": "Bondmaxx Mağaza - Maarat al-Nasan",
   "idlib": "İdlib",
-  "maarat_al_nasan": "Maarat al-Numan",
+  "maarat_al_nasan": "Maarat al-Nasan",
   "full_name": "Tam Ad",
   "enter_full_name": "Tam adınızı girin",
   "email": "E-posta",
@@ -557,7 +559,7 @@
 
   "explore_categories": "Kategorileri Keşfet",
   "categories_description": "Tüm çeşitli ürün kategorilerimize göz atın",
-  "Address": "Maarat Alnasan, İdlib, Suriye",
+  "Address": "Maarat al-Nasan, İdlib, Suriye",
 
   "cart_title": "Sepet",
   "cart_page_title": "Alışveriş Sepeti",
@@ -566,17 +568,21 @@
   "total_items": "Toplam Ürün",
   "send_to_whatsapp": "WhatsApp'a Gönder",
   "clear_cart": "Sepeti Temizle",
-  "product_added_to_cart": "Added to cart",
-  "product_removed_from_cart": "Product removed from cart",
-  "quantity_increased": "Quantity increased",
-  "quantity_decreased": "Quantity decreased",
-  "cart_cleared": "Cart cleared",
-  "added_to_favorites": "Added to favorites ❤️",
-  "removed_from_favorites": "Removed from favorites",
-  "order_sent_successfully": "Order sent successfully",
+  "product_added_to_cart": "Sepete eklendi",
+  "product_removed_from_cart": "Ürün sepetten kaldırıldı",
+  "quantity_increased": "Miktar arttırıldı",
+  "quantity_decreased": "Miktar azaltıldı",
+  "cart_cleared": "Sepet temizlendi",
+  "added_to_favorites": "Favorilere eklendi ❤️",
+  "removed_from_favorites": "Favorilerden kaldırıldı",
+  "order_sent_successfully": "Sipariş başarıyla gönderildi",
 
   "whatsapp_greeting": "Merhaba, aşağıdaki ürünler hakkında bilgi almak istiyorum:",
   "whatsapp_quantity": "Miktar",
   "whatsapp_color": "Renk",
-  "whatsapp_sent_from": "Web sitenizden gönderildi"
+  "whatsapp_sent_from": "Web sitenizden gönderildi",
+
+  "our_vision": "Vizyonumuz",
+  "our_mission": "Misyonumuz",
+  "our_values": "Değerlerimiz"
 }

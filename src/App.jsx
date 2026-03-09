@@ -104,7 +104,9 @@ function App() {
               <Route path="/PuttyPage" element={<PuttyPage />} />
               <Route path="/AccessoriesPage" element={<AccessoriesPage />} />
 
+              {/* Search Dealer Route */}
               <Route path="/search-dealer" element={<SearchDealerPage />} />
+              
               <Route path="/color-collection" element={<ColorCollection />} />
               <Route path="/product-details" element={<ProductDetails />} />
               <Route path="/imprint" element={<ImprintPage />} />
