@@ -35,7 +35,7 @@ import ImprintPage from "./pages/Imprint";
 import PrivacyPolicyPage from "./pages/PrivacyPolicy";
 import DataProtectionPage from "./pages/DataProtection";
 import { Toaster } from "sonner";
-
+import ContactPage from "./pages/ContactPage";
 // Scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -89,30 +89,31 @@ function App() {
           <Routes>
             {/* Routes WITH Header */}
             <Route element={<LayoutWithHeader />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/interior-colors" element={<InteriorColorsPage />} />
-              <Route path="/exterior-colors" element={<ExteriorColorsPage />} />
+  <Route path="/" element={<Home />} />
+  <Route path="/about" element={<About />} />
 
-              {/* New Product Routes */}
-              <Route path="/OilPaintsPage" element={<OilPaintsPage />} />
-              <Route path="/WaterPaintsPage" element={<WaterPaintsPage />} />
-              <Route path="/PrimerPaintsPage" element={<PrimerPaintsPage />} />
-              <Route path="/InsulationPage" element={<InsulationPage />} />
-              <Route path="/EpoxyPage" element={<EpoxyPage />} />
-              <Route path="/PuttyPage" element={<PuttyPage />} />
-              <Route path="/AccessoriesPage" element={<AccessoriesPage />} />
+  <Route path="/contact" element={<ContactPage />} />
 
-              {/* Search Dealer Route */}
-              <Route path="/search-dealer" element={<SearchDealerPage />} />
-              
-              <Route path="/color-collection" element={<ColorCollection />} />
-              <Route path="/product-details" element={<ProductDetails />} />
-              <Route path="/imprint" element={<ImprintPage />} />
-              <Route path="/PrivacyPolicy" element={<PrivacyPolicyPage />} />
-              <Route path="/DataProtection" element={<DataProtectionPage />} />
-            </Route>
+  <Route path="/interior-colors" element={<InteriorColorsPage />} />
+  <Route path="/exterior-colors" element={<ExteriorColorsPage />} />
+
+  {/* Product Routes */}
+  <Route path="/OilPaintsPage" element={<OilPaintsPage />} />
+  <Route path="/WaterPaintsPage" element={<WaterPaintsPage />} />
+  <Route path="/PrimerPaintsPage" element={<PrimerPaintsPage />} />
+  <Route path="/InsulationPage" element={<InsulationPage />} />
+  <Route path="/EpoxyPage" element={<EpoxyPage />} />
+  <Route path="/PuttyPage" element={<PuttyPage />} />
+  <Route path="/AccessoriesPage" element={<AccessoriesPage />} />
+
+  <Route path="/search-dealer" element={<SearchDealerPage />} />
+  <Route path="/color-collection" element={<ColorCollection />} />
+  <Route path="/product-details" element={<ProductDetails />} />
+
+  <Route path="/imprint" element={<ImprintPage />} />
+  <Route path="/PrivacyPolicy" element={<PrivacyPolicyPage />} />
+  <Route path="/DataProtection" element={<DataProtectionPage />} />
+</Route>
 
             {/* Fallback */}
             <Route path="*" element={<NotFound />} />

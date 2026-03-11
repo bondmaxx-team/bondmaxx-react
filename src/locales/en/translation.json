@@ -57,8 +57,10 @@
   "technical_support": "Technical Support",
   "quality_guarantee_footer": "Quality Guarantee",
   "contact_title": "Contact Us",
-  "phone_number": "+963 933 993 929",
+"phone_number": "+963 933 442 025",
+  "phone_number1": "+963 933 442 024",
   "email_address": "sales@bondmaxx.com",
+  "email_address1": "office@bondmaxx.com",
   "location": "Syria - Idlib",
   "working_hours": "Sunday - Thursday: 8:00 AM - 6:00 PM",
   "all_rights_reserved": "All Rights Reserved",
@@ -572,6 +574,15 @@
   "whatsapp_greeting": "Hello, I would like to inquire about the following products:",
   "whatsapp_quantity": "Quantity",
   "whatsapp_color": "Color",
-  "whatsapp_sent_from": "Sent from your website"
+  "whatsapp_sent_from": "Sent from your website",
+  "contact_name_placeholder": "Your Full Name",
+  "contact_email_placeholder": "Your Email Address",
+  "contact_phone_placeholder": "Your Phone Number",
+  "contact_message_placeholder": "Your Message",
+  "contact_submit_button": "Send Message",
+  "contact_sending": "Sending...",
+  "contact_success_message": "✓ Message sent successfully! We'll get back to you soon.",
+  "contact_error_message": "✗ Failed to send message. Please try again.",
+  "contact_map_title": "Bondmaxx Location"
 
 }

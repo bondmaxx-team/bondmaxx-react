@@ -74,11 +74,25 @@ export default function Footer() {
       href: "https://wa.me/" + DEFAULT_WHATSAPP_NUMBER,
       external: true
     },
+     {
+      type: "whatsapp",
+      icon: "fab fa-whatsapp",
+      label: t("phone_number1"),
+      href: "https://wa.me/" + DEFAULT_WHATSAPP_NUMBER,
+      external: true
+    },
     {
       type: "email",
       icon: "fas fa-envelope",
       label: t("email_address"),
       href: "mailto:sales@bondmaxx.com",
+      external: true
+    },
+    {
+      type: "email",
+      icon: "fas fa-envelope",
+      label: t("email_address1"),
+      href: "mailto:office@bondmaxx.com",
       external: true
     },
     {
@@ -98,7 +112,14 @@ export default function Footer() {
       type: "other",
       icon: "fas fa-info-circle",
       label: t("about"),
-      href: "#about",
+      href: "about",
+      external: false
+    },
+    {
+      type: "other",
+      icon: "fas fa-info-circle",
+      label: t("contact_title"),
+      href: "contact",
       external: false
     },
   ];
@@ -176,45 +197,58 @@ export default function Footer() {
 
         {/* 📞 Contact */}
         <div>
-          <h3 className="text-xl font-bold mb-5 text-[var(--header-primary)]">
-            {t("contact_title")}
-          </h3>
-          <ul className="space-y-3">
-            {contactInfo.map((contact, index) => (
-              <li key={index}>
-                {contact.external ? (
-                  <a
-                    href={contact.href}
-                    className="flex items-center gap-2 text-gray-300 transition hover:text-[var(--header-primary)]"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i
-                      className={`${contact.icon} text-[var(--header-primary)]`}
-                    ></i>
-                    {contact.type === "whatsapp" ? (
-                      <span dir="ltr" className="font-mono tracking-wide">
-                        {contact.label}
-                      </span>
-                    ) : (
-                      <span>{contact.label}</span>
-                    )}
-                  </a>
-                ) : (
-                  <Link
-                    to={contact.href}
-                    className="flex items-center gap-2 text-gray-300 transition hover:text-[var(--header-primary)]"
-                  >
-                    <i
-                      className={`${contact.icon} text-[var(--header-primary)]`}
-                    ></i>
-                    <span>{contact.label}</span>
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
+  <h3 className="text-xl font-bold mb-5 text-[var(--header-primary)]">
+    {t("contact_title")}
+  </h3>
+
+  <ul className="space-y-3">
+    {contactInfo.map((contact, index) => (
+      <li key={index}>
+        {contact.external ? (
+          <a
+            href={contact.href}
+            className="flex items-center gap-2 text-gray-300 transition hover:text-[var(--header-primary)]"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className={`${contact.icon} text-[var(--header-primary)]`}></i>
+            {contact.type === "whatsapp" ? (
+              <span dir="ltr" className="font-mono tracking-wide">
+                {contact.label}
+              </span>
+            ) : (
+              <span>{contact.label}</span>
+            )}
+          </a>
+        ) : (
+          <Link
+            to={contact.href}
+            className="flex items-center gap-2 text-gray-300 transition hover:text-[var(--header-primary)]"
+          >
+            <i className={`${contact.icon} text-[var(--header-primary)]`}></i>
+            <span>{contact.label}</span>
+          </Link>
+        )}
+      </li>
+    ))}
+  </ul>
+
+  {/* 📍 Google Map */}
+  <div className="mt-6 rounded-lg overflow-hidden shadow-lg">
+    <iframe
+      title="Bondmaxx Location"
+      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3226.082557269725!2d36.833179!3d36.042691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDAyJzMzLjciTiAzNsKwNDknNTkuNCJF!5e0!3m2!1sar!2str!4v1773134589997!5m2!1sar!2str"
+      width="100%"
+      height="180"
+      style={{ border: 0 }}
+      allowFullScreen=""
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+      className="rounded-lg"
+    ></iframe>
+  </div>
+
+</div>
       </div>
 
       {/* Footer Bottom */}

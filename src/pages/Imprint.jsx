@@ -29,13 +29,14 @@ const ImprintPage = () => {
         <p className="mb-4">
           <strong>{t("phone")}:</strong>{" "}
           <a
-            href="tel:+963933993929"
+            href="tel:+963933442025"
             className={`text-blue-600 hover:underline ${
               i18n.language === "ar" ? "text-right" : "text-left"
             }`}
             dir={i18n.language === "ar" ? "rtl" : "ltr"}
           >
-            +963 933 993 929
+            +963 933 442 025
+            +963 933 442 024
           </a>
         </p>
 

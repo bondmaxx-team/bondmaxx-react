@@ -59,8 +59,10 @@
   "technical_support": "الدعم الفني",
   "quality_guarantee_footer": "ضمان الجودة",
   "contact_title": "تواصل معنا",
-  "phone_number": "+963 933 993 929",
+  "phone_number": "+963 933 442 025",
+  "phone_number1": "+963 933 442 024",
   "email_address": "sales@bondmaxx.com",
+  "email_address1": "office@bondmaxx.com",
   "location": "سوريا - إدلب",
   "working_hours": "الأحد - الخميس: 8:00 ص - 6:00 م",
   "all_rights_reserved": "جميع الحقوق محفوظة لشركة",
@@ -583,6 +585,14 @@
   "whatsapp_greeting": "مرحباً، أود الاستفسار عن المنتجات التالية:",
   "whatsapp_quantity": "الكمية",
   "whatsapp_color": "اللون",
-  "whatsapp_sent_from": "أُرسلت من موقعكم"
-
+  "whatsapp_sent_from": "أُرسلت من موقعكم",
+    "contact_name_placeholder": "الاسم الكامل",
+  "contact_email_placeholder": "البريد الإلكتروني",
+  "contact_phone_placeholder": "رقم الهاتف (اختياري)",
+  "contact_message_placeholder": "رسالتك",
+  "contact_submit_button": "إرسال الرسالة",
+  "contact_sending": "جاري الإرسال...",
+  "contact_success_message": "✓ تم إرسال الرسالة بنجاح! سنتواصل معك قريباً.",
+  "contact_error_message": "✗ فشل إرسال الرسالة. الرجاء المحاولة مرة أخرى.",
+  "contact_map_title": "موقع Bondmaxx"
 }

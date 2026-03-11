@@ -128,25 +128,34 @@ export default function Header() {
   ];
 
   const menuItems = [
-    { href: "/", label: t("home"), icon: "fas fa-home" },
-    {
-      href: "/AccessoriesPage",
-      label: t("accessories"),
-      icon: "fas fa-toolbox",
-    },
-    {
-      href: "/color-collection",
-      label: t("color_collection"),
-      icon: "fas fa-palette",
-    },
+  { href: "/", label: t("home"), icon: "fas fa-home" },
 
-    {
-      href: "/search-dealer",
-      label: t("search_dealer"),
-      icon: "fas fa-search",
-    },
-    { href: "/about", label: t("about"), icon: "fas fa-info-circle" },
-  ];
+  {
+    href: "/AccessoriesPage",
+    label: t("accessories"),
+    icon: "fas fa-toolbox",
+  },
+
+  {
+    href: "/color-collection",
+    label: t("color_collection"),
+    icon: "fas fa-palette",
+  },
+
+  {
+    href: "/search-dealer",
+    label: t("search_dealer"),
+    icon: "fas fa-search",
+  },
+
+  { href: "/about", label: t("about"), icon: "fas fa-info-circle" },
+
+  {
+    href: "/contact",
+    label: t("contact_title"),
+    icon: "fas fa-envelope"
+  }
+];
 
   return (
     <>

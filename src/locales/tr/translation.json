@@ -59,8 +59,10 @@
   "technical_support": "Teknik Destek",
   "quality_guarantee_footer": "Kalite Garantisi",
   "contact_title": "Bize Ulaşın",
-  "phone_number": "+963 933 993 929",
+  "phone_number": "+963 933 442 025",
+  "phone_number1": "+963 933 442 024",
   "email_address": "sales@bondmaxx.com",
+  "email_address1": "office@bondmaxx.com",
   "location": "Suriye - İdlib",
   "working_hours": "Pazar - Perşembe: 08:00 - 18:00",
   "all_rights_reserved": "Tüm hakları saklıdır",
@@ -584,5 +586,14 @@
 
   "our_vision": "Vizyonumuz",
   "our_mission": "Misyonumuz",
-  "our_values": "Değerlerimiz"
+  "our_values": "Değerlerimiz",
+   "contact_name_placeholder": "Adınız Soyadınız",
+  "contact_email_placeholder": "E-posta Adresiniz",
+  "contact_phone_placeholder": "Telefon Numaranız (İsteğe Bağlı)",
+  "contact_message_placeholder": "Mesajınız",
+  "contact_submit_button": "Mesaj Gönder",
+  "contact_sending": "Gönderiliyor...",
+  "contact_success_message": "✓ Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.",
+  "contact_error_message": "✗ Mesaj gönderilemedi. Lütfen tekrar deneyin.",
+  "contact_map_title": "Bondmaxx Konumu"
 }
