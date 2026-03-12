@@ -13,7 +13,7 @@ const SearchDealerPage = ({
   const STATIC_DEALER_DATA = [
     {
       id: 1,
-      phone: "+90 555 000 40 00",
+      phone: "+963 933 442 025",
       mapLink: "https://maps.app.goo.gl/n3chLYJreJ8qNGh29",
       rating: 4.8,
       reviews: 156,
