@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { DEFAULT_WHATSAPP_NUMBER } from "@/config/whatsapp";
+import { DEFAULT_WHATSAPP_NUMBER_2 } from "../config/whatsapp";
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
@@ -78,7 +79,7 @@ export default function Footer() {
       type: "whatsapp",
       icon: "fab fa-whatsapp",
       label: t("phone_number1"),
-      href: "https://wa.me/" + DEFAULT_WHATSAPP_NUMBER,
+      href: "https://wa.me/" + DEFAULT_WHATSAPP_NUMBER_2,
       external: true
     },
     {
